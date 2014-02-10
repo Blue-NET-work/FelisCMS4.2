@@ -1,15 +1,13 @@
 .DS_Store
 
-application/cache/*
-!application/cache/index.html
-!application/cache/.htaccess
+tmp/cache/*
+!tmp/cache/index.html
+!tmp/cache/.htaccess
 
-application/logs/*
-!application/logs/index.html
-!application/logs/.htaccess
+tmp/logs/*
+!tmp/logs/index.html
+!tmp/logs/.htaccess
 
-user_guide_src/build/*
-user_guide_src/cilexer/build/*
-user_guide_src/cilexer/dist/*
-user_guide_src/cilexer/pycilexer.egg-info/*
-/vendor/
+tmp/templates/*
+!tmp/templates/index.html
+!tmp/templates/.htaccess
