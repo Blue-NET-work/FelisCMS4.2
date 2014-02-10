@@ -26,12 +26,13 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends FC_Controller {
                          
 	public function index(){   
+        $msg = "Messages test";
         $pages = @FC_DB::table("pages");
         print_r($pages);                                                                        
-        $this->session->set_flashdata('message', $messages);
+        $this->session->set_flashdata('message', $msg);
         $messages = $this->session->flashdata('message');
         print_r($messages);   
 		$this->load->view('welcome_message');
