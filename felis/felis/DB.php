@@ -4,23 +4,22 @@
     Klasa z gotowymi zapytaniami do bazy danych
 */
 
-class FC_DB{
+class FC_DB {                 
 
     var $table;
     var $where;
     var $data;
     var $order;
     var $limit;
-    var $join;
+    var $join;       
     
 /*
     Pobieranie danych 
     ####################################################################################################
-*/
-    
+*/                             
     
 // Pobieranie danych z bazy
-    public function table($table, $select = "*"){ 
+    public function table($table, $select = "*"){      
         $this->db->select($select);
         $query = $this->db->get($table);
         return $query->result_array();

@@ -27,25 +27,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function index()
-	{                          
-        $messages = "Wiadomość nie mogła zostać wysłania ze względu na nieprawidłową domenę!"; 
+                         
+	public function index(){   
+        $pages = @FC_DB::table("pages");
+        print_r($pages);                                                                        
         $this->session->set_flashdata('message', $messages);
         $messages = $this->session->flashdata('message');
         print_r($messages);   
