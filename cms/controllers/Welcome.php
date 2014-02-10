@@ -44,7 +44,11 @@ class Welcome extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{                                                                 
+	{                          
+        $messages = "Wiadomość nie mogła zostać wysłania ze względu na nieprawidłową domenę!"; 
+        $this->session->set_flashdata('message', $messages);
+        $messages = $this->session->flashdata('message');
+        print_r($messages);   
 		$this->load->view('welcome_message');
 	}
 }
