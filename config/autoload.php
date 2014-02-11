@@ -79,7 +79,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'email', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'smarty', 'email','ion_auth', 'form_validation');
+$autoload['libraries'] = array('breadcrumbs', 'calendar', 'cart', 'database', 'email', 'encrypt', 'form_validation', 'ftp', 'image_lib', 'ion_auth', 'pagination', 'smarty', 'upload', 'user_agent', 'Xmlrpc', 'zip');
 
 
 /*

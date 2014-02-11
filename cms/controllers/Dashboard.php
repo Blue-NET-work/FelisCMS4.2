@@ -26,12 +26,12 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends FC_Controller {
+class Dashboard extends FC_Controller {
                          
-	public function index(){   
+	public function index(){   $this->session->native->set_userdata('foo', 'bar');
         $msg = "Messages test";
-        $pages = @FC_DB::table("pages");
-        print_r($pages);                                                                        
+        $ses = $this->session->all_userdata();
+        print_r($ses);                                                                        
         $this->session->set_flashdata('message', $msg);
         $messages = $this->session->flashdata('message');
         print_r($messages);   

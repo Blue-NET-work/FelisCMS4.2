@@ -276,8 +276,8 @@ $config['encryption_key'] = 'FelisCMS4_Blue-NET';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_driver']			= 'native';
-$config['sess_valid_drivers']	= array('native');
+$config['sess_driver']			= 'cookie';
+$config['sess_valid_drivers']	= array('cookie');
 $config['sess_cookie_name']		= 'felis_sessions';
 $config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= FALSE;
@@ -300,7 +300,7 @@ $config['sess_time_to_update']	= 3300;
 | 'cookie_httponly' = Cookie will only be accessible via HTTP(S) (no javascript)
 |
 */
-$config['cookie_prefix']	= '';
+$config['cookie_prefix']	= 'felis_';
 $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;

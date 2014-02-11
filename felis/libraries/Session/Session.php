@@ -64,7 +64,7 @@ class CI_Session extends CI_Driver_Library {
 	 *
 	 * @var	array
 	 */
-	public $valid_drivers = array('native',	'cookie');
+	public $valid_drivers = array('cookie', 'native');
 
 	/**
 	 * Current driver in use
