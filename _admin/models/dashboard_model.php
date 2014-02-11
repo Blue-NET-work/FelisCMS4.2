@@ -21,11 +21,11 @@ class Dashboard_model extends CI_Model{
     
 // Wyświetlenie nowych użytkowników    
     function new_users($users_limit = 6){                                             
-        $users = FC_DB::tableOrderLimit('users', '`created_on` DESC', $users_limit, 'id, first_name, last_name'); 
+        $users = @FC_DB::tableOrderLimit('users', '`created_on` DESC', $users_limit, 'id, first_name, last_name'); 
         foreach($users as $key=>$user){     
-             $user_permissions = FC_DB::getWhere('users_permissions', array('up_user_id'=>$user["id"]), "*", '`up_group_id` DESC');
+             $user_permissions = @FC_DB::getWhere('users_permissions', array('up_user_id'=>$user["id"]), "*", '`up_group_id` DESC');
              foreach($user_permissions as $up=>$user_permission){
-                 $user_group = FC_DB::getData('users_groups', array('ug_id'=>$user_permission["up_group_id"]));
+                 $user_group = @FC_DB::getData('users_groups', array('ug_id'=>$user_permission["up_group_id"]));
                  $users[$key]["group"][$up] = array('user_group' => $user_group["ug_name"], 'user_color'=> $user_group["ug_color"]);                 
              }  
         }                  
@@ -36,21 +36,21 @@ class Dashboard_model extends CI_Model{
 //Statystyka nowych użytkowników
     function statisticNewUsers(){      
         $time = strtotime("-1 month");
-        $newUsers = FC_DB::getWhereCount('users', "created_on >= {$time}");
+        $newUsers = @FC_DB::getWhereCount('users', "created_on >= {$time}");
         $this->smarty->assigns("dashboard_statisticNewUsers", $newUsers);  
     }
         
 //Statystyka powracający użytkownicy
     function statisticReturnUsers(){
         $time = strtotime("-1 month");
-        $returnUsers = FC_DB::getWhereCount('users', "last_login >= {$time}");
+        $returnUsers = @FC_DB::getWhereCount('users', "last_login >= {$time}");
         $this->smarty->assigns("dashboard_statisticReturnUsers", $returnUsers);  
     }
         
 //Statystyka nowych wpisów
     function statisticNewItems(){
         $time = date("Y-m-d H:i:s", strtotime("-1 month"));
-        $newItems = FC_DB::getWhereCount('articles', "a_date >= '{$time}'");
+        $newItems = @FC_DB::getWhereCount('articles', "a_date >= '{$time}'");
         $this->smarty->assigns("dashboard_statisticNewItems", $newItems);
     }
         
@@ -64,7 +64,7 @@ class Dashboard_model extends CI_Model{
 // Prawa zapisu dla folderów
     function permissionsFolder(){
         $permissions = false;                     
-        $this->config->load('felis/felis_chmod'); 
+        $this->config->load('felis_chmod'); 
         $pms = $this->config->item("chmodFelis"); 
         foreach($pms as $item){
             $ppp = substr(sprintf('%o', fileperms(ROOTPATH.'tmp')), -3);

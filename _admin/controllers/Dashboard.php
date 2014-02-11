@@ -5,26 +5,26 @@ class Dashboard extends CI_Controller {
 
     function __construct(){
         parent::__construct();  
-        Control::loadModel('admin_model');                                                                        
+        @FC_Request::loadModel('admin_model');                                                                        
     }
                                   
     public function index(){                   
         //Wczytanie domyślnego stylu         
-        Admin_model::defaultStyle();                                                           
-        View::setCSS(base_url().'public/css/felis/felis.agenda.css');   
-        View::setCSS(base_url().'public/css/felis/felis.dashboard.css');           
+        @Admin_model::defaultStyle();                                                           
+        @View::setCSS(base_url().'public/css/felis/felis.agenda.css');   
+        @View::setCSS(base_url().'public/css/felis/felis.dashboard.css');           
         /* Wczytanie domyślnych JS'ów */                                                   
-        View::setJQ(base_url()."public/js/felis/felis.agenda.js");    
+        @View::setJQ(base_url()."public/js/felis/felis.agenda.js");    
                                         
-        Control::loadLang("felis_dashboard"); 
-        Control::loadModel('dashboard_model');  
+        @FC_Request::loadLang("felis_dashboard"); 
+        @FC_Request::loadModel('dashboard_model');  
                                                      
-        Control::smartyView("index.tpl");
+        @FC_Request::smartyView("index.tpl");
     }         
     
     public function source(){             
         Admin_model::defaultStyle();     
-        Control::smartyView("source.tpl");
+        @FC_Request::smartyView("source.tpl");
     }  
 
 /*
@@ -35,22 +35,21 @@ class Dashboard extends CI_Controller {
  */   
 
 // Logowanie    
-    public function sign_up(){ 
-    exit();                                     
+    public function sign_up(){                    
         $this->form_validation->set_error_delimiters("","<span style='padding-right:5px;'></span>");
            
         if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}
                                                                              
         /* Wczytanie domyślnych CSS'ów */                                                                 
-        View::setCSS(base_url().'public/css/bootstrap/bootstrap.css');    
-        View::setCSS(base_url().'public/css/bootstrap/bootstrap-theme.css');    
-        View::setCSS(base_url().'public/css/styles/logowanie.css', "text/css");  
-        View::setCSS(base_url().'public/css/icons/woocons.css', "text/css"); 
+        @View::setCSS(base_url().'public/css/bootstrap/bootstrap.css');    
+        @View::setCSS(base_url().'public/css/bootstrap/bootstrap-theme.css');    
+        @View::setCSS(base_url().'public/css/styles/logowanie.css', "text/css");  
+        @View::setCSS(base_url().'public/css/icons/woocons.css', "text/css"); 
          
-        View::setJQ(base_url()); 
+        @View::setJQ(base_url()); 
                                                                                                                  
                                                                           
-        Control::loadLang("felis_login");                   
+        @FC_Request::loadLang("felis_login");                   
         
         if($this->session->flashdata('message')){
             $msg = $this->session->flashdata('message');  
@@ -59,13 +58,13 @@ class Dashboard extends CI_Controller {
         }
         else $messages = array('boxClass' => "alert-info", 'icon'=>"woocons-light-bulb-on woocons-size32", 'text'=>$this->lang->line("login_require_a_login")); 
                                                                                                                        
-        if(Control::post('item')){                                                                                   
+        if(@FC_Request::post('item')){                                                                                   
                                    
             $this->form_validation->set_rules('item[login]', 'lang:login_username', 'required');
             $this->form_validation->set_rules('item[password]', 'lang:login_password', 'required');
                 
             if ($this->form_validation->run() == true){    
-                $item = Control::post('item');                                        
+                $item = @FC_Request::post('item');                                        
                 $remember = (bool) $item['remember'];
                                                     
                 if ($this->ion_auth->login($item['login'], $item['password'], $remember)){     
@@ -86,7 +85,7 @@ class Dashboard extends CI_Controller {
         }
                                                       
         $query["messages"] = $messages;    
-        Control::smartyView("account/sign_up.tpl", $query);
+        @FC_Request::smartyView("account/sign_up.tpl", $query);
     }
     
 // Wylogowanie
@@ -103,8 +102,8 @@ class Dashboard extends CI_Controller {
 ********************/ 
 
     public function language($lang){    
-        $referer = FC_Request::server("HTTP_REFERER");                 
-        FC_Request::languageSet($lang);                             
+        $referer = @FC_Request::server("HTTP_REFERER");                 
+        @FC_Request::languageSet($lang);                             
         redirect($referer, 'refresh');
     }    
                               

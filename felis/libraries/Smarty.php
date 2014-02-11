@@ -8,15 +8,18 @@ class FC_Smarty extends Smarty {
         
         $ci =& get_instance();
         $ci->load->config('smarty');
-        $ci->load->helper('url');         
-                                                                  
+        $ci->load->helper('url');                                                                   
         if($ci->config->item('smarty_templates')) $templates_folder = VIEWPATH."{$ci->config->item('smarty_templates')}/"; 
-        else $templates_folder = VIEWPATH;   
-                                  
+        else $templates_folder = VIEWPATH;  
+                                       
         // Definiowanie 
+        //$this->debugging = $ci->config->item('smarty_debugging');
+        $this->caching = $ci->config->item('smarty_cache');
+        $this->cache_lifetime = $ci->config->item('smarty_cache_lifetime');
                                                           
+        $this->cache_dir = ROOTPATH."tmp/cache/"; 
         $this->compile_dir = ROOTPATH."tmp/".$ci->config->item('smarty_templates_c'); 
-        $this->template_dir = $ci->config->item('smarty_app').$templates_folder;
+        $this->template_dir = $templates_folder;
         
         $this->assign('APPPATH', APPPATH);
         $this->assign('BASEPATH', BASEPATH);
