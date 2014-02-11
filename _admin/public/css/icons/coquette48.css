@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+
+[class^="coquette48-"],
+[class*=" coquette48-"] {
+	display: inline-block;
+	background-size: 100%;
+	width: 48px;
+	height: 48px;
+	line-height: 48px;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+}
+
+.coquette48-accept{background-image:url("../../img/icons/coquette/48x48/accept.png");}
+.coquette48-accept_page{background-image:url("../../img/icons/coquette/48x48/accept_page.png");}
+.coquette48-add{background-image:url("../../img/icons/coquette/48x48/add.png");}
+.coquette48-add_page{background-image:url("../../img/icons/coquette/48x48/add_page.png");}
+.coquette48-add_to_folder{background-image:url("../../img/icons/coquette/48x48/add_to_folder.png");}
+.coquette48-attachment{background-image:url("../../img/icons/coquette/48x48/attachment.png");}
+.coquette48-back{background-image:url("../../img/icons/coquette/48x48/back.png");}
+.coquette48-block{background-image:url("../../img/icons/coquette/48x48/block.png");}
+.coquette48-calendar{background-image:url("../../img/icons/coquette/48x48/calendar.png");}
+.coquette48-calendar_empty{background-image:url("../../img/icons/coquette/48x48/calendar_empty.png");}
+.coquette48-chart{background-image:url("../../img/icons/coquette/48x48/chart.png");}
+.coquette48-chart_pie{background-image:url("../../img/icons/coquette/48x48/chart_pie.png");}
+.coquette48-clock{background-image:url("../../img/icons/coquette/48x48/clock.png");}
+.coquette48-comment{background-image:url("../../img/icons/coquette/48x48/comment.png");}
+.coquette48-comments{background-image:url("../../img/icons/coquette/48x48/comments.png");}
+.coquette48-delete{background-image:url("../../img/icons/coquette/48x48/delete.png");}
+.coquette48-delete_folder{background-image:url("../../img/icons/coquette/48x48/delete_folder.png");}
+.coquette48-delete_page{background-image:url("../../img/icons/coquette/48x48/delete_page.png");}
+.coquette48-download{background-image:url("../../img/icons/coquette/48x48/download.png");}
+.coquette48-favorite{background-image:url("../../img/icons/coquette/48x48/favorite.png");}
+.coquette48-folder{background-image:url("../../img/icons/coquette/48x48/folder.png");}
+.coquette48-folder_accept{background-image:url("../../img/icons/coquette/48x48/folder_accept.png");}
+.coquette48-folder_full{background-image:url("../../img/icons/coquette/48x48/folder_full.png");}
+.coquette48-full_page{background-image:url("../../img/icons/coquette/48x48/full_page.png");}
+.coquette48-heart{background-image:url("../../img/icons/coquette/48x48/heart.png");}
+.coquette48-help{background-image:url("../../img/icons/coquette/48x48/help.png");}
+.coquette48-info{background-image:url("../../img/icons/coquette/48x48/info.png");}
+.coquette48-lock{background-image:url("../../img/icons/coquette/48x48/lock.png");}
+.coquette48-mail{background-image:url("../../img/icons/coquette/48x48/mail.png");}
+.coquette48-mail_lock{background-image:url("../../img/icons/coquette/48x48/mail_lock.png");}
+.coquette48-mail_receive{background-image:url("../../img/icons/coquette/48x48/mail_receive.png");}
+.coquette48-mail_search{background-image:url("../../img/icons/coquette/48x48/mail_search.png");}
+.coquette48-mail_send{background-image:url("../../img/icons/coquette/48x48/mail_send.png");}
+.coquette48-new_page{background-image:url("../../img/icons/coquette/48x48/new_page.png");}
+.coquette48-next{background-image:url("../../img/icons/coquette/48x48/next.png");}
+.coquette48-page_process{background-image:url("../../img/icons/coquette/48x48/page_process.png");}
+.coquette48-process{background-image:url("../../img/icons/coquette/48x48/process.png");}
+.coquette48-promotion{background-image:url("../../img/icons/coquette/48x48/promotion.png");}
+.coquette48-protection{background-image:url("../../img/icons/coquette/48x48/protection.png");}
+.coquette48-refresh{background-image:url("../../img/icons/coquette/48x48/refresh.png");}
+.coquette48-rss{background-image:url("../../img/icons/coquette/48x48/rss.png");}
+.coquette48-search{background-image:url("../../img/icons/coquette/48x48/search.png");}
+.coquette48-search_page{background-image:url("../../img/icons/coquette/48x48/search_page.png");}
+.coquette48-tag_blue{background-image:url("../../img/icons/coquette/48x48/tag_blue.png");}
+.coquette48-tag_green{background-image:url("../../img/icons/coquette/48x48/tag_green.png");}
+.coquette48-text_page{background-image:url("../../img/icons/coquette/48x48/text_page.png");}
+.coquette48-unlock{background-image:url("../../img/icons/coquette/48x48/unlock.png");}
+.coquette48-user{background-image:url("../../img/icons/coquette/48x48/user.png");}
+.coquette48-users{background-image:url("../../img/icons/coquette/48x48/users.png");}
+.coquette48-warning{background-image:url("../../img/icons/coquette/48x48/warning.png");}

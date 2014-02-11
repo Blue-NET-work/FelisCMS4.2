@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+	Options +FollowSymLinks
+    RewriteBase /_admin/
+    
+    #Przekierowanie z domena.pl na www.domena.pl
+        #RewriteCond %{HTTP_HOST} ^www\.(.+)$
+        #RewriteRule %{HTTP_HOST}^(.*)$ http://$1/$2 [R=301,L]
+
+    #Przekierowanie z http na https
+        #RewriteCond %{SERVER_PORT} 80 
+        #RewriteRule ^(.*)$ https://www.Blue-NET.pl/$1 [R=301,L]
+                                  
+	#Główne funkcje mod_rewrite    
+        RewriteCond $1 !^([a-zA-z0-9/])
+        RewriteRule ^(.*)$ index.php [L]
+        
+    #Nadanie dostępu przez domene do katalogów  
+        RewriteCond $1 !^(public|index.php)
+        RewriteRule ^(.*)$ index.php?/$1 [L]                                                           
+    
+    #Strony błędów
+        ErrorDocument 403 /403_error.html
+        #ErrorDocument 404 /404_error.html
+        ErrorDocument 500 /500_error.html
+                                     
+</IfModule>
