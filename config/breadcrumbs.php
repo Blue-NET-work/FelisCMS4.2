@@ -15,8 +15,9 @@
 */
 
 $config['crumb_divider'] = '';
-$config['tag_open'] = '<ul class="pull-right breadcrumb">';
+$config['tag_open'] = '<ul class="breadcrumb">';
 $config['tag_close'] = '</ul>';
 $config['crumb_open'] = '<li>';
 $config['crumb_last_open'] = '<li class="active">';
-$config['crumb_close'] = '</li>';
+$config['crumb_last_close'] = '</li>';
+$config['crumb_close'] = ' <span class="divider">»</span></li>';

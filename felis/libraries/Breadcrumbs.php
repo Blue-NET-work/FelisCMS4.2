@@ -35,7 +35,8 @@ class Breadcrumbs {
 		$this->divider = $this->ci->config->item('divider');
 		$this->crumb_open = $this->ci->config->item('crumb_open');
 		$this->crumb_close = $this->ci->config->item('crumb_close');
-		$this->crumb_last_open = $this->ci->config->item('crumb_last_open');
+        $this->crumb_last_open = $this->ci->config->item('crumb_last_open');
+		$this->crumb_last_close = $this->ci->config->item('crumb_last_close');
 		$this->crumb_divider = $this->ci->config->item('crumb_divider');
 		
 		log_message('debug', "Breadcrumbs Class Initialized");
@@ -117,7 +118,7 @@ class Breadcrumbs {
 			// construct output
 			foreach ($this->breadcrumbs as $key => $crumb) {
 				if (end(array_keys($this->breadcrumbs)) == $key) {
-					$output .= $this->crumb_last_open . '' . $crumb['page'] . '' . $this->crumb_close;
+					$output .= $this->crumb_last_open . '' . $crumb['page'] . '' . $this->crumb_last_close;
 				} else {
 					$output .= $this->crumb_open.'<a href="' . $crumb['href'] . '">' . $crumb['page'] . '</a> '.$this->crumb_divider.$this->crumb_close;
 				}

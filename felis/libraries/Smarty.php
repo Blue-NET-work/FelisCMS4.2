@@ -26,6 +26,7 @@ class FC_Smarty extends Smarty {
         $this->assign( 'ver', FelisCMS_VERSION );  
         $this->assign('TEMPLATES', $ci->config->item('base_url').$templates_folder); 
         $this->assign('uploads', UPLOADSPATH); 
+        $this->assign('base_url', $ci->config->item('base_url')); 
         $this->left_delimiter  = '{'; 
         $this->right_delimiter = '}';
         $this->error_reporting = 'E_ALL ^ E_NOTICE'; 

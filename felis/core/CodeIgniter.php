@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     $felis = new FelisCMS();
     $felis->search(); 
-
+    
 /*
  * ------------------------------------------------------
  *  Load the framework constants
