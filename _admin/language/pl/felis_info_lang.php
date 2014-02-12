@@ -1,4 +1,5 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
   // Informacje dla API Chrome
   $lang["felis_info_api_chrome"]                = "Twoja przeglądarka obsługuje zdarzenia pulpitu, kliknij tutaj, aby je włączyć."; 
   $lang["felis_info_api_chrome_enable"]         = "Powiadomienia API włączone!"; 

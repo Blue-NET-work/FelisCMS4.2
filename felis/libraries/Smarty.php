@@ -28,6 +28,7 @@ class FC_Smarty extends Smarty {
         $this->assign('uploads', $ci->config->uploads_url()); 
         $this->assign('uploads_images', $ci->config->uploads_url("images")); 
         $this->assign('base_url', $ci->config->base_url());   
+        $this->assign('system_url', $ci->config->system_url());   
         $this->left_delimiter  = '{'; 
         $this->right_delimiter = '}';
         $this->error_reporting = 'E_ALL ^ E_NOTICE'; 

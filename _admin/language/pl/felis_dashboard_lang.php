@@ -1,11 +1,9 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $lang['dashboard_titleTag']       = "Pulpit";
-
 $lang['dashboard_new_users']      = "Nowi użytkownicy";
 $lang['dashboard_add_user']       = "Dodaj użytkownika";
 $lang['dashboard_reload_list']    = "Przeładuj listę";
-
 
 //Statystyka
 $lang['dashboard_statistic_monthly_unique_visitors_count'] = "Miesięczne zestawienie unikalnych wizyt";
