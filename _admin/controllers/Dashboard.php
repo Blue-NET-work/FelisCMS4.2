@@ -8,7 +8,10 @@ class Dashboard extends CI_Controller {
         @FC_Request::loadModel('admin_model');                                                                        
     }
                                   
-    public function index(){                   
+    public function index(){               
+    
+        print_r(uploads_url());
+        
         //Wczytanie domyślnego stylu         
         @Admin_model::defaultStyle();                                                           
         @View::setCSS(base_url().'public/css/felis/felis.agenda.css');   

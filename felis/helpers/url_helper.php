@@ -67,28 +67,100 @@ if ( ! function_exists('site_url'))
 
 if ( ! function_exists('base_url'))
 {
-	/**
-	 * Base URL
-	 *
-	 * Create a local URL based on your basepath.
-	 * Segments can be passed in as a string or an array, same as site_url
-	 * or a URL to a file can be passed in, e.g. to an image file.
-	 *
-	 * @param	string	$uri
-	 * @param	string	$protocol
-	 * @return	string
-	 */
-	function base_url($uri = '', $protocol = NULL)
-	{
-		$uri = get_instance()->config->base_url($uri);
+    /**
+     * Base URL
+     *
+     * Create a local URL based on your basepath.
+     * Segments can be passed in as a string or an array, same as site_url
+     * or a URL to a file can be passed in, e.g. to an image file.
+     *
+     * @param    string    $uri
+     * @param    string    $protocol
+     * @return    string
+     */
+    function base_url($uri = '', $protocol = NULL)
+    {
+        $uri = get_instance()->config->base_url($uri);
 
-		if (isset($protocol))
-		{
-			return $protocol.substr($uri, strpos($uri, '://'));
-		}
+        if (isset($protocol))
+        {
+            return $protocol.substr($uri, strpos($uri, '://'));
+        }
 
-		return $uri;
-	}
+        return $uri;
+    }
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('system_url'))
+{
+    /**
+     * System URL
+     *
+     * @param    string    $uri
+     * @param    string    $protocol
+     * @return    string
+     */
+    function system_url($uri = '', $protocol = NULL)
+    {
+        $uri = get_instance()->config->system_url($uri);
+
+        if (isset($protocol))
+        {
+            return $protocol.substr($uri, strpos($uri, '://'));
+        }
+
+        return $uri;
+    }
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('templates_url'))
+{
+    /**
+     * Templates URL
+     *
+     * @param    string    $uri
+     * @param    string    $protocol
+     * @return    string
+     */
+    function templates_url($uri = '', $protocol = NULL)
+    {
+        $uri = get_instance()->config->templates_url($uri);
+
+        if (isset($protocol))
+        {
+            return $protocol.substr($uri, strpos($uri, '://'));
+        }
+
+        return $uri;
+    }
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('uploads_url'))
+{
+    /**
+     * Uploads URL
+     *
+     * @param    string    $uri
+     * @param    string    $protocol
+     * @return    string
+     */
+    function uploads_url($uri = '', $protocol = NULL)
+    {
+        $uri = get_instance()->config->uploads_url($uri);
+
+        if (isset($protocol))
+        {
+            return $protocol.substr($uri, strpos($uri, '://'));
+        }
+
+        return $uri;
+    }
 }
 
 // ------------------------------------------------------------------------

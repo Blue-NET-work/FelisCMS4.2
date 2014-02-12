@@ -17,6 +17,10 @@
 //$config['base_url']    = 'http://'.$_SERVER['HTTP_HOST'];           
 $config['base_url']     = '';   
 
+$config['admin_url']    = '';   
+
+$config["admin_folder"] = '_admin';
+
 /*
 |--------------------------------------------------------------------------
 | Index File

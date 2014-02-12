@@ -265,22 +265,22 @@ class CI_Config {
 		return $this->slash_item('base_url').$this->item('index_page').$uri;
 	}
 
-	// -------------------------------------------------------------
+    // -------------------------------------------------------------
 
-	/**
-	 * Base URL
-	 *
-	 * Returns base_url [. uri_string]
-	 *
-	 * @uses	CI_Config::_uri_string()
-	 *
-	 * @param	string|string[]	$uri	URI string or an array of segments
-	 * @return	string
-	 */
-	public function base_url($uri = '')
-	{
-		return $this->slash_item('base_url').ltrim($this->_uri_string($uri), '/');
-	}
+    /**
+     * Base URL
+     *
+     * Returns base_url [. uri_string]
+     *
+     * @uses    CI_Config::_uri_string()
+     *
+     * @param    string|string[]    $uri    URI string or an array of segments
+     * @return    string
+     */
+    public function base_url($uri = '')
+    {
+        return $this->slash_item('base_url').ltrim($this->_uri_string($uri), '/');
+    }
 
 	// -------------------------------------------------------------
 
@@ -311,6 +311,39 @@ class CI_Config {
 		return $uri;
 	}
 
+    // --------------------------------------------------------------------
+
+    /**
+     * Templates URL
+     *
+     * @return    string
+     */
+    public function templates_url($uri = '')
+    {
+        $x = explode('/', preg_replace('|/*(.+?)/*$|', '\\1', str_replace('\\', '/', VIEWPATH)));
+        return $this->slash_item('base_url').end($x).'/'.$uri;
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+     * uploads URL
+     *
+     * @return    string
+     */
+    public function uploads_url($uri = '')
+    {
+        $admin_folder = $this->slash_item('admin_folder');
+        $base_url = $this->slash_item('base_url');
+        $x = explode('/', preg_replace('|/*(.+?)/*$|', '\\1', str_replace('\\', '/', UPLOADSPATH)));
+        $y = explode("/", $this->_uri_string($base_url)); 
+        if($admin_folder == end($y)."/"){
+            $base = explode($admin_folder, $base_url);
+            $base_url = $base[0];
+        }
+        return $base_url.end($x).'/'.$uri;
+    }
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -318,10 +351,17 @@ class CI_Config {
 	 *
 	 * @return	string
 	 */
-	public function system_url()
+	public function system_url($uri = '')
 	{
+        $admin_folder = $this->slash_item('admin_folder');
+        $base_url = $this->slash_item('base_url');
 		$x = explode('/', preg_replace('|/*(.+?)/*$|', '\\1', BASEPATH));
-		return $this->slash_item('base_url').end($x).'/';
+        $y = explode("/", $this->_uri_string($base_url)); 
+        if($admin_folder == end($y)."/"){
+            $base = explode($admin_folder, $base_url);
+            $base_url = $base[0];
+        }
+		return $base_url.end($x).'/'.$uri;
 	}
 
 	// --------------------------------------------------------------------
