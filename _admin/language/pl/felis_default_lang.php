@@ -148,4 +148,7 @@ $lang["default_item_delete"]    = "Wpis został usunięty.";
 $lang["default_item_active_error"]  = "Podczas aktywowania wpisu wystąpił niespodziewany błąd.";
 $lang["default_item_block_error"]   = "Podczas blokowania wpisu wystąpił niespodziewany błąd.";
 $lang["default_item_block_delete"]  = "Podczas usuwania wpisu wystąpił niespodziewany błąd.";
+
+$lang["default_laguage_success"]  = "Język został poprawnie zmieniony!";
+$lang["default_laguage_error"]    = "Podczas próby zmiany języka wysyąpił nieoczekiwany bład!";
                                                                         

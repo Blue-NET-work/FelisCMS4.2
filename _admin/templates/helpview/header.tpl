@@ -18,8 +18,8 @@
 {stylesheet style=$_CSS}
                                  
     <!-- favglyphicon glyphicon-->
-    <link rel="shortcut icon" href="{$base_url}public/img/favicon.png"> 
+    <link rel="shortcut icon" href="{$TEMPLATES}assets/img/favicon.png"> 
     <!-- Microsoft clear type rendering -->
     <meta http-equiv="cleartype" content="on"> 
     <!-- JavaScript at bottom except for Modernizr -->
-    <script src="{$base_url}public/js/modernizr.custom.js"></script>      
+    <script src="{$TEMPLATES}assets/js/libs/modernizr.custom.js"></script>      

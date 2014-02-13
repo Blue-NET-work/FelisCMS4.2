@@ -344,6 +344,25 @@ class CI_Config {
         return $base_url.end($x).'/'.$uri;
     }
 
+    // --------------------------------------------------------------------
+
+    /**
+     * uploads URL
+     *
+     * @return    string
+     */
+    public function root_url($uri = '')
+    {
+        $admin_folder = $this->slash_item('admin_folder');
+        $base_url = $this->slash_item('base_url');
+        $y = explode("/", $this->_uri_string($base_url)); 
+        if($admin_folder == end($y)."/"){
+            $base = explode($admin_folder, $base_url);
+            $base_url = $base[0];
+        }
+        return $base_url.'/'.$uri;
+    }
+
 	// --------------------------------------------------------------------
 
 	/**

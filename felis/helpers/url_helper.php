@@ -165,6 +165,30 @@ if ( ! function_exists('uploads_url'))
 
 // ------------------------------------------------------------------------
 
+if ( ! function_exists('root_url'))
+{
+    /**
+     * Uploads URL
+     *
+     * @param    string    $uri
+     * @param    string    $protocol
+     * @return    string
+     */
+    function root_url($uri = '', $protocol = NULL)
+    {
+        $uri = get_instance()->config->root_url($uri);
+
+        if (isset($protocol))
+        {
+            return $protocol.substr($uri, strpos($uri, '://'));
+        }
+
+        return $uri;
+    }
+}
+
+// ------------------------------------------------------------------------
+
 if ( ! function_exists('current_url'))
 {
 	/**
@@ -606,7 +630,7 @@ if ( ! function_exists('redirect'))
 	 * @param	int	$code	HTTP Response status code
 	 * @return	void
 	 */
-	function redirect($uri = '', $method = 'auto', $code = NULL)
+	function redirect($uri = '', $method = 'auto', $time = 0, $code = NULL)
 	{
 		if ( ! preg_match('#^(\w+:)?//#i', $uri))
 		{
@@ -630,7 +654,7 @@ if ( ! function_exists('redirect'))
 		switch ($method)
 		{
 			case 'refresh':
-				header('Refresh:0;url='.$uri);
+				header('Refresh:'.$time.';url='.$uri);
 				break;
 			default:
 				header('Location: '.$uri, TRUE, $code);

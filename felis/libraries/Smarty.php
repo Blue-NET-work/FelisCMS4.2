@@ -8,15 +8,20 @@ class FC_Smarty extends Smarty {
         
         $ci =& get_instance();
         $ci->load->config('smarty');
-        $ci->load->helper('url');                                                                   
-        if($ci->config->item('smarty_templates')) $templates_folder = VIEWPATH."{$ci->config->item('smarty_templates')}/"; 
-        else $templates_folder = VIEWPATH;  
-                                       
-        // Definiowanie 
+        $ci->load->helper('url');    
+                                            
+        // Definiowanie                              
+        if($ci->config->item('smarty_templates')) 
+            $templates_folder = VIEWPATH."{$ci->config->item('smarty_templates')}/"; 
+        else 
+            $templates_folder = VIEWPATH;  
+                                      
         //$this->debugging = $ci->config->item('smarty_debugging');
+        $this->force_compile = $ci->config->item('smarty_force_compile');
+        $this->caching = $ci->config->item('smarty_cache');
         $this->caching = $ci->config->item('smarty_cache');
         $this->cache_lifetime = $ci->config->item('smarty_cache_lifetime');
-                                                          
+        
         $this->cache_dir = ROOTPATH."tmp/cache/"; 
         $this->compile_dir = ROOTPATH."tmp/".$ci->config->item('smarty_templates_c'); 
         $this->template_dir = $templates_folder;
@@ -28,6 +33,7 @@ class FC_Smarty extends Smarty {
         $this->assign('uploads', $ci->config->uploads_url()); 
         $this->assign('uploads_images', $ci->config->uploads_url("images")); 
         $this->assign('base_url', $ci->config->base_url());   
+        $this->assign('root_url', $ci->config->root_url());   
         $this->assign('system_url', $ci->config->system_url());   
         $this->left_delimiter  = '{'; 
         $this->right_delimiter = '}';
@@ -59,6 +65,20 @@ class FC_Smarty extends Smarty {
      * @return    string
      */
     function view($template, $data = array(), $return = FALSE){
+           
+        foreach ($data as $key => $val){self::assign($key, $val);}
+        
+        if ($return == FALSE){
+            $CI =& get_instance();
+            if(method_exists($CI->output, 'set_output')){$CI->output->set_output(self::fetch($template));}
+            else{$CI->output->final_output = self::fetch($template);}
+            return;
+        }
+        
+        else {return self::fetch($template);}
+    }    
+    
+    function viewReturn($template, $data = array(), $return = TRUE){
            
         foreach ($data as $key => $val){self::assign($key, $val);}
         

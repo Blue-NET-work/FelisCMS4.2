@@ -1,4 +1,4 @@
-{config name="base_url"}{include file="helpview/header.tpl" titleTag="{lang line='dashboard_titleTag'}"} 
+{include file="helpview/header.tpl" titleTag="{lang line='dashboard_titleTag'}"} 
 </head>
 <body class="clearfix with-menu">  
                
@@ -10,7 +10,6 @@
            <!-- TOP
             ================================================== -->                              
             {include file="helpview/top.tpl"}
-        
             <!-- Body Header
             ================================================== -->
             <header>
@@ -191,7 +190,7 @@
                                             
     <script type='text/javascript' src='https://www.google.com/jsapi'></script>   
     <script>   
-    {include file='helpview/assets/helper/dashboard.js'} 
+    {include file='assets/js/scripts/dashboard.js'} 
     {literal}       
 
         // Chart
@@ -260,7 +259,7 @@
                 // Message only when resizing
                 if (chartInit){
                     notify('{lang line="dashboard_statistic_chart_resized"}', '{lang line="dashboard_statistic_chart_resized_info"}', {
-                        icon: '{$base_url}public/img/demo/icon.png'
+                        icon: '{$TEMPLATES}assets/img/demo/icon.png'
                     });
                 }
             {literal}

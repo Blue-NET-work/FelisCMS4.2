@@ -12,10 +12,10 @@ class Dashboard extends CI_Controller {
         
         //Wczytanie domyślnego stylu         
         @Admin_model::defaultStyle();                                                           
-        @View::setCSS(base_url().'public/css/felis/felis.agenda.css');   
-        @View::setCSS(base_url().'public/css/felis/felis.dashboard.css');           
+        @View::setCSS(templates_url('assets/css/felis/felis.agenda.css'));   
+        @View::setCSS(templates_url('assets/css/felis/felis.dashboard.css'));           
         /* Wczytanie domyślnych JS'ów */                                                   
-        @View::setJQ(base_url()."public/js/felis/felis.agenda.js");    
+        @View::setJQ(templates_url("assets/js/felis/felis.agenda.js"));    
                                         
         @FC_Request::loadLang("felis_dashboard"); 
         @FC_Request::loadModel('dashboard_model');  
@@ -42,10 +42,10 @@ class Dashboard extends CI_Controller {
         if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}
                                                                              
         /* Wczytanie domyślnych CSS'ów */                                                                 
-        @View::setCSS(base_url().'public/css/bootstrap/bootstrap.css');    
-        @View::setCSS(base_url().'public/css/bootstrap/bootstrap-theme.css');    
-        @View::setCSS(base_url().'public/css/styles/logowanie.css', "text/css");  
-        @View::setCSS(base_url().'public/css/icons/woocons.css', "text/css"); 
+        @View::setCSS(templates_url('public/css/bootstrap/bootstrap.css'));    
+        @View::setCSS(templates_url('public/css/bootstrap/bootstrap-theme.css'));    
+        @View::setCSS(templates_url('public/css/styles/logowanie.css'), "text/css");  
+        @View::setCSS(templates_url('public/css/icons/woocons.css'), "text/css"); 
          
         @View::setJQ(base_url()); 
                                                                                                                  
@@ -97,6 +97,11 @@ class Dashboard extends CI_Controller {
         redirect('dashboard/sign_up', 'refresh');
     }
 
+    public function test(){
+        $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode());
+        //$query["messages"] = false;
+        //$this->smarty->viewReturn("ajax/register.tpl", $query, FALSE);
+    }
                       
 /********************
 *   Change Languages
@@ -104,8 +109,15 @@ class Dashboard extends CI_Controller {
 
     public function language($lang){    
         $referer = @FC_Request::server("HTTP_REFERER");                 
-        @FC_Request::languageSet($lang);                             
-        redirect($referer, 'refresh');
+        @FC_Request::languageSet($lang);    
+        $response["success"] = lang("default_success");
+        $response["success_msg"] = lang("default_laguage_success");
+        $response["error"] = lang("default_error");                  
+        $response["error_msg"] = lang("default_laguage_error");
+        $response["status"] = "ok";
+        $response["templates_url"] = templates_url();
+        $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));                         
+        //redirect($referer, 'refresh', "5");
     }    
                               
 }            

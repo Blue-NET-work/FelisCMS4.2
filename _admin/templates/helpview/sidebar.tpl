@@ -4,42 +4,8 @@
     <section id="menu" role="complementary">
     <div id="menu-content">
 
-        <!-- Logo
-        ================================================== -->
-        <header id="logo">
-            <a href="http://blue-net.pl"><img src="{$base_url}public/img/logo.png" alt=""></a>
-        </header>
-
-        <!-- Access
-        ================================================== -->
-        <ul id="access">
-            <li><a href="#" class="icon1-calendar with-tooltip" title="{lang line="default_sidebar_access_calendar"}"></a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle with-tooltip" role="button" data-toggle="dropdown" data-hover="dropdown" title="{lang line="default_sidebar_access_lang"}"><span class="icon1-flag"></span><b class="caret"></b></a>
-                <ul class="dropdown-menu dropdown-menu-arrow" role="menu" aria-labelledby="drop1">
-                  <li><a href="{$base_url}dashboard/language/pl.html"><i class="lang-pl"></i> {lang line="default_lang_polish"}</a></li>  
-                  <li><a href="{$base_url}dashboard/language/en.html"><i class="lang-us"></i> {lang line="default_lang_english"}</a></li>
-                  <li><a href="{$base_url}dashboard/language/de.html"><i class="lang-de"></i> Niemiecki</a></li>
-                  <li><a href="{$base_url}dashboard/language/ru.html"><i class="lang-ru"></i> Ruski</a></li>  
-                </ul>
-            </li>
-            <li><a href="{$base_url}messages.html"><span class="icon1-inbox with-tooltip" title="{lang line="default_sidebar_access_messages"}"></span>{if $messages_count}<span class="count">{$messages_count}</span>{/if}</a></li>
-            <li><a href="#" data-href="{$base_url}../" class="icon1-monitor with-tooltip preview" title="{lang line="default_sidebar_access_preview"}"></a></li>
-            <li><a href="{$base_url}dashboard/logout.html" class="icon1-logout with-tooltip" title="{lang line="default_sidebar_access_logout"}"></a></li>
-        </ul>
-
-        <!-- Profile
-        ================================================== -->
-        <section id="profile">
-            <div class="row">
-                <div class="col-md-3 thumbnail"><img src="{$userLogIn.avatar}" class="img-rounded" alt="avatar"></div>
-                <div class="col-md-9">
-                    {lang line="default_sidebar_menu_hello"},
-                    <span class="name">{$userLogIn.first_name} <b>{$userLogIn.last_name}</b></span>
-                    <span class="profileUprawnienia">{lang line="default_sidebar_menu_permissions"}: {$userLogIn.high}</span>
-                </div>
-            </div>
-        </section>     
+{include file="./assets/sidebar/access.tpl"} 
+{include file="./assets/sidebar/profile.tpl"} 
 
         <!-- Menu
         ================================================== -->
@@ -101,47 +67,9 @@
             {/if} 
             </ul>     
         </section>       
-                                                               
-        {if $newMessages || $eventsToday}
-        <!-- Wiadomości i dzisiejsze wydażenia
-        ================================================== -->
-        <ul class="unstyled-list">
-        {if $eventsToday}
-            <li class="title-menu">{lang line="default_sidebar_today_event"}</li>
-            <li>
-                <ul class="calendar-menu">
-                    <li>
-                        <a href="#" title="See event">
-                            <time datetime="2011-02-24"><b>24</b> Feb</time>
-                            <small class="green">10:30</small>
-                            Event's description
-                        </a>
-                    </li>     
-                </ul>
-            </li>
-        {/if}
-        {if $newMessages}
-            <li class="title-menu">{lang line="default_sidebar_new_messages"}</li>
-            <li>
-                <ul class="message-menu">  
-                    <li>
-                        <a href="#" title="Read message">
-                            <span class="message-status">
-                                <span class="unstarred">Not starred</span>
-                                <span class="new-message">New</span>
-                            </span>
-                            <span class="message-info">
-                                <span class="blue">15:47</span>
-                            </span>
-                            <strong class="blue">May Starck</strong><br>
-                            <strong>Mail subject a bit longer</strong>
-                        </a>
-                    </li>    
-                </ul>
-            </li>
-        {/if}
-        </ul><!-- ./end Wiadomości i dzisiejsze wydażenia -->
-        {/if}
+        
+{include file="./assets/sidebar/events_messages.tpl"} 
+        
     </div>
     <!-- #end menu-content  -->
 
@@ -155,7 +83,7 @@
             </p>
         </div>
         <div class="footer black white">
-            &copy; 2013 - {$smarty.now|date_format:"%Y"} FelisCMS by Blue-NET.pl
+            &copy; 2009 - {$smarty.now|date_format:"%Y"} FelisCMS by Blue-NET.pl
         </div>            
         <div class="footer white">
             Oprogramowanie: FelisCMS ver.{$ver}

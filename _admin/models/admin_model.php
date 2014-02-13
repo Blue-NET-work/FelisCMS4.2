@@ -44,7 +44,7 @@
 // Przekazywanie danych zalogowanego użytkownika
     function userLogIn(){
         if($this->ion_auth->logged_in()){     
-            $_avatar = base_url("public/img/lay/user.png"); 
+            $_avatar = templates_url("assets/img/user.png"); 
             $_user = $this->ion_auth->user()->row();
             if($_user->avatar) $_avatar = base_url("../uploads/avatar/{$_user->avatar}");
             $_group = FC_DB::getWhereJoinOrder('users_permissions', 'users_groups', 'up_group_id = ug_id', array('up_user_id'=>$_user->id), "`up_group_id` DESC");   
@@ -85,39 +85,39 @@
 // Domyślny styl 
     function defaultStyle(){  
         /* Wczytanie domyślnych CSS'ów */                                                               
-        View::setCSS(base_url().'public/css/bootstrap/bootstrap.css'); 
-        View::setCSS(base_url().'public/css/bootstrap/bootstrap-theme.css');  
-        View::setCSS(base_url().'public/css/styles.css');            
-        View::setCSS(base_url().'public/css/colors.css');                     
-        View::setCSS(base_url().'public/css/print.css', "text/css", "print");   
-        View::setCSS(base_url().'public/css/felis.lay.css');                              
+        View::setCSS(templates_url('assets/css/bootstrap/bootstrap.css')); 
+        View::setCSS(templates_url('assets/css/bootstrap/bootstrap-theme.css'));  
+        View::setCSS(templates_url('assets/css/styles.css'));            
+        View::setCSS(templates_url('assets/css/colors.css'));                     
+        View::setCSS(templates_url('assets/css/print.css'), "text/css", "print");   
+        View::setCSS(templates_url('assets/css/felis.lay.css'));                              
         // For progressively larger displays                                                                        
-        View::setCSS(base_url().'public/css/size/768.css', "text/css", "only all and (min-width: 768px)");     
-        View::setCSS(base_url().'public/css/size/992.css', "text/css", "only all and (min-width: 992px)");
+        View::setCSS(templates_url('assets/css/size/768.css'), "text/css", "only all and (min-width: 768px)");     
+        View::setCSS(templates_url('assets/css/size/992.css'), "text/css", "only all and (min-width: 992px)");
         
-        View::setCSS(base_url().'public/css/felis/felis.form.css');      
-        View::setCSS(base_url().'public/css/felis/felis.modal.css');               
-        View::setCSS(base_url().'public/css/felis/felis.switches.css');     
-        View::setCSS(base_url().'public/css/felis/felis.progress-slider.css');    
+        View::setCSS(templates_url('assets/css/felis/felis.form.css'));      
+        View::setCSS(templates_url('assets/css/felis/felis.modal.css'));               
+        View::setCSS(templates_url('assets/css/felis/felis.switches.css'));     
+        View::setCSS(templates_url('assets/css/felis/felis.progress-slider.css'));    
         
         /* Wczytanie domyślnych JS'ów */
-        View::setJQ(base_url()."public/js/jquery/jquery-1.10.2.js");  
-        View::setJQ(base_url()."public/js/jquery/jquery.cookie.js");  
-        View::setJQ(base_url()."public/js/setup.js");     
-        View::setJQ(base_url()."public/js/bootstrap/bootstrap.js");                   
+        View::setJQ(templates_url("assets/js/jquery/jquery-1.11.0.js"));  
+        View::setJQ(templates_url("assets/js/jquery/jquery.cookie.js"));  
+        View::setJQ(templates_url("assets/js/setup.js"));     
+        View::setJQ(templates_url("assets/js/bootstrap/bootstrap.js"));                   
         //Template functions
-        View::setJQ(base_url()."public/js/felis/felis.input.js"); 
-        View::setJQ(base_url()."public/js/felis/felis.message.js"); 
-        View::setJQ(base_url()."public/js/felis/felis.modal.js"); 
-        View::setJQ(base_url()."public/js/felis/felis.navigable.js"); 
-        View::setJQ(base_url()."public/js/felis/felis.notify.js"); 
-        View::setJQ(base_url()."public/js/felis/felis.scroll.js"); 
-        View::setJQ(base_url()."public/js/felis/felis.progress-slider.js"); 
-        View::setJQ(base_url()."public/js/felis/felis.tooltip.js"); 
-        View::setJQ(base_url()."public/js/felis/felis.confirm.js");      
-        View::setJQ(base_url()."public/js/felis/felis.tabs.js"); 
+        View::setJQ(templates_url("assets/js/felis/felis.input.js")); 
+        View::setJQ(templates_url("assets/js/felis/felis.message.js")); 
+        View::setJQ(templates_url("assets/js/felis/felis.modal.js")); 
+        View::setJQ(templates_url("assets/js/felis/felis.navigable.js")); 
+        View::setJQ(templates_url("assets/js/felis/felis.notify.js")); 
+        View::setJQ(templates_url("assets/js/felis/felis.scroll.js")); 
+        View::setJQ(templates_url("assets/js/felis/felis.progress-slider.js")); 
+        View::setJQ(templates_url("assets/js/felis/felis.tooltip.js")); 
+        View::setJQ(templates_url("assets/js/felis/felis.confirm.js"));      
+        View::setJQ(templates_url("assets/js/felis/felis.tabs.js")); 
         //Tinycon 
-        View::setJQ(base_url()."public/js/tinycon.js");  
+        View::setJQ(templates_url("assets/js/tinycon.js"));                 
     }
     
   }
