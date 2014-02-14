@@ -8,4 +8,8 @@ class Dashboard extends CI_Controller {
         @FC_Request::loadModel('admin_model');                                                                        
     }
     
+    public function index(){
+        
+    }
+    
 }
