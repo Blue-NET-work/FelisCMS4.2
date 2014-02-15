@@ -22,7 +22,7 @@
             
             <!-- Alerts messages
             ================================================== -->
-            {if $permissions}
+        {if $permissions}
             <section id="alerts">
                 {foreach from=$permissions item=item name=permission}
                 <div class="alert alert-danger">
@@ -31,7 +31,38 @@
                 </div>
                 {/foreach}   
             </section> 
-            {/if}  
+        {/if}  
+            
+            <div class="row">   
+                <div class="col-md-3 col-sm-6 margin-top">
+                    <div class="wrapped relative" style="height: 125px"> 
+                        <span class="ribbon"><span class="ribbon-inner glossy">Update!</span></span>  
+                        <h5>Witaj użytkowniku FelisCMS'a.</h5>
+                         Miło nam poinformować o nowej aktualizacji dla skryptu. Jeśli już dziś chcesz dokonać aktualizacji wejdź pod poniższy link i dokonaj aktualizacji skryptu do najnowszej wersji.
+                    </div>
+                </div>      
+                <div class="col-md-3 col-sm-6 margin-top">
+                    <div class="wrapped relative" style="height: 125px"> 
+                        <span class="ribbon"><span class="ribbon-inner red-gradient">Update!</span></span>  
+                        <h5>Witaj użytkowniku FelisCMS'a.</h5>
+                         Miło nam poinformować o nowej aktualizacji dla skryptu. Jeśli już dziś chcesz dokonać aktualizacji wejdź pod poniższy link i dokonaj aktualizacji skryptu do najnowszej wersji.
+                    </div>
+                </div>       
+                <div class="col-md-3 col-sm-6 margin-top">
+                    <div class="wrapped relative" style="height: 125px"> 
+                        <span class="ribbon"><span class="ribbon-inner black-gradient glossy">Update!</span></span>  
+                        <h5>Witaj użytkowniku FelisCMS'a.</h5>
+                         Miło nam poinformować o nowej aktualizacji dla skryptu. Jeśli już dziś chcesz dokonać aktualizacji wejdź pod poniższy link i dokonaj aktualizacji skryptu do najnowszej wersji.
+                    </div>
+                </div>     
+                <div class="col-md-3 col-sm-6 margin-top">
+                    <div class="wrapped relative" style="height: 125px"> 
+                        <span class="ribbon"><span class="ribbon-inner blue-gradient glossy">Update!</span></span>  
+                        <h5>Witaj użytkowniku FelisCMS'a.</h5>
+                         Miło nam poinformować o nowej aktualizacji dla skryptu. Jeśli już dziś chcesz dokonać aktualizacji wejdź pod poniższy link i dokonaj aktualizacji skryptu do najnowszej wersji.
+                    </div>
+                </div>
+            </div>
             
             <!-- Dashboard statistic
             ================================================== -->
@@ -52,7 +83,7 @@
             <!-- Kolumns
             ================================================== -->
             <div class="row">
-                <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="col-sm-6 col-md-3 col-lg-3">
                 <!-- zawartość -->
 
                     <h2 class="relative thin">          

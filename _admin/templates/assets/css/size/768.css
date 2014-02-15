@@ -30,16 +30,7 @@ h2 {
 			margin-bottom: 0;
 		}
 
-/* 8. Main columns */
-#title-bar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	}
-	#title-bar ~ #main {
-		margin-top: 40px;
-	}
+/* 8. Main columns */   
 
 #open-menu {
 	position: fixed;
@@ -49,8 +40,8 @@ h2 {
 	position: fixed;
 	display: none;
 	top: 41px;
-	left: 19px;
-	right: auto;
+	left:  auto;
+	right: 19px;
 	width: 260px;
 	max-height: 90%;
 	padding: 5px;
@@ -58,6 +49,7 @@ h2 {
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
+    z-index:999;
 	}
 	.no-boxshadow #menu {
 		width: 262px;

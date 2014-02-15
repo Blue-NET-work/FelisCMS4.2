@@ -2,7 +2,8 @@ $(function(){
                                                     
 $.template.init(); 
 Tinycon.setBubble(2);
-                                                                                              
+
+// Wiadomość o obsługiwanych powiadomieniach pulpitowych                                                                                              
 if (notify.hasNotificationAPI() && !notify.isNotificationPermissionSet())
 {
     setTimeout(function()
@@ -13,14 +14,14 @@ if (notify.hasNotificationAPI() && !notify.isNotificationPermissionSet())
             if (notify.hasNotificationPermission())
             {
                 notify('{lang line="felis_info_api_chrome_enable"}', '{lang line="felis_info_api_chrome_enable_info"}', {
-                    icon: '{$base_url}public/img/demo/icon.png',
+                    icon: '{$TEMPLATES}assets/img/demo/icon.png',
                     system: true
                 });
             }
             else
             {
                 notify('{lang line="felis_info_api_chrome_disabled"}', '{lang line="felis_info_api_chrome_disabled_info"}', {
-                    icon: '{$base_url}public/img/demo/icon.png'   
+                    icon: '{$TEMPLATES}assets/img/demo/icon.png'   
                 });
             }
         });
