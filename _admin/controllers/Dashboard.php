@@ -40,7 +40,10 @@ class Dashboard extends FC_Controller {
         $this->form_validation->set_error_delimiters("","<span style='padding-right:5px;'></span>");
            
         if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}
-                                             
+                                                                                                                                       
+                                            
+        @View::setCSS(base_url());                                                                                                  
+                                            
         @View::setJQ(base_url()); 
                                                                                                                  
                                                                           
