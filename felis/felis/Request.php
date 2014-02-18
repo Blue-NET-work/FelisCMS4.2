@@ -78,18 +78,25 @@ class FC_Request {
  
 // wczytanie jezyka    
     public function loadLang($lang){    
-    if(is_array($lang)){
-        foreach($lang as $item){ 
-            $this->lang->load($item, FC_Request::language());
+        if(is_array($lang)){
+            foreach($lang as $item){ 
+                $this->lang->load($item, FC_Request::language());
+            }
         }
-    }
-    else
-        $this->lang->load($lang, FC_Request::language());
+        else
+            $this->lang->load($lang, FC_Request::language());
     }
     
 // wczytanie modelu    
-    public function loadModel($module){
-        $this->load->model($module);
+    function loadModel($module){
+        if(is_array($module)){
+            foreach($module as $item){ 
+                $this->load->model($item);
+            }
+        }
+        else
+            $this->load->model($module);
+        
     }
 // wczytanie biblioteki    
     public function loadLibrary($library){

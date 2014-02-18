@@ -4,8 +4,7 @@
     public function __construct(){                
         parent::__construct();  
         $this->uri();
-        $this->form_validation();
-        $this->logIn();
+        $this->form_validation(); 
         $this->loadLang();
         $this->userLogIn();
         $this->new_messages_count();      
@@ -17,29 +16,8 @@
 // Domyślne wczytywanie języka                
     function loadLang(){                         
         FC_Request::loadLang(array('felis_errors', "felis_info", "felis_default"));
-    }   
-
-// Przekazywanie tablicy konstrukcji url          
-    function uri(){   
-        $uri = $this->uri->segment_array();
-        $this->smarty->assign("uri", $uri); 
-    }
-
-// Konfiguracja form validatora
-    function form_validation(){
-        $this->form_validation->set_error_delimiters("<p>","</p>"); 
-    }
-        
-// Sprawdzanie czy zalogowany i czy posiada odpowiednie uprawnienia
-    function logIn(){
-        if(!$this->ion_auth->logged_in()){                                        
-            if($this->uri->uri_string() != "dashboard/sign_up"){                    
-                $this->session->set_flashdata('redirect', FC_Request::server("HTTP_REFERER"));
-                redirect('dashboard/sign_up', 'refresh');
-            }
-        }
-        elseif(!$this->ion_auth->is_admin()){show_error($this->lang->line("login_must_admin"));}    
-    } 
+    }    
+               
     
 // Przekazywanie danych zalogowanego użytkownika
     function userLogIn(){

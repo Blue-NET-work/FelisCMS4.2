@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Dashboard extends FC_Controller {
 
     function __construct(){
         parent::__construct();  
-        //@FC_Request::loadModel('admin_model');                                                                        
+        @FC_Request::loadModel('Admin_model');                                                                        
     }
                                   
     public function index(){               
@@ -50,7 +50,7 @@ class Dashboard extends CI_Controller {
         @View::setJQ(base_url()); 
                                                                                                                  
                                                                           
-        @FC_Request::loadLang("felis_login");                   
+        //@FC_Request::loadLang("felis_login");                   
         
         if($this->session->flashdata('message')){
             $msg = $this->session->flashdata('message');  
