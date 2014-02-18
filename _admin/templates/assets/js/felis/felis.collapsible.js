@@ -1,13 +1,5 @@
 /**
  *
- * '||''|.                            '||
- *  ||   ||    ....  .... ...   ....   ||    ...   ... ...  ... ..
- *  ||    || .|...||  '|.  |  .|...||  ||  .|  '|.  ||'  ||  ||' ''
- *  ||    || ||        '|.|   ||       ||  ||   ||  ||    |  ||
- * .||...|'   '|...'    '|     '|...' .||.  '|..|'  ||...'  .||.
- *                                                  ||
- * --------------- By Display:inline ------------- '''' -----------
- *
  * Collapsible menus plugin
  *
  * Structural good practices from the article from Addy Osmani 'Essential jQuery plugin patterns'

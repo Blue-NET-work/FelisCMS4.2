@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+
+[class^="bluebits32-"],
+[class*=" bluebits32-"] {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+}
+
+.bluebits32-aplication_add{background-image:url("../../img/icons/bluebits/32x32/aplication_add.png");}
+.bluebits32-aplication_arrow_down{background-image:url("../../img/icons/bluebits/32x32/aplication_arrow_down.png");}
+.bluebits32-aplication_arrow_left{background-image:url("../../img/icons/bluebits/32x32/aplication_arrow_left.png");}
+.bluebits32-aplication_arrow_right{background-image:url("../../img/icons/bluebits/32x32/aplication_arrow_right.png");}
+.bluebits32-aplication_arrow_up{background-image:url("../../img/icons/bluebits/32x32/aplication_arrow_up.png");}
+.bluebits32-aplication_check{background-image:url("../../img/icons/bluebits/32x32/aplication_check.png");}
+.bluebits32-aplication_delete{background-image:url("../../img/icons/bluebits/32x32/aplication_delete.png");}
+.bluebits32-aplication_minus{background-image:url("../../img/icons/bluebits/32x32/aplication_minus.png");}
+.bluebits32-aplication_search{background-image:url("../../img/icons/bluebits/32x32/aplication_search.png");}
+.bluebits32-aplication_settings{background-image:url("../../img/icons/bluebits/32x32/aplication_settings.png");}
+.bluebits32-database_add{background-image:url("../../img/icons/bluebits/32x32/database_add.png");}
+.bluebits32-database_arrow_down{background-image:url("../../img/icons/bluebits/32x32/database_arrow_down.png");}
+.bluebits32-database_arrow_left{background-image:url("../../img/icons/bluebits/32x32/database_arrow_left.png");}
+.bluebits32-database_arrow_right{background-image:url("../../img/icons/bluebits/32x32/database_arrow_right.png");}
+.bluebits32-database_arrow_up{background-image:url("../../img/icons/bluebits/32x32/database_arrow_up.png");}
+.bluebits32-database_check{background-image:url("../../img/icons/bluebits/32x32/database_check.png");}
+.bluebits32-database_delete{background-image:url("../../img/icons/bluebits/32x32/database_delete.png");}
+.bluebits32-database_minus{background-image:url("../../img/icons/bluebits/32x32/database_minus.png");}
+.bluebits32-database_search{background-image:url("../../img/icons/bluebits/32x32/database_search.png");}
+.bluebits32-database_settings{background-image:url("../../img/icons/bluebits/32x32/database_settings.png");}
+.bluebits32-document_add{background-image:url("../../img/icons/bluebits/32x32/document_add.png");}
+.bluebits32-document_arrow_down{background-image:url("../../img/icons/bluebits/32x32/document_arrow_down.png");}
+.bluebits32-document_arrow_left{background-image:url("../../img/icons/bluebits/32x32/document_arrow_left.png");}
+.bluebits32-document_arrow_right{background-image:url("../../img/icons/bluebits/32x32/document_arrow_right.png");}
+.bluebits32-document_arrow_up{background-image:url("../../img/icons/bluebits/32x32/document_arrow_up.png");}
+.bluebits32-document_check{background-image:url("../../img/icons/bluebits/32x32/document_check.png");}
+.bluebits32-document_delete{background-image:url("../../img/icons/bluebits/32x32/document_delete.png");}
+.bluebits32-document_minus{background-image:url("../../img/icons/bluebits/32x32/document_minus.png");}
+.bluebits32-document_search{background-image:url("../../img/icons/bluebits/32x32/document_search.png");}
+.bluebits32-document_settings{background-image:url("../../img/icons/bluebits/32x32/document_settings.png");}
+.bluebits32-folder_add{background-image:url("../../img/icons/bluebits/32x32/folder_add.png");}
+.bluebits32-folder_arrow_down{background-image:url("../../img/icons/bluebits/32x32/folder_arrow_down.png");}
+.bluebits32-folder_arrow_left{background-image:url("../../img/icons/bluebits/32x32/folder_arrow_left.png");}
+.bluebits32-folder_arrow_right{background-image:url("../../img/icons/bluebits/32x32/folder_arrow_right.png");}
+.bluebits32-folder_arrow_up{background-image:url("../../img/icons/bluebits/32x32/folder_arrow_up.png");}
+.bluebits32-folder_check{background-image:url("../../img/icons/bluebits/32x32/folder_check.png");}
+.bluebits32-folder_delete{background-image:url("../../img/icons/bluebits/32x32/folder_delete.png");}
+.bluebits32-folder_minus{background-image:url("../../img/icons/bluebits/32x32/folder_minus.png");}
+.bluebits32-folder_search{background-image:url("../../img/icons/bluebits/32x32/folder_search.png");}
+.bluebits32-folder_settings{background-image:url("../../img/icons/bluebits/32x32/folder_settings.png");}
+.bluebits32-globus_search{background-image:url("../../img/icons/bluebits/32x32/globus_search.png");}
+.bluebits32-image_add{background-image:url("../../img/icons/bluebits/32x32/image_add.png");}
+.bluebits32-image_arrow_down{background-image:url("../../img/icons/bluebits/32x32/image_arrow_down.png");}
+.bluebits32-image_arrow_left{background-image:url("../../img/icons/bluebits/32x32/image_arrow_left.png");}
+.bluebits32-image_arrow_right{background-image:url("../../img/icons/bluebits/32x32/image_arrow_right.png");}
+.bluebits32-image_arrow_up{background-image:url("../../img/icons/bluebits/32x32/image_arrow_up.png");}
+.bluebits32-image_check{background-image:url("../../img/icons/bluebits/32x32/image_check.png");}
+.bluebits32-image_delete{background-image:url("../../img/icons/bluebits/32x32/image_delete.png");}
+.bluebits32-image_minus{background-image:url("../../img/icons/bluebits/32x32/image_minus.png");}
+.bluebits32-image_search{background-image:url("../../img/icons/bluebits/32x32/image_search.png");}
+.bluebits32-image_settings{background-image:url("../../img/icons/bluebits/32x32/image_settings.png");}
+.bluebits32-mail_add{background-image:url("../../img/icons/bluebits/32x32/mail_add.png");}
+.bluebits32-mail_arrow_down{background-image:url("../../img/icons/bluebits/32x32/mail_arrow_down.png");}
+.bluebits32-mail_arrow_left{background-image:url("../../img/icons/bluebits/32x32/mail_arrow_left.png");}
+.bluebits32-mail_arrow_right{background-image:url("../../img/icons/bluebits/32x32/mail_arrow_right.png");}
+.bluebits32-mail_arrow_up{background-image:url("../../img/icons/bluebits/32x32/mail_arrow_up.png");}
+.bluebits32-mail_check{background-image:url("../../img/icons/bluebits/32x32/mail_check.png");}
+.bluebits32-mail_delete{background-image:url("../../img/icons/bluebits/32x32/mail_delete.png");}
+.bluebits32-mail_minus{background-image:url("../../img/icons/bluebits/32x32/mail_minus.png");}
+.bluebits32-mail_pencil{background-image:url("../../img/icons/bluebits/32x32/mail_pencil.png");}
+.bluebits32-mail_search{background-image:url("../../img/icons/bluebits/32x32/mail_search.png");}
+.bluebits32-mail_settings{background-image:url("../../img/icons/bluebits/32x32/mail_settings.png");}
+.bluebits32-profile_add{background-image:url("../../img/icons/bluebits/32x32/profile_add.png");}
+.bluebits32-profile_arrow_down{background-image:url("../../img/icons/bluebits/32x32/profile_arrow_down.png");}
+.bluebits32-profile_arrow_left{background-image:url("../../img/icons/bluebits/32x32/profile_arrow_left.png");}
+.bluebits32-profile_arrow_right{background-image:url("../../img/icons/bluebits/32x32/profile_arrow_right.png");}
+.bluebits32-profile_arrow_up{background-image:url("../../img/icons/bluebits/32x32/profile_arrow_up.png");}
+.bluebits32-profile_check{background-image:url("../../img/icons/bluebits/32x32/profile_check.png");}
+.bluebits32-profile_delete{background-image:url("../../img/icons/bluebits/32x32/profile_delete.png");}
+.bluebits32-profile_minus{background-image:url("../../img/icons/bluebits/32x32/profile_minus.png");}
+.bluebits32-profile_search{background-image:url("../../img/icons/bluebits/32x32/profile_search.png");}
+.bluebits32-profile_settings{background-image:url("../../img/icons/bluebits/32x32/profile_settings.png");}
+.bluebits32-user_add{background-image:url("../../img/icons/bluebits/32x32/user_add.png");}
+.bluebits32-user_arrow_down{background-image:url("../../img/icons/bluebits/32x32/user_arrow_down.png");}
+.bluebits32-user_arrow_left{background-image:url("../../img/icons/bluebits/32x32/user_arrow_left.png");}
+.bluebits32-user_arrow_right{background-image:url("../../img/icons/bluebits/32x32/user_arrow_right.png");}
+.bluebits32-user_arrow_up{background-image:url("../../img/icons/bluebits/32x32/user_arrow_up.png");}
+.bluebits32-user_check{background-image:url("../../img/icons/bluebits/32x32/user_check.png");}
+.bluebits32-user_delete{background-image:url("../../img/icons/bluebits/32x32/user_delete.png");}
+.bluebits32-user_minus{background-image:url("../../img/icons/bluebits/32x32/user_minus.png");}
+.bluebits32-user_search{background-image:url("../../img/icons/bluebits/32x32/user_search.png");}
+.bluebits32-user_settings{background-image:url("../../img/icons/bluebits/32x32/user_settings.png");}

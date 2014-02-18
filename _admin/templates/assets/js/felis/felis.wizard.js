@@ -1,13 +1,5 @@
 /**
  *
- * '||''|.                            '||
- *  ||   ||    ....  .... ...   ....   ||    ...   ... ...  ... ..
- *  ||    || .|...||  '|.  |  .|...||  ||  .|  '|.  ||'  ||  ||' ''
- *  ||    || ||        '|.|   ||       ||  ||   ||  ||    |  ||
- * .||...|'   '|...'    '|     '|...' .||.  '|..|'  ||...'  .||.
- *                                                  ||
- * --------------- By Display:inline ------------- '''' -----------
- *
  * Wizard plugin
  *
  * Structural good practices from the article from Addy Osmani 'Essential jQuery plugin patterns'
@@ -120,6 +112,7 @@
 			fieldsets.each(function(i)
 			{
 				var fieldset = $(this),
+					isCurrent = (this === current[0]),
 					classes = [],
 					title = fieldset.find('legend').text(),
 					controlsWrapper = fieldset.find('.wizard-controls'),
@@ -309,7 +302,7 @@
 				step = fieldset.data('wizard-step'),
 				form = fieldset.closest('.wizard-enabled'),
 				settings = form.data('wizard-options'),
-				previous, previousIsCurrent, nextStep, newStep, validation, jqv, previousCallback;
+				previous, isCurrent, nextStep, newStep, validation, jqv, previousCallback;
 
 			// If not valid
 			if (fieldset.length === 0 || !step)
@@ -331,18 +324,18 @@
 
 			// Previously active section
 			previous = fieldset.siblings('.active');
-			previousIsCurrent = previous.hasClass('current');
+			isCurrent = previous.hasClass('current');
 			nextStep = previous.nextAll('fieldset').filter(fieldset).length > 0;
-			newStep = (previousIsCurrent && nextStep);
+			newStep = (isCurrent && nextStep);
 
 			// If not reachable
-			if (!previousIsCurrent && !fieldset.hasClass('completed') && !fieldset.hasClass('current') && !force)
+			if (!isCurrent && !fieldset.hasClass('completed') && !fieldset.hasClass('current') && !force)
 			{
 				return;
 			}
 
 			// Validation
-			if (!force && settings.useValidation && $.validationEngine && (!previousIsCurrent || newStep))
+			if (!force && settings.useValidation && $.validationEngine && (!isCurrent || newStep))
 			{
 				// Run validation
 				validation = form.removeClass('validating').validationEngine('validate');
@@ -405,12 +398,7 @@
 		var event;
 
 		// Check if we can leave the current step
-		event = $.Event('wizardleave');
-		event.wizard = {
-			current: previous[0],
-			target: step[0],
-			forward: (step.prevAll(previous).length > 0)
-		};
+		event = jQuery.Event('wizardleave');
 		previous.trigger(event);
 		if (event.isDefaultPrevented())
 		{
@@ -420,8 +408,8 @@
 		// Update status
 		if (newStep)
 		{
-			fieldset.prevAll('fieldset').not('.completed').markWizardStepAsComplete();
-			fieldset.markWizardStepAsCurrent();
+			previous.markWizardStepAsComplete();
+			previous.nextAll('fieldset').first().markWizardStepAsCurrent();
 		}
 
 		// Set as active

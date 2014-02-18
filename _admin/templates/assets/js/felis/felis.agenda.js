@@ -28,7 +28,7 @@
 		// Settings
 		var globalSettings = $.extend({}, $.fn.scrollAgenda.defaults, options);
 
-		this.not('.scrolling-agenda').each(function(i)
+		this.each(function(i)
 		{
 				// Agenda
 			var agenda = $(this).closest('.agenda').addClass('scrolling-agenda'),

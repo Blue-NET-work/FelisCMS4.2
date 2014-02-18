@@ -802,11 +802,12 @@
 
 	/**
 	 * Start watching an input related to a slider
-	 * @param object settings the slider's settings
-	 * @param function unformatValue clean i18n format
-	 * @param function formatValue set i18n format
+	 * @param int index the index of the input in the cursors list
+	 * @param function setValue the value to set slider's value
+	 * @param int min the minimum value
+	 * @param int max the maximum value
 	 */
-	function _watchSliderInput(settings, unformatValue, formatValue)
+	function _watchSliderInput()
 	{
 		var input = $(this),
 			last;
@@ -817,25 +818,13 @@
 			// If up and down
 			if (event.which === 38 || event.which === 40)
 			{
-				var value = parseFloat(unformatValue(input.val()));
+				var value = parseFloat(input.val());
 
 				// Check if numeric
 				if (!isNaN(value))
 				{
-					// Offset
 					value += (event.shiftKey) ? ((event.which === 38) ? 10 : -10) : ((event.which === 38) ? 1 : -1);
-
-					// Precision bug on float values
-					if (settings.round > 0)
-					{
-						value = Math.round(value*Math.pow(10, settings.round))/Math.pow(10, settings.round);
-					}
-
-					// Limits
-					value = Math.max(settings.min, Math.min(settings.max, value));
-
-					// Set
-					input.val(formatValue(value));
+					input.val(value);
 				}
 			}
 		});
@@ -990,83 +979,6 @@
 				// Work vars
 				value, finalValue, init = false, tooltip;
 
-			// Helper function: remove user format of a number value according to settings
-			function unformatValue(value)
-			{
-				if (typeof value === 'string')
-				{
-					if (settings.thousandsSep.length)
-					{
-						value = value.replace(settings.thousandsSep, '');
-					}
-					if (settings.decimalPoint !== '.')
-					{
-						value = value.replace(settings.decimalPoint, '.');
-					}
-					value = parseFloat(value);
-					if (isNaN(value))
-					{
-						value = 0;
-					}
-				}
-
-				return value;
-			};
-
-			// Helper function: format a number value according to settings
-			function formatValue(value)
-			{
-				var parts;
-
-				// If not standard
-				if (settings.thousandsSep.length || settings.decimalPoint !== '.')
-				{
-					// Format value
-					parts = value.toString().split('.');
-
-					// Thousands separator
-					if (settings.thousandsSep.length && parts[0].length > 3)
-					{
-						parts[0] = parts[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, settings.thousandsSep);
-					}
-
-					// Rounding
-					if (settings.zerofill && settings.round !== true && settings.round > 0)
-					{
-						if ( parts.length < 2 )
-						{
-							parts.push('0');
-						}
-						while (parts[1].length < settings.round)
-						{
-							parts[1] += '0';
-						}
-					}
-
-					return parts.join(settings.decimalPoint);
-				}
-
-				// Rounding
-				if (settings.zerofill && settings.round !== true && settings.round > 0)
-				{
-					// Format value
-					parts = value.toString().split('.');
-
-					if ( parts.length < 2 )
-					{
-						parts.push('0');
-					}
-					while (parts[1].length < settings.round)
-					{
-						parts[1] += '0';
-					}
-
-					return parts.join('.');
-				}
-
-				return value;
-			};
-
 			// Prepare inputs
 			if (inputs)
 			{
@@ -1084,24 +996,24 @@
 						{
 							inputs[0].focus(function()
 							{
-								_watchSliderInput.call(this, settings, unformatValue, formatValue);
+								_watchSliderInput.call(this, 0, setValue, settings.min, settings.max);
 
 							}).blur(function()
 							{
 								_endWatchSliderInput.call(this);
-								inputs[0].val(finalValue[0]);
+								inputs[0].val(value[0]);
 							});
 						}
 						if (inputs[1].prop('type').toLowerCase() !== 'hidden')
 						{
 							inputs[1].focus(function()
 							{
-								_watchSliderInput.call(this, settings, unformatValue, formatValue);
+								_watchSliderInput.call(this, 1, setValue, settings.min, settings.max);
 
 							}).blur(function()
 							{
 								_endWatchSliderInput.call(this);
-								inputs[1].val(finalValue[1]);
+								inputs[1].val(value[1]);
 							});
 						}
 					}
@@ -1137,12 +1049,12 @@
 					{
 						inputs.focus(function()
 						{
-							_watchSliderInput.call(this, settings, unformatValue, formatValue);
+							_watchSliderInput.call(this, 0, setValue, settings.min, settings.max);
 
 						}).blur(function()
 						{
 							_endWatchSliderInput.call(this);
-							inputs.val(finalValue);
+							inputs.val(value);
 						});
 					}
 
@@ -1165,15 +1077,15 @@
 				if (inputs && !userOptions.values)
 				{
 					value = [
-						normalizeValue(unformatValue(inputs[0].val()), settings.min),
-						normalizeValue(unformatValue(inputs[1].val()), settings.max)
+						normalizeValue(inputs[0].val(), settings.min),
+						normalizeValue(inputs[1].val(), settings.max)
 					];
 				}
 				else
 				{
 					value = [
-						normalizeValue(unformatValue(settings.values[0]), settings.min),
-						normalizeValue(unformatValue(settings.values[1]), settings.max)
+						normalizeValue(settings.values[0], settings.min),
+						normalizeValue(settings.values[1], settings.max)
 					];
 				}
 
@@ -1187,11 +1099,11 @@
 			{
 				if (inputs && !userOptions.values)
 				{
-					value = normalizeValue(unformatValue(inputs.val()), settings.min);
+					value = normalizeValue(inputs.val(), settings.min);
 				}
 				else
 				{
-					value = normalizeValue(unformatValue(settings.value), settings.min);
+					value = normalizeValue(settings.value, settings.min);
 				}
 
 				// Final values
@@ -1443,14 +1355,9 @@
 				var empty1 = (val1 === undefined || val1 === null),
 					empty2 = (val2 === undefined || val2 === null),
 					changed = false,
-					finalVal1, finalVal2,
 					temp, change1, change2,
 					changed1, changed2,
 					focus1, focus2;
-
-				// Clear format
-				val1 = unformatValue(val1);
-				val2 = unformatValue(val2);
 
 				// Normalize values
 				val1 = empty1 ? (range ? value[0] : value) : normalizeValue(val1, settings.min);
@@ -1492,8 +1399,8 @@
 						value = [val1, val2];
 
 						// Final values
-						finalVal1 = formatValue((change1 || !init) ? finalizeValue(val1) : finalValue[0]);
-						finalVal2 = formatValue((change2 || !init) ? finalizeValue(val2) : finalValue[1]);
+						finalVal1 = (change1 || !init) ? finalizeValue(val1) : finalValue[0];
+						finalVal2 = (change2 || !init) ? finalizeValue(val2) : finalValue[1];
 
 						// Detect change
 						changed1 = (finalValue[0] != finalVal1);
@@ -1519,11 +1426,11 @@
 							focus2 = inputs[1].is(':focus');
 
 							// Update value
-							if (!focus1 || dragging)
+							if (!focus1)
 							{
 								inputs[0].val(finalValue[0]);
 							}
-							if (!focus2 || dragging)
+							if (!focus2)
 							{
 								inputs[1].val(finalValue[1]);
 							}
@@ -1532,11 +1439,11 @@
 							if (init && useEvents)
 							{
 								useEvents = false;
-								if (changed1 && (!focus1 || dragging))
+								if (changed1 && !focus1)
 								{
 									inputs[0].trigger('change');
 								}
-								if (changed2 && (!focus2 || dragging))
+								if (changed2 && !focus2)
 								{
 									inputs[1].trigger('change');
 								}
@@ -1561,7 +1468,7 @@
 						value = val1;
 
 						// Final values
-						finalVal1 = formatValue(finalizeValue(val1));
+						finalVal1 = finalizeValue(val1);
 
 						// Detect change
 						changed = (finalValue != finalVal1 || !init);
@@ -1580,10 +1487,10 @@
 						if (inputs)
 						{
 							// Does the input has focus?
-							if (!inputs.is(':focus') || dragging)
+							if (!inputs.is(':focus'))
 							{
 								// Update value
-								inputs.val(finalValue);
+								inputs.val(finalVal1);
 
 								// Prevent recursion
 								if (init && useEvents)
@@ -1598,7 +1505,7 @@
 						// Callback
 						if (init && settings.onChange)
 						{
-							settings.onChange.call(target[0], finalValue);
+							settings.onChange.call(target[0], finalVal1);
 						}
 					}
 				}
@@ -1858,34 +1765,8 @@
 					{
 						document.onselectstart = ieSelectStart;
 					}
-
-					// Callback
-					if (settings.onEndDrag)
-					{
-						if (range)
-						{
-							settings.onEndDrag.call(target[0], finalValue[0], finalValue[1]);
-						}
-						else
-						{
-							settings.onEndDrag.call(target[0], finalValue);
-						}
-					}
 				};
 				doc.on(touchEvent ? 'touchend' : 'mouseup', endDrag);
-
-				// Callback
-				if (settings.onStartDrag)
-				{
-					if (range)
-					{
-						settings.onStartDrag.call(target[0], finalValue[0], finalValue[1]);
-					}
-					else
-					{
-						settings.onStartDrag.call(target[0], finalValue);
-					}
-				}
 			});
 
 			// Set as inited
@@ -1894,24 +1775,9 @@
 			// Create interface
 			target.data('slider', {
 
-				element: target,
-				setValue: setValue,
-				formatValue: formatValue,
-				unformatValue: unformatValue
+				setValue: setValue
 
 			});
-			if (inputs)
-			{
-				if (range)
-				{
-					inputs[0].data('slider', target.data('slider'));
-					inputs[1].data('slider', target.data('slider'));
-				}
-				else
-				{
-					inputs.data('slider', target.data('slider'));
-				}
-			}
 		});
 
 		return this;
@@ -2092,40 +1958,10 @@
 		clickableTrack: true,
 
 		/**
-		 * Character used for decimal point
-		 * @var string
-		 */
-		decimalPoint: '.',
-
-		/**
-		 * Character used for thousands separator
-		 * @var string
-		 */
-		thousandsSep: '',
-
-		/**
-		 * Fill decimal part with zeros to match desired precision
-		 * @var boolean
-		 */
-		zerofill: true,
-
-		/**
-		 * Callback when the user starts dragging the cursor, takes one param for value, two for ranges
-		 * @var function
-		 */
-		onStartDrag: null,
-
-		/**
 		 * Callback when the slider value is changed, takes one param for value, two for ranges
 		 * @var function
 		 */
-		onChange: null,
-
-		/**
-		 * Callback when the user stops dragging the cursor, takes one param for value, two for ranges
-		 * @var function
-		 */
-		onEndDrag: null
+		onChange: null
 	};
 
 	/**

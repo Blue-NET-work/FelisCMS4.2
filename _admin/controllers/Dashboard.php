@@ -5,20 +5,20 @@ class Dashboard extends CI_Controller {
 
     function __construct(){
         parent::__construct();  
-        @FC_Request::loadModel('admin_model');                                                                        
+        //@FC_Request::loadModel('admin_model');                                                                        
     }
                                   
     public function index(){               
         
         //Wczytanie domyślnego stylu         
-        @Admin_model::defaultStyle();                                                           
-        @View::setCSS(templates_url('assets/css/felis/felis.agenda.css'));   
-        @View::setCSS(templates_url('assets/css/felis/felis.dashboard.css'));           
+        //@Admin_model::defaultStyle();                                                           
+        //@View::setCSS(templates_url('assets/css/felis/felis.agenda.css'));   
+        //@View::setCSS(templates_url('assets/css/felis/felis.dashboard.css'));           
         /* Wczytanie domyślnych JS'ów */                                                   
-        @View::setJQ(templates_url("assets/js/felis/felis.agenda.js"));    
+        //@View::setJQ(templates_url("assets/js/felis/felis.agenda.js"));    
                                         
-        @FC_Request::loadLang("felis_dashboard"); 
-        @FC_Request::loadModel('dashboard_model');  
+        //@FC_Request::loadLang("felis_dashboard"); 
+        //@FC_Request::loadModel('dashboard_model');  
                                                      
         @FC_Request::smartyView("index.tpl");
     }         

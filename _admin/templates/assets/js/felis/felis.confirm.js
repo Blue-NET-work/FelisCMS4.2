@@ -299,13 +299,13 @@
 		 * Default message
 		 * @var string
 		 */
-		message: 'Czy jesteś pewien?',
+		message: 'Are you sure?',
 
 		/**
 		 * Text of confirm button
 		 * @var string
 		 */
-		confirmText: 'Potwierdź',
+		confirmText: 'Confirm',
 
 		/**
 		 * Classes of confirm button
@@ -323,7 +323,7 @@
 		 * Text of cancel button
 		 * @var string
 		 */
-		cancelText: 'Anuluj',
+		cancelText: 'Cancel',
 
 		/**
 		 * Classes of cancel button

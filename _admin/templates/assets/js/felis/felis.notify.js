@@ -682,7 +682,7 @@
 		 * Force rotation (remove older messages) when reaching limit
 		 * @var boolean
 		 */
-		rotate: false,
+		rotate: true,
 
 		/**
 		 * Text when one similar notification is found
