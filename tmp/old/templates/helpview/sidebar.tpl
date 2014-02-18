@@ -1,9 +1,8 @@
-    <!-- Button to open/hide menu -->
-    <a href="#" id="open-menu"><span>{lang line="default_sidebar_menu"}</span></a>
+
     
     <section id="menu" role="complementary">
     <div id="menu-content">
-
+                                                
 {include file="./assets/sidebar/access.tpl"} 
 {include file="./assets/sidebar/profile.tpl"} 
 
@@ -18,52 +17,52 @@
             {if $adminMenu.pages == "1"}
                 <!-- Pages
                 ================================================== -->
-                {include file="./assets/menu/pages.tpl"} 
+                {include file="./sidebar/menu/pages.tpl"} 
             {/if}
             {if $adminMenu.articles == "1"}
                 <!-- Articles                           
                 ================================================== -->
-                {include file="./assets/menu/articles.tpl"} 
+                {include file="./sidebar/menu/articles.tpl"} 
             {/if}
             {if $adminMenu.galleries == "1"}
                 <!-- Galleries                           
                 ================================================== -->
-                {include file="./assets/menu/galleries.tpl"} 
+                {include file="./sidebar/menu/galleries.tpl"} 
             {/if}
             {if $adminMenu.statistic == "1"}
                 <!-- Statistic                          
                 ================================================== -->
-                {include file="./assets/menu/statistic.tpl"} 
+                {include file="./sidebar/menu/statistic.tpl"} 
             {/if}
             {if $adminMenu.calendar == "1"}
                 <!-- Calendar                          
                 ================================================== -->
-                {include file="./assets/menu/calendar.tpl"} 
+                {include file="./sidebar/menu/calendar.tpl"} 
             {/if}
             {if $adminMenu.mailing == "1"}
                 <!-- Mailing                            
                 ================================================== -->
-                {include file="./assets/menu/mailing.tpl"}
+                {include file="./sidebar/menu/mailing.tpl"}
             {/if} 
             {if $adminMenu.shop == "1"}
                 <!-- Shop                              
                 ================================================== -->
-                {include file="./assets/menu/shop.tpl"}
+                {include file="./sidebar/menu/shop.tpl"}
             {/if} 
             {if $adminMenu.layout == "1"}
                 <!-- Layout                           
                 ================================================== -->
-                {include file="./assets/menu/layout.tpl"} 
+                {include file="./sidebar/menu/layout.tpl"} 
             {/if}
             {if $adminMenu.settings == "1"}
                 <!-- Layout                           
                 ================================================== -->
-                {include file="./assets/menu/settings.tpl"}  
+                {include file="./sidebar/menu/settings.tpl"}  
             {/if}
             {if $adminMenu.users == "1"}
                 <!-- Users                             
                 ================================================== -->
-                {include file="./assets/menu/users.tpl"}
+                {include file="./sidebar/menu/users.tpl"}
             {/if} 
             </ul>     
         </section>       
@@ -71,7 +70,7 @@
 {include file="./assets/sidebar/events_messages.tpl"} 
         
     </div>
-    <!-- #end menu-content  -->
+    <!-- #end menu-content  --> 
 
     <!-- footer
     ================================================== -->
