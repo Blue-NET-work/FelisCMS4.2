@@ -1,7 +1,7 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 require_once(BASEPATH.'modules/smarty/Smarty.class.php');       
 
-class FC_Smarty extends Smarty {
+class FC_Smarty extends Smarty {   
      
     function __construct(){
         parent::__construct();
@@ -37,14 +37,13 @@ class FC_Smarty extends Smarty {
         $this->assign('system_url', $ci->config->system_url());   
         $this->left_delimiter  = '{'; 
         $this->right_delimiter = '}';
-        $this->error_reporting = 'E_ALL ^ E_NOTICE'; 
+        $this->error_reporting = 'E_ALL ^ E_NOTICE';      
 
         // Assign CodeIgniter object by reference to CI
         if(method_exists( $this, 'assignByRef')){$this->assignByRef("ci", $ci);}
 
         log_message('debug', "Smarty Class Initialized");
-    }
-
+    }    
 
     /**
      *  Parse a template using the Smarty engine
@@ -76,7 +75,7 @@ class FC_Smarty extends Smarty {
         }
         
         else {return self::fetch($template);}
-    }    
+    }      
     
     function viewReturn($template, $data = array(), $return = TRUE){
            

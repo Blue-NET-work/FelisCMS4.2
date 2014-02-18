@@ -109,7 +109,7 @@ class FC_Request {
            
 // wczytanie szablonu smarty + ew. przekazanie parametrów    
     public function smartyView($template, $date = false){
-        View::gets();
+        $this->smarty->gets();
         if($date)$this->smarty->view($template, $date);
         else $this->smarty->view($template);
     }

@@ -5,14 +5,14 @@ class Dashboard extends FC_Controller {
 
     function __construct(){
         parent::__construct();  
-        @FC_Request::loadModel('Admin_model');                                                                        
+        @FC_Request::loadModel('Admin_model');                                                             
     }
                                   
     public function index(){               
         
         //Wczytanie domyślnego stylu         
         //@Admin_model::defaultStyle();                                                           
-        //@View::setCSS(templates_url('assets/css/felis/felis.agenda.css'));   
+        //$this->smarty->setCSS(templates_url('assets/css/felis/felis.agenda.css'));   
         //@View::setCSS(templates_url('assets/css/felis/felis.dashboard.css'));           
         /* Wczytanie domyślnych JS'ów */                                                   
         //@View::setJQ(templates_url("assets/js/felis/felis.agenda.js"));    
@@ -40,13 +40,7 @@ class Dashboard extends FC_Controller {
         $this->form_validation->set_error_delimiters("","<span style='padding-right:5px;'></span>");
            
         if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}
-                                                                             
-        /* Wczytanie domyślnych CSS'ów */                                                                 
-        @View::setCSS(templates_url('public/css/bootstrap/bootstrap.css'));    
-        @View::setCSS(templates_url('public/css/bootstrap/bootstrap-theme.css'));    
-        @View::setCSS(templates_url('public/css/styles/logowanie.css'), "text/css");  
-        @View::setCSS(templates_url('public/css/icons/woocons.css'), "text/css"); 
-         
+                                             
         @View::setJQ(base_url()); 
                                                                                                                  
                                                                           
