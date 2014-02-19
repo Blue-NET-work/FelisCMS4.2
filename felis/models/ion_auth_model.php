@@ -809,9 +809,9 @@ class Ion_auth_model extends CI_Model
 
 		//add to default group if not already set
 		$default_group = $this->where('name', $this->config->item('default_group', 'ion_auth'))->group()->row();
-		if ((isset($default_group->id) && !isset($groups)) || (empty($groups) && !in_array($default_group->id, $groups)))
+		if ((isset($default_group->ug_id) && !isset($groups)) || (empty($groups) && !in_array($default_group->ug_id, $groups)))
 		{
-			$this->add_to_group($default_group->id, $id);
+			$this->add_to_group($default_group->ug_id, $id);
 		}
 
 		$this->trigger_events('post_register');
@@ -869,6 +869,8 @@ class Ion_auth_model extends CI_Model
 				$this->update_last_login($user->id);
 				
 				$this->clear_login_attempts($identity);
+                
+                $this->db->insert($this->tables['login'], array('ul_uid'=>$user->id, 'ul_ip'=>$this->input->ip_address(), 'ul_user_agent'=> $this->input->user_agent(), 'ul_date'=>date('Y-m-d H:i:s', time())));
 				
 				$this->session->set_userdata($session_data);
 
@@ -944,7 +946,7 @@ class Ion_auth_model extends CI_Model
 	public function increase_login_attempts($identity) {
 		if ($this->config->item('track_login_attempts', 'ion_auth')) {
 			$ip_address = $this->_prepare_ip($this->input->ip_address());
-			return $this->db->insert($this->tables['login_attempts'], array('ip_address' => $ip_address, 'login' => $identity, 'time' => time()));
+			return $this->db->insert($this->tables['login_attempts'], array('ula_ip_address' => $ip_address, 'ula_login' => $identity, 'ula_time' => time()));
 		}
 		return FALSE;
 	}
@@ -959,9 +961,9 @@ class Ion_auth_model extends CI_Model
 		if ($this->config->item('track_login_attempts', 'ion_auth')) {
 			$ip_address = $this->_prepare_ip($this->input->ip_address());
 			
-			$this->db->where(array('ip_address' => $ip_address, 'login' => $identity));
+			$this->db->where(array('ula_ip_address' => $ip_address, 'ula_login' => $identity));
 			// Purge obsolete login attempts
-			$this->db->or_where('time <', time() - $expire_period, FALSE);
+			$this->db->or_where('ula_time <', time() - $expire_period, FALSE);
 
 			return $this->db->delete($this->tables['login_attempts']);
 		}

@@ -39,11 +39,12 @@ class Dashboard extends FC_Controller {
     public function sign_in(){                    
         $this->form_validation->set_error_delimiters("","<span style='padding-right:5px;'></span>");
         
-        @FC_Request::loadLang("felis_login"); 
+        @FC_Request::loadLang("felis_login");                                    
            
-        if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}    
+        if ($this->ion_auth->logged_in())
+            $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond["logged"] = true));  
                                                                                                                          
-        if(@FC_Request::post('item')){                                                                                   
+        if(@FC_Request::post('item')){                                                                                                                              
                                    
             $this->form_validation->set_rules('item[login]', 'lang:felis_login_username', 'required');
             $this->form_validation->set_rules('item[password]', 'lang:felis_login_password', 'required');
@@ -67,7 +68,9 @@ class Dashboard extends FC_Controller {
                 $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond));                         
             }
         }
-        else{                                                         
+        else{                        
+           
+           if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}                                    
             
             if($this->session->flashdata('message'))
                 $messages = $this->session->flashdata('message');  
@@ -83,16 +86,12 @@ class Dashboard extends FC_Controller {
         }             
                                                                 
     }
-    
-    public function ajax_sign_in(){
-        $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode("Odezwałem się!"));
-    }
-    
+           
 // Wylogowanie
     public function logout(){     
         $logout = $this->ion_auth->logout();   
         $this->session->set_flashdata('message', $this->ion_auth->messages());
-        //redirect('dashboard/sign_in', 'refresh');
+        redirect('dashboard/sign_in', 'refresh');
     }
 
     public function test(){

@@ -378,9 +378,8 @@ class Ion_auth
 		}
 
 		//Recreate the session
-		$this->session->sess_destroy();
-		$this->session->sess_create();
-
+		$this->session->sess_destroy();                                          
+        $this->session->sess_regenerate(TRUE);
 		$this->set_message('logout_successful');
 		return TRUE;
 	}
@@ -432,8 +431,8 @@ class Ion_auth
 
 		foreach ($users_groups as $group)
 		{
-			$groups_by_name[] = $group->name;
-			$groups_by_id[] = $group->id;
+			$groups_by_name[] = $group->ug_name;
+			$groups_by_id[] = $group->ug_id;
 		}
 
 		if (is_array($check_group))
