@@ -70,7 +70,7 @@ class Dashboard extends FC_Controller {
         }
         else{                        
            
-           if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}                                    
+            if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}                                    
             
             if($this->session->flashdata('message'))
                 $messages = $this->session->flashdata('message');  
