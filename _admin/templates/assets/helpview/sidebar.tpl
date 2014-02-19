@@ -1,4 +1,7 @@
-
+ 
+    <!-- Button to open/hide menu -->
+    <a href="#" id="open-menu"><span>{lang line="default_sidebar_menu"}</span></a>
+ 
     <!-- Sidebar/drop-down menu -->
     <section id="menu" role="complementary">                         
         <div id="menu-content">
@@ -64,6 +67,9 @@
                 ================================================== -->
                 {include file="./assets/menu/users.tpl"}
             {/if} 
+                    <li class="with-right-arrow">
+                        <a href="{$TEMPLATES}ajax/submenu.html" class="navigable-ajax" title="Menu title">With ajax sub-menu</a>
+                    </li>
             </ul>     
         </section>   
                           

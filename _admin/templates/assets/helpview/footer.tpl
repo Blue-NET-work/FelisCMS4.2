@@ -1,10 +1,3 @@
- 
-    <!-- Button to open/hide menu -->
-    <a href="#" id="open-menu"><span>{lang line="default_sidebar_menu"}</span></a>
- 
-   <!-- Sidebar
-    ================================================== -->                                 
-    {include file="./sidebar.tpl"}  
 
    <!-- HTML helper
     ================================================== -->

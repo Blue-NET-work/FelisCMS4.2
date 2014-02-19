@@ -12,6 +12,10 @@
             <div class="panel-control">test test <br> test test</div>
           </section>                                                       
     </section>                                                       
+
+   <!-- Sidebar
+    ================================================== -->                                 
+    {include file="assets/helpview/sidebar.tpl"}  
           
 {include file="assets/helpview/footer.tpl"} 
                            

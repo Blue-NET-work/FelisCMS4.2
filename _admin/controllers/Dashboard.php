@@ -36,62 +36,63 @@ class Dashboard extends FC_Controller {
  */   
 
 // Logowanie    
-    public function sign_up(){                    
+    public function sign_in(){                    
         $this->form_validation->set_error_delimiters("","<span style='padding-right:5px;'></span>");
-           
-        if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}
-                                                                                                                                       
-                                            
-        @View::setCSS(base_url());                                                                                                  
-                                            
-        @View::setJQ(base_url()); 
-                                                                                                                 
-                                                                          
-        //@FC_Request::loadLang("felis_login");                   
         
-        if($this->session->flashdata('message')){
-            $msg = $this->session->flashdata('message');  
-            if(isset($msg['text']))$messages = $msg;
-            else $messages = array('boxClass' => "alert-danger", 'icon'=>"woocons-stop-2 woocons-size32", 'text'=>"{$msg}");                                 
-        }
-        else $messages = array('boxClass' => "alert-info", 'icon'=>"woocons-light-bulb-on woocons-size32", 'text'=>$this->lang->line("login_require_a_login")); 
-                                                                                                                       
+        @FC_Request::loadLang("felis_login"); 
+           
+        if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}    
+                                                                                                                         
         if(@FC_Request::post('item')){                                                                                   
                                    
-            $this->form_validation->set_rules('item[login]', 'lang:login_username', 'required');
-            $this->form_validation->set_rules('item[password]', 'lang:login_password', 'required');
+            $this->form_validation->set_rules('item[login]', 'lang:felis_login_username', 'required');
+            $this->form_validation->set_rules('item[password]', 'lang:felis_login_password', 'required');
                 
             if ($this->form_validation->run() == true){    
                 $item = @FC_Request::post('item');                                        
                 $remember = (bool) $item['remember'];
                                                     
-                if ($this->ion_auth->login($item['login'], $item['password'], $remember)){     
-                    $this->session->set_flashdata('message', $this->ion_auth->messages());
-                    $redirect = index_page();
-                    if($this->session->flashdata('redirect')) $redirect = $this->session->flashdata('redirect');
-                    redirect($redirect, 'refresh');
+                if ($this->ion_auth->login($item['login'], $item['password'], $remember)){
+                    $respond["logged"] = true;
+                    $respond["messages"] = $this->ion_auth->messages();                                           
+                    $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond));  
                 }
-                else{                                           
-                    $this->session->set_flashdata('message', $this->ion_auth->errors());
-                    redirect('dashboard/login', 'refresh');
+                else{                         
+                    $respond["messages"] = $this->ion_auth->errors();                                               
+                    $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond)); 
                 }                                
             }
             else{      
-                $system_messages = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-                $messages = array('boxClass' => "alert-danger", 'icon'=>"woocons-stop-2 woocons-size32", 'text'=>"{$system_messages}", 'action'=>"shake");                          
+                $respond["messages"] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');                               
+                $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond));                         
             }
         }
-                                                      
-        $query["messages"] = $messages;    
-        @FC_Request::smartyView("account/sign_up.tpl", $query);
+        else{                                                         
+            
+            if($this->session->flashdata('message'))
+                $messages = $this->session->flashdata('message');  
+            else 
+                $messages = $this->lang->line("felis_login_require_a_login"); 
+                                            
+            @View::setCSS(base_url());                                                                                                  
+                                                
+            @View::setJQ(base_url());
+            
+            $query["messages"] = $messages;    
+            @FC_Request::smartyView("account/sign_in.tpl", $query);
+        }             
+                                                                
+    }
+    
+    public function ajax_sign_in(){
+        $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode("Odezwałem się!"));
     }
     
 // Wylogowanie
     public function logout(){     
-        $logout = $this->ion_auth->logout();  
-        $messages = array('boxClass' => "alert-success", 'icon'=>"woocons-light-bulb-off woocons-size32", 'text'=>$this->ion_auth->messages());          
-        $this->session->set_flashdata('message', $messages);
-        redirect('dashboard/sign_up', 'refresh');
+        $logout = $this->ion_auth->logout();   
+        $this->session->set_flashdata('message', $this->ion_auth->messages());
+        //redirect('dashboard/sign_in', 'refresh');
     }
 
     public function test(){

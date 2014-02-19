@@ -375,9 +375,9 @@ class Ion_auth
 	 * @author Mathew
 	 **/
 	public function logout()
-	{
+	{                                                                                                     
 		$this->ion_auth_model->trigger_events('logout');
-
+                                                                                                         
 		$identity = $this->config->item('identity', 'ion_auth');
                 $this->session->unset_userdata( array($identity => '', 'id' => '', 'user_id' => '') );
 

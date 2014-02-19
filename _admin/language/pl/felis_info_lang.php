@@ -16,3 +16,5 @@
   $lang["felis_info_browser_ancient"] = 'Twoja przegladarka jest <em>stara!</em> <a href="http://browsehappy.com/">Aktualizuj przegladarkę</a> lub <a href="http://www.google.com/chromeframe/?redirect=true">zainstaluj ramke google chrome</a> do przegladania tej strony.';
     //Your browser does not support JavaScript! Some features won't work as expected...
   $lang["felis_info_browser_notsupport_javascript"] = 'Twoja przegladarka nie wspiera skryptów JavaScript, aby poprawnie korzystać z tej strony musisz właczyc obsługę JavaScript lub skorzystać z innej przeglądarki...';
+
+  // Informacje logowania

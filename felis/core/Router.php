@@ -146,14 +146,14 @@ class CI_Router {
 		}
 
 		// Load the routes.php file.
-		if (file_exists(ROOTPATH.'config/routes.php'))
-		{
-			include(ROOTPATH.'config/routes.php');
-		}
-		elseif (file_exists(APPPATH.'config/routes.php'))
-		{
-			include(APPPATH.'config/routes.php');
-		}
+		if (file_exists(APPPATH.'config/routes.php'))
+        {
+            include(APPPATH.'config/routes.php');
+        }
+		elseif (file_exists(ROOTPATH.'config/routes.php'))
+        {
+            include(ROOTPATH.'config/routes.php');
+        }
 
 		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/routes.php'))
 		{

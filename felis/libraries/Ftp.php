@@ -18,7 +18,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -214,12 +214,12 @@ class CI_FTP {
 	 * Internally, this parameter is only used by the "mirror" function below.
 	 *
 	 * @param	string	$path
-	 * @param	bool	$supress_debug
+	 * @param	bool	$suppress_debug
 	 * @return	bool
 	 */
-	public function changedir($path = '', $supress_debug = FALSE)
+	public function changedir($path, $suppress_debug = FALSE)
 	{
-		if ($path === '' OR ! $this->_is_conn())
+		if ( ! $this->_is_conn())
 		{
 			return FALSE;
 		}
@@ -228,7 +228,7 @@ class CI_FTP {
 
 		if ($result === FALSE)
 		{
-			if ($this->debug === TRUE && $supress_debug === FALSE)
+			if ($this->debug === TRUE && $suppress_debug === FALSE)
 			{
 				$this->_error('ftp_unable_to_changedir');
 			}
@@ -247,7 +247,7 @@ class CI_FTP {
 	 * @param	int	$permissions
 	 * @return	bool
 	 */
-	public function mkdir($path = '', $permissions = NULL)
+	public function mkdir($path, $permissions = NULL)
 	{
 		if ($path === '' OR ! $this->_is_conn())
 		{
@@ -260,7 +260,7 @@ class CI_FTP {
 		{
 			if ($this->debug === TRUE)
 			{
-				$this->_error('ftp_unable_to_makdir');
+				$this->_error('ftp_unable_to_mkdir');
 			}
 			return FALSE;
 		}
@@ -392,7 +392,7 @@ class CI_FTP {
 		{
 			if ($this->debug === TRUE)
 			{
-				$this->_error('ftp_unable_to_' . ($move === FALSE ? 'rename' : 'move'));
+				$this->_error('ftp_unable_to_'.($move === FALSE ? 'rename' : 'move'));
 			}
 			return FALSE;
 		}
@@ -463,28 +463,26 @@ class CI_FTP {
 		$filepath = preg_replace('/(.+?)\/*$/', '\\1/', $filepath);
 
 		$list = $this->list_files($filepath);
-
-		if ($list !== FALSE && count($list) > 0)
+		if ( ! empty($list))
 		{
-			foreach ($list as $item)
+			for ($i = 0, $c = count($list); $i < $c; $i++)
 			{
-				// If we can't delete the item it's probaly a folder so
-				// we'll recursively call delete_dir()
-				if ( ! @ftp_delete($this->conn_id, $item))
+				// If we can't delete the item it's probaly a directory,
+				// so we'll recursively call delete_dir()
+				if ( ! @ftp_delete($this->conn_id, $list[$i]))
 				{
-					$this->delete_dir($item);
+					$this->delete_dir($list[$i]);
 				}
 			}
 		}
 
-		$result = @ftp_rmdir($this->conn_id, $filepath);
-
-		if ($result === FALSE)
+		if (@ftp_rmdir($this->conn_id, $filepath) === FALSE)
 		{
 			if ($this->debug === TRUE)
 			{
 				$this->_error('ftp_unable_to_delete');
 			}
+
 			return FALSE;
 		}
 
@@ -507,14 +505,13 @@ class CI_FTP {
 			return FALSE;
 		}
 
-		$result = @ftp_chmod($this->conn_id, $perm, $path);
-
-		if ($result === FALSE)
+		if (@ftp_chmod($this->conn_id, $perm, $path) === FALSE)
 		{
 			if ($this->debug === TRUE)
 			{
 				$this->_error('ftp_unable_to_chmod');
 			}
+
 			return FALSE;
 		}
 
@@ -531,12 +528,9 @@ class CI_FTP {
 	 */
 	public function list_files($path = '.')
 	{
-		if ( ! $this->_is_conn())
-		{
-			return FALSE;
-		}
-
-		return ftp_nlist($this->conn_id, $path);
+		return $this->_is_conn()
+			? ftp_nlist($this->conn_id, $path)
+			: FALSE;
 	}
 
 	// ------------------------------------------------------------------------
@@ -585,6 +579,7 @@ class CI_FTP {
 					$this->upload($locpath.$file, $rempath.$file, $mode);
 				}
 			}
+
 			return TRUE;
 		}
 
@@ -601,13 +596,12 @@ class CI_FTP {
 	 */
 	protected function _getext($filename)
 	{
-		if (FALSE === strpos($filename, '.'))
+		if (($dot = strrpos($filename, '.')) === FALSE)
 		{
 			return 'txt';
 		}
 
-		$x = explode('.', $filename);
-		return end($x);
+		return substr($filename, $dot + 1);
 	}
 
 	// --------------------------------------------------------------------
@@ -621,20 +615,20 @@ class CI_FTP {
 	protected function _settype($ext)
 	{
 		$text_types = array(
-					'txt',
-					'text',
-					'php',
-					'phps',
-					'php4',
-					'js',
-					'css',
-					'htm',
-					'html',
-					'phtml',
-					'shtml',
-					'log',
-					'xml'
-				);
+			'txt',
+			'text',
+			'php',
+			'phps',
+			'php4',
+			'js',
+			'css',
+			'htm',
+			'html',
+			'phtml',
+			'shtml',
+			'log',
+			'xml'
+		);
 
 		return in_array($ext, $text_types) ? 'ascii' : 'binary';
 	}
@@ -648,12 +642,9 @@ class CI_FTP {
 	 */
 	public function close()
 	{
-		if ( ! $this->_is_conn())
-		{
-			return FALSE;
-		}
-
-		return @ftp_close($this->conn_id);
+		return $this->_is_conn()
+			? @ftp_close($this->conn_id)
+			: FALSE;
 	}
 
 	// ------------------------------------------------------------------------
