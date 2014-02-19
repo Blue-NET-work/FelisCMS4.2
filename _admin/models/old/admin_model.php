@@ -17,24 +17,7 @@
     function loadLang(){                         
         FC_Request::loadLang(array('felis_errors', "felis_info", "felis_default"));
     }    
-               
-    
-// Przekazywanie danych zalogowanego użytkownika
-    function userLogIn(){
-        if($this->ion_auth->logged_in()){     
-            $_avatar = templates_url("assets/img/user.png"); 
-            $_user = $this->ion_auth->user()->row();
-            if($_user->avatar) $_avatar = base_url("../uploads/avatar/{$_user->avatar}");
-            $_group = FC_DB::getWhereJoinOrder('users_permissions', 'users_groups', 'up_group_id = ug_id', array('up_user_id'=>$_user->id), "`up_group_id` DESC");   
-            $userLogIn = array(                   
-                'first_name' => $_user->first_name,
-                'last_name'  => $_user->last_name,
-                'avatar'     => $_avatar,
-                'high'       => $_group["ug_description"]   
-            );              
-            $this->smarty->assigns("userLogIn", $userLogIn);
-        } 
-    }
+        
 
 // Sprawdzanie czy są nowe wiadomości i ich liczenie 
     function new_messages_count(){
