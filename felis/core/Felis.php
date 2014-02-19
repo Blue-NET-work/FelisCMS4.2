@@ -30,8 +30,7 @@ switch (ENVIRONMENT)
         header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
         echo 'The application environment is not set correctly.';
         exit(1); // EXIT_* constants not yet defined; 1 is EXIT_ERROR, a generic error.
-}                    
-
+}        
 
 /*
  * --------------------------------------------------------------------
@@ -79,6 +78,7 @@ switch (ENVIRONMENT)
  */
     // $assign_to_config['name_of_config_item'] = 'value of config item';
 
+   
 
 /*
 |---------------------------------------------------------------

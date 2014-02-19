@@ -71,7 +71,7 @@
     // Path to the system folder
     define('BASEPATH', str_replace('\\', '/', $system_path));
 
-	// Path to the system folder
+	// Path to the uploads folder
 	define('UPLOADSPATH', str_replace('\\', '/', $uploads_folder));
 
 	// Path to the front controller (this file)
