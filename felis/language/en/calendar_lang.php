@@ -1,4 +1,4 @@
-<?php          
+<?php
 /**
  * CodeIgniter
  *
@@ -18,12 +18,12 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * @link		http://codeigniter.com
  * @since		Version 1.0
  * @filesource
- */                                                      
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['cal_su']			= 'Su';
@@ -71,6 +71,6 @@ $lang['cal_september']	= 'September';
 $lang['cal_october']	= 'October';
 $lang['cal_november']	= 'November';
 $lang['cal_december']	= 'December';
-             
+
 /* End of file calendar_lang.php */
 /* Location: ./system/language/english/calendar_lang.php */

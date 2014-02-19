@@ -1,5 +1,31 @@
 <?php
-
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP 5.2.4 or newer
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the Open Software License version 3.0
+ *
+ * This source file is subject to the Open Software License (OSL 3.0) that is
+ * bundled with this package in the files license.txt / license.rst.  It is
+ * also available through the world wide web at this URL:
+ * http://opensource.org/licenses/OSL-3.0
+ * If you did not receive a copy of the license and are unable to obtain it
+ * through the world wide web, please send an email to
+ * licensing@ellislab.com so we can send you a copy immediately.
+ *
+ * @package		CodeIgniter
+ * @author		EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
+ * @link		http://codeigniter.com
+ * @since		Version 1.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+                           
 $lang['date_year'] = 'Rok';
 $lang['date_years'] = 'Lata';
 $lang['date_month'] = 'Miesiąc';
@@ -14,6 +40,7 @@ $lang['date_minute'] = 'Minuta';
 $lang['date_minutes'] = 'Minuty';
 $lang['date_second'] = 'Sekunda';
 $lang['date_seconds'] = 'Sekundy';
+                                          
 $lang['UM12'] = '(UTC -12:00) Baker/Howland Island';
 $lang['UM11'] = '(UTC -11:00) Samoa Time Zone, Niue';
 $lang['UM10'] = '(UTC -10:00) Hawaii-Aleutian Standard Time, Cook Islands, Tahiti';
@@ -54,4 +81,6 @@ $lang['UP12'] = '(UTC +12:00) Fiji, Gilbert Islands, Kamchatka Time, New Zealand
 $lang['UP1275'] = '(UTC +12:45) Chatham Islands Standard Time';
 $lang['UP13'] = '(UTC +13:00) Phoenix Islands Time, Tonga';
 $lang['UP14'] = '(UTC +14:00) Line Islands';
-?>
+
+/* End of file date_lang.php */
+/* Location: ./system/language/english/date_lang.php */
