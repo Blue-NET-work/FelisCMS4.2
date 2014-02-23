@@ -11,12 +11,12 @@ class FC_Controller extends CI_Controller {
 // Sprawdzanie czy zalogowany i czy posiada odpowiednie uprawnienia
     function _logIn(){
         if(!$this->ion_auth->logged_in()){                                        
-            if($this->uri->uri_string() != "dashboard/sign_in"){                    
-                $this->session->set_flashdata('redirect', FC_Request::server("HTTP_REFERER"));
-                redirect('dashboard/sign_in', 'refresh');
-            }
+            if($this->uri->uri_string() != "dashboard/sign_in")
+                redirect('dashboard/sign_in', 'refresh'); 
         }
-        elseif(!$this->ion_auth->is_admin()){show_error($this->lang->line("felis_login_must_admin"));}    
+        elseif(!$this->ion_auth->is_admin()){
+            show_error($this->lang->line("felis_login_must_admin"));
+        }    
     }   
                      
 }
