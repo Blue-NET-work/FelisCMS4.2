@@ -84,7 +84,7 @@
             <div class="footer white">
                 <p class="button-height" style="margin:5px 0 0px; line-height:25px;"> 
                     <input checked="checked" type="checkbox" name="auto-refresh" id="auto-refresh" class="switch medium float-right">
-                    <label for="auto-refresh">{lang line="default_sidebar_auto_refresh"}</label>
+                    <label for="auto-refresh">{lang line="felis_sidebar_auto_refresh"}</label>
                 </p>
             </div>
             <div class="footer black white">
