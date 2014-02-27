@@ -34,6 +34,7 @@
  *--------------------------------------------------------------- 
  */
 	$uploads_folder = '../uploads';
+                            
 
 // --------------------------------------------------------------------
 // END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
@@ -46,16 +47,29 @@
  */
 
     // Set the current directory correctly for CLI requests
-    if (defined('STDIN')){chdir(dirname(__FILE__));}                                               
-    if (($_temp = realpath($system_path)) !== FALSE){$system_path = $_temp.'/';}else{$system_path = rtrim($system_path, '/').'/';}
-                               
+    if (defined('STDIN'))
+    {
+        chdir(dirname(__FILE__));
+    }
+
+    if (($_temp = realpath($system_path)) !== FALSE)
+    {
+        $system_path = $_temp.'/';
+    }
+    else
+    {
+        // Ensure there's a trailing slash
+        $system_path = rtrim($system_path, '/').'/';
+    }
+
     // Is the system path correct?
-    if ( ! is_dir($system_path)){
+    if ( ! is_dir($system_path))
+    {
         header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
         echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
         exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
-    } 
-          
+    }
+
 /*
  * -------------------------------------------------------------------
  *  Now that we know the path, set the main path constants
@@ -87,28 +101,28 @@
             $application_folder = $_temp;
         }
 
-        define('APPPATH', $application_folder.'/');
+        define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
     }
     else
     {
-        if ( ! is_dir(BASEPATH.$application_folder.'/'))
+        if ( ! is_dir(BASEPATH.$application_folder.DIRECTORY_SEPARATOR))
         {
             header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
             echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
             exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
         }
 
-        define('APPPATH', BASEPATH.$application_folder.'/');
+        define('APPPATH', BASEPATH.$application_folder.DIRECTORY_SEPARATOR);
     }
 
     // The path to the "views" folder
     if ( ! is_dir($view_folder))
     {
-        if ( ! empty($view_folder) && is_dir(APPPATH.$view_folder.'/'))
+        if ( ! empty($view_folder) && is_dir(APPPATH.$view_folder.DIRECTORY_SEPARATOR))
         {
             $view_folder = APPPATH.$view_folder;
         }
-        elseif ( ! is_dir(APPPATH.'views/'))
+        elseif ( ! is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))
         {
             header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
             echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
@@ -122,20 +136,22 @@
 
     if (($_temp = realpath($view_folder)) !== FALSE)
     {
-        $view_folder = $_temp.'/';
+        $view_folder = $_temp.DIRECTORY_SEPARATOR;
     }
     else
     {
-        $view_folder = rtrim($view_folder, '/').'/';
+        $view_folder = rtrim($view_folder, '/\\').DIRECTORY_SEPARATOR;
     }
 
     define('VIEWPATH', $view_folder);
 
-// --------------------------------------------------------------------
-// END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
-// --------------------------------------------------------------------
-                                        
-require_once BASEPATH.'core/Felis.php';  
+/*
+ * --------------------------------------------------------------------
+ * LOAD THE BOOTSTRAP FILE
+ * --------------------------------------------------------------------
+ */
+    
+require_once BASEPATH.'core/Felis.php';        
 
 /* End of file index.php */
 /* Location: ./index.php */

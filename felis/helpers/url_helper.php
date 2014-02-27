@@ -244,14 +244,9 @@ if ( ! function_exists('anchor'))
 	{
 		$title = (string) $title;
 
-		if ( ! is_array($uri))
-		{
-			$site_url = preg_match('#^(\w+:)?//#i', $uri) ? $uri : site_url($uri);
-		}
-		else
-		{
-			$site_url = site_url($uri);
-		}
+		$site_url = is_array($uri)
+			? site_url($uri)
+			: preg_match('#^(\w+:)?//#i', $uri) ? $uri : site_url($uri);
 
 		if ($title === '')
 		{
@@ -577,11 +572,11 @@ if ( ! function_exists('url_title'))
 		$q_separator = preg_quote($separator, '#');
 
 		$trans = array(
-				'&.+?;'			=> '',
-				'[^a-z0-9 _-]'		=> '',
-				'\s+'			=> $separator,
-				'('.$q_separator.')+'	=> $separator
-			);
+			'&.+?;'			=> '',
+			'[^a-z0-9 _-]'		=> '',
+			'\s+'			=> $separator,
+			'('.$q_separator.')+'	=> $separator
+		);
 
 		$str = strip_tags($str);
 		foreach ($trans as $key => $val)
@@ -615,7 +610,7 @@ if ( ! function_exists('redirect'))
 	 * @param	int	$code	HTTP Response status code
 	 * @return	void
 	 */
-	function redirect($uri = '', $method = 'auto', $time = 0, $code = NULL)
+	function redirect($uri = '', $method = 'auto', $code = NULL)
 	{
 		if ( ! preg_match('#^(\w+:)?//#i', $uri))
 		{
@@ -644,7 +639,7 @@ if ( ! function_exists('redirect'))
 		switch ($method)
 		{
 			case 'refresh':
-				header('Refresh:'.$time.';url='.$uri);
+				header('Refresh:0;url='.$uri);
 				break;
 			default:
 				header('Location: '.$uri, TRUE, $code);

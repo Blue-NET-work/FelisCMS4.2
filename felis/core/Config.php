@@ -327,6 +327,41 @@ class CI_Config {
 		return $uri;
 	}
 
+	// --------------------------------------------------------------------
+
+	/**
+	 * System URL
+	 *
+	 * @deprecated	3.0.0	Encourages insecure practices
+	 * @return	string
+	 */
+	public function system_url($uri = '')
+	{
+        $admin_folder = $this->slash_item('admin_folder');
+        $base_url = $this->slash_item('base_url');
+		$x = explode('/', preg_replace('|/*(.+?)/*$|', '\\1', BASEPATH));
+        $y = explode("/", $this->_uri_string($base_url)); 
+        if($admin_folder == end($y)."/"){
+            $base = explode($admin_folder, $base_url);
+            $base_url = $base[0];
+        }
+		return $base_url.end($x).'/'.$uri;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Set a config file item
+	 *
+	 * @param	string	$item	Config item key
+	 * @param	string	$value	Config item value
+	 * @return	void
+	 */
+	public function set_item($item, $value)
+	{
+		$this->config[$item] = $value;
+	}  
+
     // --------------------------------------------------------------------
 
     /**
@@ -378,41 +413,6 @@ class CI_Config {
         }
         return $base_url.'/'.$uri;
     }
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * System URL
-	 *
-	 * @deprecated	3.0.0	Encourages insecure practices
-	 * @return	string
-	 */
-	public function system_url($uri = '')
-	{
-        $admin_folder = $this->slash_item('admin_folder');
-        $base_url = $this->slash_item('base_url');
-		$x = explode('/', preg_replace('|/*(.+?)/*$|', '\\1', BASEPATH));
-        $y = explode("/", $this->_uri_string($base_url)); 
-        if($admin_folder == end($y)."/"){
-            $base = explode($admin_folder, $base_url);
-            $base_url = $base[0];
-        }
-		return $base_url.end($x).'/'.$uri;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set a config file item
-	 *
-	 * @param	string	$item	Config item key
-	 * @param	string	$value	Config item value
-	 * @return	void
-	 */
-	public function set_item($item, $value)
-	{
-		$this->config[$item] = $value;
-	}
 
 }
 
