@@ -5,6 +5,7 @@
 
 /* Main dashboard block */
 .dashboard {
+    margin:20px 0;
 	padding: 20px;
 	position: relative;
 	zoom: 1;
@@ -15,13 +16,18 @@
 	-webkit-background-size: 100% 100%;
 	-moz-background-size: 100% 100%;
 	-o-background-size: 100% 100%;
-	background-size: 100% 100%;
-	background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25)), color-stop(0.4, rgba(0, 0, 0, 0)), color-stop(0.6, rgba(0, 0, 0, 0))), -webkit-gradient(linear, left top, left bottom, from(#5e6165), to(#33373a));
-	background:-webkit-linear-gradient(left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25)), -webkit-linear-gradient(top, #5e6165, #33373a);
-	background:-moz-linear-gradient(left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25)), -moz-linear-gradient(top, #5e6165, #33373a);
-	background:-ms-linear-gradient(left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25)), -ms-linear-gradient(top, #5e6165, #33373a);
-	background:-o-linear-gradient(left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25)), -o-linear-gradient(top, #5e6165, #33373a);
-	background:linear-gradient(left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25)), linear-gradient(top, #5e6165, #33373a);
+	background-size: 100% 100%;                                                                                                                                       
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25)), color-stop(0.4, rgba(0, 0, 0, 0)), color-stop(0.6, rgba(0, 0, 0, 0))), -webkit-gradient(linear, left top, left bottom, from(#5e6165), to(#33373a));
+    background:-webkit-linear-gradient(left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25)), -webkit-linear-gradient(top, #5e6165, #33373a);
+    background:-moz-linear-gradient(left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25)), -moz-linear-gradient(top, #5e6165, #33373a);
+    background:-ms-linear-gradient(left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25)), -ms-linear-gradient(top, #5e6165, #33373a);
+    background:-o-linear-gradient(left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25)), -o-linear-gradient(top, #5e6165, #33373a);
+    background:linear-gradient(left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25)), linear-gradient(top, #5e6165, #33373a);
+    border-radius:5px;
+    -moz-border-radius: 5px;
+    -moz-box-shadow: 0px 2px 3px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0px 2px 3px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.3);
 	}
 	.dashboard a {
 		color: white;

@@ -5,7 +5,8 @@
 */ 
 
 
-    $lang["default_control_panel"] = "Panel Administracyjny";
+    $lang["default_control_panel"]  = "Panel Administracyjny";
+    $lang["felis_software"]         = "Oprogramowanie";
 
 
 /*
