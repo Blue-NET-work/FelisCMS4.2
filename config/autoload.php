@@ -162,4 +162,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 
-$autoload['model'] = array('Control', 'ion_auth_model', 'View');
+$autoload['model'] = array('Control', 'View');
