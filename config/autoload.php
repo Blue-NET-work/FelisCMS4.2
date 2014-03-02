@@ -85,7 +85,24 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 
-$autoload['libraries'] = array('breadcrumbs', 'calendar', 'cart', 'database', 'email', 'encrypt', 'form_validation', 'ftp', 'image_lib', 'ion_auth', 'pagination', 'smarty', 'upload', 'user_agent', 'Xmlrpc', 'zip');
+$autoload['libraries'] = array(
+                            'breadcrumbs', 
+                            'calendar', 
+                            'cart', 
+                            'database', 
+                            'email', 
+                            'encrypt', 
+                            'form_validation', 
+                            'ftp', 
+                            'image_lib', 
+                            'ion_auth', 
+                            'pagination', 
+                            'smarty', 
+                            'upload', 
+                            'user_agent', 
+                            'Xmlrpc', 
+                            'zip'
+                        );
 
 
 /*
@@ -113,7 +130,27 @@ $autoload['drivers'] = array('session', 'cache');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('array', 'captcha', 'cookie', 'date', 'directory', 'download', 'email', 'file', 'form', 'html', 'language', 'number', 'path', 'security', 'string', 'text', 'typography', 'url', 'xml');
+$autoload['helper'] = array(
+                        'array', 
+                        'captcha', 
+                        'cookie', 
+                        'date', 
+                        'directory', 
+                        'download', 
+                        'email', 
+                        'file', 
+                        'form', 
+                        'html', 
+                        'language', 
+                        'number', 
+                        'path', 
+                        'security', 
+                        'string', 
+                        'text', 
+                        'typography', 
+                        'url', 
+                        'xml'
+                    );
 
 
 /*
