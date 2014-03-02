@@ -13,8 +13,8 @@
             ================================================== -->
             <header>
                 <h1 class="title"><i class="bluebits32-aplication_arrow_right"></i> {lang line="dashboard_titleTag"}</h1>
-                <ul class="breadcrumb">
-                  <li><a href="#">{lang line="default_control_panel"}</a> <span class="divider">»</span></li>   
+                <ul class="breadcrumb unstyled-list">
+                  <li><a href="#">{lang line="default_control_panel"}</a></li>   
                   <li class="active">{lang line="dashboard_titleTag"}</li>
                 </ul>
             </header>               

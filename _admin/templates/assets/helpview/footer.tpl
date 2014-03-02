@@ -9,7 +9,7 @@
                              
     <!-- Scripts -->
     <script src="{$TEMPLATES}assets/js/libs/jquery-1.11.0.js"></script>
-    <script src="{$TEMPLATES}assets/js/setup.js"></script>
+    <script src="{$TEMPLATES}assets/js/scripts/setup.js"></script>
 
     <!-- Template functions -->
     <script src="{$TEMPLATES}assets/js/felis/felis.input.js"></script>
@@ -26,38 +26,10 @@
 
     <!-- Tinycon -->
     <script src="{$TEMPLATES}assets/js/libs/tinycon.js"></script>
-    
-    
+                 
     <script>
+    {include file="../js/scripts/felis.function.js"}
 
-        // Call template init (optional, but faster if called manually)
-        $.template.init();
-
-        // Favicon count
-        Tinycon.setBubble(2);
-
-        // If the browser support the Notification API, ask user for permission (with a little delay)
-        if (notify.hasNotificationAPI() && !notify.isNotificationPermissionSet()){
-            setTimeout(function(){
-                notify.showNotificationPermission('Your browser supports desktop notification, click here to enable them.', function(){
-                    // Confirmation message
-                    if (notify.hasNotificationPermission())
-                    {
-                        notify('Notifications API enabled!', 'You can now see notifications even when the application is in background', {
-                            icon: 'img/demo/icon.png',
-                            system: true
-                        });
-                    }
-                    else
-                    {
-                        notify('Notifications API disabled!', 'Desktop notifications will not be used.', {
-                            icon: 'img/demo/icon.png'
-                        });
-                    }
-                });
-
-            }, 2000);
-        }
                            
         // Delete button
         $('.list .button-group a:last-child').data('confirm-options', {

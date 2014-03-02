@@ -528,7 +528,7 @@
 
 			message = $('#mainContent').message(target, {
 				node:		'a',
-				classes:	['align-center', 'green-gradient'],
+				classes:	['align-center', 'green-gradient', 'show'],
 				simpler:	true,
 				inset:		true
 			});

@@ -10,7 +10,12 @@ class Admin_model extends CI_Model{
 // Default          
     function _default(){  
         // Ładowanie bibliotek językowych 
-        FC_Request::loadLang('felis_default'); 
+        FC_Request::loadLang(
+            array(
+                'felis_default', 
+                'felis_info'
+            )
+        ); 
         // Przekazywanie tablicy adresu dla smarty
         $this->smarty->assign("uri", $this->uri->segment_array());
         // Definiowanie nowej lini błedu 
