@@ -1,5 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+// Dashboard Title
 $lang['dashboard_titleTag']       = "Pulpit";
 $lang['dashboard_new_users']      = "Nowi użytkownicy";
 $lang['dashboard_add_user']       = "Dodaj użytkownika";

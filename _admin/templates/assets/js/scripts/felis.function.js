@@ -12,14 +12,14 @@
                 if (notify.hasNotificationPermission())
                 {
                     notify('{lang line="felis_info_api_chrome_enable"}', '{lang line="felis_info_api_chrome_enable_info"}', {
-                        icon: 'img/demo/icon.png',
+                        icon: '{$TEMPLATES}assets/img/demo/icon.png',
                         system: true
                     });
                 }
                 else
                 {
                     notify('{lang line="felis_info_api_chrome_disabled"}', '{lang line="felis_info_api_chrome_disabled"}', {
-                        icon: 'img/demo/icon.png'
+                        icon: '{$TEMPLATES}assets/img/demo/icon.png'
                     });
                 }
             });
