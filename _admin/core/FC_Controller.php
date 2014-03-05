@@ -3,7 +3,7 @@
 
 class FC_Controller extends CI_Controller {  
     
-    public function __construct(){
+    function __construct(){
         parent::__construct();
         $this->_logIn(); 
     }                   
