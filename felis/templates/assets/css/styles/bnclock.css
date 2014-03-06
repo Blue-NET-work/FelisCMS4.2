@@ -1,0 +1,151 @@
+@charset "utf-8";
+@import url("fonts/sansation/sansation.css");
+
+/* clock */
+
+body{
+}
+
+#background{
+    background:url(../../img/textures/scratches.png) repeat;
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    opacity:0.4;
+    z-index:-1;
+}
+
+#felisClock{
+    max-width:900px;
+    margin:auto;
+    margin-top:3.5%;
+}
+
+#felisClock #logo{
+    position:relative;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+#felisClock .clockBox{
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #D0D0D0;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 0 0 8px #D0D0D0;
+       -moz-box-shadow: 0 0 8px #D0D0D0;
+            box-shadow: 0 0 8px #D0D0D0;
+}
+
+#felisClock .clockBox h1{                        
+    font-family: "Sansation_Bold_Italic";
+    border-bottom: 1px solid #D0D0D0;
+    font-size: 43px;
+    font-weight: normal;
+    padding:10px 0px 15px;
+}
+
+#felisClock .clockBox h3{
+    font-family: "Sansation_Regular";
+}
+
+#felisClock .clockBox .clock-details{
+    font-family: "Sansation_Regular";
+    padding:10px 0px 15px;
+}
+
+#felisClock .clockBox .clock-details .clock{               
+    font-family: "Sansation_Regular";
+    width:845px;
+    margin:0 auto;       
+    font-size:13px;
+    text-transform:uppercase;
+}
+
+#felisClock .clockBox .clock-details .clock .clock_days{
+    float:left;
+    margin-right:30px;
+}
+#felisClock .clockBox .clock-details .clock .clock_hours{
+    float:left;
+    margin-right:30px;
+}
+#felisClock .clockBox .clock-details .clock .clock_minutes{
+    float:left;
+    margin-right:30px;
+}
+#felisClock .clockBox .clock-details .clock .clock_seconds{
+    float:left;
+}
+
+#felisClock .clockBox .clock-details .clock .val{   
+    font-size:49px;      
+    line-height:50px;
+    margin-top:15px;
+    width:100px;
+}
+
+#felisClock .clockBox .clock-details .clock .type_days{ 
+    width:100px;        
+    line-height:20px;         
+}
+
+#felisClock .clockBox .clock-details .clock .type_hours{ 
+    width:100px;     
+    line-height:20px;         
+}
+
+#felisClock .clockBox .clock-details .clock .type_minutes{ 
+    width:100px;        
+    line-height:20px;         
+}
+
+#felisClock .clockBox .clock-details .clock .type_seconds{ 
+    width:100px;      
+    line-height:20px;          
+} 
+
+#felisClock .clockBox .clock-details .clock .text{
+    position:absolute; 
+    top:45px; 
+    left:42px; 
+    width:100px;  
+    height:100px;
+}
+
+#felisClock .clockBox .clock-actions{
+    padding:5px 0px 25px;
+}
+                                                                                                            
+.center {text-align: center; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto;}
+
+.both{clear:both;}
+
+/*
+****
+  stary szablon
+******
+*/     
+     
+   
+   
+
+.bgLayer { 
+    background-image:url(../../img/clock/bg.png); 
+    background-repeat:no-repeat;
+    position:relative; 
+}
+
+.topLayer { 
+    position:absolute; 
+    background-image:url(../../img/clock/top.png); 
+    width:188px;
+    height:188px;
+    background-repeat:no-repeat;
+}
+                                                                            
+     

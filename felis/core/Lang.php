@@ -88,8 +88,11 @@ class CI_Lang {
 		if (empty($idiom) OR ! ctype_alpha($idiom))
 		{
 			$config =& get_config();
-			$idiom = empty($config['language']) ? 'english' : $config['language'];
-		}
+			$idiom = empty($config['language']) ? 'pl' : $config['language'];
+            $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+		    $idiom = is_dir(APPPATH."/language/".$lang) ? $lang : $config['language']; 
+        }
+                                                                                      
 
 		if ($return === FALSE && isset($this->is_loaded[$langfile]) && $this->is_loaded[$langfile] === $idiom)
 		{

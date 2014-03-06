@@ -100,12 +100,7 @@ $config['url_suffix'] = '.html';
 | than english.
 |
 */
-$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-
-if(is_dir(APPPATH."/language/".$lang))
-    $config['language'] = $lang;
-else
-    $config['language'] = 'pl';
+$config['language'] = 'pl';
 
 /*
 |--------------------------------------------------------------------------
