@@ -35,8 +35,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/language.html
  */
-class CI_Lang {
-
+class CI_Lang {                                      
+    
 	/**
 	 * List of translations
 	 *
@@ -50,6 +50,14 @@ class CI_Lang {
 	 * @var	array
 	 */
 	public $is_loaded =	array();
+
+    /**
+     * List of paths to search when trying to load a language file.
+     *
+     * @used-by    CI_Loader
+     * @var        array
+     */
+    public $_lang_paths = array(APPPATH, ROOTPATH);
 
 	/**
 	 * Class constructor
@@ -89,8 +97,8 @@ class CI_Lang {
 		{
 			$config =& get_config();
 			$idiom = empty($config['language']) ? 'pl' : $config['language'];
-            $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-		    $idiom = is_dir(APPPATH."/language/".$lang) ? $lang : $config['language']; 
+            //$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+		    //$idiom = is_dir(APPPATH."/language/".$lang) ? $lang : $config['language']; 
         }
                                                                                       
 
@@ -98,37 +106,40 @@ class CI_Lang {
 		{
 			return;
 		}
+                                  
+        foreach ($this->_lang_paths as $path)
+        {     
+            // Load the base file, so any others found can override it
+            $file = $path.'language/'.$idiom.'/'.$langfile;
+            if (($found = file_exists($file)) === TRUE)
+            {
+                include($file);
+            }     
 
-		// Load the base file, so any others found can override it
-		$basepath = BASEPATH.'language/'.$idiom.'/'.$langfile;
-		if (($found = file_exists($basepath)) === TRUE)
-		{
-			include($basepath);
-		}
-
-		// Do we have an alternative path to look in?
-		if ($alt_path !== '')
-		{
-			$alt_path .= 'language/'.$idiom.'/'.$langfile;
-			if (file_exists($alt_path))
-			{
-				include($alt_path);
-				$found = TRUE;
-			}
-		}
-		else
-		{
-			foreach (get_instance()->load->get_package_paths(TRUE) as $package_path)
-			{
-				$package_path .= 'language/'.$idiom.'/'.$langfile;
-				if ($basepath !== $package_path && file_exists($package_path))
-				{
-					include($package_path);
-					$found = TRUE;
-					break;
-				}
-			}
-		}
+            // Do we have an alternative path to look in?
+            if ($alt_path !== '')
+            {
+                $alt_path .= 'language/'.$idiom.'/'.$langfile;
+                if (file_exists($alt_path))
+                {
+                    include($alt_path);
+                    $found = TRUE;
+                }
+            }
+            else
+            {
+                foreach (get_instance()->load->get_package_paths(TRUE) as $package_path)
+                {
+                    $package_path .= 'language/'.$idiom.'/'.$langfile;
+                    if ($file !== $package_path && file_exists($package_path))
+                    {
+                        include($package_path);
+                        $found = TRUE;
+                        break;
+                    }
+                }
+            }    
+        }  
 
 		if ($found !== TRUE)
 		{
