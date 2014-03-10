@@ -788,6 +788,9 @@ li.message-menu {
     font-size: 18px;
     margin: 0px;
     }
+    #main header h1 .fa{
+    margin-right:5px;
+    }
 
 /* Sidebar/drop-down menu */
 #menu {
