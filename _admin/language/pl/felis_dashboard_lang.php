@@ -20,34 +20,6 @@ $lang['dashboard_statistic_board']         = "Forum";
 $lang['dashboard_statistic_others']        = "Inne";
 
 $lang['dashboard_statistic_month']         = "Miesiąc";
-
-    // Przerobić na domyślne z kalendarza
-    $lang['dashboard_statistic_months_jan']    = "STY";
-    $lang['dashboard_statistic_months_feb']    = "LUT";
-    $lang['dashboard_statistic_months_mar']    = "MAR";
-    $lang['dashboard_statistic_months_apr']    = "KWI";
-    $lang['dashboard_statistic_months_may']    = "MAJ";
-    $lang['dashboard_statistic_months_jun']    = "CZE";
-    $lang['dashboard_statistic_months_jul']    = "LIP";
-    $lang['dashboard_statistic_months_aug']    = "SIE";
-    $lang['dashboard_statistic_months_sep']    = "WRZ";
-    $lang['dashboard_statistic_months_oct']    = "PAŹ";
-    $lang['dashboard_statistic_months_nov']    = "LIS";
-    $lang['dashboard_statistic_months_dec']    = "GRU";
-
-    $lang['dashboard_statistic_months_january']     = "Styczeń";
-    $lang['dashboard_statistic_months_february']    = "Luty";
-    $lang['dashboard_statistic_months_march']       = "Marzec";
-    $lang['dashboard_statistic_months_april']       = "Kwiecień";
-    $lang['dashboard_statistic_months_may']         = "Maj";
-    $lang['dashboard_statistic_months_june']        = "Czerwiec";
-    $lang['dashboard_statistic_months_july']        = "Lipiec";
-    $lang['dashboard_statistic_months_august']      = "Sierpień";
-    $lang['dashboard_statistic_months_september']   = "Wrzesień";
-    $lang['dashboard_statistic_months_october']     = "Październik";
-    $lang['dashboard_statistic_months_november']    = "Listopad";
-    $lang['dashboard_statistic_months_december']    = "Grudzień";
-    // Koniec przerabiania
     
 $lang['dashboard_statistic_chart_resized']         = "Wykres statystyk przeskalowany";
 $lang['dashboard_statistic_chart_resized_info']    = "Wykryto zmianę wielkości przeglądarki, wykres statystyk został przeskalowany.";
