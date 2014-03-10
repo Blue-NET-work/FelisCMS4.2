@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="{$TEMPLATES}assets/css/felis/felis.modal.css">
     <link rel="stylesheet" href="{$TEMPLATES}assets/css/felis/felis.progress-slider.css">
     <link rel="stylesheet" href="{$TEMPLATES}assets/css/felis/felis.switches.css">                              
+    <link rel="stylesheet" href="{$TEMPLATES}assets/css/fonts/font-awesome/font-awesome.css">                              
     
     <!-- Webfonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>

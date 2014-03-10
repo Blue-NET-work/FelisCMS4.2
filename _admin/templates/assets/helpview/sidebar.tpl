@@ -13,25 +13,17 @@
         ================================================== -->
         <section class="navigable">
             <ul class="big-menu">                                                                                          
-                <li><a href="{$base_url}" {if $uri[1]=="" || $uri[1]=="dashboard" AND $uri[2]==""}class="current"{/if}><i class="menu1-home"></i> {lang line="default_sidebar_menu_home"}</a></li>   
+                <li><a href="{$base_url}" {if $uri[1]=="" || $uri[1]=="dashboard" AND $uri[2]==""}class="current"{/if}><i class="fa fa-home"></i>{lang line="default_sidebar_menu_home"}</a></li>   
                 <!-- Menu
                 ================================================== -->
-                <li><a href="{$base_url}menu.html" {if $uri[1]=="menu"}class="current"{/if}><i class="menu1-directions"></i> {lang line="default_sidebar_menu_menu"}</a></li>
-            {if $adminMenu.pages == "1"}
-                <!-- Pages
-                ================================================== -->
-                {include file="./assets/menu/pages.tpl"} 
-            {/if}
-            {if $adminMenu.articles == "1"}
-                <!-- Articles                           
-                ================================================== -->
-                {include file="./assets/menu/articles.tpl"} 
-            {/if}
-            {if $adminMenu.galleries == "1"}
-                <!-- Galleries                           
-                ================================================== -->
-                {include file="./assets/menu/galleries.tpl"} 
-            {/if}
+                <li><a href="{$base_url}menu.html" {if $uri[1]=="menu"}class="current"{/if}><i class="fa fa-bars"></i>{lang line="default_sidebar_menu_menu"}</a></li>
+                <!-- Pages -->                                          
+                {include file="./sidebar/menu_pages.tpl"} 
+                <!-- Articles -->                            
+                {include file="./sidebar/menu_articles.tpl"} 
+                <!-- Galleries -->
+                {include file="./sidebar/menu_galleries.tpl"}  
+                           
             {if $adminMenu.statistic == "1"}
                 <!-- Statistic                          
                 ================================================== -->
@@ -61,15 +53,9 @@
                 <!-- Layout                           
                 ================================================== -->
                 {include file="./assets/menu/settings.tpl"}  
-            {/if}
-            {if $adminMenu.users == "1"}
-                <!-- Users                             
-                ================================================== -->
-                {include file="./assets/menu/users.tpl"}
-            {/if} 
-                    <li class="with-right-arrow">
-                        <a href="{$TEMPLATES}ajax/submenu.html" class="navigable-ajax" title="Menu title">With ajax sub-menu</a>
-                    </li>
+            {/if}        
+                <!-- Users -->
+                {include file="./sidebar/menu_users.tpl"}  
             </ul>     
         </section>   
                           

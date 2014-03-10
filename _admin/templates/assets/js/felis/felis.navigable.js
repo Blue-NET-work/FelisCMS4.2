@@ -293,7 +293,7 @@
 						// If notification system is enabled
 						if (window.notify)
 						{
-							window.notify('Menu loading failed with the status "'+textStatus+'"');
+							window.notify('Ładowanie menu nie powiodło się status "'+textStatus+'"');
 						}
 
 						// If related load is still here

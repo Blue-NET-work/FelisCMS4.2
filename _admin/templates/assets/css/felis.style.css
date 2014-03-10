@@ -1072,7 +1072,7 @@ li.message-menu {
         li.big-menu > span,
         .big-menu > li > a,
         li.big-menu > a {
-            cursor: pointer;
+            cursor: pointer;              
             border-left: 0px solid #404040;
             border-left: 0px solid rgba(0, 0, 0, 0.5);
             padding-right: 20px; /* Menu padding + hovered border width */
@@ -1081,6 +1081,12 @@ li.message-menu {
             -ms-transition: border-left-width 100ms, padding-right 100ms;
             -o-transition: border-left-width 100ms, padding-right 100ms;
             transition: border-left-width 100ms, padding-right 100ms;
+            }
+            .big-menu > li > span .fa,
+            li.big-menu > span .fa,
+            .big-menu > li > a .fa,
+            li.big-menu > a .fa{ 
+                margin-right:8px;
             }
             .no-touch .big-menu > li > span:hover,
             .no-touch li.big-menu > span:hover,

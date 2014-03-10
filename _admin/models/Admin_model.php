@@ -27,7 +27,7 @@ class Admin_model extends CI_Model{
         if($this->ion_auth->logged_in()){     
             $_avatar = templates_url("assets/img/user.png"); 
             $_user = $this->ion_auth->user()->row();
-            if($_user->avatar) $_avatar = base_url("../uploads/avatar/{$_user->avatar}");
+            if($_user->avatar) $_avatar = uploads_url("avatar/{$_user->avatar}");
             $_group = FC_DB::getWhereJoinOrder('users_permissions', 'users_groups', 'up_group_id = ug_id', array('up_user_id'=>$_user->id), "`up_group_id` DESC");   
             $userLogIn = array(                   
                 'first_name' => $_user->first_name,
