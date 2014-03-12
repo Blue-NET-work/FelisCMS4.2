@@ -30,11 +30,33 @@
                 </div>
                 {/foreach}   
             </section> 
-            {/if}  
+            {/if}          
             
             <div class="row margin-top margin-bottom">
-                <div class="col-md-6">FelisCMS Information</div>
-                <div class="col-md-6">FelisCMD Aktualizacje</div>
+                <div class="col-md-6">
+                    <div class="alert-message alert-message-info">
+                        <h4>FelisCMS :: Informacyjna Wiadomość</h4>
+                        <p>To jest pierwsza wiadomość informacyjna systemu FelisCMS.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert-message alert-message-warning">
+                        <h4>FelisCMS :: Aktualizacja</h4>
+                        <p>Wydana została kolejna aktualizacja FelisCMS, zapraszamy do pobrania najnowszej wersji.</p>
+                    </div>
+                </div>    
+                <div class="col-md-6">
+                    <div class="alert-message alert-message-danger">
+                        <h4>FelisCMS :: Krytyczna Poprawka</h4>
+                        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>strong message</strong>.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert-message alert-message-notice">
+                        <h4>FelisCMS :: Informacje Licencyjne</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.<strong>strong message</strong>. <a href="http://www.jquery2dotnet.com/2013/07/cool-notification-css-style.html">Cool Notification Css Style</a></p>
+                    </div>
+                </div>
             </div>
             
             <!-- Dashboard statistic
@@ -65,6 +87,8 @@
                 <div class="col-md-3">FelisCMS Licence</div>
                 <div class="col-md-3">Facebook</div>
             </div>
+               
+                          
             
             <div class="row">
         <h2>
