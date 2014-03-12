@@ -16,10 +16,10 @@ class Dashboard extends FC_Controller {
         //@View::setCSS(templates_url('assets/css/felis/felis.dashboard.css'));           
         /* Wczytanie domyślnych JS'ów */                                                   
         //@View::setJQ(templates_url("assets/js/felis/felis.agenda.js"));    
-                                        
+                                            
         @FC_Request::loadLang("felis_dashboard"); 
-        //@FC_Request::loadModel('dashboard_model');  
-                                                     
+        //@FC_Request::loadModel('dashboard_model');        
+             
         @FC_Request::smartyView("index.tpl");
     }         
     
