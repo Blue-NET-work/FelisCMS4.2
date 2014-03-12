@@ -32,6 +32,11 @@
             </section> 
             {/if}  
             
+            <div class="row">
+                <div class="col-md-6">FelisCMS Information</div>
+                <div class="col-md-6">FelisCMD Aktualizacje</div>
+            </div>
+            
             <!-- Dashboard statistic
             ================================================== -->
             <div class="dashboard" id="dashboard">
@@ -47,6 +52,19 @@
                     </div>
                 </div>
             </div> 
+            
+            <div class="row">
+                <div class="col-md-4">Nowi Użytkownicy</div>
+                <div class="col-md-4">????</div>
+                <div class="col-md-4">Agenda</div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-3">Statystyki</div>
+                <div class="col-md-3">??</div>
+                <div class="col-md-3">FelisCMS Licence</div>
+                <div class="col-md-3">Facebook</div>
+            </div>
             
           </section>                                                       
     </section>                                                       
