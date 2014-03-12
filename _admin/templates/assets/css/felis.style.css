@@ -1024,7 +1024,10 @@ li.message-menu {
                     }
                     .ie8 #access > li > a:hover:after {
                         display: block;
-                    }                     
+                    }      
+                #access #lang{
+                text-align:left;
+                }              
 
 /********************************************************/
 /*                   Menus styles                       */
