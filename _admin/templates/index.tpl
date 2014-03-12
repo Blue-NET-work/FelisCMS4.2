@@ -32,30 +32,31 @@
             </section> 
             {/if}          
             
-            <div class="row margin-top margin-bottom">
-                <div class="col-md-6">
-                    <div class="alert-message alert-message-info">
-                        <h4>FelisCMS :: Informacyjna Wiadomość</h4>
+            <div class="row margin-top">
+                <div class="col-md-4">
+                    <div class="blockquote-box blockquote-primary clearfix">
+                        <div class="square pull-left"><span class="glyphicon glyphicon-bullhorn glyphicon-lg"></span></div>
+                        <h4>FelisCMS :: Informacyjna Wiadomość</h4>    
                         <p>To jest pierwsza wiadomość informacyjna systemu FelisCMS.</p>
-                    </div>
+                    </div>  
                 </div>
-                <div class="col-md-6">
-                    <div class="alert-message alert-message-warning">
-                        <h4>FelisCMS :: Aktualizacja</h4>
+                <div class="col-md-4">
+                    <!-- aktualizacja -->
+                    <div class="blockquote-box blockquote-warning clearfix">
+                        <div class="square pull-left"><span class="glyphicon glyphicon-warning-sign glyphicon-lg"></span></div>           
+                        <h4>FelisCMS :: Aktualizacja</h4> 
                         <p>Wydana została kolejna aktualizacja FelisCMS, zapraszamy do pobrania najnowszej wersji.</p>
-                    </div>
+                    </div>                        
+                    <!-- aktualizacja -->
                 </div>    
-                <div class="col-md-6">
-                    <div class="alert-message alert-message-danger">
-                        <h4>FelisCMS :: Krytyczna Poprawka</h4>
+                <div class="col-md-4">
+                    <!-- krytyczna poprawka -->
+                    <div class="blockquote-box blockquote-danger clearfix">
+                        <div class="square pull-left"><span class="glyphicon glyphicon-exclamation-sign glyphicon-lg"></span></div>           
+                        <h4>FelisCMS :: Krytyczna Poprawka</h4>  
                         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>strong message</strong>.</p>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="alert-message alert-message-notice">
-                        <h4>FelisCMS :: Informacje Licencyjne</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.<strong>strong message</strong>. <a href="http://www.jquery2dotnet.com/2013/07/cool-notification-css-style.html">Cool Notification Css Style</a></p>
-                    </div>
+                    <!-- krytyczna poprawka -->  
                 </div>
             </div>
             
@@ -84,7 +85,15 @@
             <div class="row large-margin-top">
                 <div class="col-md-3">Statystyki</div>
                 <div class="col-md-3">??</div>
-                <div class="col-md-3">FelisCMS Licence</div>
+                <div class="col-md-3">
+                    <!-- informacje o licencji -->
+                    <div class="blockquote-box blockquote-info clearfix">
+                        <div class="square pull-left"><span class="glyphicon glyphicon-info-sign glyphicon-lg"></span></div>
+                        <h4>Information</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. </p>
+                    </div>
+                    <!-- informacje o licencji -->
+                </div>
                 <div class="col-md-3">Facebook</div>
             </div>
                
