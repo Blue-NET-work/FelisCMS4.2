@@ -32,7 +32,7 @@
             </section> 
             {/if}  
             
-            <div class="row">
+            <div class="row margin-top margin-bottom">
                 <div class="col-md-6">FelisCMS Information</div>
                 <div class="col-md-6">FelisCMD Aktualizacje</div>
             </div>
@@ -53,18 +53,93 @@
                 </div>
             </div> 
             
-            <div class="row">
+            <div class="row large-margin-top">
                 <div class="col-md-4">Nowi Użytkownicy</div>
                 <div class="col-md-4">????</div>
                 <div class="col-md-4">Agenda</div>
             </div>
             
-            <div class="row">
+            <div class="row large-margin-top">
                 <div class="col-md-3">Statystyki</div>
                 <div class="col-md-3">??</div>
                 <div class="col-md-3">FelisCMS Licence</div>
                 <div class="col-md-3">Facebook</div>
             </div>
+            
+            <div class="row">
+        <h2>
+            Blockquote Box</h2>
+        <div class="col-md-6">
+            <div class="blockquote-box clearfix">
+                <div class="square pull-left">
+                    <img src="http://placehold.it/60/8e44ad/FFF&text=B" alt="" class="" />
+                </div>
+                <h4>
+                    Bootsnipp</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+            </div>
+            <div class="blockquote-box blockquote-primary clearfix">
+                <div class="square pull-left">
+                    <span class="glyphicon glyphicon-music glyphicon-lg"></span>
+                </div>
+                <h4>
+                    Let's music play</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante. <a href="http://www.jquery2dotnet.com/search/label/jquery">jquery2dotnet</a>
+                </p>
+            </div>
+            <div class="blockquote-box blockquote-success clearfix">
+                <div class="square pull-left">
+                    <span class="glyphicon glyphicon-tree-conifer glyphicon-lg"></span>
+                </div>
+                <h4>
+                    Tree conifer</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="blockquote-box blockquote-info clearfix">
+                <div class="square pull-left">
+                    <span class="glyphicon glyphicon-info-sign glyphicon-lg"></span>
+                </div>
+                <h4>
+                    Information</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+            </div>
+            <div class="blockquote-box blockquote-warning clearfix">
+                <div class="square pull-left">
+                    <span class="glyphicon glyphicon-warning-sign glyphicon-lg"></span>
+                </div>
+                <h4>
+                    Warning</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+            </div>
+            <div class="blockquote-box blockquote-danger clearfix">
+                <div class="square pull-left">
+                    <span class="glyphicon glyphicon-record glyphicon-lg"></span>
+                </div>
+                <h4>
+                    Danger</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+            </div>
+        </div>
+    </div>
             
           </section>                                                       
     </section>                                                       
