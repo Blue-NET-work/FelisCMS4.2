@@ -5,7 +5,7 @@ class Dashboard extends FC_Controller {
 
     function __construct(){
         parent::__construct();  
-        @FC_Request::loadModel('Admin_model');                                                             
+        @FC_Request::loadModel('Admin_model', "Dashboard_model");                                                             
     }
                                   
     public function index(){               
@@ -16,10 +16,10 @@ class Dashboard extends FC_Controller {
         //@View::setCSS(templates_url('assets/css/felis/felis.dashboard.css'));           
         /* Wczytanie domyślnych JS'ów */                                                   
         //@View::setJQ(templates_url("assets/js/felis/felis.agenda.js"));    
-                                        
+                                            
         @FC_Request::loadLang("felis_dashboard"); 
-        //@FC_Request::loadModel('dashboard_model');  
-                                                     
+        //@FC_Request::loadModel('dashboard_model');        
+             
         @FC_Request::smartyView("index.tpl");
     }         
     
@@ -102,19 +102,18 @@ class Dashboard extends FC_Controller {
                       
 /********************
 *   Change Languages
-********************/ 
-
-    public function language($lang){    
-        $referer = @FC_Request::server("HTTP_REFERER");                 
-        @FC_Request::languageSet($lang);    
+********************/         
+    public function language($lang){ 
+        $referer = @FC_Request::server("HTTP_REFERER"); 
+        $$respond = Dashboard_model::languageSet($lang);    
+        
         $response["success"] = lang("default_success");
         $response["success_msg"] = lang("default_laguage_success");
         $response["error"] = lang("default_error");                  
         $response["error_msg"] = lang("default_laguage_error");
         $response["status"] = "ok";
-        $response["templates_url"] = templates_url();
-        $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));                         
-        //redirect($referer, 'refresh', "5");
+        $response["templates_url"] = templates_url();                                                                            
+        redirect($referer, 'refresh', "5");
     }    
                               
 }            

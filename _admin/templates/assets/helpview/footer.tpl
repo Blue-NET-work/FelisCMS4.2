@@ -10,6 +10,8 @@
     <!-- Scripts -->
     <script src="{$TEMPLATES}assets/js/libs/jquery-1.11.0.js"></script>
     <script src="{$TEMPLATES}assets/js/scripts/setup.js"></script>
+    <script src="{$TEMPLATES}assets/js/bootstrap/bootstrap.js"></script>
+    <script src="{$TEMPLATES}assets/js/bootstrap/bootstrap-jasny.js"></script>
 
     <!-- Template functions -->
     <script src="{$TEMPLATES}assets/js/felis/felis.input.js"></script>

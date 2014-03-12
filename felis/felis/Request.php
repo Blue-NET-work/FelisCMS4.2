@@ -23,15 +23,7 @@ class FC_Request {
     public function language(){
         $language = ($this->session->userdata('user_lang') != "") ? $this->session->userdata('user_lang') : $this->config->item('language');                
         return $language;
-    }  
-
-// Ustawienie języka dla użytkownika        
-    public function languageSet($lang = false){
-        if($lang != FC_Request::language()){
-            $this->session->set_userdata(array('user_lang'=>$lang));        
-            $this->config->set_item('language', $lang);
-        }  
-    } 
+    }                                    
     
 // Pobieranie IP ADRES odwiedzającego
     public function ipAddress() {

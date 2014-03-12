@@ -1,0 +1,70 @@
+/*
+ *
+ * Alert messages
+ *
+ */
+.alert-message{
+    margin: 20px 0;
+    padding: 20px;
+    border-left: 3px solid #eee;
+}
+.alert-message code{
+    background-color: #fff;
+    border-radius: 3px;
+}
+.alert-message p:last-child{margin-bottom: 0;}
+.alert-message h4{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+    .alert-message-danger h4{color: #d9534f;}
+    .alert-message-warning h4{color: #f0ad4e;}
+    .alert-message-success h4{color: #3C763D;}
+    .alert-message-default h4{color: #000;}
+    .alert-message-notice h4{color: #444;}
+    .alert-message-info h4{color: #5bc0de;}
+          
+.alert-message-success{
+    background-color: #F4FDF0;
+    border-color: #3C763D;
+}                                           
+.alert-message-danger{
+    background-color: #fdf7f7;
+    border-color: #d9534f;
+}                                        
+.alert-message-warning{
+    background-color: #fcf8f2;
+    border-color: #f0ad4e;
+}                                          
+.alert-message-info{
+    background-color: #f4f8fa;
+    border-color: #5bc0de;
+}                                        
+.alert-message-default
+{
+    background-color: #EEE;
+    border-color: #B4B4B4;
+}                                      
+.alert-message-notice{
+    background-color: #FCFCDD;
+    border-color: #BDBD89;
+}                                       
+
+/*
+ *
+ *
+ *
+ */
+.glyphicon-lg{font-size:3em}
+.blockquote-box{border-right:5px solid #E6E6E6;margin-bottom:25px}
+.blockquote-box .square{width:100px;min-height:50px;margin-right:22px;text-align:center!important;background-color:#E6E6E6;padding:20px 0}
+.blockquote-box.blockquote-primary{border-color:#357EBD}
+.blockquote-box.blockquote-primary .square{background-color:#428BCA;color:#FFF}
+.blockquote-box.blockquote-success{border-color:#4CAE4C}
+.blockquote-box.blockquote-success .square{background-color:#5CB85C;color:#FFF}
+.blockquote-box.blockquote-info{border-color:#46B8DA}
+.blockquote-box.blockquote-info .square{background-color:#5BC0DE;color:#FFF}
+.blockquote-box.blockquote-warning{border-color:#EEA236}
+.blockquote-box.blockquote-warning .square{background-color:#F0AD4E;color:#FFF}
+.blockquote-box.blockquote-danger{border-color:#D43F3A}
+.blockquote-box.blockquote-danger .square{background-color:#D9534F;color:#FFF}

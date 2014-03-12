@@ -1,8 +1,8 @@
 <?php
 class Dashboard_model extends CI_Model{
-    
+
     public function __construct(){                
-        parent::__construct(); 
+        parent::__construct();   
         $this->agendaToday(); 
         $this->new_users(); 
         //Statystyka
@@ -73,6 +73,15 @@ class Dashboard_model extends CI_Model{
             }    
         }                                                 
         $this->smarty->assigns("permissions", $permissions);
-    }        
+    }   
     
+// Ustawienie języka dla użytkownika        
+    public function languageSet($lang = false){
+        if($lang != FC_Request::language()){
+            $this->session->set_userdata(array('user_lang'=>$lang));        
+            $this->config->set_item('language', $lang);
+            return true;
+        }  
+    }
+     
 }
