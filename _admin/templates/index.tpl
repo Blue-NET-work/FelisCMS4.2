@@ -30,7 +30,34 @@
                 </div>
                 {/foreach}   
             </section> 
-            {/if}  
+            {/if}          
+            
+            <div class="row margin-top margin-bottom">
+                <div class="col-md-6">
+                    <div class="alert-message alert-message-info">
+                        <h4>FelisCMS :: Informacyjna Wiadomość</h4>
+                        <p>To jest pierwsza wiadomość informacyjna systemu FelisCMS.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert-message alert-message-warning">
+                        <h4>FelisCMS :: Aktualizacja</h4>
+                        <p>Wydana została kolejna aktualizacja FelisCMS, zapraszamy do pobrania najnowszej wersji.</p>
+                    </div>
+                </div>    
+                <div class="col-md-6">
+                    <div class="alert-message alert-message-danger">
+                        <h4>FelisCMS :: Krytyczna Poprawka</h4>
+                        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>strong message</strong>.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert-message alert-message-notice">
+                        <h4>FelisCMS :: Informacje Licencyjne</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.<strong>strong message</strong>. <a href="http://www.jquery2dotnet.com/2013/07/cool-notification-css-style.html">Cool Notification Css Style</a></p>
+                    </div>
+                </div>
+            </div>
             
             <!-- Dashboard statistic
             ================================================== -->
@@ -47,6 +74,96 @@
                     </div>
                 </div>
             </div> 
+            
+            <div class="row large-margin-top">
+                <div class="col-md-4">Nowi Użytkownicy</div>
+                <div class="col-md-4">????</div>
+                <div class="col-md-4">Agenda</div>
+            </div>
+            
+            <div class="row large-margin-top">
+                <div class="col-md-3">Statystyki</div>
+                <div class="col-md-3">??</div>
+                <div class="col-md-3">FelisCMS Licence</div>
+                <div class="col-md-3">Facebook</div>
+            </div>
+               
+                          
+            
+            <div class="row">
+        <h2>
+            Blockquote Box</h2>
+        <div class="col-md-6">
+            <div class="blockquote-box clearfix">
+                <div class="square pull-left">
+                    <img src="http://placehold.it/60/8e44ad/FFF&text=B" alt="" class="" />
+                </div>
+                <h4>
+                    Bootsnipp</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+            </div>
+            <div class="blockquote-box blockquote-primary clearfix">
+                <div class="square pull-left">
+                    <span class="glyphicon glyphicon-music glyphicon-lg"></span>
+                </div>
+                <h4>
+                    Let's music play</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante. <a href="http://www.jquery2dotnet.com/search/label/jquery">jquery2dotnet</a>
+                </p>
+            </div>
+            <div class="blockquote-box blockquote-success clearfix">
+                <div class="square pull-left">
+                    <span class="glyphicon glyphicon-tree-conifer glyphicon-lg"></span>
+                </div>
+                <h4>
+                    Tree conifer</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="blockquote-box blockquote-info clearfix">
+                <div class="square pull-left">
+                    <span class="glyphicon glyphicon-info-sign glyphicon-lg"></span>
+                </div>
+                <h4>
+                    Information</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+            </div>
+            <div class="blockquote-box blockquote-warning clearfix">
+                <div class="square pull-left">
+                    <span class="glyphicon glyphicon-warning-sign glyphicon-lg"></span>
+                </div>
+                <h4>
+                    Warning</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+            </div>
+            <div class="blockquote-box blockquote-danger clearfix">
+                <div class="square pull-left">
+                    <span class="glyphicon glyphicon-record glyphicon-lg"></span>
+                </div>
+                <h4>
+                    Danger</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+            </div>
+        </div>
+    </div>
             
           </section>                                                       
     </section>                                                       
