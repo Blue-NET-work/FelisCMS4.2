@@ -58,35 +58,35 @@ class CI_Email {
 	 *
 	 * @var	string	'mail', 'sendmail' or 'smtp'
 	 */
-	public $protocol	= 'mail';		// mail/sendmail/smtp
+	public $protocol	= 'smtp';		// mail/sendmail/smtp
 
 	/**
 	 * STMP Server host
 	 *
 	 * @var	string
 	 */
-	public $smtp_host	= '';
+	public $smtp_host	= 'mail.blue-net.pl';
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var	string
 	 */
-	public $smtp_user	= '';
+	public $smtp_user	= 'no-replay@blue-net.pl';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var	string
 	 */
-	public $smtp_pass	= '';
+	public $smtp_pass	= 'Ztmmys4q';
 
 	/**
 	 * SMTP Server port
 	 *
 	 * @var	int
 	 */
-	public $smtp_port	= 25;
+	public $smtp_port	= 587;
 
 	/**
 	 * SMTP connection timeout in seconds

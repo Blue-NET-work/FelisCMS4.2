@@ -50,10 +50,9 @@ class Dashboard extends FC_Controller {
             $this->form_validation->set_rules('item[password]', 'lang:felis_login_password', 'required');
                 
             if ($this->form_validation->run() == true){    
-                $item = @FC_Request::post('item');                                        
-                $remember = (bool) $item['remember'];
-                                                    
-                if ($this->ion_auth->login($item['login'], $item['password'], $remember)){
+                $item = @FC_Request::post('item');                                                                     
+                  
+                if ($this->ion_auth->login($item['login'], $item['password'], isset($item['remember']))){
                     $respond["logged"] = true;
                     $respond["messages"] = $this->ion_auth->messages();                                           
                     $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond));  

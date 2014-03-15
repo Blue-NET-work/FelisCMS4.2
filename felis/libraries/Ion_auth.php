@@ -403,6 +403,9 @@ class Ion_auth
 		{
 			$this->session->sess_create();
 		}
+        else{
+            $this->session->sess_regenerate(TRUE);
+        }
 
 		$this->set_message('logout_successful');
 		return TRUE;
@@ -484,7 +487,7 @@ class Ion_auth
 			$groups_array = array();
 			foreach ($users_groups as $group)
 			{
-				$groups_array[$group->id] = $group->name;
+				$groups_array[$group->ug_id] = $group->ug_name;
 			}
 			$this->_cache_user_in_group[$id] = $groups_array;
 		}

@@ -80,8 +80,6 @@
                             dataType: 'json', 
                             data: $('#form-login').serialize(),           
                             success: function(data){
-                            console.log($('#form-login').serialize());
-                              console.log(data);
                               if (data.logged){
                                   formBlock.clearMessages();
                                   displaySuccess(data.messages);
@@ -92,7 +90,7 @@
                                   displayError(data.messages);
                               }
                             },
-                            error: function(){
+                            error: function(){                               
                               formBlock.clearMessages();
                               displayError('{lang line="felis_login_error_contacting"}');
                             }
