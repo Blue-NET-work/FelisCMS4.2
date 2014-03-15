@@ -1,6 +1,6 @@
  
     <!-- Button to open/hide menu -->
-    <a href="#" id="open-menu"><span>{lang line="default_sidebar_menu"}</span></a>
+    <a href="#" id="open-menu"><span>{lang line="felis_sidebar_menu"}</span></a>
  
     <!-- Sidebar/drop-down menu -->
     <section id="menu" role="complementary">                         
