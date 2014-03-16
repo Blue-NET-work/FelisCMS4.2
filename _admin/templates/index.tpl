@@ -32,30 +32,31 @@
             </section> 
             {/if}          
             
-            <div class="row margin-top margin-bottom">
-                <div class="col-md-6">
-                    <div class="alert-message alert-message-info">
-                        <h4>FelisCMS :: Informacyjna Wiadomość</h4>
+            <div class="row margin-top">
+                <div class="col-md-4">
+                    <div class="blockquote-box blockquote-primary clearfix">
+                        <div class="square pull-left"><span class="glyphicon glyphicon-bullhorn glyphicon-lg"></span></div>
+                        <h4>FelisCMS :: Informacyjna Wiadomość</h4>    
                         <p>To jest pierwsza wiadomość informacyjna systemu FelisCMS.</p>
-                    </div>
+                    </div>  
                 </div>
-                <div class="col-md-6">
-                    <div class="alert-message alert-message-warning">
-                        <h4>FelisCMS :: Aktualizacja</h4>
+                <div class="col-md-4">
+                    <!-- aktualizacja -->
+                    <div class="blockquote-box blockquote-warning clearfix">
+                        <div class="square pull-left"><span class="glyphicon glyphicon-warning-sign glyphicon-lg"></span></div>           
+                        <h4>FelisCMS :: Aktualizacja</h4> 
                         <p>Wydana została kolejna aktualizacja FelisCMS, zapraszamy do pobrania najnowszej wersji.</p>
-                    </div>
+                    </div>                        
+                    <!-- aktualizacja -->
                 </div>    
-                <div class="col-md-6">
-                    <div class="alert-message alert-message-danger">
-                        <h4>FelisCMS :: Krytyczna Poprawka</h4>
+                <div class="col-md-4">
+                    <!-- krytyczna poprawka -->
+                    <div class="blockquote-box blockquote-danger clearfix">
+                        <div class="square pull-left"><span class="glyphicon glyphicon-exclamation-sign glyphicon-lg"></span></div>           
+                        <h4>FelisCMS :: Krytyczna Poprawka</h4>  
                         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>strong message</strong>.</p>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="alert-message alert-message-notice">
-                        <h4>FelisCMS :: Informacje Licencyjne</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.<strong>strong message</strong>. <a href="http://www.jquery2dotnet.com/2013/07/cool-notification-css-style.html">Cool Notification Css Style</a></p>
-                    </div>
+                    <!-- krytyczna poprawka -->  
                 </div>
             </div>
             
@@ -76,95 +77,138 @@
             </div> 
             
             <div class="row large-margin-top">
-                <div class="col-md-4">Nowi Użytkownicy</div>
+                <div class="col-md-4">  
+                <!-- zawartość -->     
+                    <h2 class="relative thin">          
+                        {lang line="dashboard_new_users"}
+                        <span class="button-group absolute-right">
+                            <a href="javascript:openModal()" title="{lang line="dashboard_add_user"}" class="button icon-plus">{lang line="default_add"}</a>
+                            <a href="javascript:openLoadingModal()" title="{lang line="dashboard_reload_list"}" class="button icon-redo"></a>
+                        </span>
+                    </h2>
+
+                    <ul class="list spaced">    
+                        {foreach from=$dashboard_users item=user name=user}
+                        <li>                                                                                   
+                            <a href="{$base_url}users/edit/{$user.id}.html" class="list-link icon-user"> 
+                              {foreach item=item from=$user.group}
+                                <span class="meter {$item.user_color}" title="{$item.user_group}"></span>
+                              {/foreach} 
+                              <strong>{$user.first_name}</strong> {$user.last_name}
+                            </a>
+                            <div class="button-group absolute-right compact show-on-parent-hover">
+                                <a href="{$base_url}users/edit/{$user.id}.html" class="button icon-pencil">{lang line="default_edit"}</a>
+                                <a href="#" class="button icon-gear with-tooltip" title="Other actions"></a>
+                                <a href="#" class="button icon-trash with-tooltip confirm" title="{lang line="default_delete"}"></a>
+                            </div>   
+                        </li>
+                        {/foreach}  
+                    </ul>
+                <!-- zawartość -->
+                </div>
                 <div class="col-md-4">????</div>
-                <div class="col-md-4">Agenda</div>
+                <div class="col-md-4">
+                <!-- zawartość -->  
+                    <div class="block">
+                        <!-- Block title -->
+                        <div class="block-title">
+                            <h3 id="agenda-day">{lang line="dashboard_agenda_tuesday"}</h3>
+                            <div class="button-group absolute-right compact">
+                                <a href="#" class="button" id="agenda-previous"><span class="icon-left-fat"></span></a>
+                                <a href="#" class="button" id="agenda-today">{lang line="dashboard_agenda_today"}</a>
+                                <a href="#" class="button" id="agenda-next"><span class="icon-right-fat"></span></a>
+                            </div>
+                        </div><!-- ./end Block title -->
+
+                        <div class="agenda" id="agenda">
+                            <!-- Time markers -->
+                            <ul class="agenda-time">
+                                <li class="from-7 to-8"><span>{lang line="dashboard_agenda_7AM"}</span></li>
+                                <li class="from-8 to-9"><span>{lang line="dashboard_agenda_8AM"}</span></li>
+                                <li class="from-9 to-10"><span>{lang line="dashboard_agenda_9AM"}</span></li>
+                                <li class="from-10 to-11"><span>{lang line="dashboard_agenda_10AM"}</span></li>
+                                <li class="from-11 to-12 red"><span>{lang line="dashboard_agenda_11AM"}</span></li>
+                                <li class="from-12 to-13 blue"><span>{lang line="dashboard_agenda_NOON"}</span></li>
+                                <li class="from-13 to-14 green"><span>{lang line="dashboard_agenda_1PM"}</span></li>
+                                <li class="from-14 to-15"><span>{lang line="dashboard_agenda_2PM"}</span></li>
+                                <li class="from-15 to-16"><span>{lang line="dashboard_agenda_3PM"}</span></li>
+                                <li class="from-16 to-17"><span>{lang line="dashboard_agenda_4PM"}</span></li>
+                                <li class="from-17 to-18"><span>{lang line="dashboard_agenda_5PM"}</span></li>
+                                <li class="from-18 to-19"><span>{lang line="dashboard_agenda_6PM"}</span></li>
+                                <li class="from-19 to-20"><span>{lang line="dashboard_agenda_7PM"}</span></li>
+                                <li class="at-20"><span>{lang line="dashboard_agenda_8PM"}</span></li>
+                            </ul><!-- ./end Time markers -->
+
+                            <!-- Columns wrapper -->
+                            <div class="agenda-wrapper">  
+                                <!-- Events list -->
+                                <div class="agenda-events agenda-day1"></div> 
+                                <!-- Events list -->
+                                <div class="agenda-events agenda-day2"></div>
+                                <!-- Events list -->
+                                <div class="agenda-events agenda-day3"></div>
+                                <!-- Events list -->
+                                <div class="agenda-events agenda-day4"></div>    
+                                <!-- Events list -->
+                                <div class="agenda-events agenda-day5"></div> 
+                                <!-- Events list -->
+                                <div class="agenda-events agenda-day6"></div>   
+                                <!-- Events list -->
+                                <div class="agenda-events agenda-day7"></div>  
+                            </div><!-- ./end Columns wrapper -->  
+                        </div><!-- ./end Agenda -->  
+                    </div><!-- ./end block -->                        
+                <!-- zawartość -->
+                </div>
             </div>
             
             <div class="row large-margin-top">
-                <div class="col-md-3">Statystyki</div>
+                <div class="col-md-3">
+                <!-- zawartość -->              
+                    <div class="block large-margin-bottom">
+                        <div class="block-title">
+                            <h3><i class="icon-pie-chart"></i> {lang line="default_sidebar_menu_statistic"}</h3>
+                        </div>
+                        <div class="with-padding">                                                                                             
+                            <p><i class="icon-pages"></i> <strong>{lang line="default_sidebar_menu_pages"}:</strong> 10</p>
+                            <p><i class="icon-bullet-list"></i> <strong>{lang line="default_sidebar_menu_articles"}:</strong> 10</p>
+                            <p><i class="icon-pictures"></i> <strong>{lang line="default_sidebar_menu_galleries"}:</strong> 10</p>
+                            <p><i class="icon-users"></i> <strong>{lang line="default_sidebar_menu_users"}:</strong> 10</p>
+                        </div>                                
+                    </div>
+                <!-- zawartość -->
+                </div>
                 <div class="col-md-3">??</div>
-                <div class="col-md-3">FelisCMS Licence</div>
-                <div class="col-md-3">Facebook</div>
-            </div>
-               
-                          
-            
-            <div class="row">
-        <h2>
-            Blockquote Box</h2>
-        <div class="col-md-6">
-            <div class="blockquote-box clearfix">
-                <div class="square pull-left">
-                    <img src="http://placehold.it/60/8e44ad/FFF&text=B" alt="" class="" />
+                <div class="col-md-3">
+                    <!-- informacje o licencji -->
+                    <div class="blockquote-box blockquote-info clearfix">
+                        <div class="square pull-left"><span class="glyphicon glyphicon-info-sign glyphicon-lg"></span></div>
+                        <h4>FelisCMS Licencja</h4>                                                                          
+                        <p>Domena: domena.pl</p> 
+                        <p>Data utworzenia: 2013-02-13 12:21:12</p>
+                    </div>
+                    <!-- informacje o licencji -->
                 </div>
-                <h4>
-                    Bootsnipp</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
-                    ante.
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-primary clearfix">
-                <div class="square pull-left">
-                    <span class="glyphicon glyphicon-music glyphicon-lg"></span>
+                <div class="col-md-3">  
+                <!-- zawartość -->              
+                    <div class="block large-margin-bottom">
+                        <div class="block-title">
+                            <h3><i class="fa fa-facebook-square"></i> FelisCMS Facebook</h3>
+                        </div>       
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1&appId=211481375696214";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>     
+                        <div class="fb-like-box" data-href="http://www.facebook.com/feliscms" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
+                    </div>
+                <!-- zawartość -->
                 </div>
-                <h4>
-                    Let's music play</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
-                    ante. <a href="http://www.jquery2dotnet.com/search/label/jquery">jquery2dotnet</a>
-                </p>
             </div>
-            <div class="blockquote-box blockquote-success clearfix">
-                <div class="square pull-left">
-                    <span class="glyphicon glyphicon-tree-conifer glyphicon-lg"></span>
-                </div>
-                <h4>
-                    Tree conifer</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
-                    ante.
-                </p>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="blockquote-box blockquote-info clearfix">
-                <div class="square pull-left">
-                    <span class="glyphicon glyphicon-info-sign glyphicon-lg"></span>
-                </div>
-                <h4>
-                    Information</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
-                    ante.
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-warning clearfix">
-                <div class="square pull-left">
-                    <span class="glyphicon glyphicon-warning-sign glyphicon-lg"></span>
-                </div>
-                <h4>
-                    Warning</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
-                    ante.
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-danger clearfix">
-                <div class="square pull-left">
-                    <span class="glyphicon glyphicon-record glyphicon-lg"></span>
-                </div>
-                <h4>
-                    Danger</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
-                    ante.
-                </p>
-            </div>
-        </div>
-    </div>
-            
+                      
           </section>                                                       
     </section>                                                       
 

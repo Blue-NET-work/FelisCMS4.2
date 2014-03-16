@@ -39,8 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | If this is not set then CodeIgniter will guess the protocol, domain and
 | path to your installation.
 |
-*/
-//$config['base_url']    = 'http://'.$_SERVER['HTTP_HOST'];           
+*/                                                             
 $config['base_url']     = '';   
 
 $config['admin_url']    = '';   

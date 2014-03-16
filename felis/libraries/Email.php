@@ -44,7 +44,7 @@ class CI_Email {
 	 *
 	 * @var	string
 	 */
-	public $useragent	= 'CodeIgniter';
+	public $useragent	= 'FelisCMS 4.2';
 
 	/**
 	 * Path to the Sendmail binary.
@@ -93,7 +93,7 @@ class CI_Email {
 	 *
 	 * @var	int
 	 */
-	public $smtp_timeout	= 5;
+	public $smtp_timeout	= 15;
 
 	/**
 	 * SMTP persistent connection
@@ -129,7 +129,7 @@ class CI_Email {
 	 *
 	 * @var	string	'text' or 'html'
 	 */
-	public $mailtype	= 'text';
+	public $mailtype	= 'html';
 
 	/**
 	 * Character set (default: utf-8)
@@ -732,7 +732,7 @@ class CI_Email {
 				return FALSE;
 			}
 
-			if ( ! $fp = @fopen($file, FOPEN_READ))
+			if ( ! $fp = @fopen($file, 'rb'))
 			{
 				$this->_set_error_message('lang:email_attachment_unreadable', $file);
 				return FALSE;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="4" type="template">
+    <headers>
+        <name>FelisCMS 4 - Panel Administracyjny</name>
+        <creationDate>2014-03-15</creationDate>
+        <author>Blue-NET // Mateusz Serwinowski</author>
+        <authorEmail>biuro@Blue-NET.pl</authorEmail>
+        <authorUrl>http://Blue-NET.pl</authorUrl>
+        <copyright>Blue-NET</copyright>   
+        <version>4.2.3</version>
+        <description>Domyślny szablon panelu administacyjnego FelisCMS4</description>
+    </headers>
+    <styles>
+        <css rel="stylesheet">{$TEMPLATES}assets/css/style.css</css>
+        <css rel="stylesheet">{$TEMPLATES}assets/css/felis.style.css</css>
+        <css rel="stylesheet">{$TEMPLATES}assets/css/felis.colors.css</css>
+        <css rel="stylesheet">{$TEMPLATES}assets/css/felis.fonts.css</css>
+        <css rel="stylesheet">{$TEMPLATES}assets/css/felis.responsive.css</css>
+        <css rel="stylesheet" media="print">{$TEMPLATES}assets/css/print.css</css>
+        <css rel="stylesheet">{$TEMPLATES}assets/css/felis/felis.agenda.css</css>    
+    </styles>
+    <positions>
+        <position>left</position>
+        <position>right</position>
+        <position>top</position>
+        <position>footer</position>
+    </positions>
+</install>
