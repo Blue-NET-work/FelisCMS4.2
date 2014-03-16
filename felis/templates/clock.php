@@ -11,12 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Style -->                                                                                 
-    <link href="<?php print system_url(); ?>/views/assets/css/bootstrap/bootstrap.css" rel="stylesheet">                       
-    <link href="<?php print system_url(); ?>/views/assets/css/bootstrap/bootstrap-theme.css" rel="stylesheet">
-    <link href="<?php print system_url(); ?>/views/assets/css/styles/bnclock.css" rel="stylesheet">
+    <link href="<?php print system_url(); ?>/templates/assets/css/bootstrap/bootstrap.css" rel="stylesheet">                       
+    <link href="<?php print system_url(); ?>/templates/assets/css/bootstrap/bootstrap-theme.css" rel="stylesheet">
+    <link href="<?php print system_url(); ?>/templates/assets/css/styles/bnclock.css" rel="stylesheet">
     
     <!-- favicon -->
-    <link rel="shortcut icon" href="/public/views/img/favicon.png">
+    <link rel="shortcut icon" href="<?php print system_url(); ?>/templates/assets/img/favicon.png">
                                                     
     <title>FelisCMS 4 - Site Under Construction</title>
 </head>
@@ -25,7 +25,7 @@
     <div id="felisClock">
     
         <section id="logo">
-            <a href="http://blue-net.pl" title="tworzenie stron kłodzko"><img src="<?php print system_url(); ?>/views/assets/img/logo.png" alt=""></a>    
+            <a href="http://blue-net.pl" title="tworzenie stron kłodzko"><img src="<?php print system_url(); ?>/templates/assets/img/logo.png" alt=""></a>    
         </section>
       
         <div class="center clockBox">
@@ -120,8 +120,8 @@
 
    <!-- Skrypty jQ
     ================================================== -->                    
-    <script type="text/javascript" src="<?php print system_url(); ?>/views/assets/js/jquery/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="<?php print system_url(); ?>/views/assets/js/felis/felis.bnclock.js"></script>
+    <script type="text/javascript" src="<?php print system_url(); ?>/templates/assets/js/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="<?php print system_url(); ?>/templates/assets/js/felis/felis.bnclock.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             BNCountDown({
