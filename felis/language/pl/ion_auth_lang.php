@@ -56,3 +56,7 @@ $lang['delete_unsuccessful'] 				 = 'Nie można skasować użytkownika';
 $lang['email_forgotten_password_subject']    = 'Weryfikacja Zapomnianengo Hasła';
 $lang['email_new_password_subject']          = 'Nowe Hasło';
 $lang['email_activation_subject']            = 'Aktywacja Konta';
+
+
+$lang['forgot_password_validation_email_label']    = 'Adres e-mail';
+$lang['forgot_password_username_identity_label']    = 'nazwa użytkownika';

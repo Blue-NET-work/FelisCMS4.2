@@ -57,7 +57,7 @@ class Ion_auth
 	 **/
 	public function __construct()
 	{
-		$this->load->config('ion_auth', TRUE);
+		$this->load->config('ion_auth', TRUE);     
 		$this->load->library('email');
 		$this->lang->load('ion_auth');
 		$this->load->helper('cookie');
@@ -84,14 +84,14 @@ class Ion_auth
 
 		//auto-login the user if they are remembered
 		if (!$this->logged_in() && get_cookie('identity') && get_cookie('remember_code'))
-		{
-			$this->ion_auth_model->login_remembered_user();
+		{                                                   
+            $this->ion_auth_model->login_remembered_user(); 
 		}
-
-		$email_config = $this->config->item('email_config', 'ion_auth');
+                                                                
+        $email_config = $this->ion_auth_model->email_config();    
 
 		if ($this->config->item('use_ci_email', 'ion_auth') && isset($email_config) && is_array($email_config))
-		{
+		{                                            
 			$this->email->initialize($email_config);
 		}
 
@@ -157,12 +157,13 @@ class Ion_auth
 					return $data;
 				}
 				else
-				{
+				{          
+                    $email_config = $this->ion_auth_model->email_config();         
 					$message = $this->load->view($this->config->item('email_templates', 'ion_auth').$this->config->item('email_forgot_password', 'ion_auth'), $data, true);
-					$this->email->clear();
-					$this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
+					$this->email->clear();                                                                                                            
+                    $this->email->from($email_config["smtp_email"], $email_config["smtp_from"]);
 					$this->email->to($user->email);
-					$this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_forgotten_password_subject'));
+					$this->email->subject($email_config["meta_title"] . ' - ' . $this->lang->line('email_forgotten_password_subject'));
 					$this->email->message($message);
 
 					if ($this->email->send())
@@ -225,13 +226,14 @@ class Ion_auth
 					return $data;
 			}
 			else
-			{
+			{         
+                $email_config = $this->ion_auth_model->email_config(); 
 				$message = $this->load->view($this->config->item('email_templates', 'ion_auth').$this->config->item('email_forgot_password_complete', 'ion_auth'), $data, true);
 
-				$this->email->clear();
-				$this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
+				$this->email->clear();                                                                                                                                                                                             
+                $this->email->from($email_config["smtp_email"], $email_config["smtp_from"]);
 				$this->email->to($profile->email);
-				$this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_new_password_subject'));
+				$this->email->subject($email_config["meta_title"] . ' - ' . $this->lang->line('email_new_password_subject'));
 				$this->email->message($message);
 
 				if ($this->email->send())
@@ -349,15 +351,15 @@ class Ion_auth
 					return $data;
 			}
 			else
-			{
+			{       
+                $email_config = $this->ion_auth_model->email_config();                                     
 				$message = $this->load->view($this->config->item('email_templates', 'ion_auth').$this->config->item('email_activate', 'ion_auth'), $data, true);
 
-				$this->email->clear();
-				$this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
+				$this->email->clear();                                                                                                                                                                                                                                                                                      
+                $this->email->from($email_config["smtp_email"], $email_config["smtp_from"]);
 				$this->email->to($email);
-				$this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_activation_subject'));
-				$this->email->message($message);
-
+				$this->email->subject($email_config["meta_title"] . ' - ' . $this->lang->line('email_activation_subject'));
+				$this->email->message($message);     
 				if ($this->email->send() == TRUE)
 				{
 					$this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_successful', 'activation_email_successful'));

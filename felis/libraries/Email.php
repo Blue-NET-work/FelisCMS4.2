@@ -44,7 +44,7 @@ class CI_Email {
 	 *
 	 * @var	string
 	 */
-	public $useragent	= 'CodeIgniter';
+	public $useragent	= 'FelisCMS 4.2';
 
 	/**
 	 * Path to the Sendmail binary.
@@ -58,42 +58,42 @@ class CI_Email {
 	 *
 	 * @var	string	'mail', 'sendmail' or 'smtp'
 	 */
-	public $protocol	= 'smtp';		// mail/sendmail/smtp
+	public $protocol	= 'mail';		// mail/sendmail/smtp
 
 	/**
 	 * STMP Server host
 	 *
 	 * @var	string
 	 */
-	public $smtp_host	= 'mail.blue-net.pl';
+	public $smtp_host	= '';
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var	string
 	 */
-	public $smtp_user	= 'no-replay@blue-net.pl';
+	public $smtp_user	= '';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var	string
 	 */
-	public $smtp_pass	= 'Ztmmys4q';
+	public $smtp_pass	= '';
 
 	/**
 	 * SMTP Server port
 	 *
 	 * @var	int
 	 */
-	public $smtp_port	= 587;
+	public $smtp_port	= 25;
 
 	/**
 	 * SMTP connection timeout in seconds
 	 *
 	 * @var	int
 	 */
-	public $smtp_timeout	= 5;
+	public $smtp_timeout	= 15;
 
 	/**
 	 * SMTP persistent connection
@@ -129,7 +129,7 @@ class CI_Email {
 	 *
 	 * @var	string	'text' or 'html'
 	 */
-	public $mailtype	= 'text';
+	public $mailtype	= 'html';
 
 	/**
 	 * Character set (default: utf-8)

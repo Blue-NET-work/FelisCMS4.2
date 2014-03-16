@@ -2090,4 +2090,24 @@ class Ion_auth_model extends CI_Model
         //just return the string IP address now for better compatibility
         return $ip_address;
     }
+    
+    public function email_config(){                                                                      
+        if(@FC_DB::getDataSelect("*", 'config', array("name"=> "smtp"),'value') == TRUE){
+            $email_config["protocol"] = "smtp";
+            $email_config["smtp_host"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "smtp_host"),'value');
+            $email_config["smtp_user"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "smtp_username"),'value');
+            $email_config["smtp_pass"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "smtp_password"),'value');
+            $email_config["smtp_port"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "smtp_port"),'value');
+            $email_config["smtp_email"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "smtp_email"),'value');
+            $email_config["smtp_from"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "smtp_from"),'value');
+        }
+        else{   
+            $email_config["smtp_email"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "service_email"),'value');
+            $email_config["smtp_from"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "owner_name"),'value');
+        }
+                                                                                                                
+        $email_config["meta_title"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "meta_title"),'value');
+          
+        return $email_config;
+    }
 }
