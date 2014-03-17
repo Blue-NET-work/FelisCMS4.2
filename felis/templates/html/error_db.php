@@ -6,18 +6,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>FelisCMS 4 - Database Error</title>
-    <link href="<?php echo system_url();?>templates/assets/css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="<?php echo system_url();?>templates/assets/css/bootstrap/bootstrap-theme.css" rel="stylesheet" type="text/css">
-    <link href="<?php echo system_url();?>templates/assets/css/styles/error.css" rel="stylesheet" type="text/css">
+    <link href="/felis/templates/assets/css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/felis/templates/assets/css/bootstrap/bootstrap-theme.css" rel="stylesheet" type="text/css">
+    <link href="/felis/templates/assets/css/styles/error.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
     <div id="error">           
-        <section id="logo"><a href="http://Blue-NET.pl"><img src="<?php echo system_url(); ?>templates/assets/img/logo.png" alt=""></a></section>
+        <section id="logo"><a href="http://Blue-NET.pl"><img src="/felis/templates/assets/img/logo.png" alt=""></a></section>
         <div class="center errorBox">
             <h1 class="text-info">Oops!</h1>      
             <h3 class="text-warning"><?php echo $heading; ?></h3>
-            <img src="<?php echo system_url(); ?>templates/assets/img/errors/database_search.png" alt="">
+            <img src="/felis/templates/assets/img/errors/database_search.png" alt="">
             <div class="error-details text-danger">
                 <?php echo $message; ?>
             </div> <!-- /error-details -->                          

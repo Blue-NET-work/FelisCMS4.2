@@ -26,6 +26,27 @@
     <script src="{$TEMPLATES}assets/js/felis/felis.agenda.js"></script>
     <script src="{$TEMPLATES}assets/js/felis/felis.tabs.js"></script>        <!-- Must be loaded last -->
 
+    <script src="{$TEMPLATES}assets/js/libs/DataTables/jquery.dataTables.js"></script>
+                                                                                         
+    <script type="text/javascript">$(".datatable").dataTable({   
+        "oLanguage": {
+        "sProcessing":   '{lang line="dataTable_sProcessing"}',
+        "sLengthMenu":   "{lang line='dataTable_sLengthMenu'}",
+        "sZeroRecords":  "{lang line='dataTable_sZeroRecords'}",
+        "sInfo":         "{lang line='dataTable_sInfo'}",
+        "sInfoEmpty":    "{lang line='dataTable_sInfoEmpty'}",
+        "sInfoFiltered": "{lang line='dataTable_sInfoFiltered'}",
+        //"sInfoPostFix":  '{lang line="dataTable_sInfoPostFix"}',
+        "sSearch":       "{lang line='dataTable_sSearch'}",
+        //"sUrl":          "{lang line='dataTable_sUrl'}",
+            "oPaginate": {
+                "sFirst":    "{lang line='dataTable_sFirst'}",
+                "sPrevious": "{lang line='dataTable_sPrevious'}",
+                "sNext":     "{lang line='dataTable_sNext'}",
+                "sLast":     "{lang line='dataTable_sLast'}"
+            }
+        }
+    });</script>
     <!-- Tinycon -->
     <script src="{$TEMPLATES}assets/js/libs/tinycon.js"></script>
                  
