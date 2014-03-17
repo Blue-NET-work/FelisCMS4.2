@@ -4,12 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dashboard extends FC_Controller {
 
     function __construct(){
-        parent::__construct();  
-        @FC_Request::loadModel('Admin_model', "Dashboard_model");                                                             
+        parent::__construct();                 
+        @FC_Request::loadModel('Admin_model');                                                            
     }
                                   
     public function index(){               
-        
+                                                        
         //Wczytanie domyślnego stylu         
         //@Admin_model::defaultStyle();                                                           
         //$this->smarty->setCSS(templates_url('assets/css/felis/felis.agenda.css'));   
@@ -17,8 +17,8 @@ class Dashboard extends FC_Controller {
         /* Wczytanie domyślnych JS'ów */                                                   
         //@View::setJQ(templates_url("assets/js/felis/felis.agenda.js"));    
                                             
-        @FC_Request::loadLang("felis_dashboard"); 
-        //@FC_Request::loadModel('dashboard_model');        
+        @FC_Request::loadLang("felis_dashboard");  
+        @FC_Request::loadModel("Dashboard_model");            
              
         @FC_Request::smartyView("index.tpl");
     }         
