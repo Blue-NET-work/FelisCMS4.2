@@ -1,5 +1,4 @@
 /**
- *
  * Form inputs styling plugin
  *
  * Structural good practices from the article from Addy Osmani 'Essential jQuery plugin patterns'
@@ -133,6 +132,7 @@
 				isSized = (element.attr('size') > 1),
 				title = (this.title && this.title.length > 0) ? ' title="'+this.title+'"' : '',
 				tabIndex = (this.tabIndex > 0) ? this.tabIndex : 0,
+				useStyledList = false,
 				select, dropDown, text, isWatching, values;
 
 			// If already set
@@ -143,6 +143,29 @@
 
 			// Stop DOM watching
 			isWatching = $.template.disableDOMWatch();
+
+			/*
+			 * To avoid triggering the default select UI, the select is hidden if:
+			 * - it is displayed as multiple (even if simple) OR
+			 * - it is multiple (no overlaying UI in most OS) OR
+			 * - The setting styledList is on AND
+			 *      - This is not a touch device OR
+			 *      - This is a touch device AND the setting styledOnTouch is:
+			 *          - true OR
+			 *          - null and the select has the class 'check-list'
+			 *
+			 * Ew. Now I need to get another brain.
+			 */
+			if (showAsMultiple ||
+				this.multiple ||
+				(settings.styledList &&
+					(!$.template.touchOs ||
+					($.template.touchOs &&
+						(settings.styledOnTouch === true ||
+						(settings.styledOnTouch === null && element.hasClass('check-list')))))))
+			{
+				useStyledList = true;
+			}
 
 			// Create replacement
 			if (showAsMultiple)
@@ -170,7 +193,8 @@
 						dropDown.customScroll({
 							padding: 4,
 							showOnHover: false,
-							usePadding: true
+							usePadding: true,
+							verticalOnLeft: element.hasClass('reversed-scroll')
 						});
 					}
 				}
@@ -190,7 +214,7 @@
 				select = $('<span class="'+this.className.replace(/validate\[.*\]/, '')+disabled+' replacement"'+title+' tabindex="'+tabIndex+'">'+
 								'<span class="select-value"></span>'+
 								'<span class="select-arrow">'+($.template.ie7 ? '<span class="select-arrow-before"></span><span class="select-arrow-after"></span>' : '')+'</span>'+
-								'<span class="drop-down"></span>'+
+								( useStyledList ? '<span class="drop-down"></span>' : '' )+
 							'</span>')
 				.insertAfter(element)
 				.data('replaced', element);
@@ -211,6 +235,10 @@
 				{
 					switch (values.length)
 					{
+						case 0:
+							_updateSelectValueText(select.children('.select-value'), values, element.data('no-value-text'), settings.noValueText);
+							break;
+
 						case 1:
 							_updateSelectValueText(select.children('.select-value'), values, element.data('single-value-text'), settings.singleValueText);
 							break;
@@ -249,25 +277,8 @@
 			// Store settings
 			select.data('select-settings', settings);
 
-			/*
-			 * To avoid triggering the default select UI, the select is hidden if:
-			 * - it is displayed as multiple (even if simple) OR
-			 * - it is multiple (no overlaying UI in most OS) OR
-			 * - The setting styledList is on AND
-			 *      - This is not a touch device OR
-			 *      - This is a touch device AND the setting styledOnTouch is:
-			 *          - true OR
-			 *          - null and the select has the class 'check-list'
-			 *
-			 * Ew. Now I need to get another brain.
-			 */
-			if (showAsMultiple ||
-				this.multiple ||
-				(settings.styledList &&
-					(!$.template.touchOs ||
-					($.template.touchOs &&
-						(settings.styledOnTouch === true ||
-						(settings.styledOnTouch === null && select.hasClass('check-list')))))))
+			// Styling for elements with active list styling
+			if (useStyledList)
 			{
 				select.addClass('select-styled-list');
 			}
@@ -550,7 +561,7 @@
 	 */
 	function _unformatNumberValue(value, options)
 	{
-		if (typeof value !== 'number')
+		if (typeof value === 'string')
 		{
 			if (options.thousandsSep.length)
 			{
@@ -603,16 +614,22 @@
 			value = Math.min(value, options.max);
 		}
 
-		// Format value
-		parts = value.toString().split('.');
-
-		// Thousands separator
-		if (options.thousandsSep.length && parts[0].length > 3)
+		// If not standard
+		if (options.thousandsSep.length || options.decimalPoint !== '.')
 		{
-			parts[0] = parts[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, options.thousandsSep);
+			// Format value
+			parts = value.toString().split('.');
+
+			// Thousands separator
+			if (options.thousandsSep.length && parts[0].length > 3)
+			{
+				parts[0] = parts[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, options.thousandsSep);
+			}
+
+			return parts.join(options.decimalPoint);
 		}
 
-		return parts.join(options.decimalPoint);
+		return value;
 	}
 
 	/*
@@ -925,7 +942,13 @@
 
 		// Store reference
 		select.data('clone', clone);
-		select.addClass('select-cloned');
+
+		// Hide - need to add an internal marker as it makes the select lose focus in some browsers */
+		select.data('select-hiding', true).addClass('select-cloned');
+		setTimeout(function()
+		{
+			select.removeData('select-hiding');
+		}, 100);
 
 		// Refernce
 		list = clone.children('.drop-down');
@@ -1165,7 +1188,8 @@
 				showOnHover: false,
 				usePadding: true,
 				continuousWheelScroll: false,
-				continuousTouchScroll: false
+				continuousTouchScroll: false,
+				verticalOnLeft: select.hasClass('reversed-scroll')
 			});
 		}
 
@@ -1372,7 +1396,6 @@
 	{
 		var list = select.children('.drop-down'),
 			checkList = select.hasClass('check-list') ? '<span class="check"></span>' : '',
-			newItems = $(),
 			existing, isWatching;
 
 		// If valid
@@ -1395,7 +1418,8 @@
 					option = (this.nodeName.toLowerCase() === 'option'),
 					node = option ? 'span' : 'strong',
 					text = option ? $(this).text() : this.label,
-					found = false;
+					found = false,
+					newItem;
 
 				// Empty text
 				if (text.length === 0)
@@ -1462,9 +1486,16 @@
 					}
 				}
 
-				newItems = newItems.add($('<'+node+((classes.length > 0) ? ' class="'+classes.join(' ')+'"' : '')+'>'+checkList+text+'</'+node+'>')
-									.appendTo(list)
-									.data('select-value', this));
+				// Create
+				newItem = $('<'+node+((classes.length > 0) ? ' class="'+classes.join(' ')+'"' : '')+'>'+checkList+text+'</'+node+'>')
+							.appendTo(list)
+							.data('select-value', this);
+
+				// Set behavior if not disabled
+				if (option && !this.disabled)
+				{
+					newItem.on('touchend click', _clickSelectValue);
+				}
 			});
 
 			// Remove items not found
@@ -1472,9 +1503,6 @@
 			{
 				existing.remove();
 			}
-
-			// Set behavior for new items
-			newItems.not('.disabled').on('touchend click', _clickSelectValue);
 
 			// Re-enable DOM watching if required
 			if (isWatching)
@@ -2115,12 +2143,12 @@
 				// Switch
 				if (replacement)
 				{
-					replacement[checked ? 'removeClass' : 'addClass']('checked');
+					replacement[this.checked ? 'addClass' : 'removeClass']('checked');
 				}
 				// Button labels
 				else if (input.parent().is('label.button'))
 				{
-					input.parent()[checked ? 'removeClass' : 'addClass']('active');
+					input.parent()[this.checked ? 'addClass' : 'removeClass']('active');
 				}
 			});
 		}
@@ -2777,6 +2805,12 @@
 		{
 			var target = $(event.target),
 				clone = select.data('clone');
+
+			// If this is an internal operation, do not process
+			if (select.data('select-hiding'))
+			{
+				return;
+			}
 
 			// Validation for click/touchend event
 			if ((event.type === 'click' || event.type === 'touchend') && (target.closest(select).length || (clone && target.closest(clone).length)))
