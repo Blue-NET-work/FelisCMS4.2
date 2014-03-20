@@ -26,3 +26,23 @@
 
         }, 2000);
     }
+
+
+// Przetwarzanie nazwy na alias
+$(".FelisNazwa").on('change', function(){
+    $("#FelisAlias").show();
+	var id = $(".FelisNazwa").val();
+    $.ajax({
+        url: "{$base_url}ajax/url_title.html",
+        type: "POST",
+        dataType: 'json',
+        data: {
+            "post_title":id
+        },
+        success: function(response) {
+    		$("#FelisAlias").hide();
+            $(".FelisAlias").val(response);
+        }
+    });
+});
+// .end

@@ -1896,3 +1896,7 @@ li.message-menu {
     border-bottom: 0px;
     margin:-16px -4px 0px;
 }
+
+#FelisAlias{
+	display: none;
+}

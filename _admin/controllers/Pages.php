@@ -15,12 +15,15 @@ class Pages extends FC_Controller {
     }
 
     public function edit($id){
+
         if($id != false){
             if($this->db->get_where("pages", array("id"=>$id))->row_array()){
 
                 if(@FC_Request::post("item")){
                     $item = @FC_Request::post("item");
                     if(!isset($item["active"])){$item["active"] = "0";}
+
+                    $item["alias"]= url_title(convert_accented_characters(element('alias', $item)), '-', TRUE);
 
                     $this->form_validation->set_rules('item[name]', 'lang:default_name', 'required');
                     $this->form_validation->set_rules('item[alias]', 'lang:default_adres', 'required');
