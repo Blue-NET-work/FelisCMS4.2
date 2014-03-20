@@ -28,14 +28,14 @@
 /********************************************************/
 /*                       1. Global                      */
 /********************************************************/
-     
+
 body, button, input, textarea {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	line-height: 16px;
 	color: #666666;
 }
-                 
+
 
 
 /********************************************************/
@@ -246,14 +246,14 @@ h6:first-child {
 .only-on-mobile {
 	display: block;
 }
-                        
 
 
-                 
+
+
 /********************************************************/
 /*                      8. Columns                      */
 /********************************************************/
- 
+
 
 /* Content panels */
 .content-panel,
@@ -472,7 +472,7 @@ h6:first-child {
 	.blocks-list > li > [class*=" icon-"] {
 		border: 1px solid transparent;
 	}
-                                                                                
+
 	/* Fixed sizes */
 	.fixed-size-50 > li		{ width: 36px;	}
 	.fixed-size-100			{ margin-left: -7px; }
@@ -591,7 +591,7 @@ h6:first-child {
 		-moz-border-radius: 3px;
 		border-radius: 3px;
 	}
-           
+
 
 
 /********************************************************/
@@ -1122,7 +1122,7 @@ h6:first-child {
 	padding: 0 11px;
 	font-size: 13px;
 	line-height: 28px;
-	height: 28px;
+	height: 29px;
 	*line-height: 26px;
 	*height: 26px;
 	-webkit-background-clip: padding-box;
@@ -1723,7 +1723,7 @@ h6:first-child {
 		}
 
 
-               
+
 
 
 /********************************************************/
@@ -1888,8 +1888,8 @@ h6:first-child {
 		.inner-tabs > .tabs-content > .tabs-back {
 			display: none;
 		}
-                             
-             
+
+
 
 /********************************************************/
 /*                    23. Extra stuff                   */
@@ -1905,7 +1905,7 @@ body {
 a:link {
 	-webkit-tap-highlight-color: rgb(52,158,219);
 }
-     
+
 /* Better resized images under IE7 */
 .ie7 img,
 .iem7 img {
