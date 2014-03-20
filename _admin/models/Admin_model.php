@@ -21,6 +21,8 @@ class Admin_model extends CI_Model{
         $this->smarty->assign("uri", $this->uri->segment_array());
         // Definiowanie nowej lini błedu
         $this->form_validation->set_error_delimiters("<p>","</p>");
+        // Przekazanie czy strona jest wielojęzykowa
+        $this->smarty->assign("service_multilang", $this->db->select("value")->get_where("config", array("name"=>"service_multilang"))->row("value"));
     }
 
 // Przekazywanie danych zalogowanego użytkownika

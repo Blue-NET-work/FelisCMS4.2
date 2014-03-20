@@ -398,5 +398,17 @@ if ( ! function_exists('nbs'))
 	}
 }
 
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('printr'))
+{
+	function printr($var) {
+		echo '<pre>';
+		print_r($var);
+		echo '</pre>';
+		exit();
+	}
+}
+
 /* End of file html_helper.php */
 /* Location: ./system/helpers/html_helper.php */
