@@ -692,7 +692,9 @@
 		// Custom scroll
 		if (!settings.useIframe && settings.scrolling && $.fn.customScroll)
 		{
-			contentBlock.customScroll();
+			contentBlock.customScroll({
+				horizontal: settings.horizontalScrolling
+			});
 		}
 
 		// If resizable
@@ -1106,13 +1108,15 @@
 		options.content = message;
 
 		// Buttons
-		options.buttons = {};
-		options.buttons[ options.textCancel ] = {
-			classes:	'glossy',
+		options.buttons = options.buttons || {};
+		options.buttons[ options.textCancel ] = $.extend( {
+			classes:	'glossy'
+		}, options.buttons[ options.textCancel ] || {}, {
 			click:		function(modal) { modal.closeModal(); }
-		};
-		options.buttons[ options.textConfirm ] = {
-			classes:	'blue-gradient glossy',
+		} );
+		options.buttons[ options.textConfirm ] = $.extend( {
+			classes:	'blue-gradient glossy'
+		}, options.buttons[ options.textConfirm ] || {}, {
 			click:		function(modal)
 			{
 				// Mark as sumbmitted to prevent the cancel callback to fire
@@ -1124,7 +1128,7 @@
 				// Close modal
 				modal.closeModal();
 			}
-		};
+		} );
 
 		// Open modal
 		return $.modal(options);
@@ -1490,6 +1494,12 @@
 		 * @var boolean|string
 		 */
 		scrolling: true,
+
+		/**
+		 * If true, enable horizontal scrolling when using the custom scroll plugin
+		 * @var boolean
+		 */
+		horizontalScrolling: false,
 
 		/**
 		 * Actions leds on top left corner, with text as key and function on click or config object as value

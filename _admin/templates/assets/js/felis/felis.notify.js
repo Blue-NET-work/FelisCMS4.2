@@ -528,7 +528,7 @@
 
 			message = $('#mainContent').message(target, {
 				node:		'a',
-				classes:	['align-center', 'green-gradient', 'show'],
+				classes:	['align-center', 'green-gradient'],
 				simpler:	true,
 				inset:		true
 			});
@@ -682,7 +682,7 @@
 		 * Force rotation (remove older messages) when reaching limit
 		 * @var boolean
 		 */
-		rotate: true,
+		rotate: false,
 
 		/**
 		 * Text when one similar notification is found

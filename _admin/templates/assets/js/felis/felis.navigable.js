@@ -106,10 +106,6 @@
 				}
 				else
 				{
-					left = -target.parentsUntil('.navigable', 'ul').length*100;
-					backHeight = back.outerHeight();
-					root.data('navigableCurrent', target);
-
 					// Text
 					if (settings.backText)
 					{
@@ -125,6 +121,10 @@
 						}
 						backText.text(parentLink.contents().filter(function(){ return(this.nodeType == 3); }).text() );
 					}
+
+					left = -target.parentsUntil('.navigable', 'ul').length*100;
+					backHeight = back.outerHeight();
+					root.data('navigableCurrent', target);
 				}
 
 				// Set root element size according to target size
@@ -228,15 +228,6 @@
 			 * Animation
 			 */
 
-			// Set root element size according to target size
-			root.stop(true).height(parentUL.outerHeight(true)+back.outerHeight(true))[animate ? 'animate' : 'css']({ height: (submenu.outerHeight(true)+back.outerHeight())+'px' });
-
-			// Move whole navigation to reveal target ul
-			mainUL.stop(true)[animate ? 'animate' : 'css']({ left: -(allUL.length*100)+'%' });
-
-			// Show back button
-			back[animate ? 'animate' : 'css']({ marginTop: 0 });
-
 			// Text
 			if (settings.backText)
 			{
@@ -252,6 +243,15 @@
 				}
 				backText.text(parentLink.contents().filter(function(){ return(this.nodeType == 3); }).text() );
 			}
+
+			// Set root element size according to target size
+			root.stop(true).height(parentUL.outerHeight(true)+back.outerHeight(true))[animate ? 'animate' : 'css']({ height: (submenu.outerHeight(true)+back.outerHeight())+'px' });
+
+			// Move whole navigation to reveal target ul
+			mainUL.stop(true)[animate ? 'animate' : 'css']({ left: -(allUL.length*100)+'%' });
+
+			// Show back button
+			back[animate ? 'animate' : 'css']({ marginTop: 0 });
 
 			// Send open event
 			li.trigger('navigable-open');
@@ -293,7 +293,7 @@
 						// If notification system is enabled
 						if (window.notify)
 						{
-							window.notify('Ładowanie menu nie powiodło się status "'+textStatus+'"');
+							window.notify('Menu loading failed with the status "'+textStatus+'"');
 						}
 
 						// If related load is still here
@@ -339,6 +339,9 @@
 							// Finally open the clicked element
 							clicked.click();
 						}
+
+						// Trigger notification
+						clicked.trigger('navigable-ajax-loaded');
 					}
 				});
 
@@ -364,16 +367,26 @@
 			var root = $(this),
 
 				// Back button
-				back = root.children('.back');
+				back = root.children('.back'),
 
-				// If valid
-				if (back.length > 0)
+				// Hidden parents
+				hidden;
+
+			// If valid
+			if (back.length > 0)
+			{
+				// Reveal hidden parents if needed for correct height processing
+				hidden = root.tempShow();
+
+				// Walk back the arbo
+				while (root.data('navigableCurrent'))
 				{
-					while (root.data('navigableCurrent'))
-					{
-						back.click();
-					}
+					back.click();
 				}
+
+				// Hide previously hidden parents
+				hidden.tempShowRevert();
+			}
 		});
 
 		return this;

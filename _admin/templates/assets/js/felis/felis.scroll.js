@@ -120,6 +120,9 @@
 						// Stop text selection
 						event.preventDefault();
 
+						// Mark as dragging
+						element.data('scroll-dragging-h', true);
+
 						// Watch mouse move
 						function watchMouse(event)
 						{
@@ -159,6 +162,15 @@
 						{
 							doc.off('mousemove', watchMouse);
 							doc.off('mouseup', endDrag);
+
+							// Remove marker
+							element.removeData('scroll-dragging-h');
+
+							// Hide if focus is lost
+							if (settings.showOnHover && !element.data('scroll-focus'))
+							{
+								hscrollbar.animate({ opacity: 0 });
+							}
 						}
 						doc.on('mouseup', endDrag);
 					});
@@ -220,7 +232,7 @@
 						height: settings.width+'px',
 
 						// Opacity
-						opacity: (element.data('scroll-focus') || !settings.showOnHover) ? 1 : 0
+						opacity: (element.data('scroll-focus') || !settings.showOnHover || element.data('scroll-dragging-h')) ? 1 : 0
 
 					});
 
@@ -270,6 +282,9 @@
 						// Prevent text selection
 						event.preventDefault();
 
+						// Mark as dragging
+						element.data('scroll-dragging-v', true);
+
 						// Watch mouse move
 						function watchMouse(event)
 						{
@@ -312,6 +327,15 @@
 
 							doc.off('mousemove', watchMouse);
 							doc.off('mouseup', endDrag);
+
+							// Remove marker
+							element.removeData('scroll-dragging-v');
+
+							// Hide if focus is lost
+							if (settings.showOnHover && !element.data('scroll-focus'))
+							{
+								vscrollbar.animate({ opacity: 0 });
+							}
 						}
 						doc.on('mouseup', endDrag);
 					});
@@ -356,24 +380,37 @@
 						size = available*(elementHeight/element[0].scrollHeight)+minHeight,
 
 						// Scroller position
-						position = Math.round((height-size)*(scrollV/(element[0].scrollHeight-elementInnerHeight)));
+						position = Math.round((height-size)*(scrollV/(element[0].scrollHeight-elementInnerHeight))),
+
+						// Horizontal position
+						left;
 
 					// Reveal scrollbar (hidden in refresh()
 					vscrollbar.show();
+
+					// Horizontal position
+					if (settings.verticalOnLeft)
+					{
+						left = (settings.usePadding ? element.parseCSSValue('padding-left')+settings.padding.left : settings.padding.left)+'px';
+					}
+					else
+					{
+						left = (element.innerWidth()-(settings.usePadding ? element.parseCSSValue('padding-right')+settings.padding.right : settings.padding.right)-settings.width+scrollH)+'px';
+					}
 
 					// Set scrollbar style
 					vscrollbar.stop(true)[(settings.animate && init) ? 'animate' : 'css']({
 
 						// Position
 						top: ((settings.usePadding ? element.parseCSSValue('padding-top')+settings.padding.top : settings.padding.top)+scrollV)+'px',
-						left: (element.innerWidth()-(settings.usePadding ? element.parseCSSValue('padding-right')+settings.padding.right : settings.padding.right)-settings.width+scrollH)+'px',
+						left: left,
 
 						// Size
 						height: height+'px',
 						width: settings.width+'px',
 
 						// Opacity
-						opacity: (element.data('scroll-focus') || !settings.showOnHover) ? 1 : 0
+						opacity: (element.data('scroll-focus') || !settings.showOnHover || element.data('scroll-dragging-v')) ? 1 : 0
 
 					});
 
@@ -440,11 +477,11 @@
 				}
 
 				// Update scrollbars
-				if (refreshH && deltaX !== 0)
+				if (refreshH)
 				{
 					refreshH();
 				}
-				if (refreshV && deltaY !== 0)
+				if (refreshV)
 				{
 					refreshV();
 				}
@@ -639,8 +676,8 @@
 		if (object)
 		{
 			element.removeData('scroll-focus');
-			if (object.hscrollbar()) object.hscrollbar().animate({ opacity: 0 });
-			if (object.vscrollbar()) object.vscrollbar().animate({ opacity: 0 });
+			if (object.hscrollbar() && !element.data('scroll-dragging-h')) object.hscrollbar().animate({ opacity: 0 });
+			if (object.vscrollbar() && !element.data('scroll-dragging-v')) object.vscrollbar().animate({ opacity: 0 });
 		}
 	}
 
@@ -655,6 +692,7 @@
 	 */
 	function _handleMouseWheel(event, delta, deltaX, deltaY)
 	{
+		var object;
 		if (object = $(this).data('custom-scroll'))
 		{
 			// Send scroll
@@ -879,6 +917,12 @@
 		 * @var boolean
 		 */
 		vertical: true,
+
+		/**
+		 * Show vertical sidebar on left
+		 * @var boolean
+		 */
+		verticalOnLeft: false,
 
 		/**
 		 * Whether to use or ignore element's padding in the scrollbar position
