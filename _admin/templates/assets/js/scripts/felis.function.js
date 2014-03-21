@@ -45,4 +45,31 @@ $(".FelisNazwa").on('change', function(){
         }
     });
 });
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+// .end
+
+// Generowanie podglądu strony
+$(".preview").on("click", function(){
+    var url = $(this).attr('data-href'),
+        urlTitle = $(this).attr('data-title'),
+        titleSite = "";
+        if(urlTitle) {
+            titleSite = " - "+ urlTitle
+        }
+    $.modal({
+        title: 'FelisCMS 4 - {lang line="default_sidebar_access_preview"}'+ titleSite,
+        url: url,
+        maxWidth: $(window).width()-150,
+        height: $(window).height()-100,
+        useIframe: true
+    });
+});
+=======
+>>>>>>> e18296fc5b298591503bc7cdc3e4969c60a8b49c
+=======
+>>>>>>> e18296fc5b298591503bc7cdc3e4969c60a8b49c
+=======
+>>>>>>> e18296fc5b298591503bc7cdc3e4969c60a8b49c
 // .end

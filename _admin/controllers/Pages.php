@@ -46,4 +46,44 @@ class Pages extends FC_Controller {
         @FC_Request::smartyView('pages/edit.tpl', $query);
     }
 
+// Usuwanie podstrony
+    public function del(){
+        $response = array('status' => 'ok', 'message' => array());
+        $date = $this->input->post("date");
+        if($date){}else $response['status']="error";
+        $where = array('id'=>$date["id"]);
+        $query = $this->db->delete('pages', $where);
+        $response["message"]['action'] = $query;
+        $response["message"]['post'] = $date;
+		return $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));
+    }
+
+// Aktywacja podstrony
+    public function active(){
+        $response = array('status' => 'ok', 'message' => array());
+        $date = $this->input->post("date");
+        if($date){}else $response['status']="error";
+        $data = array('active' => '1');
+        $where = "`id` = {$date["id"]}";
+        $query = $this->db->update_string('pages', $data, $where);
+        $query = $this->db->query($query);
+        $response["message"]['action'] = $query;
+        $response["message"]['post'] = $date;
+		return $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));
+    }
+
+//Blokowanie podstrony
+    public function block(){
+        $response = array('status' => 'ok', 'message' => array());
+        $date = $this->input->post("date");
+        if($date){}else $response['status']="error";
+        $data = array('active' => '0');
+        $where = "`id` = {$date["id"]}";
+        $query = $this->db->update_string('pages', $data, $where);
+        $query = $this->db->query($query);
+        $response["message"]['action'] = $query;
+        $response["message"]['post'] = $date;
+		return $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));
+    }
+
 }

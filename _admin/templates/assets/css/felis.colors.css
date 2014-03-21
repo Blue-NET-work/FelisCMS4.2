@@ -124,7 +124,7 @@
     background: url(../img/textures/scratches.png), -o-linear-gradient(top, #aaaaaa, #f2f2f2 25%, #ffffff 38%, #c5c5c5 63%, #f7f7f7 87%, #aaaaaa);
     background: url(../img/textures/scratches.png), linear-gradient(top, #aaaaaa, #f2f2f2 25%, #ffffff 38%, #c5c5c5 63%, #f7f7f7 87%, #aaaaaa);
 }
-   
+
 #background{
     background:url(../img/textures/scratches.png) repeat;
     position:fixed;
@@ -153,7 +153,7 @@
     background: -o-linear-gradient(top, #6e7377, #585d62);
     background: linear-gradient(top, #6e7377, #585d62);
 }
-.big-menu {                                             
+.big-menu {
     color: #373b3f;
     background: #e6e9ed;
     -webkit-background-size: 100% 100%;

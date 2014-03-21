@@ -784,7 +784,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
-
+ /*
 
 +function ($) {
   'use strict';
@@ -1020,7 +1020,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
 
 }(jQuery);
-
+*/
 /* ========================================================================
  * Bootstrap: tooltip.js v3.1.1
  * http://getbootstrap.com/javascript/#tooltip
@@ -1949,4 +1949,4 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     })
   })
 
-}(jQuery);        
+}(jQuery);

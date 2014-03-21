@@ -299,13 +299,13 @@
 		 * Default message
 		 * @var string
 		 */
-		message: 'Are you sure?',
+		message: 'Czy jesteś pewien?',
 
 		/**
 		 * Text of confirm button
 		 * @var string
 		 */
-		confirmText: 'Confirm',
+		confirmText: 'Potwierdź',
 
 		/**
 		 * Classes of confirm button
@@ -323,7 +323,7 @@
 		 * Text of cancel button
 		 * @var string
 		 */
-		cancelText: 'Cancel',
+		cancelText: 'Anuluj',
 
 		/**
 		 * Classes of cancel button
@@ -363,7 +363,7 @@
 		actions: {
 
 			// Links
-			'a': function(target)
+            'a': function(target)
 			{
 				document.location.href = target[0].href;
 			},
@@ -373,6 +373,7 @@
 			{
 				target.closest('form').submit();
 			}
+
 
 		},
 
