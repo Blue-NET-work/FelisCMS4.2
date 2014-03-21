@@ -45,9 +45,6 @@ $(".FelisNazwa").on('change', function(){
         }
     });
 });
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 // .end
 
 // Generowanie podglądu strony
@@ -66,10 +63,4 @@ $(".preview").on("click", function(){
         useIframe: true
     });
 });
-=======
->>>>>>> e18296fc5b298591503bc7cdc3e4969c60a8b49c
-=======
->>>>>>> e18296fc5b298591503bc7cdc3e4969c60a8b49c
-=======
->>>>>>> e18296fc5b298591503bc7cdc3e4969c60a8b49c
 // .end
