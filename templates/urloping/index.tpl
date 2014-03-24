@@ -17,6 +17,10 @@
                       </div>
                     </div>
                     <!-- ./miasta -->
+                    <!-- facebook -->
+                    <h4><a title="Zobacz nasz profil na facebooku" href="https://www.facebook.com/pages/urlopingcom/411418285658498?fref=ts">Polub nas na facebooku</a></h4>
+					<div class="fb-like fb_iframe_widget" data-href="https://www.facebook.com/pages/urlopingcom/411418285658498?fref=ts" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                    <!-- ./facebook -->
                 </div>
                 <div class="col-md-5 margin-top-20">
                 	<!-- miasta -->
@@ -41,7 +45,7 @@
             </div>
             <!-- ./pierwszy box-->
 
-        	<div class="panel panel-default panel-green">
+        	<div class="panel panel-default panel-green margin-top-20">
               <div class="panel-heading">Panel heading without title</div>
               <div class="panel-body">
                 Panel content

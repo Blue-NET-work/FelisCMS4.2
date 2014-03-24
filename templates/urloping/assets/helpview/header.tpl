@@ -4,7 +4,7 @@
         	<div class="row margin-bottom-10">
             	<!-- logo -->
             	<div class="col-md-4">
-                	<a id="logo" href="#"><img src="{$TEMPLATES}assets/img/logo.png" alt=""></a>
+                	<a id="logo" href="{$base_url}"><img src="{$TEMPLATES}assets/img/logo.png" alt=""></a>
                 </div>
             	<!-- ./logo -->
             	<!-- szukaj -->
@@ -45,18 +45,18 @@
                       <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Użytkownik</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                          <input type="text" class="form-control" id="inputEmail3" placeholder="Nazwa użytkownika">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Hasło</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                          <input type="password" class="form-control" id="inputPassword3" placeholder="Hasło">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                          <button type="submit" class="btn btn-default">Sign in</button>
+                          <button type="submit" class="btn btn-default">Zaloguj się</button>
                         </div>
                       </div>
                     </form>
@@ -70,7 +70,7 @@
                     <li {if $uri[0] == "okolicznosciowe"}class="active"{/if}><a href="{$base_url}">Okolicznościowe</a></li>
                     <li {if $uri[0] == "oferta-tygodnia"}class="active"{/if}><a href="{$base_url}">Oferta tygodnia</a></li>
                     <li {if $uri[0] == "nagrody"}class="active"{/if}><a href="{$base_url}">Nagrody</a></li>
-                    <li {if $uri[0] == "pogoda"}class="active"{/if}><a href="{$base_url}">Pogoda</a></li>
+                    <li {if $uri[0] == "pogoda"}class="active"{/if}><a href="{$base_url}pogoda.html">Pogoda</a></li>
                     <li {if $uri[0] == "jak-to-dziala"}class="active"{/if}><a href="{$base_url}jak-to-dziala.html">Jak to działa</a></li>
                     <li {if $uri[0] == "o-nas"}class="active"{/if}><a href="{$base_url}o-nas.html">O Nas</a></li>
                     <li {if $uri[0] == "kontakt"}class="active"{/if}><a href="{$base_url}kontakt.html">Kontakt</a></li>
