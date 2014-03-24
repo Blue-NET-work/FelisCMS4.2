@@ -15,6 +15,7 @@
 
     <!-- styles -->
 	<link href="{$TEMPLATES}assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="{$TEMPLATES}assets/cookie/main.css" rel="stylesheet" type="text/css">
 
 {block name="head"}{/block}
 
@@ -38,6 +39,14 @@
     <!-- footer
     ================================================= -->
 {include file="assets/helpview/footer.tpl"}
+
+    <!-- jQuery
+    ================================================= -->
+    <script src="{$TEMPLATES}assets/js/jquery-1.11.0.js"></script>
+    <script src="{$TEMPLATES}assets/js/bootstrap.js"></script>
+    <script src="{$TEMPLATES}assets/cookie/support-opt-in.js"></script>
+    <script src="{$TEMPLATES}assets/cookie/require-opt-in.js"></script>
+{block name="jQuery"}{/block}
 
 </body>
 </html>

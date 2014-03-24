@@ -3,7 +3,13 @@
 @import url("bootstrap/bootstrap-theme.css");
 @import url("bootstrap/font-awesome.css");
 
+html{
+	background:url(../img/bg.png) no-repeat bottom center;
+	min-height:100%;
+}
+
 body{
+	background: transparent;
 	font-family:Tahoma, Geneva, sans-serif;
 }
 
@@ -22,7 +28,7 @@ body{
 .no-top-space{
   padding-top:0px !important;
   margin-top: 0px !important;
-} 
+}
 .no-margin{margin: 0px !important;}
 .no-padding{padding: 0px !important;}
 .no-top-margin{margin-top: 0 !important;}
@@ -111,4 +117,10 @@ header nav li.active a{
 	text-shadow:1px 1px rgba(0,0,0,.7);
 	text-decoration:none;
 	color:#f90;
+}
+
+footer .container .footer{
+	background:rgba(255,255,255,.74);
+	border:1px solid rgba(95,95,95,.4);
+	padding:25px;
 }
