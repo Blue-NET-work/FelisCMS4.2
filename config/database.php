@@ -90,10 +90,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'bluenet_felisdem',
-	'password' => 'Blue-NET123!',
-	'database' => 'bluenet_felisdem',
+	'hostname' => 'blue-net.pl',
+	'username' => 'bluenet_urloping',
+	'password' => 'bC9niw9N',
+	'database' => 'bluenet_urloping',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'felis_',
 	'pconnect' => TRUE,

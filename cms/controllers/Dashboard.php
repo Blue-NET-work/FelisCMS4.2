@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends FC_Controller {
 
+    public function __construct(){
+        parent::__construct();
+        @FC_Request::loadModel(array("Default_model"));
+    }
+
 	public function index(){
 		$this->smarty->view("index.tpl");
 	}

@@ -66,14 +66,14 @@
 			<!-- nav -->
             <nav>
             	<ul class="list-unstyled list-inline">
-                	<li><a href="#">Obiekty</a></li>
-                    <li><a href="#">Okolicznościowe</a></li>
-                    <li><a href="#">Oferta tygodnia</a></li>
-                    <li><a href="#">Nagrody</a></li>
-                    <li><a href="#">Pogoda</a></li>
-                    <li><a href="#">Jak to działa</a></li>
-                    <li><a href="#">O Nas</a></li>
-                    <li><a href="#">Kontakt</a></li>
+                	<li {if $uri[0] == "obiekty"}class="active"{/if}><a href="{$base_url}">Obiekty</a></li>
+                    <li {if $uri[0] == "okolicznosciowe"}class="active"{/if}><a href="{$base_url}">Okolicznościowe</a></li>
+                    <li {if $uri[0] == "oferta-tygodnia"}class="active"{/if}><a href="{$base_url}">Oferta tygodnia</a></li>
+                    <li {if $uri[0] == "nagrody"}class="active"{/if}><a href="{$base_url}">Nagrody</a></li>
+                    <li {if $uri[0] == "pogoda"}class="active"{/if}><a href="{$base_url}">Pogoda</a></li>
+                    <li {if $uri[0] == "jak-to-dziala"}class="active"{/if}><a href="{$base_url}jak-to-dziala.html">Jak to działa</a></li>
+                    <li {if $uri[0] == "o-nas"}class="active"{/if}><a href="{$base_url}o-nas.html">O Nas</a></li>
+                    <li {if $uri[0] == "kontakt"}class="active"{/if}><a href="{$base_url}kontakt.html">Kontakt</a></li>
                 </ul>
             </nav>
 			<!-- ./nav -->
