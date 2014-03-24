@@ -59,7 +59,7 @@ class CI_Config {
 	 * @used-by	CI_Loader
 	 * @var		array
 	 */
-	public $_config_paths =	array(APPPATH, ROOTPATH);
+	public $_config_paths =	array(ROOTPATH, APPPATH);
 
 	/**
 	 * Class constructor
@@ -340,7 +340,7 @@ class CI_Config {
         $admin_folder = $this->slash_item('admin_folder');
         $base_url = $this->slash_item('base_url');
 		$x = explode('/', preg_replace('|/*(.+?)/*$|', '\\1', BASEPATH));
-        $y = explode("/", $this->_uri_string($base_url)); 
+        $y = explode("/", $this->_uri_string($base_url));
         if($admin_folder == end($y)."/"){
             $base = explode($admin_folder, $base_url);
             $base_url = $base[0];
@@ -360,7 +360,7 @@ class CI_Config {
 	public function set_item($item, $value)
 	{
 		$this->config[$item] = $value;
-	}  
+	}
 
     // --------------------------------------------------------------------
 
@@ -387,7 +387,7 @@ class CI_Config {
         $admin_folder = $this->slash_item('admin_folder');
         $base_url = $this->slash_item('base_url');
         $x = explode('/', preg_replace('|/*(.+?)/*$|', '\\1', str_replace('\\', '/', UPLOADSPATH)));
-        $y = explode("/", $this->_uri_string($base_url)); 
+        $y = explode("/", $this->_uri_string($base_url));
         if($admin_folder == end($y)."/"){
             $base = explode($admin_folder, $base_url);
             $base_url = $base[0];
@@ -406,7 +406,7 @@ class CI_Config {
     {
         $admin_folder = $this->slash_item('admin_folder');
         $base_url = $this->slash_item('base_url');
-        $y = explode("/", $this->_uri_string($base_url)); 
+        $y = explode("/", $this->_uri_string($base_url));
         if($admin_folder == end($y)."/"){
             $base = explode($admin_folder, $base_url);
             $base_url = $base[0];
