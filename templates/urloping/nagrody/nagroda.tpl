@@ -10,24 +10,15 @@
             <div class="row">
                 <div class="col-md-9 margin-top-20">
                 	<!-- miasta -->
-                    <div class="panel panel-default panel-green" id="polecaneObiekty">
-                      <div class="panel-heading"><i class="fa fa-gift"></i> Dostepne nagrody</div>
-                      <div class="panel-body padding-10 text-center">
+                    <div class="panel panel-default panel-green">
+                      <div class="panel-heading"><i class="fa fa-gift"></i> {$name}</div>
+                      <div class="panel-body padding-10">
                         <!-- items -->
-                      	<div class="row">
-                        	<!-- item -->
-                        	<div class="col-md-3">
-			                    <div class="panel panel-default panel-green" id="polecaneObiekty">
-			                      <div class="panel-heading"></div>
-			                      <div class="panel-body">
-	                                {html_image file="{$uploads}/nagrody/4065a25c125c699eb366767811b09dd32cce3898m.jpg" alt=""}
-	                                <h3>Skakanka</h3>
-			                      	<div class="list-item-about"><p>Uniwersalny produkt marki profit. Możliwość regulacji długości skakanki. Uchwyty pokryte gumą antypoślizgową. Licznik wykonywanych obrotów. Możliwość zerowania wyniku po każdym użyciu.</p><p>Maksymalna długość 2,85 m</p></div>
-			                      </div>
-			                    </div>
-                        	</div>
-                        	<!-- item -->
-                      	</div>
+
+	                    {html_image file="{$uploads}/nagrody/4065a25c125c699eb366767811b09dd32cce3898m.jpg" class="img-thumbnail" alt=""}
+	                    <h3>{$name}</h3>
+	                    {$description}
+
                         <!-- items -->
                       </div>
                     </div>

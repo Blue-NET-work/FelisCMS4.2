@@ -9,28 +9,20 @@ class Hotele extends FC_Controller {
     }
 
 	public function index(){
-		$this->smarty->view("hotele/index.tpl");
+		$query["hotele"] = $this->db->get("hotels")->result_array();
+		$this->smarty->view("hotele/index.tpl", $query);
 	}
 
 // Miasto
 	public function miasto($miasto){
-		print_r($miasto);
-		$this->smarty->view("hotele/index.tpl");
+		$query["hotele"] = $this->db->get_where("hotels", array("city" => $miasto))->result_array();
+		$this->smarty->view("hotele/index.tpl", $query);
 	}
 
-// Podstrony
-	public function pages($alias){
-        if($alias == "index" || $alias == "home" || $alias == "strona-glowna") redirect(base_url(), 'refresh');
-
-        $query = $this->db->get_where("pages", array('alias' => $alias, 'active'=> "1"))->row_array();
-
-        if(!$query)
-            $this->error_404();
-        else
-        	$this->smarty->view("pages/pages.tpl", $query);
-
+// Hotel
+	public function hotel($id){
+		$query = $this->db->get_where("hotels", array("id"=>$id))->row_array();
+		$this->smarty->view("hotele/hotel.tpl", $query);
 	}
-
-
 
 }

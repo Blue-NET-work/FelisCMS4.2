@@ -11,25 +11,18 @@
                 <div class="col-md-9 margin-top-20">
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green">
-                      <div class="panel-heading"><i class="fa fa-gift"></i> Dostepne nagrody</div>
-                      <div class="panel-body padding-10 text-center">
+                      <div class="panel-heading"><i class="fa fa-gift"></i> {$name}</div>
+                      <div class="panel-body padding-10">
                         <!-- items -->
-                      	<div class="row">
-                      	{foreach from=$nagrody item=item name=nagrody}
-                        	<!-- item -->
-                        	<div class="col-md-3">
-			                    <div class="panel panel-default panel-green" id="polecaneObiekty">
-			                      <div class="panel-heading"></div>
-			                      <div class="panel-body">
-	                                {html_image file="{$uploads}/nagrody/4065a25c125c699eb366767811b09dd32cce3898m.jpg" class="img-thumbnail" alt=""}
-	                                <h3><a href="{$base_url}nagrody/nagroda/{$item.id}">{$item.name}</a></h3>
-                                  	{$item.description}
-			                      </div>
-			                    </div>
-                        	</div>
-                        	<!-- item -->
-                        {/foreach}
-                      	</div>
+	                    {if $id == 1}
+	                    	{html_image file="{$uploads}/obiekty/1b176080874c992ae783432ba494002f2b8b6e1cs.jpg" class="img-thumbnail" width="40%" height="40%" alt=""}
+                        {else}
+	                    	{html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" class="img-thumbnail" width="40%" height="40%" alt=""}
+	                    {/if}
+
+	                    <h3>{$name}</h3>
+	                    {$description}
+
                         <!-- items -->
                       </div>
                     </div>

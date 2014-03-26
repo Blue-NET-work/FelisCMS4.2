@@ -25,6 +25,16 @@ class Dashboard extends FC_Controller {
 
 	}
 
+// Oferta tygodnia
+	public function oferta_tygodnia(){
+		$this->smarty->view("tygodnia.tpl");
+	}
+
+// Okolicznościowe
+	public function okolicznosciowe(){
+		$this->smarty->view("okolicznosciowe.tpl");
+	}
+
 
 /*
  *
@@ -84,6 +94,119 @@ class Dashboard extends FC_Controller {
         $this->session->set_flashdata('message', $this->ion_auth->messages());
         redirect(base_url(), 'refresh');
     }
+
+// Rejestracja
+	public function register(){
+
+        if($this->session->flashdata('message')){
+            $msg = $this->session->flashdata('message');
+            if(isset($msg['text']))$messages = $msg;
+            else $messages = array('boxClass' => "alert-danger", 'text'=>"{$msg}");
+        }
+        else $messages = array('boxClass' => "alert-info", 'text'=>$this->lang->line("login_require_a_login"));
+
+
+		$tables = $this->config->item('tables','ion_auth');
+
+		//validate form input
+		$this->form_validation->set_rules('item[first_name]', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('item[last_name]', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('item[email]', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique['.$tables['users'].'.email]');
+		$this->form_validation->set_rules('item[phone]', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('item[company]', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('item[password]', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+		$this->form_validation->set_rules('item[password_confirm]', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
+
+		if ($this->form_validation->run() == true)
+		{
+			if(!$this->input->post('item[username]')){
+				$username = strtolower($this->input->post('item[first_name]')) . ' ' . strtolower($this->input->post('item[last_name]'));
+			}
+			else{
+				$username = strtolower($this->input->post('item[username]'));
+			}
+
+			$email    = strtolower($this->input->post('item[email]'));
+			$password = $this->input->post('item[password]');
+
+			$additional_data = array(
+				'first_name' => $this->input->post('item[first_name]'),
+				'last_name'  => $this->input->post('item[last_name]'),
+				'company'    => $this->input->post('item[company]'),
+				'phone'      => $this->input->post('item[phone]'),
+			);
+		}
+		if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email, $additional_data))
+		{
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			redirect(base_url("rejestracja"), 'refresh');
+		}
+		else
+		{
+			//display the create user form
+			//set the flash data error message if there is one
+            $system_messages = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+            $messages = array('boxClass' => "alert-danger", 'text'=>"{$system_messages}", 'action'=>"shake");
+
+			$this->data['first_name'] = array(
+				'name'  => 'first_name',
+				'id'    => 'first_name',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('first_name'),
+			);
+			$this->data['last_name'] = array(
+				'name'  => 'last_name',
+				'id'    => 'last_name',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('last_name'),
+			);
+			$this->data['email'] = array(
+				'name'  => 'email',
+				'id'    => 'email',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('email'),
+			);
+			$this->data['company'] = array(
+				'name'  => 'company',
+				'id'    => 'company',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('company'),
+			);
+			$this->data['phone'] = array(
+				'name'  => 'phone',
+				'id'    => 'phone',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('phone'),
+			);
+			$this->data['password'] = array(
+				'name'  => 'password',
+				'id'    => 'password',
+				'type'  => 'password',
+				'value' => $this->form_validation->set_value('password'),
+			);
+			$this->data['password_confirm'] = array(
+				'name'  => 'password_confirm',
+				'id'    => 'password_confirm',
+				'type'  => 'password',
+				'value' => $this->form_validation->set_value('password_confirm'),
+			);
+
+
+		}
+
+		$query["messages"] = $messages;
+
+        $this->smarty->view("account/register.tpl", $query);
+	}
+
+/*
+ *
+ *
+ *
+ *
+ *
+ *
+ */
 
 //Site error
     public function error_404(){

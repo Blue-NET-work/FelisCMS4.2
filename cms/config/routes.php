@@ -37,6 +37,9 @@ $route['panel/(.*)']    		= 'panel/$1';
 $route['panel']    				= 'panel';
 
 //Dashboard
+$route['okolicznosciowe']    	= 'dashboard/okolicznosciowe';
+$route['oferta_tygodnia']    	= 'dashboard/oferta_tygodnia';
+$route['rejestracja']    		= 'dashboard/register';
 $route['zaloguj']    			= 'dashboard/sign_in';
 $route['wyloguj']    			= 'dashboard/logout';
 $route['(.*)']                 	= 'dashboard/pages/$1';

@@ -60,7 +60,8 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
+                        <div class="col-sm-offset-3 col-sm-9">
+                          <a href="{$base_url}rejestracja.html" class="btn btn-default">Rejestracja</a>
                           <button type="submit" class="btn btn-default">Zaloguj się</button>
                         </div>
                       </div>
@@ -73,9 +74,15 @@
             <nav>
             	<ul class="list-unstyled list-inline">
                 	<li {if $uri[0] == "hotele"}class="active"{/if}><a href="{$base_url}hotele.html">Obiekty</a></li>
-                    <li {if $uri[0] == "okolicznosciowe"}class="active"{/if}><a href="{$base_url}">Okolicznościowe</a></li>
-                    <li {if $uri[0] == "oferta-tygodnia"}class="active"{/if}><a href="{$base_url}">Oferta tygodnia</a></li>
-                    <li {if $uri[0] == "nagrody"}class="active"{/if}><a href="{$base_url}nagrody.html">Nagrody</a></li>
+                    <li {if $uri[0] == "okolicznosciowe"}class="active"{/if}><a href="{$base_url}okolicznosciowe.html">Okolicznościowe</a></li>
+                    <li {if $uri[0] == "oferta_tygodnia"}class="active"{/if}><a href="{$base_url}oferta_tygodnia.html">Oferta tygodnia</a></li>
+                    <li class="dropdown {if $uri[0] == "nagrody"}active{/if}">
+                    	<a href="{$base_url}nagrody.html" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Nagrody</a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}koszyk.html" title="koszyk">koszyk</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}panel.html" title="moje konto">moje konto</a></li>
+						</ul>
+                    </li>
                     <li {if $uri[0] == "pogoda"}class="active"{/if}><a href="{$base_url}pogoda.html">Pogoda</a></li>
                     <li class="dropdown {if $uri[0] == "jak-to-dziala"}active{/if}">
                     	<a href="{$base_url}jak-to-dziala.html" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Jak to działa</a>

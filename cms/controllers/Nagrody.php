@@ -15,7 +15,8 @@ class Nagrody extends FC_Controller {
 
 // Nagroda
 	public function nagroda($id){
-		$this->smarty->view("nagrody/nagroda.tpl");
+		$query = $this->db->get_where("nagrody", array("id"=>$id))->row_array();
+		$this->smarty->view("nagrody/nagroda.tpl", $query);
 	}
 
 
