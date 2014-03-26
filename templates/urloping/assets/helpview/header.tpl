@@ -10,7 +10,7 @@
             	<!-- szukaj -->
                 <div class="col-md-5">
                     <div class="czasUrlop margin-top-40">
-                        <form class="form-inline" role="form">
+                        <form class="form-inline" action="{$base_url}szukaj.html" role="form" method="POST">
                           <div class="form-group">
                             <select class="form-control" name="region" id="region">
                                 <option value="0" selected="selected">region</option>
@@ -81,6 +81,7 @@
                     <li class="dropdown {if $uri[0] == "nagrody"}active{/if}">
                     	<a href="{$base_url}nagrody.html" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Nagrody</a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}nagrody.html" title="koszyk">nagrody</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}koszyk.html" title="koszyk">koszyk</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}panel.html" title="moje konto">moje konto</a></li>
 						</ul>

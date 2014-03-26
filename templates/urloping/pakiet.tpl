@@ -28,6 +28,8 @@
                     		</div>
 
                     		{$pakiet.p_description}
+
+                    		<button class="btn btn-success">zamów</button>
                     	</div>
 		            </div>
 		            <!-- items -->

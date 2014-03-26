@@ -11,6 +11,7 @@ class Dashboard extends FC_Controller {
 	public function index(){
 		$query["miasta"] = $this->db->get("city")->result_array();
 		$query["pakiety"] = $this->db->get("pakiet")->result_array();
+		$query["nagrody"] = $this->db->get("nagrody")->result_array();
 
 		$this->smarty->view("index.tpl", $query);
 	}
@@ -30,7 +31,10 @@ class Dashboard extends FC_Controller {
 
 // Oferta tygodnia
 	public function oferta_tygodnia(){
-		$this->smarty->view("tygodnia.tpl");
+		$query["pakiet"] = $this->db->get_where("pakiet", array("p_week"=>"1"))->row_array();
+		$query["hotel"] = $this->db->get_where("hotels", array("id"=>$query["pakiet"]["p_hotels"]))->row_array();
+
+		$this->smarty->view("tygodnia.tpl", $query);
 	}
 
 // Okolicznościowe
@@ -47,6 +51,18 @@ class Dashboard extends FC_Controller {
 
 		$this->smarty->view("pakiet.tpl", $query);
 	}
+
+// Szukaj
+	public function szukaj(){
+		redirect(base_url("obiekty//"), 'refresh');
+	}
+
+// Obiekty
+	public function oferta($region, $term){
+		$query["hotele"] = $this->db->get_where("hotels", array("region" => $region))->result_array();
+		$this->smarty->view("hotele/index.tpl", $query);
+	}
+
 
 
 /*
