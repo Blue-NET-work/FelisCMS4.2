@@ -82,7 +82,7 @@
                     	<a href="{$base_url}nagrody.html" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Nagrody</a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}nagrody.html" title="koszyk">nagrody</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}koszyk.html" title="koszyk">koszyk</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}panel/koszyk.html" title="koszyk">koszyk</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}panel.html" title="moje konto">moje konto</a></li>
 						</ul>
                     </li>

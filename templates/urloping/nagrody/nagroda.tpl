@@ -17,12 +17,21 @@
                         {if $id == 1}
 	                        {html_image file="{$uploads}/nagrody/4065a25c125c699eb366767811b09dd32cce3898m.jpg" class="img-thumbnail margin-right-10" align="left" alt=""}
                         {elseif $id == 2}
-	                        {html_image file="{$uploads}/nagrody/f4a607b6aa9d4368d439ff84544716c2cdd4823fm.png" class="img-thumbnail" alt=""}
+	                        {html_image file="{$uploads}/nagrody/f4a607b6aa9d4368d439ff84544716c2cdd4823fm.png" class="img-thumbnail margin-right-10" align="left" alt=""}
                         {else}
-	                        {html_image file="{$uploads}/nagrody/a1f14b85de722d7aed551c7408ca9375f4589aeam.png" class="img-thumbnail" alt=""}
+	                        {html_image file="{$uploads}/nagrody/a1f14b85de722d7aed551c7408ca9375f4589aeam.png" class="img-thumbnail margin-right-10" align="left" alt=""}
                         {/if}
 
 	                    {$description}
+
+
+			            <form action="{$base_url}panel/dodaj.html" class="margin-top-10" method="post">
+			                <input type="hidden" name="date[id]" value="nagroda_{$id}">
+			                <input type="hidden" name="date[name]" value="{$name}">
+			                <input type="hidden" name="date[price]" value="{$price}">
+			                <input type="hidden" name="date[qty]" value="1">
+			                <button type="submit" class="btn btn-default">wybierz</button>
+			            </form>
 
                         <!-- items -->
                       </div>

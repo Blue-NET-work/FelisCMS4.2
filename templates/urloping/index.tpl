@@ -31,7 +31,7 @@
                 <div class="col-md-5 margin-top-20">
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green" id="polecaneObiekty">
-                      <div class="panel-heading"><i class="fa fa-info"></i> Polecane obiekty</div>
+                      <div class="panel-heading"><i class="fa fa-info fa-2x"></i> Polecane obiekty</div>
                       <div class="panel-body">
                         <!-- carusele -->
                         <div id="polecaneObiektyCarousel" class="carousel slide" data-ride="carousel">
