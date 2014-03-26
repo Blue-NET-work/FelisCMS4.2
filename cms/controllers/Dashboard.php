@@ -35,7 +35,7 @@ class Dashboard extends FC_Controller {
 
 // Okolicznościowe
 	public function okolicznosciowe(){
-		$query["pakiet"] = $this->db->get_where("pakiet", array("p_occasional"=>"1"))->result_array();
+		$query["pakiety"] = $this->db->get_where("pakiet", array("p_occasional"=>"1"))->result_array();
 
 		$this->smarty->view("okolicznosciowe.tpl", $query);
 	}

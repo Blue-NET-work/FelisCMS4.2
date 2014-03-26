@@ -58,7 +58,7 @@
                     	<td><a href="{$base_url}pakiet/{$item.p_id}">{$item.p_name}</a></td>
                     	<td class="col-md-1 text-center">{$item.p_term} dni</td>
                     	<td class="col-md-2 text-center"><p><strong>{$item.p_price} zł</strong></p>+ {$item.p_points} pkt</td>
-                    	<td class="col-md-2 text-right"><a href="#" class="btn btn-success">Rezerwuj</a></td>
+                    	<td class="col-md-2 text-right"><a href="{$base_url}pakiet/{$item.p_id}" class="btn btn-success">Rezerwuj</a></td>
                 	</tr>
                 {/foreach}
                 </table>
