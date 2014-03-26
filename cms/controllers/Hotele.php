@@ -12,6 +12,12 @@ class Hotele extends FC_Controller {
 		$this->smarty->view("hotele/index.tpl");
 	}
 
+// Miasto
+	public function miasto($miasto){
+		print_r($miasto);
+		$this->smarty->view("hotele/index.tpl");
+	}
+
 // Podstrony
 	public function pages($alias){
         if($alias == "index" || $alias == "home" || $alias == "strona-glowna") redirect(base_url(), 'refresh');

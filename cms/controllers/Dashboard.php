@@ -39,6 +39,13 @@ class Dashboard extends FC_Controller {
 
         @FC_Request::loadLang("felis_login");
 
+        if($this->session->flashdata('message')){
+            $msg = $this->session->flashdata('message');
+            if(isset($msg['text']))$messages = $msg;
+            else $messages = array('boxClass' => "alert-danger", 'text'=>"{$msg}");
+        }
+        else $messages = array('boxClass' => "alert-info", 'text'=>$this->lang->line("login_require_a_login"));
+
         if ($this->ion_auth->logged_in())
             $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond["logged"] = true));
 
@@ -51,37 +58,24 @@ class Dashboard extends FC_Controller {
                 $item = @FC_Request::post('item');
 
                 if ($this->ion_auth->login($item['login'], $item['password'], isset($item['remember']))){
-                    $respond["logged"] = true;
-                    $respond["messages"] = $this->ion_auth->messages();
-                    $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond));
+                    $this->session->set_flashdata('message', $this->ion_auth->messages());
                 }
                 else{
-                    $respond["messages"] = $this->ion_auth->errors();
-                    $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond));
+                    $this->session->set_flashdata('message', $this->ion_auth->errors());
                 }
             }
             else{
-                $respond["messages"] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-                $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond));
+                $system_messages = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+                $messages = array('boxClass' => "alert-danger", 'text'=>"{$system_messages}", 'action'=>"shake");
             }
         }
-        else{
 
-            if ($this->ion_auth->logged_in()){redirect('dashboard', 'refresh');}
 
-            if($this->session->flashdata('message'))
-                $messages = $this->session->flashdata('message');
-            else
-                $messages = $this->lang->line("felis_login_require_a_login");
+        if ($this->ion_auth->logged_in()){redirect(base_url("panel.html"), 'refresh');}
 
-            @View::setCSS(base_url());
 
-            @View::setJQ(base_url());
-
-            $query["messages"] = $messages;
-            @FC_Request::smartyView("account/sign_in.tpl", $query);
-        }
-
+        $query["messages"] = $messages;
+        $this->smarty->view("account/sign_in.tpl", $query);
     }
 
 // Wylogowanie

@@ -15,16 +15,8 @@
                       <div class="panel-body">
                         <!-- city -->
                         <ul class="list-unstyled">
-                        	<li><a href="#">Miasto</a></li>
-                        	<li><a href="#">Miastowo</a></li>
-                        	<li><a href="#">Miasto</a></li>
-                        	<li><a href="#">Miastowo</a></li>
-                        	<li><a href="#">Miasto</a></li>
-                        	<li><a href="#">Miastowo</a></li>
-                        	<li><a href="#">Miasto</a></li>
-                        	<li><a href="#">Miastowo</a></li>
-                        	<li><a href="#">Miasto</a></li>
-                        	<li><a href="#">Miastowo</a></li>
+                        	<li><a href="{$base_url}hotele/miasto/warszawa.html">Warszawa</a></li>
+                        	<li><a href="{$base_url}hotele/miasto/krakow.html">Kraków</a></li>
                         </ul>
                         <!-- city -->
                       </div>

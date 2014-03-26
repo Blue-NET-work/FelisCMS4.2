@@ -9,22 +9,14 @@ class Nagrody extends FC_Controller {
     }
 
 	public function index(){
-		$this->smarty->view("nagrody/index.tpl");
+		$query["nagrody"] = $this->db->get("nagrody")->result_array();
+		$this->smarty->view("nagrody/index.tpl", $query);
 	}
 
-// Podstrony
-	public function pages($alias){
-        if($alias == "index" || $alias == "home" || $alias == "strona-glowna") redirect(base_url(), 'refresh');
-
-        $query = $this->db->get_where("pages", array('alias' => $alias, 'active'=> "1"))->row_array();
-
-        if(!$query)
-            $this->error_404();
-        else
-        	$this->smarty->view("pages/pages.tpl", $query);
-
+// Nagroda
+	public function nagroda($id){
+		$this->smarty->view("nagrody/nagroda.tpl");
 	}
-
 
 
 }

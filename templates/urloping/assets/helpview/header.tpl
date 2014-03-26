@@ -43,6 +43,7 @@
                 <div class="col-md-3 text-right">
                 {if $userLogIn}
                     <p>{$userLogIn.first_name} <b>{$userLogIn.last_name}</b></p>
+                    <a href="{$base_url}panel.html">Moje Konto</a>
                     <a href="{$base_url}wyloguj.html">wyloguj</a>
                 {else}
                     <form class="form-horizontal" id="logowanie" action="{$base_url}zaloguj.html" role="form" method="POST">

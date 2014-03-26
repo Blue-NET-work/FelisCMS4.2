@@ -15,20 +15,18 @@
                       <div class="panel-body padding-10 text-center">
                         <!-- items -->
                       	<div class="row">
-                      	{foreach from=$nagrody item=item name=nagrody}
                         	<!-- item -->
                         	<div class="col-md-3">
 			                    <div class="panel panel-default panel-green" id="polecaneObiekty">
 			                      <div class="panel-heading"></div>
 			                      <div class="panel-body">
 	                                {html_image file="{$uploads}/nagrody/4065a25c125c699eb366767811b09dd32cce3898m.jpg" alt=""}
-	                                <h3><a href="{$base_url}nagrody/nagroda/{$item.id}">{$item.name}</a></h3>
-                                  	{$item.description}
+	                                <h3>Skakanka</h3>
+			                      	<div class="list-item-about"><p>Uniwersalny produkt marki profit. Możliwość regulacji długości skakanki. Uchwyty pokryte gumą antypoślizgową. Licznik wykonywanych obrotów. Możliwość zerowania wyniku po każdym użyciu.</p><p>Maksymalna długość 2,85 m</p></div>
 			                      </div>
 			                    </div>
                         	</div>
                         	<!-- item -->
-                        {/foreach}
                       	</div>
                         <!-- items -->
                       </div>

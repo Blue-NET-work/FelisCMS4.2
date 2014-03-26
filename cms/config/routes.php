@@ -25,10 +25,16 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //Nagrody
+$route['nagrody/(.*)']    		= 'nagrody/$1';
 $route['nagrody']    			= 'nagrody';
 
 //Nagrody
+$route['hotele/(.*)']    		= 'hotele/$1';
 $route['hotele']    			= 'hotele';
+
+//Panel
+$route['panel/(.*)']    		= 'panel/$1';
+$route['panel']    				= 'panel';
 
 //Dashboard
 $route['zaloguj']    			= 'dashboard/sign_in';
