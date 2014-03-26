@@ -24,4 +24,13 @@ $route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['(.*)']                           = 'dashboard/pages/$1';
+//Nagrody
+$route['nagrody']    			= 'nagrody';
+
+//Nagrody
+$route['hotele']    			= 'hotele';
+
+//Dashboard
+$route['zaloguj']    			= 'dashboard/sign_in';
+$route['wyloguj']    			= 'dashboard/logout';
+$route['(.*)']                 	= 'dashboard/pages/$1';

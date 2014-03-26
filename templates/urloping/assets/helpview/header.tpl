@@ -9,7 +9,7 @@
             	<!-- ./logo -->
             	<!-- szukaj -->
                 <div class="col-md-5">
-                    <div class="czasUrlop">
+                    <div class="czasUrlop margin-top-40">
                         <form class="form-inline" role="form">
                           <div class="form-group">
                             <select class="form-control" name="region" id="region">
@@ -40,38 +40,49 @@
                 </div>
             	<!-- ./szukaj -->
             	<!-- logowanie -->
-                <div class="col-md-3">
-                    <form class="form-horizontal" role="form">
+                <div class="col-md-3 text-right">
+                {if $userLogIn}
+                    <p>{$userLogIn.first_name} <b>{$userLogIn.last_name}</b></p>
+                    <a href="{$base_url}wyloguj.html">wyloguj</a>
+                {else}
+                    <form class="form-horizontal" id="logowanie" action="{$base_url}zaloguj.html" role="form" method="POST">
                       <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Użytkownik</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputEmail3" placeholder="Nazwa użytkownika">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Login</label>
+                        <div class="col-sm-8">
+                          <input type="text" name="item[login]" class="form-control" id="inputEmail3" placeholder="Nazwa użytkownika">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Hasło</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputPassword3" placeholder="Hasło">
+                        <label for="inputPassword3" class="col-sm-4 control-label">Hasło</label>
+                        <div class="col-sm-8">
+                          <input type="password" name="item[password]" class="form-control" id="inputPassword3" placeholder="Hasło">
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
+                        <div class="col-sm-offset-4 col-sm-8">
                           <button type="submit" class="btn btn-default">Zaloguj się</button>
                         </div>
                       </div>
                     </form>
+                {/if}
                 </div>
             	<!-- ./logowanie -->
             </div>
 			<!-- nav -->
             <nav>
             	<ul class="list-unstyled list-inline">
-                	<li {if $uri[0] == "obiekty"}class="active"{/if}><a href="{$base_url}">Obiekty</a></li>
+                	<li {if $uri[0] == "hotele"}class="active"{/if}><a href="{$base_url}hotele.html">Obiekty</a></li>
                     <li {if $uri[0] == "okolicznosciowe"}class="active"{/if}><a href="{$base_url}">Okolicznościowe</a></li>
                     <li {if $uri[0] == "oferta-tygodnia"}class="active"{/if}><a href="{$base_url}">Oferta tygodnia</a></li>
-                    <li {if $uri[0] == "nagrody"}class="active"{/if}><a href="{$base_url}">Nagrody</a></li>
+                    <li {if $uri[0] == "nagrody"}class="active"{/if}><a href="{$base_url}nagrody.html">Nagrody</a></li>
                     <li {if $uri[0] == "pogoda"}class="active"{/if}><a href="{$base_url}pogoda.html">Pogoda</a></li>
-                    <li {if $uri[0] == "jak-to-dziala"}class="active"{/if}><a href="{$base_url}jak-to-dziala.html">Jak to działa</a></li>
+                    <li class="dropdown {if $uri[0] == "jak-to-dziala"}active{/if}">
+                    	<a href="{$base_url}jak-to-dziala.html" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Jak to działa</a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}znajdz-i-zarezerwuj.html" title="Znajdź i zarezerwuj">znajdź i zarezerwuj</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}" title="co z tymi nagrodami?">co z tymi nagrodami?</a></li>
+						</ul>
+                    </li>
                     <li {if $uri[0] == "o-nas"}class="active"{/if}><a href="{$base_url}o-nas.html">O Nas</a></li>
                     <li {if $uri[0] == "kontakt"}class="active"{/if}><a href="{$base_url}kontakt.html">Kontakt</a></li>
                 </ul>
