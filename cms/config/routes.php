@@ -42,4 +42,5 @@ $route['oferta_tygodnia']    	= 'dashboard/oferta_tygodnia';
 $route['rejestracja']    		= 'dashboard/register';
 $route['zaloguj']    			= 'dashboard/sign_in';
 $route['wyloguj']    			= 'dashboard/logout';
+$route['pakiet/(.*)']    		= 'dashboard/pakiet/$1';
 $route['(.*)']                 	= 'dashboard/pages/$1';

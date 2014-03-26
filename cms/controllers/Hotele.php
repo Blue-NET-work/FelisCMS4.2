@@ -23,6 +23,10 @@ class Hotele extends FC_Controller {
 // Hotel
 	public function hotel($id){
 		$query = $this->db->get_where("hotels", array("id"=>$id))->row_array();
+
+		$pakiety = $this->db->get_where("pakiet", array("p_hotels"=>$id))->result_array();
+        $this->smarty->assigns("pakiety", $pakiety);
+
 		$this->smarty->view("hotele/hotel.tpl", $query);
 	}
 

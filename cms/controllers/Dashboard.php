@@ -9,7 +9,10 @@ class Dashboard extends FC_Controller {
     }
 
 	public function index(){
-		$this->smarty->view("index.tpl");
+		$query["miasta"] = $this->db->get("city")->result_array();
+		$query["pakiety"] = $this->db->get("pakiet")->result_array();
+
+		$this->smarty->view("index.tpl", $query);
 	}
 
 // Podstrony
@@ -32,7 +35,17 @@ class Dashboard extends FC_Controller {
 
 // Okolicznościowe
 	public function okolicznosciowe(){
-		$this->smarty->view("okolicznosciowe.tpl");
+		$query["pakiet"] = $this->db->get_where("pakiet", array("p_occasional"=>"1"))->result_array();
+
+		$this->smarty->view("okolicznosciowe.tpl", $query);
+	}
+
+// Okolicznościowe
+	public function pakiet($id){
+		$query["pakiet"] = $this->db->get_where("pakiet", array("p_id"=>$id))->row_array();
+		$query["hotel"] = $this->db->get_where("hotels", array("id"=>$query["pakiet"]["p_hotels"]))->row_array();
+
+		$this->smarty->view("pakiet.tpl", $query);
 	}
 
 

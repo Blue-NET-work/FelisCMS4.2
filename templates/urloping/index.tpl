@@ -15,8 +15,9 @@
                       <div class="panel-body">
                         <!-- city -->
                         <ul class="list-unstyled">
-                        	<li><a href="{$base_url}hotele/miasto/warszawa.html">Warszawa</a></li>
-                        	<li><a href="{$base_url}hotele/miasto/krakow.html">Kraków</a></li>
+		                {foreach from=$miasta item=item name=miasta}
+                        	<li><a href="{$base_url}hotele/miasto/{$item.alias}.html">{$item.name}</a></li>
+		                {/foreach}
                         </ul>
                         <!-- city -->
                       </div>
@@ -92,48 +93,21 @@
         	<div class="panel panel-default panel-green margin-top-20">
               <div class="panel-heading"><i class="fa fa-thumbs-o-up"></i> Najchętniej wybierane</div>
               <div class="panel-body">
-                <!-- item -->
-                <div class="row margin-bottom-20">
-                	<div class="col-md-3">
-                    	{html_image file="{$uploads}/najchetniej/7e26069718c3fc14ff9455bfac012c7aebd01efbm.jpg" alt="" height="40"}
-                	</div>
-                	<div class="col-md-6">
-                    	<h4 class="packetInfo list-item-title"><a href="#" title="Wyjątkowy Pobyt SPA - 4*">10 dni - pełne wyżywienie - siłownia - basen - 8 zabiegów SPA - 4*</a></h4>
-                	</div>
-                	<div class="col-md-3 text-center">
-	                    <p><b>1990.00 zł</b></p>
-						+597 pkt
-                	</div>
-                </div>
-                <!-- item -->
-                <!-- item -->
-                <div class="row margin-bottom-20">
-                	<div class="col-md-3">
-                    	{html_image file="{$uploads}/najchetniej/7e26069718c3fc14ff9455bfac012c7aebd01efbm.jpg" alt="" height="40"}
-                	</div>
-                	<div class="col-md-6">
-                    	<h4 class="packetInfo list-item-title"><a href="#" title="Wyjątkowy Pobyt SPA - 4*">10 dni - pełne wyżywienie - siłownia - basen - 8 zabiegów SPA - 4*</a></h4>
-                	</div>
-                	<div class="col-md-3 text-center">
-	                    <p><b>1990.00 zł</b></p>
-						+597 pkt
-                	</div>
-                </div>
-                <!-- item -->
-                <!-- item -->
-                <div class="row margin-bottom-20">
-                	<div class="col-md-3">
-                    	{html_image file="{$uploads}/najchetniej/7e26069718c3fc14ff9455bfac012c7aebd01efbm.jpg" alt="" height="40"}
-                	</div>
-                	<div class="col-md-6">
-                    	<h4 class="packetInfo list-item-title"><a href="#" title="Wyjątkowy Pobyt SPA - 4*">10 dni - pełne wyżywienie - siłownia - basen - 8 zabiegów SPA - 4*</a></h4>
-                	</div>
-                	<div class="col-md-3 text-center">
-	                    <p><b>1990.00 zł</b></p>
-						+597 pkt
-                	</div>
-                </div>
-                <!-- item -->
+	            {if $pakiety}
+	                <table class="table">
+	                {foreach from=$pakiety item=item name=pakiety}
+                		<tr>
+                    		<td class="col-md-2">{html_image file="{$uploads}/obiekty/1b176080874c992ae783432ba494002f2b8b6e1cs.jpg" class="img-thumbnail" width="60%" height="60%" alt=""}</td>
+                    		<td><a href="{$base_url}pakiet/{$item.p_id}">{$item.p_name}</a></td>
+                    		<td class="col-md-1 text-center">{$item.p_term} dni</td>
+                    		<td class="col-md-2 text-center"><p><strong>{$item.p_price} zł</strong></p>+ {$item.p_points} pkt</td>
+                    		<td class="col-md-2 text-right"><a href="#" class="btn btn-success">Rezerwuj</a></td>
+                		</tr>
+	                {/foreach}
+	                </table>
+	            {else}
+            		<span class="text-info">Obecnie brak pakietów dla wybranego hotelu</span>
+	            {/if}
               </div>
             </div>
 
