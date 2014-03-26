@@ -15,7 +15,8 @@ class Hotele extends FC_Controller {
 
 // Miasto
 	public function miasto($miasto){
-		$query["hotele"] = $this->db->get_where("hotels", array("city" => $miasto))->result_array();
+		$city_id = $this->db->get_where("city", array("alias" => $miasto))->row("id");
+		$query["hotele"] = $this->db->get_where("hotels", array("city" => $city_id))->result_array();
 		$this->smarty->view("hotele/index.tpl", $query);
 	}
 

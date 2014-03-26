@@ -13,19 +13,20 @@
                 <div class="row">
                 {foreach from=$hotele item=item name=hotele}
                     <!-- item -->
-                    <div class="col-md-6">
+                    <div class="col-md-4 margin-bottom-20">
 			            <div class="panel panel-default panel-green">
 			              <div class="panel-body padding-10">
 				              <div class="row">
-                              	<div class="col-md-6">
+                              	<div class="col-md-5">
 			                    {if $item.id == 1}
 	                    			{html_image file="{$uploads}/obiekty/1b176080874c992ae783432ba494002f2b8b6e1cs.jpg" class="img-thumbnail" width="100%" height="100%" alt=""}
 		                        {else}
 	                    			{html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" class="img-thumbnail" width="100%" height="100%" alt=""}
 			                    {/if}
 	                    		</div>
-                              	<div class="col-md-6">
-	                        		<h3><a href="{$base_url}hotele/hotel/{$item.id}">{$item.name}</a></h3>
+                              	<div class="col-md-7">
+	                        		<h3 class="no-top-space no-bottom-space"><a href="{$base_url}hotele/hotel/{$item.id}">{$item.name}</a></h3>
+
                                     <div>
                                     	{if $item.stars == 5}
                                     		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -40,7 +41,11 @@
                                     	{/if}
                                     </div>
 
-		                            {$item.description}
+		                            {$item.description|truncate:55:"...":true}
+
+		                            <div class="margin-top-10 margin-bottom-10 text-right">
+                                    	<a href="{$base_url}hotele/hotel/{$item.id}" class="btn btn-info">więcej...</a>
+		                            </div>
                               	</div>
 				              </div>
 			              </div>
