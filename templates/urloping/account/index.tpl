@@ -24,7 +24,7 @@
                                 	<div class="col-md-6">
 		                      			<ul class="list-unstyled">
                                     		<li><a href="{$base_url}panel/dane.html">Moje dane</a></li>
-                                    		<li>Moje rezerwacje</li>
+                                    		<li><a href="{$base_url}panel/rezerwacje.html">Moje rezerwacje</a></li>
 		                      			</ul>
                                 	</div>
                                 	<div class="col-md-6">

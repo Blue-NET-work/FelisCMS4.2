@@ -29,9 +29,27 @@
 
                     		{$pakiet.p_description}
 
+                    		<div class="margin-top-10 text-info"><strong>
+                    		{if $rezerwacja.r_status == 2}
+                                Zatwierdzona
+                            {elseif $rezerwacja.r_status == 1}
+                            	Oczekuje na akceptacje hotelu.
+                            {else}
+                            	Oczekuje na wpłacenie zaliczki.
+                            {/if}
+                            </strong></div>
+                            {if $rezerwacja.r_status == 0}
                             <div class="margin-top-20 text-center">
-                    			<a href="{$base_url}panel/rezerwuj/{$pakiet.p_id}" class="btn btn-success">zamów</a>
+		                        <form action="{$urlForm}" method="POST" id="przekierowanie">
+		                            {foreach from=$payments item=item name=payments}
+		                                <!-- wpis -->
+		                                <input type="hidden" name="{$item.name}" value="{$item.value}">
+		                                <!-- koniec wpisu -->
+		                            {/foreach}
+		                            <button type="submit" class="btn btn-info">wpłać zaliczkę wysokości 10%</button>
+		                        </form>
                             </div>
+                            {/if}
                     	</div>
 		            </div>
 		            <!-- items -->
