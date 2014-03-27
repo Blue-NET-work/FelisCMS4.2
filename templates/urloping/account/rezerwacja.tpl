@@ -29,6 +29,8 @@
 
                     		{$pakiet.p_description}
 
+                    		<div class="margin-top-10"><span class="label label-success">Dokonano rezerwacji od: {$rezerwacja.r_date}</span></div>
+
                     		<div class="margin-top-10 text-info"><strong>
                     		{if $rezerwacja.r_status == 2}
                                 Zatwierdzona

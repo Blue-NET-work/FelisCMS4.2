@@ -7,7 +7,7 @@
 <head>
     <!-- mete dane -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    {*<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">*}
     <meta name="author" content="Mateusz Serwinowski (serwin) - Blue-NET.pl">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,7 +15,6 @@
 
     <!-- styles -->
 	<link href="{$TEMPLATES}assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="{$TEMPLATES}assets/cookie/main.css" rel="stylesheet" type="text/css">
 
 {block name="head"}{/block}
 
@@ -44,8 +43,6 @@
     ================================================= -->
     <script src="{$TEMPLATES}assets/js/jquery-1.11.0.js"></script>
     <script src="{$TEMPLATES}assets/js/bootstrap.js"></script>
-    <script src="{$TEMPLATES}assets/cookie/support-opt-in.js"></script>
-    <script src="{$TEMPLATES}assets/cookie/require-opt-in.js"></script>
 {block name="jQuery"}{/block}
 
 	<div id="fb-root"></div>

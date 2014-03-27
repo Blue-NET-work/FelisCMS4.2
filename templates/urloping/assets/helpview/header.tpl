@@ -79,8 +79,8 @@
                     <li {if $uri[0] == "okolicznosciowe"}class="active"{/if}><a href="{$base_url}okolicznosciowe.html">Okolicznościowe</a></li>
                     <li {if $uri[0] == "oferta_tygodnia"}class="active"{/if}><a href="{$base_url}oferta_tygodnia.html">Oferta tygodnia</a></li>
                     <li class="dropdown {if $uri[0] == "nagrody"}active{/if}">
-                    	<a href="{$base_url}nagrody.html" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Nagrody</a>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    	<a href="{$base_url}nagrody.html" class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown">Nagrody</a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}nagrody.html" title="koszyk">nagrody</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}panel/koszyk.html" title="koszyk">koszyk</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}panel.html" title="moje konto">moje konto</a></li>
@@ -88,7 +88,7 @@
                     </li>
                     <li {if $uri[0] == "pogoda"}class="active"{/if}><a href="{$base_url}pogoda.html">Pogoda</a></li>
                     <li class="dropdown {if $uri[0] == "jak-to-dziala"}active{/if}">
-                    	<a href="{$base_url}jak-to-dziala.html" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Jak to działa</a>
+                    	<a href="{$base_url}jak-to-dziala.html" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">Jak to działa</a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}znajdz-i-zarezerwuj.html" title="Znajdź i zarezerwuj">znajdź i zarezerwuj</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}" title="co z tymi nagrodami?">co z tymi nagrodami?</a></li>

@@ -6,6 +6,7 @@
 html{
 	background:url(../img/bg.png) no-repeat bottom center;
 	min-height:100%;
+	background-size: 100%;
 }
 
 body{
@@ -193,3 +194,44 @@ h3{
 	font-size: 11px;;
 }
 .fa-star{color:#fff100; text-shadow: 1px 1px 3px rgba(0,0,0,.5); font-size: 13px;}
+
+.naTerenie{
+	background: url("../img/object_details_bg.png") no-repeat;
+	width:272px;
+	height: 221px;
+	position:relative;
+	display:block;
+}
+
+.naTerenie ul{
+	position: relative;
+	top: 60px;
+	left:20px;
+	color:#fff;
+}
+
+#rating_container {
+	position: relative;
+	width: 272px;
+	height: 220px;
+	margin-top: 20px;
+	background: url("../img/rating_bg.png") no-repeat;
+}
+
+.center_white {
+	position:relative;
+	top:100px;
+	display:block;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+}
+
+.ocen_info {
+	width: 100%;
+	text-align: right;
+	position:relative;
+	top:125px;
+	color: #fff;
+	font-size: 10px;
+}

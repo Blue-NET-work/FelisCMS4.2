@@ -19,12 +19,15 @@
 			            {html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" class="img-thumbnail" width="40%" height="40%" alt=""}
 			        {/if}
 			        </div>
-
-			        {$description}
+                    <div class="panel panel-default hotele">
+                    	<div class="panel-body padding-20 text-justify">
+			        		{$description}
+                    	</div>
+                    </div>
 		            <!-- items -->
             	</div>
             	<div class="col-md-4">
-            	<p>
+            	{*<p>
                     {if $item.stars == 5}
                         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                     {elseif $item.stars == 4}
@@ -36,14 +39,22 @@
                     {else}
                         <i class="fa fa-star"></i>
                     {/if}
-            	</p>
-                    <h5>Na terenie obiektu znajduje się:</h5>
-                    <ul class="fa-ul">
-					  <li><i class="fa-li fa fa-check-square"></i>List icons (like these)</li>
-					  <li><i class="fa-li fa fa-check-square"></i>can be used</li>
-					  <li><i class="fa-li fa fa-check-square"></i>can be used</li>
-					  <li><i class="fa-li fa fa-square"></i>default bullets in lists</li>
-					</ul>
+            	</p>*}
+
+            		<div class="naTerenie">
+		                <ul class="fa-ul">
+						  <li><i class="fa-li fa fa-check-square"></i>List icons (like these)</li>
+						  <li><i class="fa-li fa fa-check-square"></i>can be used</li>
+						  <li><i class="fa-li fa fa-check-square"></i>can be used</li>
+						  <li><i class="fa-li fa fa-square"></i>default bullets in lists</li>
+						</ul>
+            		</div>
+
+            		<div id="rating_container">
+            			<p class="center_white">Brak ocen</p>
+            			<p class="ocen_info">* oceń po zalogowaniu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            		</div>
+
             	</div>
           	</div>
 

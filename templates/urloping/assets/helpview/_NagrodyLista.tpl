@@ -1,7 +1,7 @@
 
 		                    <!-- item -->
 		                    <div class="col-md-3">
-					            <div class="panel panel-default panel-green" id="polecaneObiekty">
+					            <div class="panel panel-default panel-green">
 					              <div class="panel-heading"></div>
 					              <div class="panel-body padding-10">
 			                        <p>
