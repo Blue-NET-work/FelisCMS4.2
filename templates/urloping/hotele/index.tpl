@@ -13,7 +13,7 @@
                 <div class="row">
                 {foreach from=$hotele item=item name=hotele}
                     <!-- item -->
-                    <div class="col-md-4 margin-bottom-20">
+                    <div class="col-md-4 margin-bottom-5">
 			            <div class="panel panel-default panel-green">
 			              <div class="panel-body padding-10">
 				              <div class="row">
@@ -27,7 +27,7 @@
                               	<div class="col-md-7">
 	                        		<h3 class="no-top-space no-bottom-space"><a href="{$base_url}hotele/hotel/{$item.id}">{$item.name}</a></h3>
 
-                                    <div>
+                                    <div class="margin-top-5">
                                     	{if $item.stars == 5}
                                     		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                                     	{elseif $item.stars == 4}

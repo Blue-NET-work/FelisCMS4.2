@@ -29,7 +29,9 @@
 
                     		{$pakiet.p_description}
 
-                    		<button class="btn btn-success">zamów</button>
+                            <div class="margin-top-20 text-center">
+                    			<button class="btn btn-success">zamów</button>
+                            </div>
                     	</div>
 		            </div>
 		            <!-- items -->

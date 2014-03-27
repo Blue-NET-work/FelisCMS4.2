@@ -54,13 +54,27 @@ class Dashboard extends FC_Controller {
 
 // Szukaj
 	public function szukaj(){
-		redirect(base_url("obiekty//"), 'refresh');
+		$region = $this->input->post("region");
+		$term = $this->input->post("time");
+		redirect(base_url("oferta/{$region}/{$term}"), 'refresh');
 	}
 
 // Obiekty
 	public function oferta($region, $term){
-		$query["hotele"] = $this->db->get_where("hotels", array("region" => $region))->result_array();
-		$this->smarty->view("hotele/index.tpl", $query);
+		$hotele = $this->db->get_where("hotels", array("region" => $region))->result_array();
+
+		$pakiety = array();
+		foreach($hotele as $hotel){
+        	$pakieciki = $this->db->get_where("pakiet", array("p_hotels" => $hotel["id"], "p_term" => $term))->result_array();
+            foreach($pakieciki as $pakiet){
+            	$pakiety[] = $pakiet;
+            }
+		}
+
+
+		$query["pakiety"] = $pakiety;
+
+		$this->smarty->view("oferta.tpl", $query);
 	}
 
 

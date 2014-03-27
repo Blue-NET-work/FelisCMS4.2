@@ -8,7 +8,7 @@
 
             <!-- pierwszy box -->
             <div class="row">
-            	<div class="col-md-2 margin-top-20">
+            	<div class="col-md-3 margin-top-20">
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green" id="cityList">
                       <div class="panel-heading"><i class="fa fa-plane"></i> Miasta</div>
@@ -28,7 +28,7 @@
 					<div class="fb-like fb_iframe_widget" data-href="https://www.facebook.com/pages/urlopingcom/411418285658498?fref=ts" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                     <!-- ./facebook -->
                 </div>
-                <div class="col-md-5 margin-top-20">
+                <div class="col-md-4 margin-top-20">
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green" id="polecaneObiekty">
                       <div class="panel-heading"><i class="fa fa-info fa-2x"></i> Polecane obiekty</div>
@@ -39,7 +39,7 @@
 							<div class="carousel-inner">
 								<!-- item -->
 								<div class="item active">
-	                                {html_image file="{$uploads}/obiekty/1b176080874c992ae783432ba494002f2b8b6e1cs.jpg" alt="" width="100%"}
+	                                {html_image file="{$uploads}/obiekty/1b176080874c992ae783432ba494002f2b8b6e1cs.jpg" alt="" width="100%" height="100%"}
 									<div class="carousel-caption">
 									...
 									</div>
@@ -47,7 +47,7 @@
 								<!-- ./item -->
 								<!-- item -->
 								<div class="item">
-	                                {html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" alt="" width="100%"}
+	                                {html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" alt="" width="100%" height="100%"}
 									<div class="carousel-caption">
 									...
 									</div>
@@ -96,13 +96,7 @@
 	            {if $pakiety}
 	                <table class="table">
 	                {foreach from=$pakiety item=item name=pakiety}
-                		<tr>
-                    		<td class="col-md-2">{html_image file="{$uploads}/obiekty/1b176080874c992ae783432ba494002f2b8b6e1cs.jpg" class="img-thumbnail" width="60%" height="60%" alt=""}</td>
-                    		<td><a href="{$base_url}pakiet/{$item.p_id}">{$item.p_name}</a></td>
-                    		<td class="col-md-1 text-center">{$item.p_term} dni</td>
-                    		<td class="col-md-2 text-center"><p><strong>{$item.p_price} zł</strong></p>+ {$item.p_points} pkt</td>
-                    		<td class="col-md-2 text-right"><a href="{$base_url}pakiet/{$item.p_id}" class="btn btn-success">Rezerwuj</a></td>
-                		</tr>
+	                	{include file="assets/helpview/_PakietyLista.tpl" item=$item}
 	                {/foreach}
 	                </table>
 	            {else}

@@ -7,12 +7,12 @@
 {block name="content"}
 
         	<div class="panel panel-default panel-green margin-top-20">
-              <div class="panel-heading"><i class="fa fa-coffee"></i> Pakiety okolicznościowe</div>
+              <div class="panel-heading"><i class="fa fa-search"></i> Wyniki wyszukiwania</div>
               <div class="panel-body">
             {if $pakiety}
                 <table class="table">
                 {foreach from=$pakiety item=item name=pakiety}
-	                {include file="assets/helpview/_PakietyLista.tpl" item=$item}
+	            	{include file="assets/helpview/_PakietyLista.tpl" item=$item}
                 {/foreach}
                 </table>
             {else}
