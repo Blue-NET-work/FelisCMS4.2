@@ -39,11 +39,11 @@ class Panel extends FC_Controller {
 
 // Koszyk
     public function koszyk(){
-        $basket_items = FC_BASKET::total_items();
+        $basket_items = @FC_BASKET::total_items();
 
         if(!empty($basket_items)){
-            $basket_total = FC_BASKET::total();
-            $basket_item = FC_BASKET::contents();
+            $basket_total = @FC_BASKET::total();
+            $basket_item = @FC_BASKET::contents();
             $this->smarty->assign("basket_total", $basket_total);
             $this->smarty->assign("basket_item", $basket_item);
         }
@@ -55,7 +55,7 @@ class Panel extends FC_Controller {
 // Koszyk dodawanie
     public function dodaj(){
         $response = array('status' => 'ok','message' => array());
-        $date = FC_Request::post("date");
+        $date = @FC_Request::post("date");
         if($date){}else $response['status']="error";
         $content = @FC_BASKET::contents();
         $basket = $this->isInCart($content, "id", $date["id"]);
@@ -70,55 +70,55 @@ class Panel extends FC_Controller {
         }
         $response["message"]['id'] = $action;
         $response["message"]['post'] = $date;
-        $referer = FC_Request::server("HTTP_REFERER");
+        $referer = @FC_Request::server("HTTP_REFERER");
         header('Location: '.$referer);
     }
 
 // Koszyk usuwanie wpisu
     public function remove() {
         $response = array('status' => 'ok', 'message' => array());
-        $date = FC_Request::post("date");
+        $date = @FC_Request::post("date");
         if($date){}else $response['status']="error";
         $data = array('rowid' => $date["id"],'qty' => 0);
         $action = @FC_BASKET::update($data);
         $response["message"]['id'] = $action;
         $response["message"]['post'] = $date;
-        $referer = FC_Request::server("HTTP_REFERER");
+        $referer = @FC_Request::server("HTTP_REFERER");
         header('Location: '.$referer);
     }
 
 // Koszyk zwiększenie sztuk
     public function qty_add() {
         $response = array('status' => 'ok', 'message' => array());
-        $date = FC_Request::post("date");
+        $date = @FC_Request::post("date");
         if($date){}else $response['status']="error";
         $data = array('rowid' => $date["id"], 'qty' => ++$date["qty"]);
         $action = @FC_BASKET::update($data);
         $response["message"]['id'] = $action;
         $response["message"]['post'] = $date;
-        $referer = FC_Request::server("HTTP_REFERER");
+        $referer = @FC_Request::server("HTTP_REFERER");
         header('Location: '.$referer);
     }
 
 // Koszyk zmniejszenie sztuk
     public function qty_remove() {
         $response = array('status' => 'ok', 'message' => array());
-        $date = FC_Request::post("date");
+        $date = @FC_Request::post("date");
         if($date){}else $response['status']="error";
         $data = array('rowid' => $date["id"], 'qty' => --$date["qty"]);
         $action = @FC_BASKET::update($data);
         $response["message"]['id'] = $action;
         $response["message"]['post'] = $date;
-        $referer = FC_Request::server("HTTP_REFERER");
+        $referer = @FC_Request::server("HTTP_REFERER");
         header('Location: '.$referer);
     }
 
 // Koszyk czyszczenie
     public function wyczysc(){
-        $referer = FC_Request::server("HTTP_REFERER");
+        $referer = @FC_Request::server("HTTP_REFERER");
         $action = @FC_BASKET::destroy();
         print $action;
-        $referer = FC_Request::server("HTTP_REFERER");
+        $referer = @FC_Request::server("HTTP_REFERER");
         header('Location: '.$referer);
     }
 

@@ -24,14 +24,23 @@
 
 	                    {$description}
 
-
-			            <form action="{$base_url}panel/dodaj.html" class="margin-top-10" method="post">
-			                <input type="hidden" name="date[id]" value="nagroda_{$id}">
-			                <input type="hidden" name="date[name]" value="{$name}">
-			                <input type="hidden" name="date[price]" value="{$price}">
-			                <input type="hidden" name="date[qty]" value="1">
-			                <button type="submit" class="btn btn-default">wybierz</button>
-			            </form>
+                        <hr>
+                        <div class="row margin-top-25">
+                        	<div class="col-md-1"></div>
+                        	<div class="col-md-4">
+                        		Koszt: {$price} pkt
+                        	</div>
+                        	<div class="col-md-4">
+	                            <form action="{$base_url}panel/dodaj.html" method="post">
+					                <input type="hidden" name="date[id]" value="nagroda_{$id}">
+					                <input type="hidden" name="date[name]" value="{$name}">
+					                <input type="hidden" name="date[price]" value="{$price}">
+					                <input type="hidden" name="date[qty]" value="1">
+					                <button type="submit" id="loading-example-btn" class="btn btn-default" data-loading-text="Loading...">wybierz</button>
+					            </form>
+                        	</div>
+                        	<div class="col-md-1"></div>
+                        </div>
 
                         <!-- items -->
                       </div>

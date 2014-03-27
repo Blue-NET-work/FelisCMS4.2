@@ -32,6 +32,7 @@
 	                                </p>
 	                                <h3><a href="{$base_url}nagrody/nagroda/{$item.id}">{$item.name}</a></h3>
                                   	{$item.description|truncate:55:"...":true}
+		                            <p><a href="{$base_url}nagrody/nagroda/{$item.id}" title="Zobacz szczegoly nagrody"><span class="price">{$item.price} pkt</span></a></p>
 			                      </div>
 			                    </div>
                         	</div>

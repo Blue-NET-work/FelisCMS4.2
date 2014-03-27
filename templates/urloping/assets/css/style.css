@@ -66,6 +66,9 @@ body{
 .margin-bottom-30{margin-bottom: 30px !important;}
 .margin-bottom-40{margin-bottom: 40px !important;}
 
+.panel{
+	background: rgba(255,255,255,.55);
+}
 
 .panel-green > .panel-heading {
   background-image: -webkit-linear-gradient(top, #4db690 0%, #76decc 100%);
@@ -112,7 +115,7 @@ header nav ul{
 
 header nav li a{
 	color:#fff;
-	padding:0px 12px;
+	padding:0px 22px;
 	text-decoration:none;
 	text-shadow:1px 1px rgba(0,0,0,.5);
 }

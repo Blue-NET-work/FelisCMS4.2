@@ -38,7 +38,7 @@
 					                    {$item.qty}
 					                    <a href="#basketBN" data-item="{$item.rowid}" data-qty="{$item.qty}" class="qtyRemove"><i class="fa fa-minus-circle"></i></a>
 					                  </td>
-					                  <td>{$item.subtotal|string_format:"%.2f"} zł</td>
+					                  <td>{$item.subtotal}</td>
 					                  <td><a href="#basketBN" data-item="{$item.rowid}" class="coquette16-delete"><i class="fa fa-trash-o"></i></a></td>
 					                </tr>
 					              {/foreach}
