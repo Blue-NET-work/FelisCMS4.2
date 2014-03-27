@@ -43,6 +43,7 @@ $route['rejestracja']    		= 'dashboard/register';
 $route['zaloguj']    			= 'dashboard/sign_in';
 $route['wyloguj']    			= 'dashboard/logout';
 $route['szukaj']    			= 'dashboard/szukaj';
+$route['test_maila']    		= 'dashboard/testEmail';
 $route['oferta/(.*)']     		= 'dashboard/oferta/$1';
 $route['pakiet/(.*)']    		= 'dashboard/pakiet/$1';
 $route['(.*)']                 	= 'dashboard/pages/$1';

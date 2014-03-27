@@ -28,33 +28,6 @@
         </section>
         {/if}
 
-        <div class="row margin-top">
-            <div class="col-md-4">
-                <div class="blockquote-box blockquote-primary clearfix">
-                    <div class="square pull-left"><span class="glyphicon glyphicon-bullhorn glyphicon-lg"></span></div>
-                    <h4>FelisCMS :: Informacyjna Wiadomość</h4>
-                    <p>To jest pierwsza wiadomość informacyjna systemu FelisCMS.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <!-- aktualizacja -->
-                <div class="blockquote-box blockquote-warning clearfix">
-                    <div class="square pull-left"><span class="glyphicon glyphicon-warning-sign glyphicon-lg"></span></div>
-                    <h4>FelisCMS :: Aktualizacja</h4>
-                    <p>Wydana została kolejna aktualizacja FelisCMS, zapraszamy do pobrania najnowszej wersji.</p>
-                </div>
-                <!-- aktualizacja -->
-            </div>
-            <div class="col-md-4">
-                <!-- krytyczna poprawka -->
-                <div class="blockquote-box blockquote-danger clearfix">
-                    <div class="square pull-left"><span class="glyphicon glyphicon-exclamation-sign glyphicon-lg"></span></div>
-                    <h4>FelisCMS :: Krytyczna Poprawka</h4>
-                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>strong message</strong>.</p>
-                </div>
-                <!-- krytyczna poprawka -->
-            </div>
-        </div>
 
         <!-- Dashboard statistic
         ================================================== -->
@@ -160,52 +133,5 @@
             <!-- zawartość -->
             </div>
         </div>
-
-            <div class="row large-margin-top">
-                <div class="col-md-3">
-                <!-- zawartość -->
-                    <div class="block large-margin-bottom">
-                        <div class="block-title">
-                            <h3><i class="icon-pie-chart"></i> {lang line="default_sidebar_menu_statistic"}</h3>
-                        </div>
-                        <div class="with-padding">
-                            <p><i class="icon-pages"></i> <strong>{lang line="default_sidebar_menu_pages"}:</strong> 10</p>
-                            <p><i class="icon-bullet-list"></i> <strong>{lang line="default_sidebar_menu_articles"}:</strong> 10</p>
-                            <p><i class="icon-pictures"></i> <strong>{lang line="default_sidebar_menu_galleries"}:</strong> 10</p>
-                            <p><i class="icon-users"></i> <strong>{lang line="default_sidebar_menu_users"}:</strong> 10</p>
-                        </div>
-                    </div>
-                <!-- zawartość -->
-                </div>
-                <div class="col-md-3">??</div>
-                <div class="col-md-3">
-                    <!-- informacje o licencji -->
-                    <div class="blockquote-box blockquote-info clearfix">
-                        <div class="square pull-left"><span class="glyphicon glyphicon-info-sign glyphicon-lg"></span></div>
-                        <h4>FelisCMS Licencja</h4>
-                        <p>Domena: domena.pl</p>
-                        <p>Data utworzenia: 2013-02-13 12:21:12</p>
-                    </div>
-                    <!-- informacje o licencji -->
-                </div>
-                <div class="col-md-3">
-                <!-- zawartość -->
-                    <div class="block large-margin-bottom">
-                        <div class="block-title">
-                            <h3><i class="fa fa-facebook-square"></i> FelisCMS Facebook</h3>
-                        </div>
-                        <div id="fb-root"></div>
-                        <script>(function(d, s, id) {
-                          var js, fjs = d.getElementsByTagName(s)[0];
-                          if (d.getElementById(id)) return;
-                          js = d.createElement(s); js.id = id;
-                          js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1&appId=211481375696214";
-                          fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));</script>
-                        <div class="fb-like-box" data-href="http://www.facebook.com/feliscms" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
-                    </div>
-                <!-- zawartość -->
-                </div>
-            </div>
 
 {/block}

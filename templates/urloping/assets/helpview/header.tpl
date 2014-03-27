@@ -9,7 +9,8 @@
             	<!-- ./logo -->
             	<!-- szukaj -->
                 <div class="col-md-5">
-                    <div class="czasUrlop margin-top-40">
+                    <div class="czasUrlop margin-top-10">
+                    	<div class="czasurlop">
                         <form class="form-inline" action="{$base_url}szukaj.html" role="form" method="POST">
                           <div class="form-group">
                             <select class="form-control" name="region" id="region">
@@ -36,6 +37,7 @@
                           </div>
                           <button type="submit" class="btn btn-default">ZNAJDŹ</button>
                         </form>
+                        </div>
                     </div>
                 </div>
             	<!-- ./szukaj -->

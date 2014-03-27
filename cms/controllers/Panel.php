@@ -112,9 +112,15 @@ class Panel extends FC_Controller {
 
 	        $sql = $this->db->insert_string("reservation", $data);
 	        $status = $this->db->query($sql);
-
+            $pakiet_id = $this->db->insert_id();
 	        if($status == 1){
+	        	$this->email->from('automat@urloping.com', 'Automat Urloping')->to($user->email);
+				$this->email->subject('Rezerwacja pobytu w serwisie urloping.com');
+				$this->email->message("<h4>Witaj, {$user->first_name}</h4><p>Dziękujemy za dokonanie rezerwacji w naszym serwisie, Twoje zamówienie możesz podejrzeć pod adresem <a href='".base_url("panel/rezerwacja/{$pakiet_id}.html")."'>".base_url("panel/rezerwacja/{$pakiet_id}.html")."</a>. Pamiętaj, że zamówienie jest rezerwowane dopiero po wpłacie zaliczki.");
+				$this->email->send();
+
 				$messages = array('boxClass' => "alert-success", "text" => "Rezerwacja dokonana!");
+        		redirect(base_url("panel/rezerwacja/{$pakiet_id}.html"), 'refresh');
 	        }
 	        else{
 				$messages = array('boxClass' => "alert-danger", "text" => "Rezerwacja nie została dokonana!");

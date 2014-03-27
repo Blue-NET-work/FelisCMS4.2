@@ -27,7 +27,7 @@
 						  <div class="form-group">
 							<label for="inputEmail" class="col-sm-5 control-label">Adres e-mail</label>
 							<div class="col-sm-7">
-							  <input type="text" class="form-control" id="inputEmail" name="item[email]" placeholder="Telefon" value="{$email.value}">
+							  <input type="text" class="form-control" id="inputEmail" name="item[email]" placeholder="Adres e-mail" value="{$email.value}">
 							</div>
 						  </div>
 	                        <!-- pole -->

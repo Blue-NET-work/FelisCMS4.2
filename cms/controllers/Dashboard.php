@@ -156,14 +156,13 @@ class Dashboard extends FC_Controller {
 
 // Rejestracja
 	public function register(){
+		$messages = false;
 
         if($this->session->flashdata('message')){
             $msg = $this->session->flashdata('message');
             if(isset($msg['text']))$messages = $msg;
-            else $messages = array('boxClass' => "alert-danger", 'text'=>"{$msg}");
+            else $messages = array('boxClass' => "alert-info", 'text'=>"{$msg}");
         }
-        else $messages = array('boxClass' => "alert-info", 'text'=>$this->lang->line("login_require_a_login"));
-
 
 		$tables = $this->config->item('tables','ion_auth');
 
@@ -171,9 +170,7 @@ class Dashboard extends FC_Controller {
 		$this->form_validation->set_rules('item[first_name]', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('item[last_name]', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('item[email]', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique['.$tables['users'].'.email]');
-		$this->form_validation->set_rules('item[phone]', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
-		$this->form_validation->set_rules('item[company]', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
-		$this->form_validation->set_rules('item[password]', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+		$this->form_validation->set_rules('item[password]', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[item[password_confirm]]');
 		$this->form_validation->set_rules('item[password_confirm]', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
 		if ($this->form_validation->run() == true)
@@ -270,6 +267,16 @@ class Dashboard extends FC_Controller {
 //Site error
     public function error_404(){
 		show_404();
+    }
+
+    public function testEmail(){
+    	$pakiet_id =1;
+		$this->email->from('automat@urloping.com', 'Automat Urloping')->to("biuro@blue-net.pl");
+		$this->email->subject('Rezerwacja pobytu w serwisie urloping.com');
+		$this->email->message("<h4>Witaj, Matek</h4><p>Dziękujemy za dokonanie rezerwacji w naszym serwisie, Twoje zamówienie możesz podejrzeć pod adresem <a href='".base_url("panel/rezerwacja/{$pakiet_id}.html")."'>".base_url("panel/rezerwacja/{$pakiet_id}.html")."</a>. Pamiętaj, że zamówienie jest rezerwowane dopiero po wpłacie zaliczki.");
+		$this->email->send();
+
+		echo $this->email->print_debugger();
     }
 
 }

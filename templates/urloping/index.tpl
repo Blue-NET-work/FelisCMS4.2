@@ -11,7 +11,7 @@
 
             <!-- pierwszy box -->
             <div class="row">
-            	<div class="col-md-3 margin-top-20">
+            	<div class="col-md-2 margin-top-20">
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green" id="cityList">
                       <div class="panel-heading"><i class="fa fa-plane"></i> Miasta</div>
@@ -31,7 +31,7 @@
 					<div class="fb-like fb_iframe_widget" data-href="https://www.facebook.com/pages/urlopingcom/411418285658498?fref=ts" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                     <!-- ./facebook -->
                 </div>
-                <div class="col-md-4 margin-top-20">
+                <div class="col-md-5 margin-top-20">
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green" id="polecaneObiekty">
                       <div class="panel-heading"><i class="fa fa-info fa-2x"></i> Polecane obiekty</div>
@@ -42,7 +42,7 @@
 							<div class="carousel-inner">
 				                {foreach from=$obiekty item=item name=obiekty}
 								<!-- item -->
-								<div class="item {if $item.active == true}active{/if}">
+								<div class="item {if $item.active == true}active{/if}" style="max-height:390px">
 	                                {html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" alt="" width="100%" height="100%"}
 									<div class="carousel-caption">
 										<h3><a href="{$base_url}hotele/hotel/{$item.id}" style="color:#fff;">{$item.name}</a></h3>

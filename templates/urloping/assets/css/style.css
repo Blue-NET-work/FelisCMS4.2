@@ -235,3 +235,46 @@ h3{
 	color: #fff;
 	font-size: 10px;
 }
+
+#logowanie{
+
+}
+
+#logowanie .btn-default,
+#logowanie .btn-default:active{
+  background: #71d4c3;
+  background-image: -webkit-linear-gradient(top, #50b894 0%, #71d4c3 100%);
+  background-image:      -o-linear-gradient(top, #50b894 0%, #71d4c3 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#50b894), to(#71d4c3));
+  background-image:         linear-gradient(to bottom, #50b894 0%, #71d4c3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#50b894', endColorstr='#71d4c3', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  padding: 5px 6px;
+  color:#fff;
+  text-shadow: 1px 1px rgba(0,0,0,.4);
+}
+.czasUrlop{
+	background: url("../img/wyszukiwarka.png") no-repeat;
+	border-radius: 5px;
+	padding:8px 12px;
+	width:460px;
+	height:109px;
+}
+.czasurlop{
+	margin-top:60px;
+	margin-left:110px;
+}
+.czasurlop .btn-default{
+  background: #ff812d;
+  background-image: -webkit-linear-gradient(top, #ff812d 0%, #ff6600 100%);
+  background-image:      -o-linear-gradient(top, #ff812d 0%, #ff6600 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff812d), to(#ff6600));
+  background-image:         linear-gradient(to bottom, #ff812d 0%, #ff6600 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff812d', endColorstr='#ff6600', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  padding: 5px 6px;
+  color:#fff;
+  text-shadow: 1px 1px rgba(0,0,0,.4);
+}
