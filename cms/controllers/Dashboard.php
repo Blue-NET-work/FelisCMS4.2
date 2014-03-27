@@ -13,6 +13,22 @@ class Dashboard extends FC_Controller {
 		$query["pakiety"] = $this->db->get("pakiet")->result_array();
 		$query["nagrody"] = $this->db->get("nagrody")->result_array();
 
+		$obiekty = $this->db->get_where("hotels", array('recommended' => 1))->result_array();
+
+        $active = true;
+		$query["obiekty"] = array();
+        $i = 0;
+		foreach($obiekty as $obiekt){
+            $obiekt["price"] = $this->db->order_by('p_price', 'ASC')->get_where("pakiet", array("p_hotels"=>$obiekt["id"]))->row("p_price");
+
+        	$obiekt["active"] = $active;
+        	$obiekt["item"] = $i++;
+        	$active = false;
+        	$obiekt["pakiety"] = $this->db->like('p_hotels', $obiekt["id"])->from("pakiet")->count_all_results();
+
+        	$query["obiekty"][] = $obiekt;
+		}
+
 		$this->smarty->view("index.tpl", $query);
 	}
 

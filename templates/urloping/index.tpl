@@ -37,22 +37,32 @@
                         <div id="polecaneObiektyCarousel" class="carousel slide" data-ride="carousel">
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
+				                {foreach from=$obiekty item=item name=obiekty}
 								<!-- item -->
-								<div class="item active">
-	                                {html_image file="{$uploads}/obiekty/1b176080874c992ae783432ba494002f2b8b6e1cs.jpg" alt="" width="100%" height="100%"}
-									<div class="carousel-caption">
-									...
-									</div>
-								</div>
-								<!-- ./item -->
-								<!-- item -->
-								<div class="item">
+								<div class="item {if $item.active == true}active{/if}">
 	                                {html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" alt="" width="100%" height="100%"}
 									<div class="carousel-caption">
-									...
+										<h3><a href="{$base_url}hotele/hotel/{$item.id}" style="color:#fff;">{$item.name}</a></h3>
+                                        <div class="row">
+                                            <div class="col-md-8">{$item.pakiety} pakietów od {$item.price} zł</div>
+                                            <div class="col-md-4 text-right">
+                                    		{if $item.stars == 5}
+                                    			<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    		{elseif $item.stars == 4}
+                                    			<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    		{elseif $item.stars == 3}
+                                    			<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    		{elseif $item.stars == 2}
+                                    			<i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    		{else}
+                                    			<i class="fa fa-star"></i>
+                                    		{/if}
+                                    		</div>
+                                        </div>
 									</div>
 								</div>
 								<!-- ./item -->
+				                {/foreach}
 							</div>
 
 							<!-- Controls -->
@@ -65,8 +75,11 @@
 
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
-								<li data-target="#polecaneObiektyCarousel" data-slide-to="0" class="active"></li>
-								<li data-target="#polecaneObiektyCarousel" data-slide-to="1"></li>
+				                {foreach from=$obiekty item=item name=obiekty}
+								<!-- item -->
+								<li data-target="#polecaneObiektyCarousel" data-slide-to="{$item.item}" {if $item.active == true}class="active"{/if}></li>
+								<!-- ./item -->
+				                {/foreach}
 							</ol>
 
 						</div>

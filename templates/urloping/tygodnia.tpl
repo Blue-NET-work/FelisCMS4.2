@@ -29,7 +29,9 @@
 
                     		{$pakiet.p_description}
 
-                    		<button class="btn btn-success">zamów</button>
+                            <div class="margin-top-20 text-center">
+                    			<a href="{$base_url}panel/rezerwuj/{$pakiet.p_id}" class="btn btn-success">zamów</a>
+                            </div>
                     	</div>
 		            </div>
 		            <!-- items -->

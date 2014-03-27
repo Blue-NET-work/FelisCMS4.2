@@ -159,6 +159,11 @@ footer .container .footer{
   text-shadow:1px 1px rgba(0,0,0,.4);
 }
 
+#polecaneObiekty .carousel-caption{
+	left:5%;
+	right:5%;
+}
+
 #polecaneObiekty .carousel-indicators{
 	bottom:-32px;
 }
