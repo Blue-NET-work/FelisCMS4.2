@@ -53,7 +53,7 @@
                       <div class="panel-body">
 						<h4>Jak zbierać punkty?</h4>
 						<p>Nie wiesz jak zebrać punkty? Zapoznaj się z prostym przewodnikiem klikając w link poniżej</p>
-						<a title="Jak zbierać punkty - poradnik" href="?s=jak-to-dziala,Coztyminagrodami">więcej...</a>
+						<a title="Jak zbierać punkty - poradnik" href="/">więcej...</a>
                       </div>
                     </div>
                     <!-- ./miasta -->
