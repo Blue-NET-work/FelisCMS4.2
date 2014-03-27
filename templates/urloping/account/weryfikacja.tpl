@@ -10,9 +10,9 @@
           <div class="panel-heading"><i class="fa fa-ticket"></i> Weryfikacja płatności</div>
           <div class="panel-body padding-10">
           {if $payments}
-          	Płatność zweryfikowana poprawnie!
+          	<div class="alert alert-success">Płatność zweryfikowana poprawnie!</div>
           {else}
-          	Wystąpił problem z płatnością!
+          	<div class="alert alert-danger">Wystąpił problem z płatnością! </div>
           {/if}
           </div>
         </div>

@@ -12,7 +12,7 @@ class Dashboard extends FC_Controller {
 		$query["miasta"] = $this->db->get("city")->result_array();
 		$query["pakiety"] = $this->db->limit(4)->get("pakiet")->result_array();
 		$query["nagrody"] = $this->db->get("nagrody")->result_array();
-		$query["aktualnosci"] = $this->db->order_by('a_date', 'DESC')->limit(4)->get("aktualnosci")->result_array();
+		$query["aktualnosci"] = $this->db->order_by('a_date', 'DESC')->limit(4)->get("articles")->result_array();
 
 		$obiekty = $this->db->get_where("hotels", array('recommended' => 1))->result_array();
 

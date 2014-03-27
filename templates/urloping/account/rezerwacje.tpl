@@ -22,11 +22,11 @@
                     	<td class="col-md-2 text-center">
                     		<div class="margin-top-20">
                             {if $item.r_status == 2}
-                                Zatwierdzona
+                                <span class="label label-success">Zatwierdzona</span>
                             {elseif $item.r_status == 1}
-                            	Oczekuje na akceptacje hotelu.
+                            	<span class="label label-info">Oczekuje na akceptacje hotelu.</span>
                             {else}
-                            	Oczekuje na wpłacenie zaliczki.
+                            	<span class="label label-default">Oczekuje na wpłacenie zaliczki.</span>
                             {/if}
                     		</div>
                     	</td>

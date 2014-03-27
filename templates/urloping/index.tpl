@@ -152,11 +152,11 @@
               <div class="panel-body">
 	            {if $aktualnosci}
 	                <table class="table">
-	                {foreach from=$pakiety item=item name=pakiety}
+	                {foreach from=$aktualnosci item=item name=aktualnosci}
 	                	<tr>
                         	<td>
-                        		<h3>{$item.a_name}</h3>
-                           		{$item.a_description}
+                        		<h4>{$item.a_name}</h4>
+                           		{$item.a_description|truncate:350:"...":true}
                         	</td>
 	                	</tr>
 	                {/foreach}
