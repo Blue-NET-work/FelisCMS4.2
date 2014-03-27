@@ -1,0 +1,77 @@
+.pakwypmap-map {
+  position: relative;
+  width: 412px;
+  height: 392px;
+  overflow:hidden;
+}
+
+.pakwypmap-map ul {
+  list-style: none;
+}
+.pakwypmap-map li {
+  position: absolute;
+  z-index: 20;
+  text-indent: -1000em;
+  display: none;
+}
+#wschod {
+  background: url('../img/wschod.png') no-repeat;
+  width: 184px;
+  height: 290px;
+  top: 40px;
+  left: 222px;
+}
+#poludnie {
+  background: url('../img/poludnie.png') no-repeat;
+  width: 341px;
+  height: 194px;
+  top: 194px;
+  left: 29px;
+}
+#polnoc {
+  background: url('../img/polnoc.png') no-repeat;
+  width: 239px;
+  height: 122px;
+  top: 12px;
+  left: 14px;
+}
+#centrum {
+  background: url('../img/centrum.png') no-repeat;
+  width: 217px;
+  height: 238px;
+  top: 73px;
+  left: 107px;
+}
+#zachod {
+  background: url('../img/zachod.png') no-repeat;
+  width: 138px;
+  height: 157px;
+  top: 86px;
+  left: 11px;
+}
+
+#transparent_map {
+  position: absolute;
+  z-index: 30;
+  top:0;
+  left:0;
+  width: 412px;
+  height: 392px;
+  border: none;
+}
+
+.pakwypmap.regioncont{
+	display:none;
+}
+
+.pakwypmap.regioncities{
+	width:700px;
+	height:500px;
+	padding:50px;
+	background:#fff;
+}
+
+
+
+ #main .pakwypmap{ width:412px; padding:10px 3px; }
+ #main .pakwypmap h2{ padding:0 7px; }
