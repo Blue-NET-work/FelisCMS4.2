@@ -1,7 +1,7 @@
 
 	<header>
     	<div class="container">
-        	<div class="row margin-bottom-10">
+        	<div class="row margin-bottom-10" style="min-height:135px">
             	<!-- logo -->
             	<div class="col-md-4">
                 	<a id="logo" href="{$base_url}"><img src="{$TEMPLATES}assets/img/logo.png" alt=""></a>

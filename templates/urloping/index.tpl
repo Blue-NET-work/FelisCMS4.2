@@ -153,7 +153,12 @@
 	            {if $aktualnosci}
 	                <table class="table">
 	                {foreach from=$pakiety item=item name=pakiety}
-	                	{include file="assets/helpview/_PakietyLista.tpl" item=$item}
+	                	<tr>
+                        	<td>
+                        		<h3>{$item.a_name}</h3>
+                           		{$item.a_description}
+                        	</td>
+	                	</tr>
 	                {/foreach}
 	                </table>
 	            {else}
