@@ -30,10 +30,39 @@ class Panel extends FC_Controller {
 		$this->smarty->view("account/you.tpl", $query);
 	}
 
+
+
  /*
   *
+  *	Rezerwacje
   *
+  */
+
+// Rezerwacje
+	public function rezerwacje(){
+		$user = $this->ion_auth->user()->row();
+
+	}
+
+// Rezerwacja
+	public function rezerwacja($id){
+		$user = $this->ion_auth->user()->row();
+
+	}
+
+// Rezerwacj
+	public function rezerwuj(){
+		$user = $this->ion_auth->user()->row();
+
+
+		$query["messages"] = $messages;
+		$this->smarty->view("account/rezerwuj.tpl", $query);
+	}
+
+
+ /*
   *
+  *	Koszykowe
   *
   */
 
