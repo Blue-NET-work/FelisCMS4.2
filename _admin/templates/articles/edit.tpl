@@ -13,17 +13,17 @@
             <!-- Body Header
             ================================================== -->
             <header>
-                <h1 class="title"><i class="fa fa-2x fa-pencil"></i>  {lang line="pages_titleTag"}</h1>
+                <h1 class="title"><i class="fa fa-2x fa-pencil"></i>  Lista artykułów</h1>
                 <ul class="breadcrumb unstyled-list">
                   <li><a href="#">{lang line="default_control_panel"}</a></li>
-                  <li class="active">{lang line="pages_titleTag"}</li>
+                  <li class="active">Lista artykułów</li>
                 </ul>
             </header>
 
             <!-- panel -->
             <div class="panel panel-black" id="panel">
               <div class="panel-heading">
-                {lang line="pages_titleTag2"}
+                Lista artykułów
                 <div class="absolute-right">
                     <ul class="nav nav-tabs" id="navTabs">
                         <li class="active"><a href="#data" data-toggle="tab" class="panel-link">{lang line="default_data"}</a></li>
@@ -35,7 +35,7 @@
               </div>
               <!-- ./end panel-heading -->
               <div id="panel-body" class="panel-body in">
-                    {include file="pages/_PageForm.tpl"}
+                    {include file="articles/_ArticlesForm.tpl"}
               </div>
             </div>
             <!-- panel -->

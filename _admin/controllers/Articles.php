@@ -17,19 +17,19 @@ class Articles extends FC_Controller {
     public function edit($id){
 
         if($id != false){
-            if($this->db->get_where("pages", array("id"=>$id))->row_array()){
+            if($this->db->get_where("articles", array("a_id"=>$id))->row_array()){
 
                 if(@FC_Request::post("item")){
                     $item = @FC_Request::post("item");
-                    if(!isset($item["active"])){$item["active"] = "0";}
+                    if(!isset($item["a_active"])){$item["a_active"] = "0";}
 
-                    $item["alias"]= url_title(convert_accented_characters(element('alias', $item)), '-', TRUE);
+                    $item["a_alias"]= url_title(convert_accented_characters(element('a_alias', $item)), '-', TRUE);
 
                     $this->form_validation->set_rules('item[name]', 'lang:default_name', 'required');
                     $this->form_validation->set_rules('item[alias]', 'lang:default_adres', 'required');
 
                     if ($this->form_validation->run() == true){
-                        $query["update"] = @FC_DB::update('pages', $item, array("id"=>$id));
+                        $query["update"] = @FC_DB::update('articles', $item, array("a_id"=>$id));
 
                         if($query["update"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_edit_success'), "icon"=>"accept.png");
                         else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_edit_error'), "icon"=>"warning.png");
@@ -37,13 +37,12 @@ class Articles extends FC_Controller {
                     }else $query["messages"] = array('head' => lang('default_error'), "info"=> validation_errors(), "icon"=>"warning.png");
                 }
 
-                $query["pages"] = $this->Pages_model->pagesTree();
-                $query["page"] = @FC_DB::getData('pages', array("id"=>$id));
+                $query["page"] = @FC_DB::getData('articles', array("a_id"=>$id));
 
             }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_failure'), "icon"=>"warning.png");
         }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang("pages_failure_id"), "icon"=>"warning.png");
 
-        @FC_Request::smartyView('pages/edit.tpl', $query);
+        @FC_Request::smartyView('articles/edit.tpl', $query);
     }
 
 // Usuwanie podstrony

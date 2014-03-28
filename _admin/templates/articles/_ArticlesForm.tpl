@@ -35,27 +35,27 @@
                                 <p><b>{lang line="default_site_data"}</b></p>
 
                                 <div class="form-group block-label">
-                                    <label for="item[name]" class="text-info">{lang line="default_name"}: <small>(255 {lang line="default_chars_max"}.)</small></label>
-                                    <input type="text" name="item[name]" id="item[name]" class="input form-control FelisNazwa" value="{$page.name}">
+                                    <label for="item[a_name]" class="text-info">{lang line="default_name"}: <small>(255 {lang line="default_chars_max"}.)</small></label>
+                                    <input type="text" name="item[a_name]" id="item[a_name]" class="input form-control FelisNazwa" value="{$page.a_name}">
                                 </div>
 
                                 <div class="form-group has-feedback block-label">
-                                    <label for="item[alias]" class="text-info">{lang line="default_show_adres"}: <small>(255 {lang line="default_chars_max"}.)</small></label>
-                                    <input type="text" name="item[alias]" id="item[alias]" class="input form-control FelisAlias" value="{$page.alias}">
+                                    <label for="item[a_alias]" class="text-info">{lang line="default_show_adres"}: <small>(255 {lang line="default_chars_max"}.)</small></label>
+                                    <input type="text" name="item[a_alias]" id="item[a_alias]" class="input form-control FelisAlias" value="{$page.a_alias}">
   									<span id="FelisAlias" class="fa fa-spinner fa-spin form-control-feedback"></span>
                                 </div>
 
                                 <div class="form-group block-label">
-                                    <label for="item[parent_id]" class="text-info">{lang line="default_category"}:</label>
+                                    <label for="item[a_parent_id]" class="text-info">{lang line="default_category"}:</label>
                                     <div class="clear-both"></div>
-                                    <select name="item[parent_id]" class="select check-list">
+                                    <select name="item[a_parent_id]" class="select check-list">
                                         <option value="0" {if $page.parent_id == "0"}selected{/if}>{lang line="default_category_no"}</option>
                                     {foreach from=$pages item=item name=pages}
-                                        <option value="{$item.id}" {if $page.parent_id == $item.id}selected{/if} {if $item.id == $page.id}disabled{/if}>{$item.name}</option>
-                                        {if $item.children}
+                                        <option value="{$item.a_id}" {if $page.a_parent_id == $item.a_id}selected{/if} {if $item.a_id == $page.a_id}disabled{/if}>{$item.a_name}</option>
+                                        {if $item.a_children}
                                         <optgroup>
-                                        {foreach from=$item.children item=items name=pagess}
-                                            <option value="{$items.id}" {if $page.parent_id == $items.id}selected{/if} {if  $items.id == $page.id}disabled{/if}>{$items.name}</option>
+                                        {foreach from=$item.a_children item=items name=pagess}
+                                            <option value="{$items.a_id}" {if $page.a_parent_id == $items.a_id}selected{/if} {if  $items.a_id == $page.a_id}disabled{/if}>{$items.a_name}</option>
                                         {/foreach}
                                         </optgroup>
                                         {/if}
@@ -64,8 +64,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="item[active]" class="text-info">{lang line="default_active"}:</label>
-                                    <input type="checkbox" name="item[active]" {if $page.active}checked="checked"{/if} id="item[active]" class="switch mid-margin-right" value="1">
+                                    <label for="item[a_active]" class="text-info">{lang line="default_active"}:</label>
+                                    <input type="checkbox" name="item[a_active]" {if $page.a_active}checked="checked"{/if} id="item[active]" class="switch mid-margin-right" value="1">
                                 </div>
 
                             </div><!-- ./end span6 -->
@@ -91,8 +91,8 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="item[description]" class="text-info">{lang line="default_description"}:</label>
-                                <textarea name="item[description]" id="item[description]" class="ckeditor">{$page.description}</textarea>
+                                <label for="item[a_description]" class="text-info">{lang line="default_description"}:</label>
+                                <textarea name="item[a_description]" id="item[a_description]" class="ckeditor">{$page.a_description}</textarea>
                             </div>
                         </div>
 
