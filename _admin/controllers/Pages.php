@@ -14,6 +14,29 @@ class Pages extends FC_Controller {
         @FC_Request::smartyView('pages/list.tpl', $query);
     }
 
+// Dodawanie podstrony
+    public function add(){
+        $query["message"] = false;
+
+        if(@FC_Request::post('item')){
+            $item = @FC_Request::post("item");
+
+            $this->form_validation->set_rules('item[name]', 'lang:default_name', 'required');
+            $this->form_validation->set_rules('item[alias]', 'lang:default_adres', 'required');
+
+            if ($this->form_validation->run() == true){
+                $query["insert"] = @FC_DB::insert('pages', @FC_Request::post('item'));
+
+                if($query["insert"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_add_success'), "icon"=>"button-check.png");
+                else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_add_error'), "icon"=>"stop.png");
+
+            }else $query["messages"] = array('head' => lang('default_error'), "info"=> "{validation_errors()}", "icon"=>"stop.png");
+        }
+
+        $query["pages"] = $this->Pages_model->pagesTree();
+        @FC_Request::smartyView("pages/add.tpl", $query);
+    }
+
     public function edit($id){
 
         if($id != false){
@@ -31,17 +54,17 @@ class Pages extends FC_Controller {
                     if ($this->form_validation->run() == true){
                         $query["update"] = @FC_DB::update('pages', $item, array("id"=>$id));
 
-                        if($query["update"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_edit_success'), "icon"=>"accept.png");
-                        else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_edit_error'), "icon"=>"warning.png");
+                        if($query["update"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_edit_success'), "icon"=>"button-check.png");
+                        else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_edit_error'), "icon"=>"stop.png");
 
-                    }else $query["messages"] = array('head' => lang('default_error'), "info"=> validation_errors(), "icon"=>"warning.png");
+                    }else $query["messages"] = array('head' => lang('default_error'), "info"=> validation_errors(), "icon"=>"stop.png");
                 }
 
                 $query["pages"] = $this->Pages_model->pagesTree();
                 $query["page"] = @FC_DB::getData('pages', array("id"=>$id));
 
-            }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_failure'), "icon"=>"warning.png");
-        }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang("pages_failure_id"), "icon"=>"warning.png");
+            }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_failure'), "icon"=>"stop.png");
+        }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang("pages_failure_id"), "icon"=>"stop.png");
 
         @FC_Request::smartyView('pages/edit.tpl', $query);
     }

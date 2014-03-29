@@ -23,9 +23,15 @@
                 {include file="./sidebar/menu_pages.tpl"}
                 <!-- Articles -->
                 {include file="./sidebar/menu_articles.tpl"}
+                {include file="./sidebar/menu_hotels.tpl"}
+                {include file="./sidebar/menu_nagrody.tpl"}
+                {include file="./sidebar/menu_pakiety.tpl"}
+                {include file="./sidebar/menu_rezerwacje.tpl"}
+
+            {if $adminMenu.statistic == "1"}
                 <!-- Galleries -->
                 {include file="./sidebar/menu_galleries.tpl"}
-
+            {/if}
             {if $adminMenu.statistic == "1"}
                 <!-- Statistic
                 ================================================== -->

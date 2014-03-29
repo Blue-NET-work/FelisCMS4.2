@@ -13,10 +13,10 @@
             <!-- Body Header
             ================================================== -->
             <header>
-                <h1 class="title"><i class="fa fa-2x fa-pencil"></i>  {lang line="pages_titleTag"}</h1>
+                <h1 class="title"><i class="fa fa-2x fa-pencil"></i>  {lang line="pages_titleTag2"}</h1>
                 <ul class="breadcrumb unstyled-list">
                   <li><a href="#">{lang line="default_control_panel"}</a></li>
-                  <li class="active">{lang line="pages_titleTag"}</li>
+                  <li class="active">{lang line="pages_titleTag2"}</li>
                 </ul>
             </header>
 
@@ -49,8 +49,6 @@
     {include file="assets/helpview/sidebar.tpl"}
 
 {include file="assets/helpview/footer.tpl"}
-<script>
-{include file="assets/js/scripts/felis.function.pages.js"}
-</script>
+<script src="{$base_url}../felis/modules/ckeditor/ckeditor.js"></script>
 </body>
 </html>

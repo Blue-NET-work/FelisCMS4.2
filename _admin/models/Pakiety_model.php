@@ -1,19 +1,12 @@
 <?php
-class Articles_model extends CI_Model{
+class Pakiety_model extends CI_Model{
 
 // Budowanie nazw kategorii dla listy podstron
     public function pagesList(){
 
-        foreach($this->db->get("articles")->result_array() as $key=>$page){
-            if(element("a_parent_id", $page) != "0"){
-        		$position = elements(
-        			array('a_id', 'a_name', 'a_alias', 'a_active', 'a_lang', 'a_parent_id', 'a_parent_name'), $page,
-        			$this->db->select("a_name")->get_where("articles", array("a_id"=>$page["a_parent_id"]))->row("a_name")
-        		);
-            }
-            else{
-                $position = elements(array('a_id', 'a_name', 'a_alias', 'a_active', 'a_lang', 'a_parent_id'), $page);
-            }
+        foreach($this->db->get("pakiet")->result_array() as $key=>$page){
+
+        	$position = elements(array('p_id', 'p_name', 'p_active'), $page);
 
             $pages[$key] = $position;
         }

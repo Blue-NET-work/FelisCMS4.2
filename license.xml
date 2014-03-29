@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="4" type="license" system="FelisCMS">
+    <customer>
+        <customerId>1</customerId>
+        <customerName>Blue-NET Mateusz Serwinowski</customerName>
+        <customerCreationDate>2012-05-01 08:25:21</customerCreationDate>
+        <customerEmail>biuro@blue-net.pl</customerEmail>
+    </customer>
+    <license>
+        <licenseDomain>urloping.com</licenseDomain>
+        <licenseKey>c6c9e551b91770bd7db83287ea60f029ed924f19</licenseKey>
+        <licenseCreate>2014-03-29</licenseCreate>
+        <licenseSiteLimit>1</licenseSiteLimit>
+        <licenseValidTo>1</licenseValidTo>
+    </license>
+</install>

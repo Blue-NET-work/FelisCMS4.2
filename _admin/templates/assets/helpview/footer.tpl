@@ -2,11 +2,11 @@
    <!-- HTML helper
     ================================================== -->
     <div id="background"></div>
-    
+
     <!-- Skrypty jQ
-    ================================================== -->                                  
+    ================================================== -->
     {*include file="helpview/jQuery.tpl"*}
-                             
+
     <!-- Scripts -->
     <script src="{$TEMPLATES}assets/js/libs/jquery-1.11.0.js"></script>
     <script src="{$TEMPLATES}assets/js/scripts/setup.js"></script>
@@ -27,8 +27,8 @@
     <script src="{$TEMPLATES}assets/js/felis/felis.tabs.js"></script>        <!-- Must be loaded last -->
 
     <script src="{$TEMPLATES}assets/js/libs/DataTables/jquery.dataTables.js"></script>
-                                                                                         
-    <script type="text/javascript">$(".datatable").dataTable({   
+
+    <script type="text/javascript">$(".datatable").dataTable({
         "oLanguage": {
         "sProcessing":   '{lang line="dataTable_sProcessing"}',
         "sLengthMenu":   "{lang line='dataTable_sLengthMenu'}",
@@ -49,11 +49,11 @@
     });</script>
     <!-- Tinycon -->
     <script src="{$TEMPLATES}assets/js/libs/tinycon.js"></script>
-                 
+
     <script>
     {include file="../js/scripts/felis.function.js"}
 
-                           
+
         // Delete button
         $('.list .button-group a:last-child').data('confirm-options', {
 
@@ -79,8 +79,8 @@
             }
 
         });
-                
-            
+
+
 
         /*
          * Agenda scrolling
@@ -125,6 +125,11 @@
         {
             event.preventDefault();
             agenda.scrollAgendaToNext();
-        });                        
+        });
 
+    {if $messages}
+        notify("{$messages.head}", '{$messages.info}',{
+            icon: "{$TEMPLATES}assets/img/icons/woocons/{$messages.icon}"
+        });
+    {/if}
     </script>

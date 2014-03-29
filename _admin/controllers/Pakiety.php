@@ -1,23 +1,45 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pages extends FC_Controller {
+class Pakiety extends FC_Controller {
 
     function __construct(){
         parent::__construct();
-        @FC_Request::loadModel(array('Admin_model', 'Pages_model'));
+        @FC_Request::loadModel(array('Admin_model', 'Pakiety_model'));
         @FC_Request::loadLang(array('felis_pages'));
 	}
 
     public function index(){
-        $query["pages"] = $this->Pages_model->pagesList();
-        @FC_Request::smartyView('pages/list.tpl', $query);
+        $query["pages"] = $this->Pakiety_model->pagesList();
+        @FC_Request::smartyView('pakiety/list.tpl', $query);
+    }
+
+// Dodawanie podstrony
+    public function add(){
+        $query["message"] = false;
+
+        if(@FC_Request::post('item')){
+            $item = @FC_Request::post("item");
+
+            $this->form_validation->set_rules('item[name]', 'lang:default_name', 'required');
+            $this->form_validation->set_rules('item[alias]', 'lang:default_adres', 'required');
+
+            if ($this->form_validation->run() == true){
+                $query["insert"] = @FC_DB::insert('hotels', @FC_Request::post('item'));
+
+                if($query["insert"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_add_success'), "icon"=>"button-check.png");
+                else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_add_error'), "icon"=>"stop.png");
+
+            }else $query["messages"] = array('head' => lang('default_error'), "info"=> "{validation_errors()}", "icon"=>"stop.png");
+        }
+
+        @FC_Request::smartyView("pakiety/add.tpl", $query);
     }
 
     public function edit($id){
 
         if($id != false){
-            if($this->db->get_where("pages", array("id"=>$id))->row_array()){
+            if($this->db->get_where("hotels", array("id"=>$id))->row_array()){
 
                 if(@FC_Request::post("item")){
                     $item = @FC_Request::post("item");
@@ -29,21 +51,20 @@ class Pages extends FC_Controller {
                     $this->form_validation->set_rules('item[alias]', 'lang:default_adres', 'required');
 
                     if ($this->form_validation->run() == true){
-                        $query["update"] = @FC_DB::update('pages', $item, array("id"=>$id));
+                        $query["update"] = @FC_DB::update('hotels', $item, array("id"=>$id));
 
-                        if($query["update"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_edit_success'), "icon"=>"accept.png");
-                        else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_edit_error'), "icon"=>"warning.png");
+                        if($query["update"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_edit_success'), "icon"=>"button-check.png");
+                        else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_edit_error'), "icon"=>"stop.png");
 
-                    }else $query["messages"] = array('head' => lang('default_error'), "info"=> validation_errors(), "icon"=>"warning.png");
+                    }else $query["messages"] = array('head' => lang('default_error'), "info"=> validation_errors(), "icon"=>"stop.png");
                 }
 
-                $query["pages"] = $this->Pages_model->pagesTree();
-                $query["page"] = @FC_DB::getData('pages', array("id"=>$id));
+                $query["page"] = @FC_DB::getData('hotels', array("id"=>$id));
 
-            }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_failure'), "icon"=>"warning.png");
-        }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang("pages_failure_id"), "icon"=>"warning.png");
+            }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_failure'), "icon"=>"stop.png");
+        }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang("pages_failure_id"), "icon"=>"stop.png");
 
-        @FC_Request::smartyView('pages/edit.tpl', $query);
+        @FC_Request::smartyView('hotels/edit.tpl', $query);
     }
 
 // Usuwanie podstrony
@@ -51,8 +72,8 @@ class Pages extends FC_Controller {
         $response = array('status' => 'ok', 'message' => array());
         $date = $this->input->post("date");
         if($date){}else $response['status']="error";
-        $where = array('id'=>$date["id"]);
-        $query = $this->db->delete('pages', $where);
+        $where = array('p_id'=>$date["id"]);
+        $query = $this->db->delete('pakiet', $where);
         $response["message"]['action'] = $query;
         $response["message"]['post'] = $date;
 		return $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));
@@ -63,9 +84,9 @@ class Pages extends FC_Controller {
         $response = array('status' => 'ok', 'message' => array());
         $date = $this->input->post("date");
         if($date){}else $response['status']="error";
-        $data = array('active' => '1');
-        $where = "`id` = {$date["id"]}";
-        $query = $this->db->update_string('pages', $data, $where);
+        $data = array('p_active' => '1');
+        $where = "`p_id` = {$date["id"]}";
+        $query = $this->db->update_string('pakiet', $data, $where);
         $query = $this->db->query($query);
         $response["message"]['action'] = $query;
         $response["message"]['post'] = $date;
@@ -77,9 +98,9 @@ class Pages extends FC_Controller {
         $response = array('status' => 'ok', 'message' => array());
         $date = $this->input->post("date");
         if($date){}else $response['status']="error";
-        $data = array('active' => '0');
-        $where = "`id` = {$date["id"]}";
-        $query = $this->db->update_string('pages', $data, $where);
+        $data = array('p_active' => '0');
+        $where = "`p_id` = {$date["id"]}";
+        $query = $this->db->update_string('pakiet', $data, $where);
         $query = $this->db->query($query);
         $response["message"]['action'] = $query;
         $response["message"]['post'] = $date;

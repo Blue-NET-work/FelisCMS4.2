@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Articles extends FC_Controller {
+class Hotels extends FC_Controller {
 
     function __construct(){
         parent::__construct();
-        @FC_Request::loadModel(array('Admin_model', 'Articles_model'));
+        @FC_Request::loadModel(array('Admin_model', 'Hotels_model'));
         @FC_Request::loadLang(array('felis_pages'));
 	}
 
     public function index(){
-        $query["articles"] = $this->Articles_model->pagesList();
-        @FC_Request::smartyView('articles/list.tpl', $query);
+        $query["pages"] = $this->Hotels_model->pagesList();
+        @FC_Request::smartyView('hotels/list.tpl', $query);
     }
 
 // Dodawanie podstrony
@@ -25,7 +25,7 @@ class Articles extends FC_Controller {
             $this->form_validation->set_rules('item[alias]', 'lang:default_adres', 'required');
 
             if ($this->form_validation->run() == true){
-                $query["insert"] = @FC_DB::insert('pages', @FC_Request::post('item'));
+                $query["insert"] = @FC_DB::insert('hotels', @FC_Request::post('item'));
 
                 if($query["insert"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_add_success'), "icon"=>"button-check.png");
                 else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_add_error'), "icon"=>"stop.png");
@@ -33,26 +33,25 @@ class Articles extends FC_Controller {
             }else $query["messages"] = array('head' => lang('default_error'), "info"=> "{validation_errors()}", "icon"=>"stop.png");
         }
 
-        $query["articles"] = $this->Articles_model->pagesTree();
-        @FC_Request::smartyView("articles/add.tpl", $query);
+        @FC_Request::smartyView("hotels/add.tpl", $query);
     }
 
     public function edit($id){
 
         if($id != false){
-            if($this->db->get_where("articles", array("a_id"=>$id))->row_array()){
+            if($this->db->get_where("hotels", array("id"=>$id))->row_array()){
 
                 if(@FC_Request::post("item")){
                     $item = @FC_Request::post("item");
-                    if(!isset($item["a_active"])){$item["a_active"] = "0";}
+                    if(!isset($item["active"])){$item["active"] = "0";}
 
-                    $item["a_alias"]= url_title(convert_accented_characters(element('a_alias', $item)), '-', TRUE);
+                    $item["alias"]= url_title(convert_accented_characters(element('alias', $item)), '-', TRUE);
 
-                    $this->form_validation->set_rules('item[a_name]', 'lang:default_name', 'required');
-                    $this->form_validation->set_rules('item[a_alias]', 'lang:default_adres', 'required');
+                    $this->form_validation->set_rules('item[name]', 'lang:default_name', 'required');
+                    $this->form_validation->set_rules('item[alias]', 'lang:default_adres', 'required');
 
                     if ($this->form_validation->run() == true){
-                        $query["update"] = @FC_DB::update('articles', $item, array("a_id"=>$id));
+                        $query["update"] = @FC_DB::update('hotels', $item, array("id"=>$id));
 
                         if($query["update"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_edit_success'), "icon"=>"button-check.png");
                         else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_edit_error'), "icon"=>"stop.png");
@@ -60,13 +59,12 @@ class Articles extends FC_Controller {
                     }else $query["messages"] = array('head' => lang('default_error'), "info"=> validation_errors(), "icon"=>"stop.png");
                 }
 
-        		$query["articles"] = $this->Articles_model->pagesTree();
-                $query["page"] = @FC_DB::getData('articles', array("a_id"=>$id));
+                $query["page"] = @FC_DB::getData('hotels', array("id"=>$id));
 
             }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_failure'), "icon"=>"stop.png");
         }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang("pages_failure_id"), "icon"=>"stop.png");
 
-        @FC_Request::smartyView('articles/edit.tpl', $query);
+        @FC_Request::smartyView('hotels/edit.tpl', $query);
     }
 
 // Usuwanie podstrony
@@ -75,7 +73,7 @@ class Articles extends FC_Controller {
         $date = $this->input->post("date");
         if($date){}else $response['status']="error";
         $where = array('id'=>$date["id"]);
-        $query = $this->db->delete('pages', $where);
+        $query = $this->db->delete('hotels', $where);
         $response["message"]['action'] = $query;
         $response["message"]['post'] = $date;
 		return $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));
@@ -88,7 +86,7 @@ class Articles extends FC_Controller {
         if($date){}else $response['status']="error";
         $data = array('active' => '1');
         $where = "`id` = {$date["id"]}";
-        $query = $this->db->update_string('pages', $data, $where);
+        $query = $this->db->update_string('hotels', $data, $where);
         $query = $this->db->query($query);
         $response["message"]['action'] = $query;
         $response["message"]['post'] = $date;
@@ -102,7 +100,7 @@ class Articles extends FC_Controller {
         if($date){}else $response['status']="error";
         $data = array('active' => '0');
         $where = "`id` = {$date["id"]}";
-        $query = $this->db->update_string('pages', $data, $where);
+        $query = $this->db->update_string('hotels', $data, $where);
         $query = $this->db->query($query);
         $response["message"]['action'] = $query;
         $response["message"]['post'] = $date;

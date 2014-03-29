@@ -13,17 +13,17 @@
             <!-- Body Header
             ================================================== -->
             <header>
-                <h1 class="title"><i class="fa fa-2x fa-pencil"></i>  Edycja artykułów</h1>
+                <h1 class="title"><i class="fa fa-2x fa-pencil"></i>  Dodawanie hotelu</h1>
                 <ul class="breadcrumb unstyled-list">
                   <li><a href="#">{lang line="default_control_panel"}</a></li>
-                  <li class="active">Edycja artykułów</li>
+                  <li class="active">Dodawanie hotelu</li>
                 </ul>
             </header>
 
             <!-- panel -->
             <div class="panel panel-black" id="panel">
               <div class="panel-heading">
-                Edycja artykułów
+               	Dodawanie hotelu
                 <div class="absolute-right">
                     <ul class="nav nav-tabs" id="navTabs">
                         <li class="active"><a href="#data" data-toggle="tab" class="panel-link">{lang line="default_data"}</a></li>
@@ -35,7 +35,7 @@
               </div>
               <!-- ./end panel-heading -->
               <div id="panel-body" class="panel-body in">
-                    {include file="articles/_ArticlesForm.tpl"}
+                    {include file="pakiety/_PakietyForm.tpl"}
               </div>
             </div>
             <!-- panel -->
