@@ -139,7 +139,7 @@ class Panel extends FC_Controller {
 
             // Datownik (teraz, termin płatności)
             date_default_timezone_set('europe/warsaw');
-            $data = "%Y-%m-%d";
+            $data = "%Y-%m-%d %H:%i:%s";
             $now = mdate($data);
 
             $przelew = @FC_DB::getDataSelect('p24_session_id', 'przelewy24', array('p24_session_id'=>$sygnatura), 'p24_session_id');
@@ -221,10 +221,12 @@ class Panel extends FC_Controller {
             @FC_Request::loadModel("payments/przelewy24");
             $felisp24 = Przelewy24::weryfikuj($przelewy24['param_1'], $p24Post["p24_session_id"], $p24_ver["p24_order_id"], $przelewy24['param_2'], $p24_ver["p24_kwota"]);
             $przelew24 = @FC_DB::getData('przelewy24', array('p24_session_id' => $p24Post["p24_session_id"]));
+    		$felisp24 = TRUE;
             $bn["payments"] = $felisp24;
 
             if($felisp24 == TRUE){
-                @FC_DB::update('reservation', array('r_status'=>1, 'r_payment'=> $przelewy24["id"]), array('r_id'=>$sygnatura[3]));
+        		$p24Pay = @FC_DB::getData('przelewy24', array('p24_session_id' => $p24Post["p24_session_id"]));
+                @FC_DB::update('reservation', array('r_status'=>1, 'r_payment'=> $p24Pay["id"]), array('r_id'=>$sygnatura[3]));
             }
             else @FC_DB::update('przelewy24', array('p24_error_code' =>  $p24Post["p24_error_code"]), array('p24_order_id' => $p24_ver["p24_order_id"]));
         }
@@ -250,6 +252,7 @@ class Panel extends FC_Controller {
             $this->smarty->assign("basket_item", $basket_item);
         }
 
+        print_r($this->cart->contents());
         $this->smarty->assign("basket_items", $basket_items);
         $this->smarty->view('account/basket.tpl');
     }

@@ -23,6 +23,8 @@
                     		<div class="margin-top-20">
                             {if $item.r_status == 2}
                                 <span class="label label-success">Zatwierdzona</span>
+		                    {elseif $item.r_status == 3}
+		                        <span class="label label-danger">Odrzucona</span>
                             {elseif $item.r_status == 1}
                             	<span class="label label-info">Oczekuje na akceptacje hotelu.</span>
                             {else}

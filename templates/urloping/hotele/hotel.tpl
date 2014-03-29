@@ -13,11 +13,27 @@
             	<div class="col-md-8">
 		            <!-- items -->
 		            <div class="margin-bottom-20">
-			        {if $id == 1}
-			            {html_image file="{$uploads}/obiekty/1b176080874c992ae783432ba494002f2b8b6e1cs.jpg" class="img-thumbnail" width="40%" height="40%" alt=""}
-		            {else}
-			            {html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" class="img-thumbnail" width="40%" height="40%" alt=""}
-			        {/if}
+
+<div class="carousel slide article-slide" id="article-photo-carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner cont-slider">
+{foreach from=$hotels_photo item=item name=hotels_photo}
+    <div class="item {if !$smarty.foreach.hotels_photo.first}{else}active{/if}">
+      {html_image file="{$uploads}images/hotels/thumb_450/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" style="height:350px !important; width:100%;" alt="{$item.hp_alt}" title="{$item.hp_title}"}
+    </div>
+{/foreach}
+  </div>
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+  {$i = 0}
+{foreach from=$hotels_photo item=item name=hotels_photo}
+    <li {if $smarty.foreach.pakiet_photo.first}class="active"{/if} data-slide-to="{$i++}" data-target="#article-photo-carousel">
+      {html_image file="{$uploads}images/hotels/thumb_70/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.hp_alt}" title="{$item.hp_title}"}
+    </li>
+{/foreach}
+  </ol>
+</div>
 			        </div>
                     <div class="panel panel-default hotele">
                     	<div class="panel-body padding-20 text-justify">
@@ -43,10 +59,7 @@
 
             		<div class="naTerenie">
 		                <ul class="fa-ul">
-						  <li><i class="fa-li fa fa-check-square"></i>List icons (like these)</li>
-						  <li><i class="fa-li fa fa-check-square"></i>can be used</li>
-						  <li><i class="fa-li fa fa-check-square"></i>can be used</li>
-						  <li><i class="fa-li fa fa-square"></i>default bullets in lists</li>
+						  <li>{$tags}</li>
 						</ul>
             		</div>
 

@@ -13,36 +13,54 @@
                     <div class="panel panel-default panel-green">
                       <div class="panel-heading"><i class="fa fa-gift"></i> {$name}</div>
                       <div class="panel-body padding-10">
-                        <!-- items -->
-                        {if $id == 1}
-	                        {html_image file="{$uploads}/nagrody/4065a25c125c699eb366767811b09dd32cce3898m.jpg" class="img-thumbnail margin-right-10" align="left" alt=""}
-                        {elseif $id == 2}
-	                        {html_image file="{$uploads}/nagrody/f4a607b6aa9d4368d439ff84544716c2cdd4823fm.png" class="img-thumbnail margin-right-10" align="left" alt=""}
-                        {else}
-	                        {html_image file="{$uploads}/nagrody/a1f14b85de722d7aed551c7408ca9375f4589aeam.png" class="img-thumbnail margin-right-10" align="left" alt=""}
-                        {/if}
 
+
+		        <!-- items -->
+		        <div class="row">
+                    <div class="col-md-6">
+
+<div class="carousel slide article-slide" id="article-photo-carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner cont-slider">
+{foreach from=$nagroda_photo item=item name=nagroda_photo}
+    <div class="item {if !$smarty.foreach.nagroda_photo.first}{else}active{/if}">
+      {html_image file="{$uploads}images/nagrody/thumb_800/{$item.np_photo}.{$item.np_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.np_alt}" title="{$item.np_title}"}
+    </div>
+{/foreach}
+  </div>
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+  {$i = 0}
+{foreach from=$nagroda_photo item=item name=nagroda_photo}
+    <li {if $smarty.foreach.nagroda_photo.first}class="active"{/if} data-slide-to="{$i++}" data-target="#article-photo-carousel">
+      {html_image file="{$uploads}images/nagrody/thumb_70/{$item.np_photo}.{$item.np_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.np_alt}" title="{$item.np_title}"}
+    </li>
+{/foreach}
+  </ol>
+</div>
+                    </div>
+                    <div class="col-md-6">
+                    	<h3>{$name}</h3>
 	                    {$description}
 
-                        <hr>
-                        <div class="row margin-top-25">
-                        	<div class="col-md-1"></div>
-                        	<div class="col-md-4">
-                        		Koszt: {$price} pkt
-                        	</div>
-                        	<div class="col-md-4">
-	                            <form action="{$base_url}panel/dodaj.html" method="post">
-					                <input type="hidden" name="date[id]" value="nagroda_{$id}">
-					                <input type="hidden" name="date[name]" value="{$name}">
-					                <input type="hidden" name="date[price]" value="{$price}">
-					                <input type="hidden" name="date[qty]" value="1">
-					                <button type="submit" id="loading-example-btn" class="btn btn-default" data-loading-text="Loading...">wybierz</button>
-					            </form>
-                        	</div>
-                        	<div class="col-md-1"></div>
-                        </div>
+	                    <form class="margin-top-20" action="{$base_url}panel/dodaj.html" method="post">
+					        <input type="hidden" name="date[id]" value="nagroda_{$id}">
+					        <input type="hidden" name="date[name]" value="{$name}">
+					        <select class="form-control" name="date[price]">
+							{foreach from=$nagroda_price item=item name=nagroda_price}
+								<option value="{$item.price}">{$item.npe_point} pkt / {$item.npe_price} zł</option>
+							{/foreach}
+							</select>
+					        <input type="hidden" name="date[qty]" value="1">
+					        <button type="submit" id="loading-example-btn" class="btn btn-default margin-top-10" data-loading-text="Loading...">wybierz</button>
+					    </form>
+                    </div>
+		        </div>
+		        <!-- items -->
 
-                        <!-- items -->
+
+
                       </div>
                     </div>
                     <!-- ./miasta -->

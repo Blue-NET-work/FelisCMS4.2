@@ -35,19 +35,44 @@
                                 <p><b>{lang line="default_site_data"}</b></p>
 
                                 <div class="form-group block-label">
-                                    <label for="item[name]" class="text-info">{lang line="default_name"}: <small>(255 {lang line="default_chars_max"}.)</small></label>
-                                    <input type="text" name="item[name]" id="item[name]" class="input form-control FelisNazwa" value="{$page.name}">
+                                    <label for="item[p_name]" class="text-info">{lang line="default_name"}: <small>(255 {lang line="default_chars_max"}.)</small></label>
+                                    <input type="text" name="item[p_name]" id="item[p_name]" class="input form-control FelisNazwa" value="{$page.p_name}">
                                 </div>
 
                                 <div class="form-group has-feedback block-label">
-                                    <label for="item[alias]" class="text-info">{lang line="default_show_adres"}: <small>(255 {lang line="default_chars_max"}.)</small></label>
-                                    <input type="text" name="item[alias]" id="item[alias]" class="input form-control FelisAlias" value="{$page.alias}">
+                                    <label for="item[p_alias]" class="text-info">{lang line="default_show_adres"}: <small>(255 {lang line="default_chars_max"}.)</small></label>
+                                    <input type="text" name="item[p_alias]" id="item[p_alias]" class="input form-control FelisAlias" value="{$page.p_alias}">
   									<span id="FelisAlias" class="fa fa-spinner fa-spin form-control-feedback"></span>
                                 </div>
 
+                                <div class="form-group block-label">
+                                    <label for="item[p_price]" class="text-info">Cena: <small>(np. 100 // bez zł)</small></label>
+                                    <input type="text" name="item[p_price]" id="item[p_price]" class="input form-control" value="{$page.p_price}">
+                                </div>
+
+                                <div class="form-group block-label">
+                                    <label for="item[p_points]" class="text-info">Punktów: <small>(np. 100 // bez pkt)</small></label>
+                                    <input type="text" name="item[p_points]" id="item[p_points]" class="input form-control" value="{$page.p_points}">
+                                </div>
+
+                                <div class="form-group block-label">
+                                    <label for="item[p_term]" class="text-info">Czas pobytu: <small>(np. 4 // bez dni)</small></label>
+                                    <input type="text" name="item[p_term]" id="item[p_term]" class="input form-control" value="{$page.p_term}">
+                                </div>
+
                                 <div class="form-group">
-                                    <label for="item[active]" class="text-info">{lang line="default_active"}:</label>
-                                    <input type="checkbox" name="item[active]" {if $page.active}checked="checked"{/if} id="item[active]" class="switch mid-margin-right" value="1">
+                                    <label for="item[p_occasional]" class="text-info">Okolicznościowy:</label>
+                                    <input type="checkbox" name="item[p_occasional]" {if $page.p_occasional}checked="checked"{/if} id="item[p_occasional]" class="switch mid-margin-right" value="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="item[p_week]" class="text-info">Oferta tygodnia:</label>
+                                    <input type="checkbox" name="item[p_week]" {if $page.p_week}checked="checked"{/if} id="item[p_week]" class="switch mid-margin-right" value="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="item[p_active]" class="text-info">{lang line="default_active"}:</label>
+                                    <input type="checkbox" name="item[p_active]" {if $page.p_active}checked="checked"{/if} id="item[p_active]" class="switch mid-margin-right" value="1">
                                 </div>
 
                             </div><!-- ./end span6 -->
@@ -73,8 +98,8 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="item[description]" class="text-info">{lang line="default_description"}:</label>
-                                <textarea name="item[description]" id="item[description]" class="ckeditor">{$page.description}</textarea>
+                                <label for="item[p_description]" class="text-info">{lang line="default_description"}:</label>
+                                <textarea name="item[p_description]" id="item[p_description]" class="ckeditor">{$page.p_description}</textarea>
                             </div>
                         </div>
 
@@ -95,11 +120,101 @@
                         </div>
 
                     </div> <!-- #/end data -->
+                </form>
                     <div class="tab-pane fade" id="foto">
 
                         <div class="row">
                             <div class="col-md-12">
-                            	Dodawanie zdjęć
+			                    <form action="{$base_url}pakiety/uploadFoto/{$page.p_id}" method="post" enctype="multipart/form-data">
+                            		<div class="row">
+                                    	<div class="col-md-3">
+										    <label for="file" style="display:block;">Zdjęcie:</label>
+                                    		<div class="fileinput fileinput-new form-group" data-provides="fileinput">
+											  <span class="btn btn-default btn-file"><span class="fileinput-new">Wybierz zdjęcie</span><span class="fileinput-exists">Zmień</span><input type="file" id="file" name="foto"></span>
+											  <span class="fileinput-filename"></span>
+											</div>
+                                    	</div>
+                                    	<div class="col-md-3 form-group">
+										    <label for="alt">Alt:</label>
+										    <input type="text" class="form-control" id="alt" name="alt" placeholder="alt zdjęcia">
+                                    	</div>
+                                    	<div class="col-md-3 form-group">
+			                                <label for="title">Title:</label>
+			                                <input type="text" class="form-control" placeholder="tytul zdjęcia" id="title" name="title">
+                                    	</div>
+                                    	<div class="col-md-3 form-group">
+										    <label for="submitFoto" style="display:block;">&nbsp;</label>
+			                            	<input id="submitFoto" type="submit" class="btn btn-default" name="uploadFoto" value="Dodaj">
+                                    	</div>
+                            		</div>
+			                        <input type="hidden" name="id" value="{$page.p_id}">
+			                    </form>
+			                    <hr>
+			                    <form action="{$base_url}pakiety/serverFoto/{$page.p_id}" method="post">
+			                    <input type="hidden" name="id" value="{$page.p_id}" />
+			                    	<h4>Wybierz z dostępnych na serwerze</h4>
+				                    <table class="table nocss">
+				                        <tbody>
+				                        <tr>
+				                            <td id="files" width="30%" style="vertical-align: top;"></td>
+				                            <td valign="top"><div id="fileTree" style="width: 700px; height: 500px; overflow: auto;"></div></td>
+				                        </tr>
+				                        </tbody>
+				                    </table>
+				                    <input class="btn btn-default" type="submit" name="uploadServer" value="Dodaj">
+			                    </form><br /><br />
+			                    <form action="{$base_url}pakiety/sorts/{$page.p_id}" method="post">
+			                        <table class="table">
+			                            <thead>
+			                                <tr>
+			                                    <th>Zdjęcie</th>
+			                                    <th>Kolejność</th>
+			                                    <th>Title</th>
+			                                    <th>Alt</th>
+			                                    <th>Akcje</th>
+			                                </tr>
+			                            </thead>
+			                            <tbody>
+			                            {foreach from=$photos item=foto name=photos}
+			                                    <tr>
+			                                        <td class="picture" style="width:140px;">
+			                                            <a href="{$uploads}images/pakiety/thumb_200/{$foto.pp_photo}.{$foto.pp_ext}" class="zoombox">
+			                                                <img src="{$uploads}images/pakiety/thumb_70/{$foto.pp_photo}.{$foto.pp_ext}" alt="" />
+			                                            </a>
+			                                        </td>
+			                                        <td class="col-md-3">
+			                                            <input type="hidden" name="photoId[]" value="{$foto.pp_id}">
+			                                            <div class="input-group col-md-6">
+			                                            {if $smarty.foreach.photos.first}
+			                                            {else}
+			                                                <span class="input-group-addon"><button type="submit" name="submit_moveup_{$foto.pp_id}" style="border: none; background: none;" value="">
+			                                                    <i class="fa fa-chevron-up"></i>
+			                                                </button></span>
+			                                            {/if}
+			                                            <input type="text" name="position[]" class="form-control" value="{$foto.pp_sort}" size="2"/>
+			                                            {if $smarty.foreach.photos.last}
+			                                            {else}
+			                                                <span class="input-group-addon"><button type="submit" name="submit_movedown_{$foto.pp_id}" style="border: none; background: none;" value="">
+			                                                    <i class="fa fa-chevron-down"></i>
+			                                                </button></span>
+			                                            {/if}
+														</div>
+													</td>
+			                                        <td>{$foto.pp_title}</td>
+			                                        <td>{$foto.pp_alt}</td>
+			                                        <td class="actions">
+			                                            <a href="{$base_url}pakiety/photoDel/{$foto.pp_id}/{$page.p_id}.html" title="Usuń">
+			                                                <i class="fa fa-trash-o"></i>
+			                                            </a>
+			                                        </td>
+			                                    </tr>
+			                            {/foreach}
+			                            </tbody>
+			                        </table>
+			                        <div class="submit" style="text-align: center;">
+			                        	<input class="btn btn-default" name="submit_moveall_0" type="submit" value="Zapisz kolejność" />
+			                        </div>
+			                        </form>
                             </div>
                         </div>
 
@@ -122,4 +237,3 @@
                     </div>
                 </div>
                 <!-- tab -->
-                </form>

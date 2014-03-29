@@ -13,11 +13,27 @@
 		        <!-- items -->
 		        <div class="row">
                     <div class="col-md-6">
-	                {if $id == 1}
-				        {html_image file="{$uploads}/obiekty/1b176080874c992ae783432ba494002f2b8b6e1cs.jpg" class="img-thumbnail" width="100%" height="100%" alt=""}
-			        {else}
-				        {html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" class="img-thumbnail" width="100%" height="100%" alt=""}
-				    {/if}
+
+<div class="carousel slide article-slide" id="article-photo-carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner cont-slider">
+{foreach from=$pakiet_photo item=item name=pakiet_photo}
+    <div class="item {if !$smarty.foreach.pakiet_photo.first}{else}active{/if}">
+      {html_image file="{$uploads}images/pakiety/thumb_800/{$item.pp_photo}.{$item.pp_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.pp_alt}" title="{$item.pp_title}"}
+    </div>
+{/foreach}
+  </div>
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+  {$i = 0}
+{foreach from=$pakiet_photo item=item name=pakiet_photo}
+    <li {if $smarty.foreach.pakiet_photo.first}class="active"{/if} data-slide-to="{$i++}" data-target="#article-photo-carousel">
+      {html_image file="{$uploads}images/pakiety/thumb_70/{$item.pp_photo}.{$item.pp_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.pp_alt}" title="{$item.pp_title}"}
+    </li>
+{/foreach}
+  </ol>
+</div>
                     </div>
                     <div class="col-md-6">
                     	<div class="row margin-top-10 margin-bottom-20">
@@ -37,4 +53,11 @@
           </div>
         </div>
 
+{/block}
+{block name="jQuery"}
+	<script>
+// Stop carousel
+$('.carousel').carousel({
+  interval: false
+});</script>
 {/block}

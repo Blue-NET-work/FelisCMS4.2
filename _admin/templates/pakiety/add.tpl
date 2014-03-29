@@ -13,17 +13,17 @@
             <!-- Body Header
             ================================================== -->
             <header>
-                <h1 class="title"><i class="fa fa-2x fa-pencil"></i>  Dodawanie hotelu</h1>
+                <h1 class="title"><i class="fa fa-2x fa-pencil"></i>  Dodawanie pakietu</h1>
                 <ul class="breadcrumb unstyled-list">
                   <li><a href="#">{lang line="default_control_panel"}</a></li>
-                  <li class="active">Dodawanie hotelu</li>
+                  <li class="active">Dodawanie pakietu</li>
                 </ul>
             </header>
 
             <!-- panel -->
             <div class="panel panel-black" id="panel">
               <div class="panel-heading">
-               	Dodawanie hotelu
+               	Dodawanie pakietu
                 <div class="absolute-right">
                     <ul class="nav nav-tabs" id="navTabs">
                         <li class="active"><a href="#data" data-toggle="tab" class="panel-link">{lang line="default_data"}</a></li>

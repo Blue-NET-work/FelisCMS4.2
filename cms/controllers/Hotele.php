@@ -9,23 +9,25 @@ class Hotele extends FC_Controller {
     }
 
 	public function index(){
-		$query["hotele"] = $this->db->get("hotels")->result_array();
+		$query["hotele"] = $this->db->join('hotels_photo', 'hp_parent_id = id')->group_by('id')->get("hotels")->result_array();
 		$this->smarty->view("hotele/index.tpl", $query);
 	}
 
 // Miasto
 	public function miasto($miasto){
 		$city_id = $this->db->get_where("city", array("alias" => $miasto))->row("id");
-		$query["hotele"] = $this->db->get_where("hotels", array("city" => $city_id))->result_array();
+		$query["hotele"] = $this->db->join('hotels_photo', 'hp_parent_id = id')->group_by('id')->get_where("hotels", array("city" => $city_id))->result_array();
 		$this->smarty->view("hotele/index.tpl", $query);
 	}
 
 // Hotel
 	public function hotel($id){
 		$query = $this->db->get_where("hotels", array("id"=>$id))->row_array();
+		$hotels_photo = $this->db->get_where("hotels_photo", array("hp_parent_id"=>$id))->result_array();
 
-		$pakiety = $this->db->get_where("pakiet", array("p_hotels"=>$id))->result_array();
+		$pakiety = $this->db->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->get_where("pakiet", array("p_hotels"=>$id))->result_array();
         $this->smarty->assigns("pakiety", $pakiety);
+        $this->smarty->assigns("hotels_photo", $hotels_photo);
 
 		$this->smarty->view("hotele/hotel.tpl", $query);
 	}

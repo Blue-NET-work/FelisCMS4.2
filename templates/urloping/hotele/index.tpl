@@ -18,11 +18,7 @@
 			              <div class="panel-body padding-10">
 				              <div class="row">
                               	<div class="col-md-6">
-			                    {if $item.id == 1}
-	                    			{html_image file="{$uploads}/obiekty/1b176080874c992ae783432ba494002f2b8b6e1cs.jpg" class="img-thumbnail" width="100%" height="100%" alt=""}
-		                        {else}
-	                    			{html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" class="img-thumbnail" width="100%" height="100%" alt=""}
-			                    {/if}
+                              		{html_image file="{$uploads}images/hotels/thumb_70/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.hp_alt}" title="{$item.hp_title}"}
 	                    		</div>
                               	<div class="col-md-6">
 	                        		<h3 class="no-top-space no-bottom-space"><a href="{$base_url}hotele/hotel/{$item.id}">{$item.name}</a></h3>

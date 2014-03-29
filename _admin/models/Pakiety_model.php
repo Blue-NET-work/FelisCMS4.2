@@ -1,4 +1,5 @@
 <?php
+require_once(BASEPATH."modules/wideimage/WideImage.php");
 class Pakiety_model extends CI_Model{
 
 // Budowanie nazw kategorii dla listy podstron
@@ -18,26 +19,6 @@ class Pakiety_model extends CI_Model{
     public function pagesTree(){
         $arr = $this->db->select("a_id, a_name, a_lang, a_parent_id")->order_by("a_id asc, a_lang asc")->get("articles")->result_array();
 
-/*
-        foreach($array as $id => $v){
-
-	        if(element("parent_id", $v) == 0){
-	        	$tree[element("lang", $v)][] = $v;
-	        	print_r($v);
-	        }
-
-	        if(element("parent_id", $item) == 0){
-	            $tree[element("parent_id", $item)][$id] = &$item;
-	        }
-            elseif(isset($array[$item['parent_id']])){
-                $array[$item['parent_id']]['children'][$id] = &$item;
-            }
-            else{
-                $tree['_orphans_'][$id] = &$item;
-            }
-
-        }
-*/
         return $this->__pagePosition($arr);
     }
 
@@ -53,11 +34,95 @@ class Pakiety_model extends CI_Model{
         foreach($array as $item){
 			$tree[element("a_id", $item)] = $item;
         }
-
-/*
-        printr($tree);
-*/
 		return $tree;
     }
+
+// Dodawanie zdjęcia
+    public function uploadFotoAction($id, $options = false){
+        if (isset($options['file']) && is_file($options['file'])) {
+            $path = ROOTPATH . "uploads/images/pakiety";
+            MDir::existOrMakeDir($path);
+            $title = isset($options['title']) ? $options['title'] : '';
+            $alt = isset($options['alt']) ? $options['alt'] : '';
+            $filename = str_replace(" ","_",$options['filename']);
+            $zdjecie = pathinfo($filename, PATHINFO_FILENAME);
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            $forg = "{$path}/org/{$filename}";
+            if(is_file($forg)){$zdjecie = time();}
+            $filename = $zdjecie.".".$ext;
+            $table = $this->db->dbprefix("pakiet_photo");
+            $kolejnosc = $this->db->query("SELECT MAX(`pp_sort`) FROM `{$table}` WHERE `pp_parent_id` = {$id}");
+            $kolejnosc = intval($kolejnosc->row('MAX(`pp_sort`)'));
+            $kolejnosc++;
+            $image = WideImage::load($options['file']);
+            $white = $image->allocateColor(255, 255, 255);
+            //miniaturka 1
+            $image->resize(70, 70, 'outside')->resizeCanvas(70, 70, 'center', 'center', $white)->saveToFile("{$path}/thumb_70/{$filename}");
+            //miniaturka 2
+            $image->resize(120, 120, 'outside')->resizeCanvas(120, 120, 'center', 'center', $white)->saveToFile("{$path}/thumb_120/{$filename}");
+            //miniaturka 3
+            $image->resize(200, 150, 'outside')->resizeCanvas(200, 150, 'center', 'center', $white)->saveToFile("{$path}/thumb_200/{$filename}");
+            //miniaturka 4
+            $image->resize(280, 200, 'outside')->resizeCanvas(280, 200, 'center', 'center', $white)->saveToFile("{$path}/thumb_280/{$filename}");
+            //miniaturka 5
+            $image->resize(300, 200, 'outside')->resizeCanvas(300, 200, 'center', 'center', $white)->saveToFile("{$path}/thumb_300/{$filename}");
+            //miniaturka 6
+            $image->resize(450, 300, 'outside')->resizeCanvas(450, 300, 'center', 'center', $white)->saveToFile("{$path}/thumb_450/{$filename}");
+            //miniaturka 7
+            $image->resize(800, 600, 'outside')->resizeCanvas(800, 600, 'center', 'center', $white)->saveToFile("{$path}/thumb_800/{$filename}");
+            //miniaturka 8
+            $image->resize(900, 500, 'outside')->resizeCanvas(900, 500, 'center', 'center', $white)->saveToFile("{$path}/thumb_900/{$filename}");
+            //oryginal
+            $image->saveToFile("{$path}/org/{$filename}");
+	        $data = array('pp_id' => 'NULL', 'pp_photo' => $zdjecie, 'pp_ext'=>$ext, 'pp_parent_id' => $id, 'pp_sort' => $kolejnosc, 'pp_alt' => $alt, 'pp_title' => $title);
+	        $query = @FC_DB::insert('pakiet_photo', $data);
+            $message = $query;
+        }
+
+    }
+// Dodawanie zdjęć
+    public function serverFotoAction($id, $options = false){
+        $path = ROOTPATH . "uploads/images/pakiety";
+        MDir::existOrMakeDir($path);
+        // pobierani danych
+        $title = isset($options['title']) ? $options['title'] : '';
+        $alt = isset($options['alt']) ? $options['alt'] : '';
+        $filename = $options['file'];
+        $filename=str_replace(" ","_",$filename);
+        $zdjecie = pathinfo($filename, PATHINFO_FILENAME);
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        //Sortowanie zdjęcia
+        $table = $this->db->dbprefix("pakiet_photo");
+        $kolejnosc = $this->db->query("SELECT MAX(`pp_sort`) FROM `{$table}` WHERE `pp_parent_id` = {$id}");
+        $kolejnosc = intval($kolejnosc->row('MAX(`pp_sort`)'));
+        $kolejnosc++;
+        // Funkcja zapisu foto na ftp
+        $image = WideImage::load($options['file']);
+        $white = $image->allocateColor(255, 255, 255);
+        //miniaturka 1
+        $image->resize(70, 70, 'outside')->resizeCanvas(70, 70, 'center', 'center', $white)->saveToFile("{$path}/thumb_70/{$zdjecie}.{$ext}");
+        //miniaturka 2
+        $image->resize(120, 120, 'outside')->resizeCanvas(120, 120, 'center', 'center', $white)->saveToFile("{$path}/thumb_120/{$zdjecie}.{$ext}");
+        //miniaturka 3
+        $image->resize(200, 150, 'outside')->resizeCanvas(200, 150, 'center', 'center', $white)->saveToFile("{$path}/thumb_200/{$zdjecie}.{$ext}");
+        //miniaturka 4
+        $image->resize(280, 200, 'outside')->resizeCanvas(280, 200, 'center', 'center', $white)->saveToFile("{$path}/thumb_280/{$zdjecie}.{$ext}");
+        //miniaturka 5
+        $image->resize(300, 200, 'outside')->resizeCanvas(300, 200, 'center', 'center', $white)->saveToFile("{$path}/thumb_300/{$zdjecie}.{$ext}");
+        //miniaturka 6
+        $image->resize(450, 300, 'outside')->resizeCanvas(450, 300, 'center', 'center', $white)->saveToFile("{$path}/thumb_450/{$zdjecie}.{$ext}");
+        //miniaturka 7
+        $image->resize(800, 600, 'outside')->resizeCanvas(800, 600, 'center', 'center', $white)->saveToFile("{$path}/thumb_800/{$zdjecie}.{$ext}");
+        //miniaturka 8
+        $image->resize(900, 500, 'outside')->resizeCanvas(900, 500, 'center', 'center', $white)->saveToFile("{$path}/thumb_900/{$zdjecie}.{$ext}");
+        //oryginal
+        $image->saveToFile("{$path}/org/{$zdjecie}.{$ext}");
+        // Dodanie wpisu do DB
+        $data = array('pp_id' => 'NULL', 'pp_photo' => $zdjecie, 'pp_ext'=>$ext, 'pp_parent_id' => $id, 'pp_sort' => $kolejnosc, 'pp_alt' => $alt, 'pp_title' => $title);
+        $query = @FC_DB::insert('pakiet_photo', $data);
+        $message = $query;
+    }
+
+
 
 }

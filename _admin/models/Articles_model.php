@@ -7,12 +7,12 @@ class Articles_model extends CI_Model{
         foreach($this->db->get("articles")->result_array() as $key=>$page){
             if(element("a_parent_id", $page) != "0"){
         		$position = elements(
-        			array('a_id', 'a_name', 'a_alias', 'a_active', 'a_lang', 'a_parent_id', 'a_parent_name'), $page,
+        			array('a_id', 'a_name', 'a_alias', 'a_active', 'a_lang', 'a_parent_id', 'a_parent_name', "a_date"), $page,
         			$this->db->select("a_name")->get_where("articles", array("a_id"=>$page["a_parent_id"]))->row("a_name")
         		);
             }
             else{
-                $position = elements(array('a_id', 'a_name', 'a_alias', 'a_active', 'a_lang', 'a_parent_id'), $page);
+                $position = elements(array('a_id', 'a_name', 'a_alias', 'a_active', 'a_lang', 'a_parent_id', "a_date"), $page);
             }
 
             $pages[$key] = $position;

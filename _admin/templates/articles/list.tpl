@@ -35,6 +35,7 @@
                             <th style="min-width:30px;">ID</th>
                             <th>{lang line="default_name"}</th>
                             <th>{lang line="default_adres"}</th>
+                            <th>Data utworzenia</th>
                             <th>{lang line="default_category"}</th>
                             {if $service_multilang == 'TRUE'}<th>{lang line="default_sidebar_access_lang"}</th>{/if}
                             <th style="width: 90px; text-align: center;">{lang line="default_action"}</th>
@@ -47,6 +48,7 @@
                                     <td>{$item.a_id}</td>
                                     <td>{$item.a_name}</td>
                                     <td nowrap="nowrap"><a href="#" data-href="{$base_url}../{$item.a_alias}.html" class="preview with-tooltip" title="{lang line="default_sidebar_access_preview"}" data-title="{$item.a_name}">{$item.a_alias}.html</a></td>
+                                    <td>{$item.a_date}</td>
                                     <td>{if $item.parent_name}{$item.parent_name} <span class="label label-primary">ID {$item.parent_id}</span>{else}{lang line="default_category_no"}{/if}</td>
                                     {if $service_multilang == 'TRUE'}<td>{$item.a_lang}</td>{/if}
                                     <td class="actions">

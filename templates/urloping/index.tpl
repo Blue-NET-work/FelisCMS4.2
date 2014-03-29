@@ -43,7 +43,7 @@
 				                {foreach from=$obiekty item=item name=obiekty}
 								<!-- item -->
 								<div class="item {if $item.active == true}active{/if}" style="max-height:390px">
-	                                {html_image file="{$uploads}/obiekty/6449fed60f8e0818e7aa6da1716f31699220768bs.jpg" alt="" width="100%" height="100%"}
+	                                {html_image file="{$uploads}images/hotels/thumb_450/zegarNowySacz.jpg" alt="" width="100%" height="100%"}
 									<div class="carousel-caption">
 										<h3><a href="{$base_url}hotele/hotel/{$item.id}" style="color:#fff;">{$item.name}</a></h3>
                                         <div class="row">
@@ -155,9 +155,10 @@
 	                {foreach from=$aktualnosci item=item name=aktualnosci}
 	                	<tr>
                         	<td>
-                        		<h4>{$item.a_name}</h4>
-                           		{$item.a_description|truncate:350:"...":true}
+                        		<h4><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html">{$item.a_name}</a> <span style="font-size:10px;">(Dodano: {$item.a_date})</span></h4>
+                           		{$item.a_description|truncate:330:"...":true}
                         	</td>
+                        	<td><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html" class="btn btn-default"><i class="fa fa-file-text-o"></i> czytaj więcej >></a></td>
 	                	</tr>
 	                {/foreach}
 	                </table>
@@ -195,20 +196,21 @@
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner">
 				  <!-- item -->
-				    <div class="item active">
-		                <div class="row">
+				  		{$i = 0}
+					    <div class="item active">
+			                <div class="row">
 		                {foreach from=$nagrody item=item name=nagrody}
 	                		{include file="assets/helpview/_NagrodyLista.tpl" item=$item}
 		                {/foreach}
-		                </div>
-				    </div>
-				    <div class="item">
-		                <div class="row">
+			                </div>
+					    </div>
+					    <div class="item">
+			                <div class="row">
 		                {foreach from=$nagrody item=item name=nagrody}
 	                		{include file="assets/helpview/_NagrodyLista.tpl" item=$item}
 		                {/foreach}
-		                </div>
-				    </div>
+			                </div>
+					    </div>
 				  <!-- item -->
 				  </div>
 

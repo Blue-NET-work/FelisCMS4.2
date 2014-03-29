@@ -46,4 +46,5 @@ $route['szukaj']    			= 'dashboard/szukaj';
 $route['test_maila']    		= 'dashboard/testEmail';
 $route['oferta/(.*)']     		= 'dashboard/oferta/$1';
 $route['pakiet/(.*)']    		= 'dashboard/pakiet/$1';
+$route['artykul/(.*)_(.*)']    = 'dashboard/article/$1/$2';
 $route['(.*)']                 	= 'dashboard/pages/$1';

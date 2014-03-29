@@ -13,15 +13,15 @@
             <!-- Body Header
             ================================================== -->
             <header>
-                <h1 class="title"><i class="fa fa-2x fa-list"></i>  {lang line="pages_titleTag"}</h1>
+                <h1 class="title"><i class="fa fa-2x fa-list"></i>  Lista hoteli</h1>
                 <ul class="breadcrumb unstyled-list">
                   <li><a href="#">{lang line="default_control_panel"}</a></li>
-                  <li class="active">{lang line="pages_titleTag"}</li>
+                  <li class="active">Lista hoteli</li>
                 </ul>
             </header>
 
             <div class="panel panel-default panel-black" id="panel">
-                <div class="panel-heading">{lang line="pages_titleTag"}
+                <div class="panel-heading">Lista hoteli
                     <div class="absolute-right">
                         <!-- toggle (show hide) -->
                         <a class="panel-toggle" data-toggle="collapse" data-parent="#panel" href="#panel-body"><b class="caret"></b></a>

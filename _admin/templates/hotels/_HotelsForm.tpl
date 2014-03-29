@@ -45,9 +45,29 @@
   									<span id="FelisAlias" class="fa fa-spinner fa-spin form-control-feedback"></span>
                                 </div>
 
+                                <div class="form-group block-label">
+                                    <label for="item[tags]" class="text-info">Na terenie obiektu: <small>(frazy rozdzielić "," np. internet, telewizja, parking)</small></label>
+                                    <input type="text" name="item[tags]" id="item[tags]" class="input form-control" value="{$page.tags}">
+                                </div>
+
+                                <div class="form-group block-label">
+                                    <label for="item[rooms]" class="text-info">Pokoi: <small>(tylko liczba)</small></label>
+                                    <input type="text" name="item[rooms]" id="item[rooms]" class="input form-control" value="{$page.rooms}">
+                                </div>
+
+                                <div class="form-group block-label">
+                                    <label for="item[stars]" class="text-info">Gwiazdek: <small>(tylko liczba)</small></label>
+                                    <input type="text" name="item[stars]" id="item[stars]" class="input form-control" value="{$page.stars}">
+                                </div>
+
                                 <div class="form-group">
                                     <label for="item[active]" class="text-info">{lang line="default_active"}:</label>
                                     <input type="checkbox" name="item[active]" {if $page.active}checked="checked"{/if} id="item[active]" class="switch mid-margin-right" value="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="item[recommended]" class="text-info">Polecany:</label>
+                                    <input type="checkbox" name="item[recommended]" {if $page.recommended}checked="checked"{/if} id="item[recommended]" class="switch mid-margin-right" value="1">
                                 </div>
 
                             </div><!-- ./end span6 -->
@@ -95,11 +115,101 @@
                         </div>
 
                     </div> <!-- #/end data -->
+                </form>
                     <div class="tab-pane fade" id="foto">
 
                         <div class="row">
                             <div class="col-md-12">
-                            	Dodawanie zdjęć
+			                    <form action="{$base_url}hotels/uploadFoto/{$page.id}" method="post" enctype="multipart/form-data">
+                            		<div class="row">
+                                    	<div class="col-md-3">
+										    <label for="file" style="display:block;">Zdjęcie:</label>
+                                    		<div class="fileinput fileinput-new form-group" data-provides="fileinput">
+											  <span class="btn btn-default btn-file"><span class="fileinput-new">Wybierz zdjęcie</span><span class="fileinput-exists">Zmień</span><input type="file" id="file" name="foto"></span>
+											  <span class="fileinput-filename"></span>
+											</div>
+                                    	</div>
+                                    	<div class="col-md-3 form-group">
+										    <label for="alt">Alt:</label>
+										    <input type="text" class="form-control" id="alt" name="alt" placeholder="alt zdjęcia">
+                                    	</div>
+                                    	<div class="col-md-3 form-group">
+			                                <label for="title">Title:</label>
+			                                <input type="text" class="form-control" placeholder="tytul zdjęcia" id="title" name="title">
+                                    	</div>
+                                    	<div class="col-md-3 form-group">
+										    <label for="submitFoto" style="display:block;">&nbsp;</label>
+			                            	<input id="submitFoto" type="submit" class="btn btn-default" name="uploadFoto" value="Dodaj">
+                                    	</div>
+                            		</div>
+			                        <input type="hidden" name="id" value="{$page.id}">
+			                    </form>
+			                    <hr>
+			                    <form action="{$base_url}hotels/serverFoto/{$page.id}" method="post">
+			                    <input type="hidden" name="id" value="{$page.id}" />
+			                    	<h4>Wybierz z dostępnych na serwerze</h4>
+				                    <table class="table nocss">
+				                        <tbody>
+				                        <tr>
+				                            <td id="files" width="30%" style="vertical-align: top;"></td>
+				                            <td valign="top"><div id="fileTree" style="width: 700px; height: 500px; overflow: auto;"></div></td>
+				                        </tr>
+				                        </tbody>
+				                    </table>
+				                    <input class="btn btn-default" type="submit" name="uploadServer" value="Dodaj">
+			                    </form><br /><br />
+			                    <form action="{$base_url}hotels/sorts/{$page.id}" method="post">
+			                        <table class="table">
+			                            <thead>
+			                                <tr>
+			                                    <th>Zdjęcie</th>
+			                                    <th>Kolejność</th>
+			                                    <th>Title</th>
+			                                    <th>Alt</th>
+			                                    <th>Akcje</th>
+			                                </tr>
+			                            </thead>
+			                            <tbody>
+			                            {foreach from=$photos item=foto name=photos}
+			                                    <tr>
+			                                        <td class="picture" style="width:140px;">
+			                                            <a href="{$uploads}images/hotels/thumb_200/{$foto.hp_photo}.{$foto.hp_ext}" class="zoombox">
+			                                                <img src="{$uploads}images/hotels/thumb_70/{$foto.hp_photo}.{$foto.hp_ext}" alt="" />
+			                                            </a>
+			                                        </td>
+			                                        <td class="col-md-3">
+			                                            <input type="hidden" name="photoId[]" value="{$foto.hp_id}">
+			                                            <div class="input-group col-md-6">
+			                                            {if $smarty.foreach.photos.first}
+			                                            {else}
+			                                                <span class="input-group-addon"><button type="submit" name="submit_moveup_{$foto.hp_id}" style="border: none; background: none;" value="">
+			                                                    <i class="fa fa-chevron-up"></i>
+			                                                </button></span>
+			                                            {/if}
+			                                            <input type="text" name="position[]" class="form-control" value="{$foto.hp_sort}" size="2"/>
+			                                            {if $smarty.foreach.photos.last}
+			                                            {else}
+			                                                <span class="input-group-addon"><button type="submit" name="submit_movedown_{$foto.hp_id}" style="border: none; background: none;" value="">
+			                                                    <i class="fa fa-chevron-down"></i>
+			                                                </button></span>
+			                                            {/if}
+														</div>
+													</td>
+			                                        <td>{$foto.hp_title}</td>
+			                                        <td>{$foto.hp_alt}</td>
+			                                        <td class="actions">
+			                                            <a href="{$base_url}hotels/photoDel/{$foto.hp_id}/{$page.id}.html" title="Usuń">
+			                                                <i class="fa fa-trash-o"></i>
+			                                            </a>
+			                                        </td>
+			                                    </tr>
+			                            {/foreach}
+			                            </tbody>
+			                        </table>
+			                        <div class="submit" style="text-align: center;">
+			                        	<input class="btn btn-default" name="submit_moveall_0" type="submit" value="Zapisz kolejność" />
+			                        </div>
+			                        </form>
                             </div>
                         </div>
 
@@ -122,4 +232,3 @@
                     </div>
                 </div>
                 <!-- tab -->
-                </form>

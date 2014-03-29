@@ -37,6 +37,8 @@ class Dashboard extends FC_Controller {
 
 // Logowanie
     public function sign_in(){
+    	$query["messages"] = array('head' => "", "info"=>"", "icon"=>"button-info.png");
+
         $this->form_validation->set_error_delimiters("","<span style='padding-right:5px;'></span>");
 
         @FC_Request::loadLang("felis_login");
@@ -80,7 +82,7 @@ class Dashboard extends FC_Controller {
 
             @View::setJQ(base_url());
 
-            $query["messages"] = $messages;
+            $query["messages"]["info"] = $messages;
             @FC_Request::smartyView("account/sign_in.tpl", $query);
         }
 

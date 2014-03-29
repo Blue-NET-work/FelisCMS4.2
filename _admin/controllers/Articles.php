@@ -17,15 +17,18 @@ class Articles extends FC_Controller {
 // Dodawanie podstrony
     public function add(){
         $query["message"] = false;
-
+        $query["page"] = array("a_active" => 1);
         if(@FC_Request::post('item')){
             $item = @FC_Request::post("item");
 
-            $this->form_validation->set_rules('item[name]', 'lang:default_name', 'required');
-            $this->form_validation->set_rules('item[alias]', 'lang:default_adres', 'required');
+            $this->form_validation->set_rules('item[a_name]', 'lang:default_name', 'required');
+            $this->form_validation->set_rules('item[a_alias]', 'lang:default_adres', 'required');
 
             if ($this->form_validation->run() == true){
-                $query["insert"] = @FC_DB::insert('pages', @FC_Request::post('item'));
+            	$item = @FC_Request::post('item');
+            	$item["a_date"] = date("Y-m-d H:i:s");
+
+                $query["insert"] = @FC_DB::insert('articles', $item);
 
                 if($query["insert"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_add_success'), "icon"=>"button-check.png");
                 else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_add_error'), "icon"=>"stop.png");

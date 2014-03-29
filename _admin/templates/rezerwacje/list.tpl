@@ -35,6 +35,7 @@
                             <th style="min-width:30px;">ID</th>
                             <th>Użytkownik</th>
                             <th>Nazwa pakietu</th>
+                            <th>Przelewy24 ID</th>
                             <th>{lang line="default_adres"}</th>
                             <th>Status realizacji</th>
                             {if $service_multilang == 'TRUE'}<th>{lang line="default_sidebar_access_lang"}</th>{/if}
@@ -48,10 +49,13 @@
                                     <td>{$item.r_id}</td>
                                     <td>{$item.u_name}</td>
                                     <td>{$item.p_name}</td>
+                                    <td>{$item.p_p24}</td>
                                     <td nowrap="nowrap"><a href="#" data-href="{$base_url}../pakiet/{$item.r_pid}.html" class="preview with-tooltip" title="{lang line="default_sidebar_access_preview"}" data-title="{$item.p_name}">pakiet/{$item.r_pid}.html</a></td>
-                                    <td>
+                                    <td id="r_status{$item.r_id}">
 		                            {if $item.r_status == 2}
 		                                <span class="label label-success">Zatwierdzona</span>
+		                            {elseif $item.r_status == 3}
+		                                <span class="label label-danger">Odrzucona</span>
 		                            {elseif $item.r_status == 1}
                             			<span class="label label-info">Oczekuje na akceptacje hotelu.</span>
 		                            {else}
@@ -59,13 +63,8 @@
 		                            {/if}
                                     </td>
                                     <td class="actions">
-                                        <a href="{$base_url}pakiety/edit/{$item.p_id}.html" title="{lang line="default_edit"}" class="felisEdit with-tooltip glyphicon glyphicon-pencil"></a>
-                                    {if $item.p_active == 0}
-                                        <a  id="status_{$item.p_id}" title="{lang line="default_active"}" data-item="{$item.p_id}" href="#" class="felisAccept glyphicon glyphicon-ok with-tooltip"></a>
-                                    {else}
-                                        <a id="status_{$item.p_id}" title="{lang line="default_block"}" data-item="{$item.p_id}" href="#" class="felisBlock glyphicon glyphicon-ban-circle with-tooltip"></a>
-                                    {/if}
-                                        <a href="#" data-item="{$item.p_id}" title="{lang line="default_delete"}" class="felisDel glyphicon glyphicon-trash with-tooltip confirm"></a>
+                                        <a  id="status_{$item.r_id}" title="Akceptacja" data-item="{$item.r_id}" href="#" class="felisAccept glyphicon glyphicon-ok-circle with-tooltip"></a>
+                                        <a  id="status_{$item.r_id}" title="Odrzucenie" data-item="{$item.r_id}" href="#" class="felis glyphicon glyphicon-remove-circle with-tooltip"></a>
                                     </td>
                                 </tr>
                             <!-- koniec wpisu -->
@@ -87,7 +86,7 @@
 
 
     <script>
-    {include file="assets/js/scripts/felis.function.pakiety.js"}
+    {include file="assets/js/scripts/felis.function.reservation.js"}
     </script>
 
 </body>

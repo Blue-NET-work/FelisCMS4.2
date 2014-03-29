@@ -10,10 +10,10 @@ class Dashboard extends FC_Controller {
 
 	public function index(){
 		$query["miasta"] = $this->db->get("city")->result_array();
-		$query["pakiety"] = $this->db->limit(4)->get("pakiet")->result_array();
-		$query["nagrody"] = $this->db->get("nagrody")->result_array();
+		$query["pakiety"] = $this->db->limit(4)->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->get("pakiet")->result_array();
+		$query["nagrody"] = $this->db->join('nagrody_photo', 'np_parent_id = id', "left")->join('nagrody_price', 'npe_nid = id', "left")->group_by('id')->get_where("nagrody", array("active" => 1))->result_array();
 		$query["aktualnosci"] = $this->db->order_by('a_date', 'DESC')->limit(4)->get("articles")->result_array();
-
+        //printr($query["nagrody"]);
 		$obiekty = $this->db->get_where("hotels", array('recommended' => 1))->result_array();
 
         $active = true;
@@ -50,13 +50,14 @@ class Dashboard extends FC_Controller {
 	public function oferta_tygodnia(){
 		$query["pakiet"] = $this->db->get_where("pakiet", array("p_week"=>"1"))->row_array();
 		$query["hotel"] = $this->db->get_where("hotels", array("id"=>$query["pakiet"]["p_hotels"]))->row_array();
+		$query["pakiet_photo"] = $this->db->get_where("pakiet_photo", array("pp_parent_id"=>$query["pakiet"]["p_id"]))->result_array();
 
 		$this->smarty->view("tygodnia.tpl", $query);
 	}
 
 // Okolicznościowe
 	public function okolicznosciowe(){
-		$query["pakiety"] = $this->db->get_where("pakiet", array("p_occasional"=>"1"))->result_array();
+		$query["pakiety"] = $this->db->join('pakiet_photo', 'pp_parent_id = p_id', 'right')->group_by('p_id')->get_where("pakiet", array("p_occasional"=>"1"))->result_array();
 
 		$this->smarty->view("okolicznosciowe.tpl", $query);
 	}
@@ -65,6 +66,7 @@ class Dashboard extends FC_Controller {
 	public function pakiet($id){
 		$query["pakiet"] = $this->db->get_where("pakiet", array("p_id"=>$id))->row_array();
 		$query["hotel"] = $this->db->get_where("hotels", array("id"=>$query["pakiet"]["p_hotels"]))->row_array();
+		$query["pakiet_photo"] = $this->db->get_where("pakiet_photo", array("pp_parent_id"=>$id))->result_array();
 
 		$this->smarty->view("pakiet.tpl", $query);
 	}
@@ -78,7 +80,7 @@ class Dashboard extends FC_Controller {
 
 // Obiekty
 	public function oferta($region, $term){
-		$hotele = $this->db->get_where("hotels", array("region" => $region))->result_array();
+		$hotele = $this->db->join('pakiet_photo', 'pp_parent_id = p_id')->get_where("hotels", array("region" => $region))->result_array();
 
 		$pakiety = array();
 		foreach($hotele as $hotel){
@@ -92,6 +94,15 @@ class Dashboard extends FC_Controller {
 		$query["pakiety"] = $pakiety;
 
 		$this->smarty->view("oferta.tpl", $query);
+	}
+
+// Artykuł
+	public function article($alias, $id){
+
+		$where = array("a_alias" => $alias, "a_id"=> $id);
+		$query = $this->db->get_where("articles", $where)->row_array();
+
+		$this->smarty->view("article.tpl", $query);
 	}
 
 

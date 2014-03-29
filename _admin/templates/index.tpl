@@ -70,7 +70,6 @@
                         </a>
                         <div class="button-group absolute-right compact show-on-parent-hover">
                             <a href="{$base_url}users/edit/{$user.id}.html" class="button icon-pencil">{lang line="default_edit"}</a>
-                            <a href="#" class="button icon-gear with-tooltip" title="Other actions"></a>
                             <a href="#" class="button icon-trash with-tooltip confirm" title="{lang line="default_delete"}"></a>
                         </div>
                     </li>

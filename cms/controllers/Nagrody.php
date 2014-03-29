@@ -9,13 +9,19 @@ class Nagrody extends FC_Controller {
     }
 
 	public function index(){
-		$query["nagrody"] = $this->db->get("nagrody")->result_array();
+		$query["nagrody"] = $this->db->join('nagrody_photo', 'np_parent_id = id', "left")->join('nagrody_price', 'npe_nid = id', "left")->group_by('id')->get("nagrody")->result_array();
 		$this->smarty->view("nagrody/index.tpl", $query);
 	}
 
 // Nagroda
 	public function nagroda($id){
 		$query = $this->db->get_where("nagrody", array("id"=>$id))->row_array();
+		$nagroda_photo = $this->db->get_where("nagrody_photo", array("np_parent_id"=>$id))->result_array();
+		$nagroda_price = $this->db->get_where("nagrody_price", array("npe_nid"=>$id))->result_array();
+
+        $this->smarty->assigns("nagroda_price", $nagroda_price);
+        $this->smarty->assigns("nagroda_photo", $nagroda_photo);
+
 		$this->smarty->view("nagrody/nagroda.tpl", $query);
 	}
 
