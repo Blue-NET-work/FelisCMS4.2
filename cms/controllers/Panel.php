@@ -22,12 +22,65 @@ class Panel extends FC_Controller {
 	}
 
 	public function dane(){
-        $messages = array('boxClass' => "alert-danger", "text" => "Test");
+        $messages = false;
 
-		$query = $this->ion_auth->user()->row();
+		$user = $this->ion_auth->user()->row();
+
+		//validate form input
+		$this->form_validation->set_rules('item[first_name]', $this->lang->line('edit_user_validation_fname_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('item[last_name]', $this->lang->line('edit_user_validation_lname_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('item[address]', $this->lang->line('edit_user_validation_address_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('item[post_code]', $this->lang->line('edit_user_validation_post_code_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('item[city]', $this->lang->line('edit_user_validation_city_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('item[country]', $this->lang->line('edit_user_validation_country_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('item[phone]', $this->lang->line('edit_user_validation_phone_label'), 'required|xss_clean');
+
+		if (isset($_POST) && !empty($_POST))
+		{
+
+			$messages = array('boxClass' => "alert-danger");
+
+			$item = $this->input->post("item");
+
+			$data = array(
+				'first_name' => $item['first_name'],
+				'last_name'  => $item['last_name'],
+				'address'  	 => $item['address'],
+				'address_1'  => $item['address_1'],
+				'post_code'  => $item['post_code'],
+				'city'  	 => $item['city'],
+				'country'  	 => $item['country'],
+				'phone'      => $item['phone'],
+			);
+
+
+			//update the password if it was posted
+			if ($this->input->post('item[password]'))
+			{
+				$this->form_validation->set_rules('item[password]', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+				$this->form_validation->set_rules('item[password_confirm]', $this->lang->line('edit_user_validation_password_confirm_label'), 'required');
+
+				$data['password'] = $this->input->post('item[password]');
+			}
+
+			if ($this->form_validation->run() === TRUE)
+			{
+				$this->ion_auth->update($user->id, $data);
+
+				//check to see if we are creating the user
+				//redirect them back to the admin page
+				$this->session->set_flashdata('message', "Dane zapisane");
+				$messages = array('boxClass' => "alert-success");
+
+			}
+		}
+
+
+		//set the flash data error message if there is one
+		$messages["text"] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
         $this->smarty->assigns("messages", $messages);
-		$this->smarty->view("account/you.tpl", $query);
+		$this->smarty->view("account/you.tpl", $user);
 	}
 
 

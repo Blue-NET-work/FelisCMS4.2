@@ -93,9 +93,15 @@
 								  </div>
 	                            	<!-- pole -->
 								  <div class="form-group">
-								    <label for="inputPassword3" class="col-sm-4 control-label">Password</label>
+								    <label for="inputPassword3" class="col-sm-4 control-label">Hasło</label>
 								    <div class="col-sm-8">
-								      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+								      <input type="password" class="form-control" name="item[password]" id="inputPassword3" placeholder="Password">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="inputPassword3" class="col-sm-4 control-label">Powtórz hasło</label>
+								    <div class="col-sm-8">
+								      <input type="password" class="form-control" name="item[password_confirm]" id="inputPassword3" placeholder="Password">
 								    </div>
 								  </div>
 

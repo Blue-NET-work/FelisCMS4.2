@@ -39,19 +39,5 @@
                 	</div>
                 </div>
             </div>
-	            <!-- cookie -->
-	            <div class="row margin-top-20">
-            		<div class="col-md-12 text-right">
-            			<div id="cookie_info" style="color:#000; font-size:12px;">
-				            <p id="cookie_header" class=" no-space"><strong>Ta strona używa cookie</strong></p>
-				            <p class="cookie_body no-space">
-			            		Zapoznaj się ze sposobem i celem ich używania oraz możliwościami zmiany ustawień cookie w Twojej przeglądarce w sekcji polityka prywatności.
-				            </p>
-				            <p class="cookie_body no-space">
-			            		Korzystanie z niniejszej strony oznacza wyrażenie zgody na używanie cookies zgodnie z bierzącymi ustawieniami przeglądarki.
-				            </p>
-				        </div>
-            		</div>
-	            </div>
         </div>
     </footer>
