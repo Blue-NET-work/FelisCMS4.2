@@ -761,8 +761,8 @@ abstract class CI_DB_forge {
 				'auto_increment'	=> '',
 				'_literal'		=> FALSE
 			);
-            
-            isset($attributes['TYPE']) && $this->_attr_unsigned($attributes, $field);
+
+			isset($attributes['TYPE']) && $this->_attr_unsigned($attributes, $field);
 
 			if ($create_table === FALSE)
 			{

@@ -256,7 +256,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 	$LANG =& load_class('Lang', 'core');
 
-
 /*
  * ------------------------------------------------------
  *  Load the felis functions
