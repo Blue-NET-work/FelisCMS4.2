@@ -43,12 +43,11 @@
 				                {foreach from=$obiekty item=item name=obiekty}
 								<!-- item -->
 								<div class="item {if $item.active == true}active{/if}" style="max-height:390px">
-	                                {html_image file="{$uploads}images/hotels/thumb_450/zegarNowySacz.jpg" alt="" width="100%" height="100%"}
+	                                {html_image file="{$uploads}images/hotels/thumb_450/{$item.hp_photo}.{$item.hp_ext}" alt="" width="100%" height="100%"}
 									<div class="carousel-caption">
-										<h3><a href="{$base_url}hotele/hotel/{$item.id}" style="color:#fff;">{$item.name}</a></h3>
-                                        <div class="row">
-                                            <div class="col-md-8">{$item.pakiety} pakietów od {$item.price} zł</div>
-                                            <div class="col-md-4 text-right">
+                                        <div class="obiektyTop row">
+                                        	<div class="col-md-8"><h3><a href="{$base_url}hotele/hotel/{$item.id}" style="color:#fff;">{$item.name}</a></h3></div>
+                                        	<div class="col-md-4 text-right margin-top-20">
                                     		{if $item.stars == 5}
                                     			<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                                     		{elseif $item.stars == 4}
@@ -61,6 +60,9 @@
                                     			<i class="fa fa-star"></i>
                                     		{/if}
                                     		</div>
+                                        </div>
+                                        <div class="row obiektyBottom">
+                                            <div class="col-md-12">{$item.pakiety} pakietów od {$item.price} zł</div>
                                         </div>
 									</div>
 								</div>
@@ -97,7 +99,7 @@
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green">
                       <div class="panel-heading"><i class="fa fa-globe"></i> Mapa</div>
-                      <div class="panel-body">
+                      <div class="panel-body no-top-padding no-bottom-padding">
                         <div class="pakwypmap-map">
                         	<img src="{$TEMPLATES}assets/img/polska-map.png" alt="">
                         	<img id="transparent_map" src="{$TEMPLATES}assets/img/transp.gif" alt="" usemap="#polska">
@@ -158,7 +160,7 @@
                         		<h4><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html">{$item.a_name}</a> <span style="font-size:10px;">(Dodano: {$item.a_date})</span></h4>
                            		{$item.a_description|truncate:330:"...":true}
                         	</td>
-                        	<td><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html" class="btn btn-default"><i class="fa fa-file-text-o"></i> czytaj więcej >></a></td>
+                        	<td><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html" class="btn btn-default btn-sm"><i class="fa fa-file-text-o"></i> czytaj więcej >></a></td>
 	                	</tr>
 	                {/foreach}
 	                </table>

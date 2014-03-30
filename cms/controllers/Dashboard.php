@@ -6,15 +6,17 @@ class Dashboard extends FC_Controller {
     public function __construct(){
         parent::__construct();
         @FC_Request::loadModel(array("Default_model"));
-    }
+        @FC_Request::loadLibrary("Facebook_ion_auth");
+	}
+
 
 	public function index(){
 		$query["miasta"] = $this->db->get("city")->result_array();
 		$query["pakiety"] = $this->db->limit(4)->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->get("pakiet")->result_array();
 		$query["nagrody"] = $this->db->join('nagrody_photo', 'np_parent_id = id', "left")->join('nagrody_price', 'npe_nid = id', "left")->group_by('id')->get_where("nagrody", array("active" => 1))->result_array();
 		$query["aktualnosci"] = $this->db->order_by('a_date', 'DESC')->limit(4)->get("articles")->result_array();
-        //printr($query["nagrody"]);
-		$obiekty = $this->db->get_where("hotels", array('recommended' => 1))->result_array();
+
+		$obiekty = $this->db->join('hotels_photo', 'hp_parent_id = id', "left")->group_by('id')->get_where("hotels", array('recommended' => 1))->result_array();
 
         $active = true;
 		$query["obiekty"] = array();
@@ -29,6 +31,18 @@ class Dashboard extends FC_Controller {
 
         	$query["obiekty"][] = $obiekt;
 		}
+
+		if (isset($_GET['code'])){
+
+	     $this->facebook_ion_auth->login();
+	     if (!$this->ion_auth->logged_in())
+	     {
+	           header('Location:/zaloguj.html?alert=facebooklogin');
+	           exit();
+	     }
+
+	     header('Location:/');
+	 }
 
 		$this->smarty->view("index.tpl", $query);
 	}
@@ -79,16 +93,22 @@ class Dashboard extends FC_Controller {
 	public function szukaj(){
 		$region = $this->input->post("region");
 		$term = $this->input->post("time");
-		redirect(base_url("oferta/{$region}/{$term}"), 'refresh');
+		$p_occasional = $this->input->post("p_occasional");
+		redirect(base_url("oferta/{$region}/{$term}/{$p_occasional}"), 'refresh');
 	}
 
 // Obiekty
-	public function oferta($region, $term){
-		$hotele = $this->db->join('pakiet_photo', 'pp_parent_id = p_id')->get_where("hotels", array("region" => $region))->result_array();
+	public function oferta($region, $term, $p_occasional = 0){
+		$hotele = $this->db->join('hotels_photo', 'hp_parent_id = id')->get_where("hotels", array("region" => $region))->result_array();
 
 		$pakiety = array();
 		foreach($hotele as $hotel){
-        	$pakieciki = $this->db->get_where("pakiet", array("p_hotels" => $hotel["id"], "p_term" => $term))->result_array();
+			$where = array("p_hotels" => $hotel["id"], "p_occasional" => $p_occasional);
+			if(!$term == 0){
+				$where["p_term"] = $term;
+			}
+
+        	$pakieciki = $this->db->get_where("pakiet", $where)->result_array();
             foreach($pakieciki as $pakiet){
             	$pakiety[] = $pakiet;
             }
@@ -96,7 +116,9 @@ class Dashboard extends FC_Controller {
 
 
 		$query["pakiety"] = $pakiety;
-
+        $query["region"] = $region;
+        $query["term"] = $term;
+        $query["p_occasional"] = $p_occasional;
 		$this->smarty->view("oferta.tpl", $query);
 	}
 
@@ -162,12 +184,45 @@ class Dashboard extends FC_Controller {
         $this->smarty->view("account/sign_in.tpl", $query);
     }
 
+
 // Wylogowanie
     public function logout(){
         $logout = $this->ion_auth->logout();
         $this->session->set_flashdata('message', $this->ion_auth->messages());
         redirect(base_url(), 'refresh');
     }
+
+//Facebook login
+    function loginfacebook(){
+      $this->facebook_ion_auth->login();
+	}
+
+
+	//activate the user
+	function activate($id, $code=false)
+	{
+		if ($code !== false)
+		{
+			$activation = $this->ion_auth->activate($id, $code);
+		}
+		else if ($this->ion_auth->is_admin())
+		{
+			$activation = $this->ion_auth->activate($id);
+		}
+
+		if ($activation)
+		{
+			//redirect them to the auth page
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			redirect("/", 'refresh');
+		}
+		else
+		{
+			//redirect them to the forgot password page
+			$this->session->set_flashdata('message', $this->ion_auth->errors());
+			redirect("auth/forgot_password", 'refresh');
+		}
+	}
 
 // Rejestracja
 	public function register(){

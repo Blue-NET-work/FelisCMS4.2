@@ -1,6 +1,6 @@
 <html>
 <body>
-	<h1>Activate account for <?php echo $identity;?></h1>
-	<p>Please click this link to <?php echo anchor('auth/activate/'. $id .'/'. $activation, 'Activate Your Account');?>.</p>
+	<h1>Aktywacja konta <?php echo $identity;?></h1>
+	<p>Aby aktywować konto <?php echo anchor('activate/'. $id .'/'. $activation, 'kliknij tutaj');?>.</p>
 </body>
 </html>

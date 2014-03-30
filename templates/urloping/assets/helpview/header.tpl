@@ -69,6 +69,9 @@
                           <button type="submit" class="btn btn-default">Zaloguj się</button>
                         </div>
                       </div>
+	                    <div class="margin-top-10">
+                    		<a href="{$base_url}login_fb.html" class="btn btn-info">Logowanie za pomocą <i class="fa fa-facebook"></i></a>
+	                    </div>
                     </form>
                 {/if}
                 </div>

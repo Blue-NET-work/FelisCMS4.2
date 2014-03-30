@@ -40,7 +40,7 @@
 		                            {$item.description|truncate:55:"...":true}
 
 		                            <div class="margin-top-10 margin-bottom-10 text-right">
-                                    	<a href="{$base_url}hotele/hotel/{$item.id}" class="btn btn-success">więcej...</a>
+                                    	<a href="{$base_url}hotele/hotel/{$item.id}" class="btn btn-success btn-sm">więcej...</a>
 		                            </div>
                               	</div>
 				              </div>

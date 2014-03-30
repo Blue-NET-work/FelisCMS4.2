@@ -44,7 +44,7 @@
                     	{$pakiet.p_description}
 
                         <div class="margin-top-20 text-center">
-                    		<a href="{$base_url}panel/rezerwuj/{$pakiet.p_id}" class="btn btn-success">zamów</a>
+                    		<a href="{$base_url}panel/rezerwuj/{$pakiet.p_id}" class="btn btn-success btn-sm">zamów</a>
                         </div>
                     </div>
 		        </div>

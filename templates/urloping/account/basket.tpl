@@ -66,8 +66,8 @@
 
 					            {if $basket_item}
 					            <div class="form-actions">
-					                <a href="{$base_url}koszyk/wyczysc.html" class="btn btn-danger pull-left">Wyczyść koszyk</a>
-					                <button type="submit" class="btn btn-primary pull-right">Dalej >></button>
+					                <a href="{$base_url}panel/wyczysc.html" class="btn btn-danger pull-left">Wyczyść koszyk</a>
+					                <a href="{$base_url}panel/krok1.html" class="btn btn-primary pull-right">Dalej >></a>
 					            </div>
 					            {/if}
 

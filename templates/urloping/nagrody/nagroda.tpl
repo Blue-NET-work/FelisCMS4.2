@@ -47,13 +47,13 @@
 	                    <form class="margin-top-20" action="{$base_url}panel/dodaj.html" method="post">
 					        <input type="hidden" name="date[id]" value="nagroda_{$id}">
 					        <input type="hidden" name="date[name]" value="{$name}">
-					        <select class="form-control" name="date[price]">
+					        <select class="form-control input-sm" name="date[price]">
 							{foreach from=$nagroda_price item=item name=nagroda_price}
-								<option value="{$item.price}">{$item.npe_point} pkt / {$item.npe_price} zł</option>
+								<option value="{$item.npe_price}">{$item.npe_point} pkt / {$item.npe_price} zł</option>
 							{/foreach}
 							</select>
 					        <input type="hidden" name="date[qty]" value="1">
-					        <button type="submit" id="loading-example-btn" class="btn btn-default margin-top-10" data-loading-text="Loading...">wybierz</button>
+					        <button type="submit" id="loading-example-btn" class="btn btn-default btn-sm margin-top-10" data-loading-text="Loading...">wybierz</button>
 					    </form>
                     </div>
 		        </div>

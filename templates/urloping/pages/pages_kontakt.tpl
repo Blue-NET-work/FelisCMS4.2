@@ -19,37 +19,37 @@
 
 						  <div class="form-group">
 						    <label for="name">Imię i nazwisko:</label>
-						    <input type="text" name="name" class="form-control">
+						    <input type="text" name="name" class="form-control input-sm">
 						  </div>
 						  <div class="form-group">
 						    <label for="company">Nazwa firmy:</label>
-						    <input type="text" name="company" class="form-control">
+						    <input type="text" name="company" class="form-control input-sm">
 						  </div>
 						  <div class="form-group">
 						    <label for="from">Adres e-mail:</label>
-						    <input type="text" name="from" class="form-control">
+						    <input type="text" name="from" class="form-control input-sm">
 						  </div>
 						  <div class="form-group">
 						    <label for="tel">Telefon:</label>
-						    <input type="text" name="tel" class="form-control">
+						    <input type="text" name="tel" class="form-control input-sm">
 						  </div>
 						  <div class="form-group">
 						    <label for="subject">Temat wiadomości:</label>
-						    <input type="text" name="subject" class="form-control">
+						    <input type="text" name="subject" class="form-control input-sm">
 						  </div>
 						  <div class="form-group">
 						    <label for="text">Treśc wiadomości:</label>
-						    <textarea name="text" class="form-control"></textarea>
+						    <textarea name="text" class="form-control input-sm"></textarea>
 						  </div>
 						  <div class="form-group">
 						    <label for="contact">Preferowana forma kontaktu:</label>
-							<select name="contact" class="form-control">
+							<select name="contact" class="form-control input-sm">
 								<option value="0" selected="selected">wybierz</option>
 								<option value="1">kontakt przez e-mail</option>
 								<option value="2">kontakt telefoniczny</option>
 							</select>
 						  </div>
-                          <input type="submit" name="contact_send" class="btn btn-default" value="wyślij...">
+                          <input type="submit" name="contact_send" class="btn btn-default btn-sm" value="wyślij...">
 
 						</form>
                   	</div>

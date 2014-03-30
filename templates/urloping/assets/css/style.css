@@ -86,6 +86,7 @@ body{
   text-shadow:1px 1px rgba(0,0,0,.4);
   font-size:15px;
   color:#fff;
+  padding: 5px 10px;
 }
 
 /********************************************************/
@@ -175,6 +176,12 @@ footer .container .footer{
 	padding:0px;
 }
 
+#polecaneObiekty .panel-body .carousel-caption{
+	padding:0px;
+	color:#fff;
+	font-weight: bold;
+}
+
 #polecaneObiekty .panel-footer{
   background-image: -webkit-linear-gradient(top, #4db690 0%, #76decc 100%);
   background-image:      -o-linear-gradient(top, #4db690 0%, #76decc 100%);
@@ -188,10 +195,20 @@ footer .container .footer{
 #polecaneObiekty .carousel-caption{
 	left:5%;
 	right:5%;
+	height:100%;
+	text-align:left;
 }
 
 #polecaneObiekty .carousel-indicators{
 	bottom:-32px;
+	left: auto;
+	right: -70px;
+}
+
+#polecaneObiekty .fa-star{color:orange;}
+
+#polecaneObiekty h3{
+	text-shadow: 1px 1px rgba(0,0,0,.5);
 }
 
 #cityList a{
@@ -352,4 +369,14 @@ h3{
 }
 #slider1 .disable { visibility: hidden; }
 #slider1 .overview { list-style: none; position: absolute; padding: 0; margin: 0; width: 240px; left: 0 top: 0; }
-#slider1 .overview li{ float: left; margin: 0 20px 0 0; padding: 1px; height: 121px; width: 236px;}
+#slider1 .overview li{ float: left; margin: 0 20px 0 0; padding: 1px; height: 390px; width: 236px;}
+#slider1 .overview li .panel-body{height:361px;}
+
+
+.obiektyTop{
+	top:10px;
+
+}
+.obiektyBottom{
+	margin-top:215px;
+}

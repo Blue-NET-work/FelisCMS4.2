@@ -7,5 +7,5 @@
                     		</td>
                     		<td class="col-md-1 text-center"><div class="margin-top-30">{$item.p_term} dni</div></td>
                     		<td class="col-md-1 text-center"><div class="margin-top-20"><p><strong>{$item.p_price} zł</strong></p>+ {$item.p_points} pkt</div></td>
-                    		<td class="col-md-1 text-right"><div class="margin-top-30"><a href="{$base_url}pakiet/{$item.p_id}.html" class="btn btn-default">Rezerwuj</a></div></td>
+                    		<td class="col-md-1 text-right"><div class="margin-top-30"><a href="{$base_url}pakiet/{$item.p_id}.html" class="btn btn-default btn-sm">Rezerwuj</a></div></td>
                 		</tr>

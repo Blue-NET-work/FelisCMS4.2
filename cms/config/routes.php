@@ -37,14 +37,19 @@ $route['panel/(.*)']    		= 'panel/$1';
 $route['panel']    				= 'panel';
 
 //Dashboard
+$route['auth/(.*)']    			= 'auth/$1';
+$route['auth']    				= 'auth';
+
 $route['okolicznosciowe']    	= 'dashboard/okolicznosciowe';
 $route['oferta_tygodnia']    	= 'dashboard/oferta_tygodnia';
 $route['rejestracja']    		= 'dashboard/register';
 $route['zaloguj']    			= 'dashboard/sign_in';
 $route['wyloguj']    			= 'dashboard/logout';
 $route['szukaj']    			= 'dashboard/szukaj';
+$route['login_fb']    			= 'dashboard/loginfacebook';
 $route['test_maila']    		= 'dashboard/testEmail';
 $route['oferta/(.*)']     		= 'dashboard/oferta/$1';
 $route['pakiet/(.*)']    		= 'dashboard/pakiet/$1';
-$route['artykul/(.*)_(.*)']    = 'dashboard/article/$1/$2';
+$route['activate/(.*)/(.*)']    = 'dashboard/activate/$1/$2';
+$route['artykul/(.*)_(.*)']     = 'dashboard/article/$1/$2';
 $route['(.*)']                 	= 'dashboard/pages/$1';
