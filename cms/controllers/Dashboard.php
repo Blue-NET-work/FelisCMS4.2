@@ -280,16 +280,4 @@ class Dashboard extends FC_Controller {
 		show_404();
     }
 
-    public function testEmail(){
-			$data = array(
-			        'id'      => 'sku_123ABC',
-			        'qty'     => 1,
-			        'price'   => 39.95,
-			        'name'    => 'T-Shirt',
-			        'options' => array('Size' => 'L', 'Color' => 'Red')
-			);
-           $shop = $this->cart->insert($data);
-		   print_r($shop);
-    }
-
 }

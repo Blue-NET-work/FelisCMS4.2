@@ -39,10 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | If this is not set then CodeIgniter will guess the protocol, domain and
 | path to your installation.
 |
-*/                                                             
-$config['base_url']     = '';   
+*/
+$config['base_url']     = '';
 
-$config['admin_url']    = '';   
+$config['admin_url']    = '';
 
 $config["admin_folder"] = '_admin';
 
@@ -307,7 +307,7 @@ $config['sess_driver']			= 'cookie';
 $config['sess_valid_drivers']	= array('cookie');
 $config['sess_cookie_name']		= 'felis_sessions';
 $config['sess_expiration']		= 7200;
-$config['sess_expire_on_close']	= FALSE;
+$config['sess_expire_on_close']	= true;
 $config['sess_encrypt_cookie']	= FALSE;
 $config['sess_use_database']	= TRUE;
 $config['sess_table_name']		= 'felis_sessions';

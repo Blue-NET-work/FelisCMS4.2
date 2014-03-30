@@ -29,16 +29,18 @@
 					                </tr>
 					              </thead>
 					              <tbody>
+
+
 					              {if $basket_item}
 					              {foreach from=$basket_item item=item name=items}
 					                <tr>
-					                  <td>{$item.name}</td>
+					                  <td>{$item["name"]}</td>
 					                  <td>
 					                    <a href="#basketBN" data-item="{$item.rowid}" data-qty="{$item.qty}" class="qtyAdd"><i class="fa fa-plus-circle"></i></a>
 					                    {$item.qty}
 					                    <a href="#basketBN" data-item="{$item.rowid}" data-qty="{$item.qty}" class="qtyRemove"><i class="fa fa-minus-circle"></i></a>
 					                  </td>
-					                  <td>{$item.subtotal}</td>
+					                  <td>{$item[subtotal]}</td>
 					                  <td><a href="#basketBN" data-item="{$item.rowid}" class="coquette16-delete"><i class="fa fa-trash-o"></i></a></td>
 					                </tr>
 					              {/foreach}

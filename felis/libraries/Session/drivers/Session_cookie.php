@@ -725,7 +725,7 @@ class CI_Session_cookie extends CI_Session_driver {
 		{
 			foreach (array_keys($this->userdata) as $key)
 			{
-				$this->userdata[$key] = preg_replace('/(?:\r\n|[\r\n])/', PHP_EOL, $this->userdata[$key]);
+				$this->userdata[$key];
 			}
 		}
 

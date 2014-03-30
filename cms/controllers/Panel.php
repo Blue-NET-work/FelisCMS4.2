@@ -243,96 +243,41 @@ class Panel extends FC_Controller {
 
 // Koszyk
     public function koszyk(){
-        $basket_items = @FC_BASKET::total_items();
+
+			$data = array(
+			        array(
+			                'id'      => 'sku_123ABC',
+			                'qty'     => 1,
+			                'price'   => 39.95,
+			                'name'    => 'T-Shirt',
+			                'options' => array('Size' => 'L', 'Color' => 'Red')
+			        ),
+			        array(
+			                'id'      => 'sku_567ZYX',
+			                'qty'     => 1,
+			                'price'   => 9.95,
+			                'name'    => 'Coffee Mug'
+			        ),
+			        array(
+			                'id'      => 'sku_965QRS',
+			                'qty'     => 1,
+			                'price'   => 29.95,
+			                'name'    => 'Shot Glass'
+			        )
+			);
+
+			$shop = $this->cart->insert($data);
+
+        $basket_items = $this->cart->format_number($this->cart->total_items());
 
         if(!empty($basket_items)){
-            $basket_total = @FC_BASKET::total();
-            $basket_item = @FC_BASKET::contents();
-            $this->smarty->assign("basket_total", $basket_total);
-            $this->smarty->assign("basket_item", $basket_item);
+            $this->smarty->assign("basket_total", $this->cart->format_number($this->cart->total()));
+            $this->smarty->assign("basket_item", $this->cart->contents());
         }
 
-        print_r($this->cart->contents());
         $this->smarty->assign("basket_items", $basket_items);
         $this->smarty->view('account/basket.tpl');
     }
-
-// Koszyk dodawanie
-    public function dodaj(){
-        $response = array('status' => 'ok','message' => array());
-        $date = @FC_Request::post("date");
-        if($date){}else $response['status']="error";
-        $content = @FC_BASKET::contents();
-        $basket = $this->isInCart($content, "id", $date["id"]);
-        if($basket == 1){
-            $rowid = $this->isInCartDate($content, "id", $date["id"], "rowid");
-            $qty = $this->isInCartDate($content, "id", $date["id"], "qty");
-            $data = array('rowid' => $rowid,'qty' => ++$qty);
-            $action = @FC_BASKET::update($data);
-        }
-        else{
-            $action = @FC_BASKET::insert($date);
-        }
-        $response["message"]['id'] = $action;
-        $response["message"]['post'] = $date;
-        $referer = @FC_Request::server("HTTP_REFERER");
-        header('Location: '.$referer);
-    }
-
-// Koszyk usuwanie wpisu
-    public function remove() {
-        $response = array('status' => 'ok', 'message' => array());
-        $date = @FC_Request::post("date");
-        if($date){}else $response['status']="error";
-        $data = array('rowid' => $date["id"],'qty' => 0);
-        $action = @FC_BASKET::update($data);
-        $response["message"]['id'] = $action;
-        $response["message"]['post'] = $date;
-        $referer = @FC_Request::server("HTTP_REFERER");
-        header('Location: '.$referer);
-    }
-
-// Koszyk zwiększenie sztuk
-    public function qty_add() {
-        $response = array('status' => 'ok', 'message' => array());
-        $date = @FC_Request::post("date");
-        if($date){}else $response['status']="error";
-        $data = array('rowid' => $date["id"], 'qty' => ++$date["qty"]);
-        $action = @FC_BASKET::update($data);
-        $response["message"]['id'] = $action;
-        $response["message"]['post'] = $date;
-        $referer = @FC_Request::server("HTTP_REFERER");
-        header('Location: '.$referer);
-    }
-
-// Koszyk zmniejszenie sztuk
-    public function qty_remove() {
-        $response = array('status' => 'ok', 'message' => array());
-        $date = @FC_Request::post("date");
-        if($date){}else $response['status']="error";
-        $data = array('rowid' => $date["id"], 'qty' => --$date["qty"]);
-        $action = @FC_BASKET::update($data);
-        $response["message"]['id'] = $action;
-        $response["message"]['post'] = $date;
-        $referer = @FC_Request::server("HTTP_REFERER");
-        header('Location: '.$referer);
-    }
-
-// Koszyk czyszczenie
-    public function wyczysc(){
-        $referer = @FC_Request::server("HTTP_REFERER");
-        $action = @FC_BASKET::destroy();
-        print $action;
-        $referer = @FC_Request::server("HTTP_REFERER");
-        header('Location: '.$referer);
-    }
-
-// Sprawdzanie czy produkt jest w koszyku
-    function isInCart($array, $key, $value){foreach($array as $k => $v){if($v[$key] == $value){return TRUE;}}}
-
-// Pobieranie rowid produktu z koszyka
-    function isInCartDate($array, $key, $value, $re){foreach($array as $k => $v){if($v[$key] == $value){return $v[$re];}}}
-
 
 
 }
