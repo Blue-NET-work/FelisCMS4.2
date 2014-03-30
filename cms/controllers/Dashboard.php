@@ -41,8 +41,12 @@ class Dashboard extends FC_Controller {
 
         if(!$query)
             $this->error_404();
-        else
-        	$this->smarty->view("pages/pages.tpl", $query);
+        else{
+			if($alias == "kontakt"){
+				$this->smarty->view("pages/pages_kontakt.tpl", $query);
+			}else $this->smarty->view("pages/pages.tpl", $query);
+        }
+
 
 	}
 

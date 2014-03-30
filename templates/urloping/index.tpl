@@ -185,42 +185,33 @@
 
         	<div class="panel panel-default panel-green margin-top-20">
               <div class="panel-heading"><i class="fa fa-globe"></i> Przykładowe nagrody</div>
-              <div class="panel-body text-center carousel slide" id="carousel-example-generic" data-ride="carousel">
+              <div class="panel-body text-center no-top-padding no-bottom-padding">
                 <!-- items -->
-				  <!-- Indicators -->
-				  <ol class="carousel-indicators">
-				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-				  </ol>
-
-				  <!-- Wrapper for slides -->
-				  <div class="carousel-inner">
-				  <!-- item -->
-				  		{$i = 0}
-					    <div class="item active">
-			                <div class="row">
-		                {foreach from=$nagrody item=item name=nagrody}
-	                		{include file="assets/helpview/_NagrodyLista.tpl" item=$item}
-		                {/foreach}
-			                </div>
-					    </div>
-					    <div class="item">
-			                <div class="row">
-		                {foreach from=$nagrody item=item name=nagrody}
-	                		{include file="assets/helpview/_NagrodyLista.tpl" item=$item}
-		                {/foreach}
-			                </div>
-					    </div>
-				  <!-- item -->
-				  </div>
-
-				  <!-- Controls -->
-				  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left"></span>
-				  </a>
-				  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right"></span>
-				  </a>
+				<div id="slider1">
+					<a class="buttons prev" href="#">&#60;</a>
+					<div class="viewport">
+						<ul class="overview list-unstyled list-inline">
+				        {foreach from=$nagrody item=item name=nagrody}
+				        	<!-- item -->
+		                    <li class="col-md-3">
+					            <div class="panel panel-default panel-green">
+					              <div class="panel-heading"></div>
+					              <div class="panel-body padding-10">
+			                        <p>
+                    		        {html_image file="{$uploads}images/nagrody/thumb_120/{$item.np_photo}.{$item.np_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.np_alt}" title="{$item.np_title}"}
+			                        </p>
+			                        <h3><a href="{$base_url}nagrody/nagroda/{$item.id}">{$item.name}</a></h3>
+		                            {$item.description|truncate:55:"...":true}
+		                            <p><a href="{$base_url}nagrody/nagroda/{$item.id}" title="Zobacz szczegoly nagrody"><span class="price">{$item.npe_point} pkt / {$item.npe_price} zł</span></a></p>
+					              </div>
+					            </div>
+		                    </li>
+		                    <!-- item -->
+				        {/foreach}
+						</ul>
+					</div>
+					<a class="buttons next" href="#">&#62;</a>
+				</div>
                 <!-- items -->
               </div>
             </div>
@@ -230,6 +221,7 @@
     <script src="{$TEMPLATES}assets/js/plugins.js"></script>
     <!-- Add mousewheel plugin (this is optional) -->
 	<script type="text/javascript" src="{$TEMPLATES}assets/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+	<script type="text/javascript" src="{$TEMPLATES}assets/tinycarousel/lib/jquery.tinycarousel.js"></script>
 
 	<!-- Add fancyBox -->
 	<script type="text/javascript" src="{$TEMPLATES}assets/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
@@ -255,6 +247,8 @@
 			$('.pakwypmap-map area').fancybox({ 'autoDimensions' : true });
 			$('.pakwypmap-map ul.regionslist>li>a').fancybox({ 'autoDimensions' : true });
 		};
+
+			$('#slider1').tinycarousel();
 	});
 	</script>
 {/block}

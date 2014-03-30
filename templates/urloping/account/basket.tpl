@@ -17,15 +17,16 @@
 {include file="assets/helpview/messages.tpl" messages=$messages}
 
                       	<div class="row margin-top-20">
-                        	<div class="col-md-2"></div>
-                        	<div class="col-md-8">
+                        	<div class="col-md-1"></div>
+                        	<div class="col-md-10">
 					              <table id="basketBN" class="table table-striped">
 					              <thead>
 					                <tr>
-					                  <th>NAZWA</th>
-					                  <th>SZTUK</th>
-					                  <th>CENA</th>
-					                  <th></th>
+					                  <th style="width:30%">NAZWA</th>
+					                  <th class="text-center" style="width:13%;">SZTUK</th>
+					                  <th class="text-center" style="width:13%;">CENA J.</th>
+					                  <th class="text-center" style="width:11%;">CENA</th>
+					                  <th style="width:5%;"></th>
 					                </tr>
 					              </thead>
 					              <tbody>
@@ -35,18 +36,19 @@
 					              {foreach from=$basket_item item=item name=items}
 					                <tr>
 					                  <td>{$item["name"]}</td>
-					                  <td>
-					                    <a href="#basketBN" data-item="{$item.rowid}" data-qty="{$item.qty}" class="qtyAdd"><i class="fa fa-plus-circle"></i></a>
+					                  <td class="text-center">
+					                    <a href="{$base_url}panel/qty_add/{$item.rowid}/{$item.qty}.html" class="qtyAdd"><i class="fa fa-plus-circle"></i></a>
 					                    {$item.qty}
-					                    <a href="#basketBN" data-item="{$item.rowid}" data-qty="{$item.qty}" class="qtyRemove"><i class="fa fa-minus-circle"></i></a>
+					                    <a href="{$base_url}panel/qty_remove/{$item.rowid}/{$item.qty}.html" class="qtyRemove"><i class="fa fa-minus-circle"></i></a>
 					                  </td>
-					                  <td>{$item[subtotal]}</td>
-					                  <td><a href="#basketBN" data-item="{$item.rowid}" class="coquette16-delete"><i class="fa fa-trash-o"></i></a></td>
+					                  <td class="text-center">{$item["price"]} zł</td>
+					                  <td class="text-right">{$item["subtotal"]} zł</td>
+					                  <td class="text-center"><a href="{$base_url}panel/remove/{$item.rowid}.html" class="coquette16-delete"><i class="fa fa-trash-o"></i></a></td>
 					                </tr>
 					              {/foreach}
 					              {else}
 					                <tr>
-					                  <td colspan="4" style="text-align:center;">Koszyk jest pusty</td>
+					                  <td colspan="5" style="text-align:center;">Koszyk jest pusty</td>
 					                </tr>
 					              {/if}
 					              </tbody>
@@ -60,8 +62,17 @@
 					                </div>
 					            </div>
 					            {/if}
+
+
+					            {if $basket_item}
+					            <div class="form-actions">
+					                <a href="{$base_url}koszyk/wyczysc.html" class="btn btn-danger pull-left">Wyczyść koszyk</a>
+					                <button type="submit" class="btn btn-primary pull-right">Dalej >></button>
+					            </div>
+					            {/if}
+
                         	</div>
-                        	<div class="col-md-2"></div>
+                        	<div class="col-md-1"></div>
                       	</div>
 
                       </div>

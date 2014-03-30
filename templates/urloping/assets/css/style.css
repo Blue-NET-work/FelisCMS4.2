@@ -36,6 +36,7 @@ body{
 .no-left-margin{margin-left: 0 !important;}
 .no-right-margin{margin-right: 0 !important;}
 .no-bottom-margin{margin-bottom: 0 !important;}
+.no-top-padding{padding-top: 0 !important;}
 .no-left-padding{padding-left: 0 !important;}
 .no-right-padding{padding-right: 0 !important;}
 .no-bottom-padding{padding-bottom: 0 !important;}
@@ -99,6 +100,30 @@ header{
 header #logowanie label{
 	font-size: 12px;
 	color:#4db690;
+}
+
+header #logowanie input.form-control{
+	height: 25px;
+	font-size:12px;
+}
+
+#logowanie .btn-default,
+#logowanie .btn-default:active{
+  background: #71d4c3;
+  background-image: -webkit-linear-gradient(top, #50b894 0%, #71d4c3 100%);
+  background-image:      -o-linear-gradient(top, #50b894 0%, #71d4c3 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#50b894), to(#71d4c3));
+  background-image:         linear-gradient(to bottom, #50b894 0%, #71d4c3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#50b894', endColorstr='#71d4c3', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  padding: 2px 6px;
+  color:#fff;
+  text-shadow: 1px 1px rgba(0,0,0,.4);
+}
+
+#logowanie .form-group{
+	margin-bottom:8px;
 }
 
 header nav{
@@ -236,24 +261,6 @@ h3{
 	font-size: 10px;
 }
 
-#logowanie{
-
-}
-
-#logowanie .btn-default,
-#logowanie .btn-default:active{
-  background: #71d4c3;
-  background-image: -webkit-linear-gradient(top, #50b894 0%, #71d4c3 100%);
-  background-image:      -o-linear-gradient(top, #50b894 0%, #71d4c3 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#50b894), to(#71d4c3));
-  background-image:         linear-gradient(to bottom, #50b894 0%, #71d4c3 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#50b894', endColorstr='#71d4c3', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  background-repeat: repeat-x;
-  padding: 5px 6px;
-  color:#fff;
-  text-shadow: 1px 1px rgba(0,0,0,.4);
-}
 .czasUrlop{
 	background: url("../img/wyszukiwarka.png") no-repeat;
 	border-radius: 5px;
@@ -316,3 +323,33 @@ h3{
 .article-slide .carousel-indicators .active{background: none;}
 
 #carousel-example-generic .carousel-control{width:3%;}
+
+
+/* Tiny Carousel */
+#slider1 { height: 1%; margin: 5px 0 0; overflow:hidden; position: relative; padding: 0 50px 0px;   }
+#slider1 .viewport { height: 400px; overflow: hidden; position: relative; }
+#slider1 .buttons {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 35px;
+    height: 35px;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    line-height: 35px;
+    text-decoration: none;
+    font-size: 22px;
+}
+#slider1 .next {
+    right: 0;
+    left: auto;
+    top: 50%;
+}
+#slider1 .buttons:hover{
+    color: #C01313;
+}
+#slider1 .disable { visibility: hidden; }
+#slider1 .overview { list-style: none; position: absolute; padding: 0; margin: 0; width: 240px; left: 0 top: 0; }
+#slider1 .overview li{ float: left; margin: 0 20px 0 0; padding: 1px; height: 121px; width: 236px;}
