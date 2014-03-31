@@ -17,8 +17,9 @@ class Hotels extends FC_Controller {
 // Dodawanie podstrony
     public function add(){
         $query["message"] = false;
-            $query["page"]["active"] = 1;
-            $query["page"]["recommended"] = 1;
+        $query["page"]["active"] = 1;
+        $query["page"]["recommended"] = 1;
+        $query["city"] = $this->db->get("city")->result_array();
 
         if(@FC_Request::post('item')){
             $item = @FC_Request::post("item");
@@ -27,7 +28,13 @@ class Hotels extends FC_Controller {
             $this->form_validation->set_rules('item[alias]', 'lang:default_adres', 'required');
 
             if ($this->form_validation->run() == true){
-                $query["insert"] = @FC_DB::insert('hotels', @FC_Request::post('item'));
+                if($item["city"] == 0){
+            		$city_new = $this->input->post("city_new");
+            		@FC_DB::insert('city', array("name"=>$city_new, "alias"=>url_title(convert_accented_characters($city_new), '-', TRUE)));
+            		$item["city"] = $this->db->insert_id();
+				}
+
+                $query["insert"] = @FC_DB::insert('hotels', $item);
 
                 if($query["insert"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_add_success'), "icon"=>"button-check.png");
                 else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_add_error'), "icon"=>"stop.png");
@@ -48,6 +55,12 @@ class Hotels extends FC_Controller {
                     if(!isset($item["active"])){$item["active"] = "0";}
                     if(!isset($item["recommended"])){$item["recommended"] = "0";}
 
+	                if($item["city"] == 0){
+            			$city_new = $this->input->post("city_new");
+            			@FC_DB::insert('city', array("name"=>$city_new, "alias"=>url_title(convert_accented_characters($city_new), '-', TRUE)));
+            			$item["city"] = $this->db->insert_id();
+					}
+
                     $item["alias"]= url_title(convert_accented_characters(element('alias', $item)), '-', TRUE);
 
                     $this->form_validation->set_rules('item[name]', 'lang:default_name', 'required');
@@ -62,6 +75,7 @@ class Hotels extends FC_Controller {
                 }
 
                 $query["page"] = @FC_DB::getData('hotels', array("id"=>$id));
+                $query["city"] = $this->db->get("city")->result_array();
                 $query["photos"] = $this->db->order_by("hp_sort", "asc")->get_where('hotels_photo', array("hp_parent_id"=>$id))->result_array();
             }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_failure'), "icon"=>"stop.png");
         }else $query["messages"] = array('head' => lang('default_error'), "info"=>lang("pages_failure_id"), "icon"=>"stop.png");

@@ -19,7 +19,7 @@
                         <select class="form-control" name="region" id="region">
                             <option value="0" {if $region == 0}selected="selected"{/if}>region</option>
                             <option value="2" {if $region == 2}selected="selected"{/if}>Północ</option>
-                            <option value="3" {if $region == 3}selected="selected"{/if}>Góry</option>
+                            <option value="3" {if $region == 3}selected="selected"{/if}>Południe</option>
                             <option value="4" {if $region == 4}selected="selected"{/if}>Wschód</option>
                             <option value="5" {if $region == 5}selected="selected"{/if}>Zachód</option>
                             <option value="6" {if $region == 6}selected="selected"{/if}>Centrum</option>
@@ -51,7 +51,7 @@
               </div>
 
             {if $pakiety}
-                <table class="table">
+                <table class="table boxAction">
                 {foreach from=$pakiety item=item name=pakiety}
 	            	{include file="assets/helpview/_PakietyLista.tpl" item=$item}
                 {/foreach}

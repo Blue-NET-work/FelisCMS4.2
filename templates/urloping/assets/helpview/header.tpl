@@ -16,7 +16,7 @@
                             <select class="form-control" name="region" id="region">
                                 <option value="0" selected="selected">region</option>
                                 <option value="2">Północ</option>
-                                <option value="3">Góry</option>
+                                <option value="3">Południe</option>
                                 <option value="4">Wschód</option>
                                 <option value="5">Zachód</option>
                                 <option value="6">Centrum</option>
@@ -86,17 +86,17 @@
                     <li class="dropdown {if $uri[0] == "nagrody"}active{/if}">
                     	<a href="{$base_url}nagrody.html" class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown">Nagrody</a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}nagrody.html" title="koszyk">nagrody</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}panel/koszyk.html" title="koszyk">koszyk</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}panel.html" title="moje konto">moje konto</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}nagrody.html">Wszystkie nagrody</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}panel/koszyk.html">Koszyk</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}panel.html">Moje konto</a></li>
 						</ul>
                     </li>
                     <li {if $uri[0] == "pogoda"}class="active"{/if}><a href="{$base_url}pogoda.html">Pogoda</a></li>
                     <li class="dropdown {if $uri[0] == "jak-to-dziala"}active{/if}">
                     	<a href="{$base_url}jak-to-dziala.html" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">Jak to działa</a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}znajdz-i-zarezerwuj.html" title="Znajdź i zarezerwuj">znajdź i zarezerwuj</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}" title="co z tymi nagrodami?">co z tymi nagrodami?</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}znajdz-i-zarezerwuj.html" title="Znajdź i zarezerwuj">Znajdź i zarezerwuj</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="{$base_url}co-z-tymi-nagrodami.html" title="co z tymi nagrodami?">Co z tymi nagrodami?</a></li>
 						</ul>
                     </li>
                     <li {if $uri[0] == "o-nas"}class="active"{/if}><a href="{$base_url}o-nas.html">O Nas</a></li>

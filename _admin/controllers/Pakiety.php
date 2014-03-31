@@ -18,6 +18,7 @@ class Pakiety extends FC_Controller {
     public function add(){
         $query["message"] = false;
         $query["page"]["p_active"] = 1;
+        $query["hotels"] = $this->db->get("hotels")->result_array();
 
         if(@FC_Request::post('item')){
             $item = @FC_Request::post("item");
@@ -62,7 +63,7 @@ class Pakiety extends FC_Controller {
 
                     }else $query["messages"] = array('head' => lang('default_error'), "info"=> validation_errors(), "icon"=>"stop.png");
                 }
-
+                $query["hotels"] = $this->db->get("hotels")->result_array();
                 $query["page"] = @FC_DB::getData('pakiet', array("p_id"=>$id));
                 $query["photos"] = $this->db->order_by("pp_sort", "asc")->get_where('pakiet_photo', array("pp_parent_id"=>$id))->result_array();
 

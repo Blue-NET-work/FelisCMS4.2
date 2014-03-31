@@ -36,7 +36,7 @@
 </div>
                     </div>
                     <div class="col-md-6">
-                    	<div class="row margin-top-10 margin-bottom-20">
+                    	<div class="row margin-top-10 margin-bottom-20" style="font-size:15px;">
                             <div class="col-md-6">Pobyt {$pakiet.p_term} dni</div>
                             <div class="col-md-6 text-center"><strong>{$pakiet.p_price} zł</strong><br>+ {$pakiet.p_points} pkt</div>
                     	</div>

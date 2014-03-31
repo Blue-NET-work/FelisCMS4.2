@@ -70,6 +70,17 @@
                                     <input type="checkbox" name="item[p_week]" {if $page.p_week}checked="checked"{/if} id="item[p_week]" class="switch mid-margin-right" value="1">
                                 </div>
 
+                                <div class="form-group block-label">
+                                    <label for="item[region]" class="text-info">Hotel:</label>
+                                    <div class="clear-both"></div>
+                                    <select name="item[p_hotels]" class="select check-list">
+                                        <option value="0" {if $page.p_hotels == "0"}selected{/if}>Brak wybranego</option>
+						              {foreach from=$hotels item=item name=tags}
+                                      <option value="{$item.id}" {if $page.p_hotels == $item.id}selected{/if}>{$item.name}</option>
+									  {/foreach}
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="item[p_active]" class="text-info">{lang line="default_active"}:</label>
                                     <input type="checkbox" name="item[p_active]" {if $page.p_active}checked="checked"{/if} id="item[p_active]" class="switch mid-margin-right" value="1">

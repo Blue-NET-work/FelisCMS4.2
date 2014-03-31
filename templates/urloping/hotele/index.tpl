@@ -13,7 +13,7 @@
                 <div class="row">
                 {foreach from=$hotele item=item name=hotele}
                     <!-- item -->
-                    <div class="col-md-4 margin-bottom-5">
+                    <div class="col-md-4 margin-bottom-5 boxShadow">
 			            <div class="panel panel-default panel-green hotele" style="height:180px;">
 			              <div class="panel-body padding-10">
 				              <div class="row">

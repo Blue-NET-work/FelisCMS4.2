@@ -59,13 +59,24 @@
 
             		<div class="naTerenie">
 		                <ul class="fa-ul">
-						  <li>{$tags}</li>
+		                  {foreach from=$tags item=item name=tags}
+		                  {if $item}
+						  <li><i class="fa-li fa fa-check-square"></i> {$item}</li>
+						  {/if}
+						  {/foreach}
 						</ul>
             		</div>
 
             		<div id="rating_container">
             			<p class="center_white">Brak ocen</p>
             			<p class="ocen_info">* oceń po zalogowaniu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            			{*<span class="rating margin-left-20">
+				          <a href="{$base_url}hotele/ocena/{$id}/1" class="fa fa-star"></a>
+				          <a href="{$base_url}hotele/ocena/{$id}/2" class="fa fa-star"></a>
+				          <a href="{$base_url}hotele/ocena/{$id}/3" class="fa fa-star"></a>
+				          <a href="{$base_url}hotele/ocena/{$id}/4" class="fa fa-star"></a>
+				          <a href="{$base_url}hotele/ocena/{$id}/5" class="fa fa-star"></a>
+				        </span> *}
             		</div>
 
             	</div>

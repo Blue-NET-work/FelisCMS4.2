@@ -60,6 +60,61 @@
                                     <input type="text" name="item[stars]" id="item[stars]" class="input form-control" value="{$page.stars}">
                                 </div>
 
+                                <div class="form-group block-label">
+                                    <label for="item[province]" class="text-info">Województwo:</label>
+                                    <div class="clear-both"></div>
+                                    <select name="item[province]" class="select check-list">
+                                        <option value="dolnośląskie" {if $page.province == "dolnośląskie"}selected{/if}>dolnośląskie</option>
+                                        <option value="kujawsko-pomorskie" {if $page.province == "kujawsko-pomorskie"}selected{/if}>kujawsko-pomorskie</option>
+                                        <option value="lubelskie" {if $page.province == "lubelskie"}selected{/if}>lubelskie</option>
+                                        <option value="lubuskie" {if $page.province == "lubuskie"}selected{/if}>lubuskie</option>
+                                        <option value="łódzkie" {if $page.province == "łódzkie"}selected{/if}>łódzkie</option>
+                                        <option value="małopolskie" {if $page.province == "małopolskie"}selected{/if}>małopolskie</option>
+                                        <option value="mazowieckie" {if $page.province == "mazowieckie"}selected{/if}>mazowieckie</option>
+                                        <option value="opolskie" {if $page.province == "opolskie"}selected{/if}>opolskie</option>
+                                        <option value="podkarpackie" {if $page.province == "podkarpackie"}selected{/if}>podkarpackie</option>
+                                        <option value="podlaskie" {if $page.province == "podlaskie"}selected{/if}>podlaskie</option>
+                                        <option value="pomorskie" {if $page.province == "pomorskie"}selected{/if}>pomorskie</option>
+                                        <option value="śląskie" {if $page.province == "śląskie"}selected{/if}>śląskie</option>
+                                        <option value="świętokrzyskie" {if $page.province == "świętokrzyskie"}selected{/if}>świętokrzyskie</option>
+                                        <option value="warmińsko-mazurskie" {if $page.province == "warmińsko-mazurskie"}selected{/if}>warmińsko-mazurskie</option>
+                                        <option value="wielkopolskie" {if $page.province == "wielkopolskie"}selected{/if}>wielkopolskie</option>
+                                        <option value="zachodniopomorskie" {if $page.province == "zachodniopomorskie"}selected{/if}>zachodniopomorskie</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group block-label">
+	                                <div class="row">
+                                		<div class="col-md-6">
+		                                    <label for="item[city]" class="text-info">Miasto:</label>
+		                                    <div class="clear-both"></div>
+		                                    <select name="item[city]" id="city" class="select check-list">
+		                                    	<option value="0" selected="selected">Dodaj nowe</option>
+		                                    {foreach from=$city item=item name=pages}
+		                                        <option value="{$item.id}" {if $page.city == $item.id}selected{/if}>{$item.name}</option>
+		                                    {/foreach}
+		                                    </select>
+                                		</div>
+                                		<div class="col-md-6">
+		                                    <label for="item[parent_id]" class="text-info">Nowe miasto: <small>(jeśli chcesz zdefiniować nowe)</small></label>
+		                                    <input type="text" class="input form-control" name="city_new">
+		                                </div>
+	                                </div>
+                                </div>
+
+                                <div class="form-group block-label">
+                                    <label for="item[region]" class="text-info">Region:</label>
+                                    <div class="clear-both"></div>
+                                    <select name="item[region]" class="select check-list">
+                                        <option value="0" {if $page.region == "0"}selected{/if}>Brak wybranego</option>
+                                        <option value="2" {if $page.region == "2"}selected{/if}>Północ</option>
+                                        <option value="3" {if $page.region == "3"}selected{/if}>Południe</option>
+                                        <option value="4" {if $page.region == "4"}selected{/if}>Wschód</option>
+                                        <option value="5" {if $page.region == "5"}selected{/if}>Zachód</option>
+                                        <option value="6" {if $page.region == "6"}selected{/if}>Centrum</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="item[active]" class="text-info">{lang line="default_active"}:</label>
                                     <input type="checkbox" name="item[active]" {if $page.active}checked="checked"{/if} id="item[active]" class="switch mid-margin-right" value="1">

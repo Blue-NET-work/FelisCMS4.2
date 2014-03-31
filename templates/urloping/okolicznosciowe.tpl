@@ -19,7 +19,7 @@
 						<select class="form-control" name="region" id="region">
 							<option value="0" selected="selected">region</option>
 							<option value="2">Północ</option>
-							<option value="3">Góry</option>
+							<option value="3">Południe</option>
 							<option value="4">Wschód</option>
 							<option value="5">Zachód</option>
 							<option value="6">Centrum</option>
@@ -51,7 +51,7 @@
               </div>
 
             {if $pakiety}
-                <table class="table" id="pakiety">
+                <table class="table boxAction" id="pakiety">
                 {foreach from=$pakiety item=item name=pakiety}
 	                {include file="assets/helpview/_PakietyLista.tpl" item=$item}
                 {/foreach}

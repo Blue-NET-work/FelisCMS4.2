@@ -25,11 +25,21 @@ class Hotele extends FC_Controller {
 		$query = $this->db->get_where("hotels", array("id"=>$id))->row_array();
 		$hotels_photo = $this->db->get_where("hotels_photo", array("hp_parent_id"=>$id))->result_array();
 
+		$query["tags"] = explode(",",$query["tags"]);
+
 		$pakiety = $this->db->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->get_where("pakiet", array("p_hotels"=>$id))->result_array();
         $this->smarty->assigns("pakiety", $pakiety);
         $this->smarty->assigns("hotels_photo", $hotels_photo);
 
 		$this->smarty->view("hotele/hotel.tpl", $query);
+	}
+
+// Hotel ocen
+	public function ocena($id, $voit){
+		$item = array("hv_hid"=>$id, "hv_voit"=>$voit);
+    	@FC_DB::insert('pages', $item);
+        $referer = @FC_Request::server("HTTP_REFERER");
+        header('Location: '.$referer);
 	}
 
 }

@@ -14,8 +14,8 @@
             	<div class="col-md-2 margin-top-20">
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green" id="cityList">
-                      <div class="panel-heading"><i class="fa fa-plane"></i> Miasta</div>
-                      <div class="panel-body">
+                      <div class="panel-heading"><img src="{$TEMPLATES}assets/img/city.png" alt=""> Miasta</div>
+                      <div class="panel-body" style="height: 330px;">
                         <!-- city -->
                         <ul class="list-unstyled">
 		                {foreach from=$miasta item=item name=miasta}
@@ -27,14 +27,14 @@
                     </div>
                     <!-- ./miasta -->
                     <!-- facebook -->
-                    <h4><a title="Zobacz nasz profil na facebooku" href="https://www.facebook.com/pages/urlopingcom/411418285658498?fref=ts">Polub nas na facebooku</a></h4>
+                    <h5><a title="Zobacz nasz profil na facebooku" href="https://www.facebook.com/pages/urlopingcom/411418285658498?fref=ts">Polub nas na facebooku</a></h5>
 					<div class="fb-like fb_iframe_widget" data-href="https://www.facebook.com/pages/urlopingcom/411418285658498?fref=ts" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                     <!-- ./facebook -->
                 </div>
                 <div class="col-md-5 margin-top-20">
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green" id="polecaneObiekty">
-                      <div class="panel-heading"><i class="fa fa-info fa-2x"></i> Polecane obiekty</div>
+                      <div class="panel-heading"><img src="{$TEMPLATES}assets/img/polecane.png" alt=""> Polecane obiekty</div>
                       <div class="panel-body">
                         <!-- carusele -->
                         <div id="polecaneObiektyCarousel" class="carousel slide" data-ride="carousel">
@@ -43,7 +43,7 @@
 				                {foreach from=$obiekty item=item name=obiekty}
 								<!-- item -->
 								<div class="item {if $item.active == true}active{/if}" style="max-height:390px">
-	                                {html_image file="{$uploads}images/hotels/thumb_450/{$item.hp_photo}.{$item.hp_ext}" alt="" width="100%" height="100%"}
+	                                {html_image file="{$uploads}images/hotels/thumb_450/{$item.hp_photo}.{$item.hp_ext}" alt=""}
 									<div class="carousel-caption">
                                         <div class="obiektyTop row">
                                         	<div class="col-md-8"><h3><a href="{$base_url}hotele/hotel/{$item.id}" style="color:#fff;">{$item.name}</a></h3></div>
@@ -95,10 +95,10 @@
                     </div>
                     <!-- ./miasta -->
                 </div>
-                <div class="col-md-5 margin-top-20">
+                <div class="col-md-5 margin-top-10">
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green">
-                      <div class="panel-heading"><i class="fa fa-globe"></i> Mapa</div>
+                      <div class="panel-heading"><img src="{$TEMPLATES}assets/img/mapa.png" alt=""> Mapa</div>
                       <div class="panel-body no-top-padding no-bottom-padding">
                         <div class="pakwypmap-map">
                         	<img src="{$TEMPLATES}assets/img/polska-map.png" alt="">
@@ -119,26 +119,64 @@
 							</ul>
 							<div class="pakwypmap regioncont">
 								<div id="region2" class="pakwypmap regioncities">
-									<h2>Północ</h2>
-									<h2>Brak miast w tym regionie.</h2>
+									<h4>Północ</h4>
+									{if $mapa[2]}
+									<ul class="pakwypmap citylist">
+						                {foreach from=$mapa[2] item=item name=miasta}
+										<li><a class="cityOnMap" style="top:280px;left:450px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
+						                {/foreach}
+									</ul>
+									{else}
+									<p>Brak miast w tym regionie.</p>
+									{/if}
 								</div>
 								<div id="region3" class="pakwypmap regioncities">
-									<h2>Góry</h2>
-									<h2>Brak miast w tym regionie.</h2>
+									<h4>Południe</h4>
+									{if $mapa[3]}
+									<ul class="pakwypmap citylist">
+						                {foreach from=$mapa[3] item=item name=miasta}
+										<li><a class="cityOnMap" style="top:280px;left:450px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
+						                {/foreach}
+									</ul>
+									{else}
+									<p>Brak miast w tym regionie.</p>
+									{/if}
 								</div>
 								<div id="region4" class="pakwypmap regioncities">
-									<h2>Wschód</h2>
-									<h2>Brak miast w tym regionie.</h2>
+									<h4>Wschód</h4>
+									{if $mapa[4]}
+									<ul class="pakwypmap citylist">
+						                {foreach from=$mapa[4] item=item name=miasta}
+										<li><a class="cityOnMap" style="top:280px;left:450px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
+						                {/foreach}
+									</ul>
+									{else}
+									<p>Brak miast w tym regionie.</p>
+									{/if}
 								</div>
 								<div id="region5" class="pakwypmap regioncities">
-									<h2>Zachód</h2>
-									<h2>Brak miast w tym regionie.</h2>
+									<h4>Zachód</h4>
+									{if $mapa[5]}
+									<ul class="pakwypmap citylist">
+						                {foreach from=$mapa[5] item=item name=miasta}
+										<li><a class="cityOnMap" style="top:280px;left:450px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
+						                {/foreach}
+									</ul>
+									{else}
+									<p>Brak miast w tym regionie.</p>
+									{/if}
 								</div>
 								<div id="region6" class="pakwypmap regioncities">
-									<h2>Centrum</h2>
+									<h4>Centrum</h4>
+									{if $mapa[6]}
 									<ul class="pakwypmap citylist">
-										<li><a class="cityOnMap" style="top:280px;left:450px;" href="?s=urloping;packets,city,Warszawa" title="Warszawa">Warszawa</a></li>
+						                {foreach from=$mapa[6] item=item name=miasta}
+										<li><a class="cityOnMap" style="top:280px;left:450px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
+						                {/foreach}
 									</ul>
+									{else}
+									<p>Brak miast w tym regionie.</p>
+									{/if}
 								</div>
 							</div>
 						</div>
@@ -149,18 +187,18 @@
             </div>
             <!-- ./pierwszy box-->
 
-        	<div class="panel panel-default panel-green margin-top-20">
+        	<div class="panel panel-default panel-green margin-top-10">
               <div class="panel-heading"><i class="fa fa-align-justify"></i> Aktualności</div>
               <div class="panel-body">
 	            {if $aktualnosci}
-	                <table class="table">
+	                <table class="table no-bottom-margin boxAction">
 	                {foreach from=$aktualnosci item=item name=aktualnosci}
 	                	<tr>
-                        	<td>
-                        		<h4><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html">{$item.a_name}</a> <span style="font-size:10px;">(Dodano: {$item.a_date})</span></h4>
-                           		{$item.a_description|truncate:330:"...":true}
+                        	<td class="padding-5" style="font-size:12px;">
+                        		<h5><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html">{$item.a_name}</a> <span style="font-size:10px;">(Dodano: {$item.a_date})</span></h5>
+                           		{$item.a_description|truncate:590:"...":true}
                         	</td>
-                        	<td><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html" class="btn btn-default btn-sm"><i class="fa fa-file-text-o"></i> czytaj więcej >></a></td>
+                        	<td class="padding-5"><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html" class="btn btn-default btn-sm margin-top-35"><i class="fa fa-file-text-o"></i> czytaj więcej >></a></td>
 	                	</tr>
 	                {/foreach}
 	                </table>
@@ -170,11 +208,11 @@
               </div>
             </div>
 
-        	<div class="panel panel-default panel-green margin-top-20">
-              <div class="panel-heading"><i class="fa fa-thumbs-o-up"></i> Najchętniej wybierane</div>
+        	<div class="panel panel-default panel-green margin-top-10">
+              <div class="panel-heading"><img src="{$TEMPLATES}assets/img/najchetniej.png" alt=""> Najchętniej wybierane</div>
               <div class="panel-body">
 	            {if $pakiety}
-	                <table class="table">
+	                <table class="table no-bottom-margin boxAction" style="font-size:12px;">
 	                {foreach from=$pakiety item=item name=pakiety}
 	                	{include file="assets/helpview/_PakietyLista.tpl" item=$item}
 	                {/foreach}
@@ -185,8 +223,8 @@
               </div>
             </div>
 
-        	<div class="panel panel-default panel-green margin-top-20">
-              <div class="panel-heading"><i class="fa fa-globe"></i> Przykładowe nagrody</div>
+        	<div class="panel panel-default panel-green margin-top-10">
+              <div class="panel-heading"><img src="{$TEMPLATES}assets/img/najchetniej.png" alt=""> Przykładowe nagrody</div>
               <div class="panel-body text-center no-top-padding no-bottom-padding">
                 <!-- items -->
 				<div id="slider1">
@@ -200,11 +238,11 @@
 					              <div class="panel-heading"></div>
 					              <div class="panel-body padding-10">
 			                        <p>
-                    		        {html_image file="{$uploads}images/nagrody/thumb_120/{$item.np_photo}.{$item.np_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.np_alt}" title="{$item.np_title}"}
+                    		        {html_image file="{$uploads}images/nagrody/thumb_120/{$item.np_photo}.{$item.np_ext}" class="img-thumbnail margin-top-10" alt="{$item.np_alt}" title="{$item.np_title}"}
 			                        </p>
-			                        <h3><a href="{$base_url}nagrody/nagroda/{$item.id}">{$item.name}</a></h3>
+			                        <h4><a href="{$base_url}nagrody/nagroda/{$item.id}">{$item.name}</a></h4>
 		                            {$item.description|truncate:55:"...":true}
-		                            <p><a href="{$base_url}nagrody/nagroda/{$item.id}" title="Zobacz szczegoly nagrody"><span class="price">{$item.npe_point} pkt / {$item.npe_price} zł</span></a></p>
+		                            <p class="margin-top-10"><a href="{$base_url}nagrody/nagroda/{$item.id}" title="Zobacz szczegoly nagrody"><span class="price">{$item.npe_point} pkt / {$item.npe_price} zł</span></a></p>
 					              </div>
 					            </div>
 		                    </li>
