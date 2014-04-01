@@ -173,14 +173,10 @@
 			                    <form action="{$base_url}nagrody/serverFoto/{$page.id}" method="post">
 			                    <input type="hidden" name="id" value="{$page.id}" />
 			                    	<h4>Wybierz z dostępnych na serwerze</h4>
-				                    <table class="table nocss">
-				                        <tbody>
-				                        <tr>
-				                            <td id="files" width="30%" style="vertical-align: top;"></td>
-				                            <td valign="top"><div id="fileTree" style="width: 700px; height: 500px; overflow: auto;"></div></td>
-				                        </tr>
-				                        </tbody>
-				                    </table>
+			                    	<div class="row">
+                                    	<div class="col-md-5" id="files"></div>
+                                    	<div class="col-md-7" id="fileTree" style="height: 500px; overflow: auto;"></div>
+			                    	</div>
 				                    <input class="btn btn-default" type="submit" name="uploadServer" value="Dodaj">
 			                    </form><br /><br />
 			                    <form action="{$base_url}nagrody/sorts/{$page.id}" method="post">

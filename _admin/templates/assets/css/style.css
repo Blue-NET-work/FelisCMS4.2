@@ -2067,3 +2067,7 @@ a:link {
 .invisible {
 	visibility: hidden;
 }
+
+.margin-bottom-10{
+	margin-bottom: 10px;
+}

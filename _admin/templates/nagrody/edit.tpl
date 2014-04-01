@@ -54,24 +54,23 @@
 {include file="assets/helpview/footer.tpl"}
 <script src="{$base_url}../felis/modules/ckeditor/ckeditor.js"></script>
   <script type="text/javascript" src="{$TEMPLATES}assets/jqueryFileTree/jqueryFileTree.js"></script>
-    <script type="text/javascript">
-    $(document).ready( function() {
-        $('#fileTree').fileTree({
-            root: '/',
-            script: '{$TEMPLATES}assets/jqueryFileTree/jqueryFileTree.php',
-            expandSpeed: 800,
-            collapseSpeed: 800,
-            expandEasing: 'easeOutBounce',
-            collapseEasing: 'easeOutBounce',
-            loadMessage: 'Ładowanie...',
-            multiFolder: false
-        },  function(file, link) {
-            $('td#files').append('<div><table><tr><td><img src="'+link+'" height="60" /><input type="hidden" name="files[]" value="'+file+'" size="40"/></td><td>Alt:<br />Title:</td><td><input type="text" name="alt[]" /><br /><input type="text" name="title[]"/></td><td><span class="del">usuń</span></td></tr></table>');
-        });
-        $('span.del').on('click',function(){
-            $(this).parent().parent().parent().parent().parent().remove();
-        });
-    });
-    </script>
+<script>
+$(document).on("click", ".remove", function() {
+    $(this).parent().parent().remove();
+});
+
+$('#fileTree').fileTree({
+    root: '/',
+    script: '{$TEMPLATES}assets/jqueryFileTree/jqueryFileTree.php',
+    expandSpeed: 800,
+    collapseSpeed: 800,
+    expandEasing: 'easeOutBounce',
+    collapseEasing: 'easeOutBounce',
+    loadMessage: 'Ładowanie...',
+    multiFolder: false
+},  function(file, link) {
+    $('#files').append('<div class="row margin-bottom-10"><div class="col-md-5"><img src="'+link+'" class="img-thumbnail" /><input type="hidden" name="files[]" value="'+file+'" size="40"></div><div class="col-md-5"><div class="form-group"><label>Alt:</label><input type="text" class="form-control" name="alt[]" /></div><div class="form-group">Title:<input type="text" class="form-control" name="title[]"/></div></div><div class="col-md-2"><button type="button" class="btn btn-danger remove">usuń</button></div></div>');
+});
+</script>
 </body>
 </html>
