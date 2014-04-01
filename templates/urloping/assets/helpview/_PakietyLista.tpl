@@ -1,6 +1,6 @@
 
                 		<tr>
-                    		<td class="col-md-1">{html_image file="{$uploads}images/pakiety/thumb_70/{$item.pp_photo}.{$item.pp_ext}" class="img-thumbnail margin-top-10" alt="{$item.pp_alt}" title="{$item.pp_title}"}</td>
+                    		<td class="col-md-2 text-center">{html_image file="{$uploads}images/pakiety/thumb_120/{$item.pp_photo}.{$item.pp_ext}" class="img-thumbnail margin-top-10" alt="{$item.pp_alt}" title="{$item.pp_title}"}</td>
                     		<td>
                     			<h5><a href="{$base_url}pakiet/{$item.p_id}.html">{$item.p_name}</a></h5>
                             	{$item.p_description|truncate:220:"...":true}

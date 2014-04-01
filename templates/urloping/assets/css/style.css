@@ -206,10 +206,11 @@ footer .container .footer{
 }
 
 #polecaneObiekty .carousel-caption{
-	left:5%;
-	right:5%;
+	left:0%;
+	right:0%;
 	height:95%;
 	text-align:left;
+	z-index:5;
 }
 
 #polecaneObiekty .carousel-indicators{
@@ -392,10 +393,19 @@ h3{
 
 .obiektyTop{
 	top:10px;
+	background: rgba(0,0,0,.3);
+	padding-left:20px;
+	padding-right:20px;
 
 }
 .obiektyBottom{
-	margin-top:215px;
+	margin-top:284px;
+	padding:10px 20px;
+	background: rgba(0,0,0,.3);
+}
+
+.carousel-control{
+	z-index:10;
 }
 
 .viewport .img-thumbnail{
@@ -502,4 +512,19 @@ footer a.bottom_link{
 }
 .boxShadow:hover .panel{
 	box-shadow: 0 0 12px rgba(0,0,0,.3);
+}
+
+
+.btn-green,
+.btn-green:active{
+  background: #71d4c3;
+  background-image: -webkit-linear-gradient(top, #50b894 0%, #71d4c3 100%);
+  background-image:      -o-linear-gradient(top, #50b894 0%, #71d4c3 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#50b894), to(#71d4c3));
+  background-image:         linear-gradient(to bottom, #50b894 0%, #71d4c3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#50b894', endColorstr='#71d4c3', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  color:#fff;
+  text-shadow: 1px 1px rgba(0,0,0,.4);
 }

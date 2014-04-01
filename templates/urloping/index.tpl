@@ -43,7 +43,7 @@
 				                {foreach from=$obiekty item=item name=obiekty}
 								<!-- item -->
 								<div class="item {if $item.active == true}active{/if}" style="max-height:390px">
-	                                {html_image file="{$uploads}images/hotels/thumb_450/{$item.hp_photo}.{$item.hp_ext}" alt=""}
+	                                <div style="background: url('{$uploads}images/hotels/thumb_450/{$item.hp_photo}.{$item.hp_ext}'); background-position:center; background-repeat: no-repeat; background-size:100%; width:130%; height:370px; margin-left:auto; margin-right:auto; position:relative; left:-14%;"></div>
 									<div class="carousel-caption">
                                         <div class="obiektyTop row">
                                         	<div class="col-md-8"><h3><a href="{$base_url}hotele/hotel/{$item.id}" style="color:#fff;">{$item.name}</a></h3></div>
@@ -95,7 +95,7 @@
                     </div>
                     <!-- ./miasta -->
                 </div>
-                <div class="col-md-5 margin-top-10">
+                <div class="col-md-5 margin-top-20">
                 	<!-- miasta -->
                     <div class="panel panel-default panel-green">
                       <div class="panel-heading"><img src="{$TEMPLATES}assets/img/mapa.png" alt=""> Mapa</div>
@@ -188,27 +188,6 @@
             <!-- ./pierwszy box-->
 
         	<div class="panel panel-default panel-green margin-top-10">
-              <div class="panel-heading"><i class="fa fa-align-justify"></i> Aktualności</div>
-              <div class="panel-body">
-	            {if $aktualnosci}
-	                <table class="table no-bottom-margin boxAction">
-	                {foreach from=$aktualnosci item=item name=aktualnosci}
-	                	<tr>
-                        	<td class="padding-5" style="font-size:12px;">
-                        		<h5><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html">{$item.a_name}</a> <span style="font-size:10px;">(Dodano: {$item.a_date})</span></h5>
-                           		{$item.a_description|truncate:590:"...":true}
-                        	</td>
-                        	<td class="padding-5"><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html" class="btn btn-default btn-sm margin-top-35"><i class="fa fa-file-text-o"></i> czytaj więcej >></a></td>
-	                	</tr>
-	                {/foreach}
-	                </table>
-	            {else}
-            		<span class="text-info">Obecnie brak wpisów.</span>
-	            {/if}
-              </div>
-            </div>
-
-        	<div class="panel panel-default panel-green margin-top-10">
               <div class="panel-heading"><img src="{$TEMPLATES}assets/img/najchetniej.png" alt=""> Najchętniej wybierane</div>
               <div class="panel-body">
 	            {if $pakiety}
@@ -219,6 +198,29 @@
 	                </table>
 	            {else}
             		<span class="text-info">Obecnie brak pakietów dla wybranego hotelu</span>
+	            {/if}
+              </div>
+            </div>
+
+        	<div class="panel panel-default panel-green margin-top-10">
+              <div class="panel-heading"><i class="fa fa-align-justify"></i> Aktualności</div>
+              <div class="panel-body">
+	            {if $aktualnosci}
+	                <div class="row">
+	                {foreach from=$aktualnosci item=item name=aktualnosci}
+				        <!-- item -->
+		                <div class="col-md-4">
+					      <h5><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html">{$item.a_name}</a></h5>
+					      <span style="font-size:10px;">Dodano: {$item.a_date}</span>
+					      <div class="padding-5 margin-top-10 text-justify">
+                          	{$item.a_description|truncate:590:"...":true}
+					      </div>
+                          <div class="text-right"><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html" class="btn btn-green btn-sm"><i class="fa fa-file-text-o"></i> czytaj więcej >></a></div>
+					    </div>
+	                {/foreach}
+	                </div>
+	            {else}
+            		<span class="text-info">Obecnie brak wpisów.</span>
 	            {/if}
               </div>
             </div>
@@ -241,8 +243,8 @@
                     		        {html_image file="{$uploads}images/nagrody/thumb_120/{$item.np_photo}.{$item.np_ext}" class="img-thumbnail margin-top-10" alt="{$item.np_alt}" title="{$item.np_title}"}
 			                        </p>
 			                        <h4><a href="{$base_url}nagrody/nagroda/{$item.id}">{$item.name}</a></h4>
-		                            {$item.description|truncate:55:"...":true}
-		                            <p class="margin-top-10"><a href="{$base_url}nagrody/nagroda/{$item.id}" title="Zobacz szczegoly nagrody"><span class="price">{$item.npe_point} pkt / {$item.npe_price} zł</span></a></p>
+		                            <div style="max-height:35px; overflow:hidden;">{$item.description|truncate:55:"...":true}</div>
+		                            <div class="margin-top-10"><a href="{$base_url}nagrody/nagroda/{$item.id}" title="Zobacz szczegoly nagrody"><span class="price">{$item.npe_point} pkt / {$item.npe_price} zł</span></a></div>
 					              </div>
 					            </div>
 		                    </li>

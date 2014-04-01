@@ -67,7 +67,7 @@
         },  function(file, link) {
             $('td#files').append('<div><table><tr><td><img src="'+link+'" height="60" /><input type="hidden" name="files[]" value="'+file+'" size="40"/></td><td>Alt:<br />Title:</td><td><input type="text" name="alt[]" /><br /><input type="text" name="title[]"/></td><td><span class="del">usuń</span></td></tr></table>');
         });
-        $('span.del').on('click',function(){
+        $('span.del').on('click', function(){
             $(this).parent().parent().parent().parent().parent().remove();
         });
     });
