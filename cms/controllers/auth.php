@@ -109,9 +109,9 @@ class Auth extends CI_Controller {
 		 if (isset($_GET['code'])){
 
 		     $this->facebook_ion_auth->login();
-		     if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+		     if (!$this->ion_auth->logged_in())
 		     {
-		           header('Location:/?alert=facebooklogin');
+		           header('Location:/auth/loginfacebook');
 		           exit();
 		     }
 

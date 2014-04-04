@@ -196,19 +196,6 @@ class Dashboard extends FC_Controller {
         redirect(base_url(), 'refresh');
     }
 
-//Facebook login
-    function loginfacebook(){
-         $this->load->library("Facebook_ion_auth");
-	     $this->facebook_ion_auth->login();
-		if (isset($_GET["code"])){
-		     if (!$this->ion_auth->logged_in())
-			 redirect(base_url(), 'refresh');
-			else
-				redirect(base_url(), 'refresh');
-		}
-	}
-
-
 	//activate the user
 	function activate($id, $code=false)
 	{
@@ -225,7 +212,7 @@ class Dashboard extends FC_Controller {
 		{
 			//redirect them to the auth page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("/", 'refresh');
+			redirect("/zaloguj.html", 'refresh');
 		}
 		else
 		{
