@@ -30,11 +30,11 @@ class Auth extends CI_Controller {
 			//redirect them to the login page
 			redirect('auth/login', 'refresh');
 		}
-		elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
-		{
+	   //	elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
+	   //	{
 			//redirect them to the home page because they must be an administrator to view this
-			return show_error('You must be an administrator to view this page.');
-		}
+	  //		return show_error('You must be an administrator to view this page.');
+	 //	}
 		else
 		{
 			//set the flash data error message if there is one
@@ -214,7 +214,7 @@ class Auth extends CI_Controller {
                 $this->session->set_flashdata('message', $this->ion_auth->messages());
                 redirect("auth/forgot_password", 'refresh');
             }
-            
+
 			//run the forgotten password method to email an activation code to the user
 			$forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
 
@@ -400,7 +400,7 @@ class Auth extends CI_Controller {
 		}
 
 		$tables = $this->config->item('tables','ion_auth');
-		
+
 		//validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
@@ -751,6 +751,29 @@ class Auth extends CI_Controller {
 		$view_html = $this->load->view($view, $this->viewdata, $render);
 
 		if (!$render) return $view_html;
+	}
+
+	function login_fb()
+	{
+	  $this->load->library('Facebook_ion_auth');
+      $this->facebook_ion_auth->login();
+	}
+
+	function loginfacebook($type = null) {
+	  $this->load->library('Facebook_ion_auth');
+
+		 if (isset($_GET['code']))
+		 {
+		     $this->facebook_ion_auth->login();
+		     if ($this->ion_auth->logged_in())
+		     {
+		           header('Location:/auth?alert=facebooklogin');
+		           exit();
+		     }
+
+		     header('Location:/auth/login_fb');
+		 }
+
 	}
 
 }
