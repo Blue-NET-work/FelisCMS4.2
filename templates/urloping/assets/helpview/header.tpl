@@ -52,9 +52,9 @@
                 {else}
                     <form class="form-horizontal" id="logowanie" action="{$base_url}zaloguj.html" role="form" method="POST">
                       <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">Login</label>
+                        <label for="inputEmail3" class="col-sm-4 control-label">Adres e-mail</label>
                         <div class="col-sm-8">
-                          <input type="text" name="item[login]" class="form-control" id="inputEmail3" placeholder="Nazwa użytkownika">
+                          <input type="text" name="item[login]" class="form-control" id="inputEmail3" placeholder="Adres e-mail">
                         </div>
                       </div>
                       <div class="form-group">

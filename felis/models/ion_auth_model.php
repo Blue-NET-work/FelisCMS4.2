@@ -60,6 +60,7 @@ class Ion_auth_model extends CI_Model
     * @var string
     **/
     public $identity;
+    public $identity_1;
 
     /**
     * Where
@@ -180,6 +181,7 @@ class Ion_auth_model extends CI_Model
 
         //initialize data
         $this->identity_column = $this->config->item('identity', 'ion_auth');
+        $this->identity_1_column = $this->config->item('identity_1', 'ion_auth');
         $this->store_salt      = $this->config->item('store_salt', 'ion_auth');
         $this->salt_length     = $this->config->item('salt_length', 'ion_auth');
         $this->join			   = $this->config->item('join', 'ion_auth');
@@ -686,6 +688,25 @@ class Ion_auth_model extends CI_Model
     }
 
     /**
+    * Identity check
+    *
+    * @return bool
+    * @author Mathew
+    **/
+    public function identity_fb_check($identity = '')
+    {
+        $this->trigger_events('identity_1_check');
+
+        if (empty($identity))
+        {
+            return FALSE;
+        }
+
+        return $this->db->where($this->identity_1_column, $identity)
+        ->count_all_results($this->tables['users']) > 0;
+    }
+
+    /**
     * Insert a forgotten password key.
     *
     * @return bool
@@ -891,6 +912,85 @@ class Ion_auth_model extends CI_Model
 
         $query = $this->db->select($this->identity_column . ', username, email, id, password, active, last_login')
         ->where($this->identity_column, $this->db->escape_str($identity))
+        ->limit(1)
+        ->get($this->tables['users']);
+
+        if($this->is_time_locked_out($identity))
+        {
+            //Hash something anyway, just to take up time
+            $this->hash_password($password);
+
+            $this->trigger_events('post_login_unsuccessful');
+            $this->set_error('login_timeout');
+
+            return FALSE;
+        }
+
+        if ($query->num_rows() === 1)
+        {
+            $user = $query->row();
+
+            $password = $this->hash_password_db($user->id, $password);
+
+            if ($password === TRUE)
+            {
+                if ($user->active == 0)
+                {
+                    $this->trigger_events('post_login_unsuccessful');
+                    $this->set_error('login_unsuccessful_not_active');
+
+                    return FALSE;
+                }
+
+                $this->set_session($user);
+
+                $this->update_last_login($user->id);
+
+                $this->clear_login_attempts($identity);
+
+                if ($remember && $this->config->item('remember_users', 'ion_auth'))
+                {
+                    $this->remember_user($user->id);
+                }
+
+                $this->trigger_events(array('post_login', 'post_login_successful'));
+                $this->set_message('login_successful');
+
+                return TRUE;
+            }
+        }
+
+        //Hash something anyway, just to take up time
+        $this->hash_password($password);
+
+        $this->increase_login_attempts($identity);
+
+        $this->trigger_events('post_login_unsuccessful');
+        $this->set_error('login_unsuccessful');
+
+        return FALSE;
+    }
+
+    /**
+    * login_fb
+    *
+    * @return bool
+    * @author Mathew
+    **/
+    public function login_fb($identity, $password, $remember=FALSE)
+    {
+        $this->trigger_events('pre_login');
+
+        if (empty($identity) || empty($password))
+        {
+            $this->set_error('login_unsuccessful');
+            return FALSE;
+        }
+
+        $this->trigger_events('extra_where');
+
+        $query = $this->db->select($this->identity_1_column . ', username, email, id, password, active, last_login')
+        ->where($this->identity_1_column, $this->db->escape_str($identity))
         ->limit(1)
         ->get($this->tables['users']);
 
@@ -2090,8 +2190,8 @@ class Ion_auth_model extends CI_Model
         //just return the string IP address now for better compatibility
         return $ip_address;
     }
-    
-    public function email_config(){                                                                      
+
+    public function email_config(){
         if(@FC_DB::getDataSelect("*", 'config', array("name"=> "smtp"),'value') == TRUE){
             $email_config["protocol"] = "smtp";
             $email_config["smtp_host"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "smtp_host"),'value');
@@ -2101,13 +2201,13 @@ class Ion_auth_model extends CI_Model
             $email_config["smtp_email"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "smtp_email"),'value');
             $email_config["smtp_from"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "smtp_from"),'value');
         }
-        else{   
+        else{
             $email_config["smtp_email"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "service_email"),'value');
             $email_config["smtp_from"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "owner_name"),'value');
         }
-                                                                                                                
+
         $email_config["meta_title"] = @FC_DB::getDataSelect("*", 'config', array("name"=> "meta_title"),'value');
-          
+
         return $email_config;
     }
 }

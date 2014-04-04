@@ -66,9 +66,10 @@ class Facebook_ion_auth {
 				// check if this user is already registered
 				if(!$this->CI->ion_auth_model->identity_check($user->email)){
 					$name = explode(" ", $user->name);
-					$register = $this->CI->ion_auth->register($user->username, 'facebookdoesnothavepass123^&*%', $user->email, array('first_name' => $name[0], 'last_name' => $name[1]));
+					$information = array('first_name' => $name[0], 'last_name' => $name[1]);
+					$register = $this->CI->ion_auth->register($user->username, 'facebookdoesnothavepass123^&*%', $user->email, $information);
 				} else {
-					$login = $this->CI->ion_auth->login($user->email, 'facebookdoesnothavepass123^&*%', 1);
+					return $this->CI->ion_auth->login($user->email, 'facebookdoesnothavepass123^&*%', 1);
 				}
 
 				return true;
