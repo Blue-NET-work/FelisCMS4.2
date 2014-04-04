@@ -77,7 +77,8 @@ class Dashboard extends FC_Controller {
 	public function pakiet($id){
 		$query["pakiet"] = $this->db->get_where("pakiet", array("p_id"=>$id))->row_array();
 		$query["hotel"] = $this->db->get_where("hotels", array("id"=>$query["pakiet"]["p_hotels"]))->row_array();
-
+		$query["pakiety"] = $this->db->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->where("p_id != {$id}")->get_where("pakiet", array("p_hotels"=>$query["pakiet"]["p_hotels"]))->result_array();
+        //printr($query["pakiety"]);
 		$query["hotel"]["tags"] = explode(",",$query["hotel"]["tags"]);
 
 		$query["pakiet_photo"] = $this->db->get_where("pakiet_photo", array("pp_parent_id"=>$id))->result_array();

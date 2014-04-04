@@ -127,6 +127,22 @@
 		        </div>
 		        <!-- items -->
 
+		    <!-- items -->
+            <div class="margin-top-40">
+                <h3>Inne pakiety hotelu</h3>
+            {if $pakiety}
+				<div class="panel-group" id="accordion">
+                {foreach from=$pakiety item=item name=pakiety}
+	            	{include file="assets/helpview/_PakietyLista.tpl" item=$item}
+                {/foreach}
+				</div>
+            {else}
+            	<span class="text-info">Obecnie brak pakietów dla wybranego hotelu</span>
+            {/if}
+
+            </div>
+		    <!-- items -->
+
           </div>
         </div>
 
