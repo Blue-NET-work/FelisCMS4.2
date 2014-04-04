@@ -9,7 +9,8 @@
     </transformer>
     <files>
         <directory>./system</directory>
-    </files>    
+    </files>
+
     <logging>
         <level>warn</level>
         <paths>

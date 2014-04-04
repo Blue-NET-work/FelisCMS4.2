@@ -35,8 +35,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/language.html
  */
-class CI_Lang {                                      
-    
+class CI_Lang {
+
 	/**
 	 * List of translations
 	 *

@@ -67,7 +67,7 @@
 	{
 		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
 		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
-		exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+		exit(3); // EXIT_CONFIG
 	}
 
 /*
@@ -109,7 +109,7 @@
 		{
 			header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
 			echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
-			exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+			exit(3); // EXIT_CONFIG
 		}
 
 		define('APPPATH', BASEPATH.$application_folder.DIRECTORY_SEPARATOR);
@@ -126,7 +126,7 @@
 		{
 			header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
 			echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
-			exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+			exit(3); // EXIT_CONFIG
 		}
 		else
 		{
@@ -149,6 +149,8 @@
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
  * --------------------------------------------------------------------
+ *
+ * And away we go...
  */
     
 require_once BASEPATH.'core/Felis.php';        
