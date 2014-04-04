@@ -14,26 +14,27 @@
 		            <!-- items -->
 		            <div class="margin-bottom-20">
 
-<div class="carousel slide article-slide" id="article-photo-carousel">
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner cont-slider">
-{foreach from=$hotels_photo item=item name=hotels_photo}
-    <div class="item {if !$smarty.foreach.hotels_photo.first}{else}active{/if}">
-      {html_image file="{$uploads}images/hotels/thumb_450/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" style="height:350px !important; width:100%;" alt="{$item.hp_alt}" title="{$item.hp_title}"}
-    </div>
-{/foreach}
-  </div>
+						<div class="carousel slide article-slide" id="article-photo-carousel">
+						  <!-- Wrapper for slides -->
+						  <div class="carousel-inner cont-slider">
+						{foreach from=$hotels_photo item=item name=hotels_photo}
+						    <div class="item {if !$smarty.foreach.hotels_photo.first}{else}active{/if}">
+						      {html_image file="{$uploads}images/hotels/thumb_450/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" style="height:350px !important; width:100%;" alt="{$item.hp_alt}" title="{$item.hp_title}"}
+						    </div>
+						{/foreach}
+						  </div>
 
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-  {$i = 0}
-{foreach from=$hotels_photo item=item name=hotels_photo}
-    <li {if $smarty.foreach.pakiet_photo.first}class="active"{/if} data-slide-to="{$i++}" data-target="#article-photo-carousel">
-      {html_image file="{$uploads}images/hotels/thumb_70/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.hp_alt}" title="{$item.hp_title}"}
-    </li>
-{/foreach}
-  </ol>
-</div>
+						  <!-- Indicators -->
+						  <ol class="carousel-indicators">
+						  {$i = 0}
+						{foreach from=$hotels_photo item=item name=hotels_photo}
+						    <li {if $smarty.foreach.pakiet_photo.first}class="active"{/if} data-slide-to="{$i++}" data-target="#article-photo-carousel">
+						      {html_image file="{$uploads}images/hotels/thumb_70/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.hp_alt}" title="{$item.hp_title}"}
+						    </li>
+						{/foreach}
+						  </ol>
+						</div>
+
 			        </div>
                     <div class="panel panel-default hotele">
                     	<div class="panel-body padding-20 text-justify">

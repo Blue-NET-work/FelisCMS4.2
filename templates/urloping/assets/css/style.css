@@ -255,6 +255,7 @@ h3{
 	background: url("../img/object_details_bg.png") no-repeat;
 	width:272px;
 	height: 221px;
+	margin:auto;
 	position:relative;
 	display:block;
 }
@@ -270,6 +271,7 @@ h3{
 	position: relative;
 	width: 272px;
 	height: 220px;
+	margin:auto;
 	margin-top: 20px;
 	background: url("../img/rating_bg.png") no-repeat;
 }

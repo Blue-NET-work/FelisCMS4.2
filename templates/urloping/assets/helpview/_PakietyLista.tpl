@@ -1,7 +1,15 @@
 
   <div class="panel boxShadow">
     <div class="panel-heading">
-      <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#pakiet{$item.p_id}">{html_image file="{$uploads}images/pakiety/thumb_70/{$item.pp_photo}.{$item.pp_ext}" class="img-thumbnail margin-top-10 margin-right-20" alt="{$item.pp_alt}" title="{$item.pp_title}"} <a href="{$base_url}pakiet/{$item.p_id}.html">{$item.p_name}</a></h4>
+	    <div class="row" data-toggle="collapse" data-parent="#accordion" href="#pakiet{$item.p_id}">
+        	<div class="col-md-10">
+			  <h4 class="panel-title">
+      			{html_image file="{$uploads}images/pakiety/thumb_70/{$item.pp_photo}.{$item.pp_ext}" class="img-thumbnail margin-top-10 margin-right-20" alt="{$item.pp_alt}" title="{$item.pp_title}"}
+      			<a href="{$base_url}pakiet/{$item.p_id}.html">{$item.p_name}</a>
+			  </h4>
+        	</div>
+        	<div class="col-md-2 text-center"><div class="margin-top-20"><strong>{$item.p_price} zł</strong></div>+ {$item.p_points} pkt</div>
+	    </div>
     </div>
     <div id="pakiet{$item.p_id}" class="panel-collapse collapse">
       <div class="panel-body">
