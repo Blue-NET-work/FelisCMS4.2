@@ -49,6 +49,7 @@
     {include file="assets/helpview/sidebar.tpl"}
 
 {include file="assets/helpview/footer.tpl"}
+<script src="{$base_url}../felis/modules/ckeditor/ckeditor.js"></script>
 <script>
 {include file="assets/js/scripts/felis.function.pages.js"}
 </script>
