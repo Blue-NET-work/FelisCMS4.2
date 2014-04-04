@@ -7,6 +7,7 @@ class Auth extends CI_Controller {
 		parent::__construct();
 		$this->load->library('ion_auth');
 		$this->load->library('form_validation');
+		$this->load->library('Facebook_ion_auth');
 		$this->load->helper('url');
 
 		// Load MongoDB library instead of native db driver if required
@@ -100,6 +101,28 @@ class Auth extends CI_Controller {
 			$this->_render_page('auth/login', $this->data);
 		}
 	}
+
+	//log the user in
+	public function login_fb($type = null)
+	{
+
+		 if (isset($_GET['code'])){
+
+		     $this->facebook_ion_auth->login();
+		     if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+		     {
+		           header('Location:/?alert=facebooklogin');
+		           exit();
+		     }
+
+		     header('Location:/');
+		 }
+
+	}
+
+     public function loginfacebook(){
+      $this->facebook_ion_auth->login();
+	 }
 
 	//log the user out
 	function logout()
@@ -214,7 +237,7 @@ class Auth extends CI_Controller {
                 $this->session->set_flashdata('message', $this->ion_auth->messages());
                 redirect("auth/forgot_password", 'refresh');
             }
-            
+
 			//run the forgotten password method to email an activation code to the user
 			$forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
 
@@ -400,7 +423,7 @@ class Auth extends CI_Controller {
 		}
 
 		$tables = $this->config->item('tables','ion_auth');
-		
+
 		//validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');

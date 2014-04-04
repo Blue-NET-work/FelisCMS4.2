@@ -14,55 +14,55 @@
 // "/index.php/" part __MUST__ be prepended to the base_url.
 $config['base_url'] = '/auth/provider_endpoint';
 
-$config['providers'] = array ( 
+$config['providers'] = array (
 			// openid providers
 			"OpenID" => array (
 				"enabled" => true
 			),
 
-			"Yahoo" => array ( 
+			"Yahoo" => array (
 				"enabled" => true,
 				"keys"    => array ( "id" => "", "secret" => "" ),
 			),
 
-			"AOL"  => array ( 
-				"enabled" => true 
+			"AOL"  => array (
+				"enabled" => true
 			),
 
-			"Google" => array ( 
+			"Google" => array (
 				"enabled" => true,
-				"keys"    => array ( "id" => "", "secret" => "" ), 
+				"keys"    => array ( "id" => "", "secret" => "" ),
 			),
 
-			"Facebook" => array ( 
+			"Facebook" => array (
 				"enabled" => true,
-				"keys"    => array ( "id" => "", "secret" => "" ), 
+				"keys"    => array ( "id" => "231913420343222", "secret" => "13d847eef2f8dcb8ee738252d10a1833" ),
 			),
 
-			"Twitter" => array ( 
+			"Twitter" => array (
 				"enabled" => true,
-				"keys"    => array ( "key" => "", "secret" => "" ) 
+				"keys"    => array ( "key" => "", "secret" => "" )
 			),
 
 			// windows live
-			"Live" => array ( 
+			"Live" => array (
 				"enabled" => true,
-				"keys"    => array ( "id" => "", "secret" => "" ) 
+				"keys"    => array ( "id" => "", "secret" => "" )
 			),
 
-			"MySpace" => array ( 
+			"MySpace" => array (
 				"enabled" => true,
-				"keys"    => array ( "key" => "", "secret" => "" ) 
+				"keys"    => array ( "key" => "", "secret" => "" )
 			),
 
-			"LinkedIn" => array ( 
+			"LinkedIn" => array (
 				"enabled" => true,
-				"keys"    => array ( "key" => "", "secret" => "" ) 
+				"keys"    => array ( "key" => "", "secret" => "" )
 			),
 
 			"Foursquare" => array (
 				"enabled" => true,
-				"keys"    => array ( "id" => "", "secret" => "" ) 
+				"keys"    => array ( "id" => "", "secret" => "" )
 			),
 		);
 

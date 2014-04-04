@@ -191,11 +191,11 @@
               <div class="panel-heading"><img src="{$TEMPLATES}assets/img/najchetniej.png" alt=""> Najchętniej wybierane</div>
               <div class="panel-body">
 	            {if $pakiety}
-	                <table class="table no-bottom-margin boxAction" style="font-size:12px;">
+					<div class="panel-group" id="accordion">
 	                {foreach from=$pakiety item=item name=pakiety}
-	                	{include file="assets/helpview/_PakietyLista.tpl" item=$item}
+	            		{include file="assets/helpview/_PakietyLista.tpl" item=$item}
 	                {/foreach}
-	                </table>
+					</div>
 	            {else}
             		<span class="text-info">Obecnie brak pakietów dla wybranego hotelu</span>
 	            {/if}

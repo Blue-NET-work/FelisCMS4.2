@@ -98,7 +98,7 @@ class Panel extends FC_Controller {
 
 		foreach($rezerwacje as $rezerwacja){
 			$pakiet = array();
-            $pakiet = $this->db->get_where("pakiet", array("p_id"=>$rezerwacja["r_pid"]))->row_array() + $rezerwacja;
+            $pakiet = $this->db->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->get_where("pakiet", array("p_id"=>$rezerwacja["r_pid"]))->row_array() + $rezerwacja;
             $query["rezerwacje"][] = $pakiet;
 		}
 
@@ -106,50 +106,99 @@ class Panel extends FC_Controller {
 	}
 
 // Rezerwacja
-	public function rezerwacja($id){
+	public function rezerwacja($id, $methods = "payu"){
 		$user = $this->ion_auth->user()->row();
 		$query["rezerwacja"] = $this->db->get_where("reservation", array("r_id"=>$id, "r_uid"=>$user->id))->row_array();
         $query["pakiet"] = $this->db->get_where("pakiet", array("p_id"=>$query["rezerwacja"]["r_pid"]))->row_array();
+		$query["pakiet_photo"] = $this->db->get_where("pakiet_photo", array("pp_parent_id"=>$query["rezerwacja"]["r_pid"]))->result_array();
         $query["hotel"] = $this->db->get_where("hotels", array("id"=>$query["rezerwacja"]["r_hid"]))->row_array();
+        date_default_timezone_set('europe/warsaw');
+        $data = "%Y-%m-%d %H:%i:%s";
+        $now = mdate($data, time());
 
         if($query["rezerwacja"]["r_status"] == 0){
-        	$price = $query["pakiet"]["p_price"] * 0.10;
+	        if($methods == "przelewy24"){
+        		$price = $query["pakiet"]["p_price"] * 0.10;
 
-            $przelewy24 = @FC_DB::getData('payment_metods', array("name"=>'przelewy24'));
-            $price = $price * 100;
-            $sygnatura = "urloping/{$user->id}/{$query["rezerwacja"]["r_pid"]}/{$id}"."-".time();
+	            $przelewy24 = @FC_DB::getData('payment_metods', array("name"=>'przelewy24'));
+	            $price = $price * 100;
+	            $sygnatura = "urloping/{$user->id}/{$query["rezerwacja"]["r_pid"]}/{$id}"."-".time();
 
-            $method[] = array('name' => "p24_session_id", 'value' => $sygnatura);
-            $method[] = array('name' => 'p24_id_sprzedawcy', 'value' => $przelewy24["param_1"]);
-            $method[] = array('name' => 'p24_kwota', 'value' => $price);
-            $method[] = array('name' => "p24_crc", 'value' => md5("{$sygnatura}|{$przelewy24["param_1"]}|{$price}|{$przelewy24["param_2"]}"));
-            $method[] = array('name' => "p24_opis", 'value' => "Zamowienie w serwisie Blue-NET: "."urloping/{$user->id}/{$query["rezerwacja"]["r_pid"]}/{$id}");
-            $method[] = array('name' => "p24_kraj", 'value' => "PL");
-            $method[] = array('name' => "p24_language", 'value' => "pl");
-            $method[] = array('name' => "p24_return_url_ok", 'value' => base_url()."panel/weryfikuj_przelewy24.html");
-            $method[] = array('name' => "p24_return_url_error", 'value' => base_url()."panel/weryfikuj_przelewy24.html");
+	            $method[] = array('name' => "p24_session_id", 'value' => $sygnatura);
+	            $method[] = array('name' => 'p24_id_sprzedawcy', 'value' => $przelewy24["param_1"]);
+	            $method[] = array('name' => 'p24_kwota', 'value' => $price);
+	            $method[] = array('name' => "p24_crc", 'value' => md5("{$sygnatura}|{$przelewy24["param_1"]}|{$price}|{$przelewy24["param_2"]}"));
+	            $method[] = array('name' => "p24_opis", 'value' => "Zamowienie w serwisie Blue-NET: "."urloping/{$user->id}/{$query["rezerwacja"]["r_pid"]}/{$id}");
+	            $method[] = array('name' => "p24_kraj", 'value' => "PL");
+	            $method[] = array('name' => "p24_language", 'value' => "pl");
+	            $method[] = array('name' => "p24_return_url_ok", 'value' => base_url()."panel/weryfikuj_przelewy24.html");
+	            $method[] = array('name' => "p24_return_url_error", 'value' => base_url()."panel/weryfikuj_przelewy24.html");
 
-            $method[] = array('name' => "p24_klient", 'value' => $user->first_name.' '.$user->last_name);
-            $method[] = array('name' => "p24_adres", 'value' => $user->address);
-            $method[] = array('name' => "p24_miasto", 'value' => $user->city);
-            $method[] = array('name' => "p24_kod", 'value' => $user->post_code);
-            $method[] = array('name' => "p24_email", 'value' => $user->email);
+	            $method[] = array('name' => "p24_klient", 'value' => $user->first_name.' '.$user->last_name);
+	            $method[] = array('name' => "p24_adres", 'value' => $user->address);
+	            $method[] = array('name' => "p24_miasto", 'value' => $user->city);
+	            $method[] = array('name' => "p24_kod", 'value' => $user->post_code);
+	            $method[] = array('name' => "p24_email", 'value' => $user->email);
 
-            $query["payments"] = $method;
+	            $query["payments"] = $method;
 
-            // Datownik (teraz, termin płatności)
-            date_default_timezone_set('europe/warsaw');
-            $data = "%Y-%m-%d %H:%i:%s";
-            $now = mdate($data);
+	            // Datownik (teraz, termin płatności)
+	            date_default_timezone_set('europe/warsaw');
+	            $data = "%Y-%m-%d %H:%i:%s";
+	            $now = mdate($data);
 
-            $przelew = @FC_DB::getDataSelect('p24_session_id', 'przelewy24', array('p24_session_id'=>$sygnatura), 'p24_session_id');
-            if(!$przelew){
-                $_p24 = array('p24_uid'=>$user->id, 'p24_pid'=>$id, 'p24_session_id'=>$sygnatura, 'p24_kwota'=>$price, 'p24_data'=>$now);
-                @FC_DB::insert('przelewy24', $_p24);
-            }
+	            $przelew = @FC_DB::getDataSelect('p24_session_id', 'przelewy24', array('p24_session_id'=>$sygnatura), 'p24_session_id');
+	            if(!$przelew){
+	                $_p24 = array('p24_uid'=>$user->id, 'p24_pid'=>$id, 'p24_session_id'=>$sygnatura, 'p24_kwota'=>$price, 'p24_data'=>$now);
+	                @FC_DB::insert('przelewy24', $_p24);
+	            }
 
-            //$urlForm = "https://secure.przelewy24.pl/index.php";
-            $query["urlForm"] = "https://sandbox.przelewy24.pl/index.php";
+	            //$urlForm = "https://secure.przelewy24.pl/index.php";
+	            $query["urlForm"] = "https://sandbox.przelewy24.pl/index.php";
+			}
+	        // płatności payu
+	        elseif($methods == "payu"){
+        		$price = $query["pakiet"]["p_price"] * 0.10;
+
+	            $payu = @FC_DB::getData('payment_metods', array("name"=>'payu'));
+	            $price = $price * 100;
+	            $sygnatura = "urloping/{$user->id}/{$query["rezerwacja"]["r_pid"]}/{$id}"."-".time();
+	            $client_ip = @FC_Request::ipAddress();
+	            $desc = "Zamówienie w serwisie Blue-NET: ".$sygnatura;
+	            $ts = time();
+	            $sig = '';
+
+	            $method[] = array('name' => "pos_id", 'value' => $payu["param_1"]);
+	            $method[] = array('name' => "session_id", 'value' => $sygnatura);
+	            $method[] = array('name' => 'pos_auth_key', 'value' => $payu["param_4"]);
+	            $method[] = array('name' => 'amount', 'value' => $price);
+	            $method[] = array('name' => "desc", 'value' => $desc);
+	            $method[] = array('name' => "trsDesc", 'value' => $desc);
+	            $method[] = array('name' => "order_id", 'value' => "urloping/{$user->id}/{$query["rezerwacja"]["r_pid"]}/{$id}");
+	            $method[] = array('name' => "first_name", 'value' => $user->first_name);
+	            $method[] = array('name' => "last_name", 'value' => $user->last_name);
+
+	            $method[] = array('name' => "payback_login", 'value' => '0013710532');
+	            $method[] = array('name' => "street", 'value' => $user->address);
+	            $method[] = array('name' => "city", 'value' => $user->city);
+	            $method[] = array('name' => "post_code", 'value' => $user->post_code);
+	            $method[] = array('name' => "email", 'value' => $user->email);
+	            $method[] = array('name' => "client_ip", 'value' => $client_ip);
+	            $method[] = array('name' => "ts", 'value' => $ts);
+
+	            foreach($method as $array){$sig .= $array["value"];}
+	            $sig .= $payu["param_2"];
+	            $method[] = array('name' => "sig", 'value' => md5($sig));
+	            $query["payments"] = $method;
+
+	            $przelew = @FC_DB::getDataSelect('payu_session_id', 'payu', array('payu_session_id'=>$sygnatura), 'payu_session_id');
+	            if(!$przelew){
+	                $_payu = array('payu_uid'=>$user->id, 'payu_pid'=>$id, 'payu_session_id'=>$sygnatura, 'payu_order_id'=>"urloping/{$user->id}/{$query["rezerwacja"]["r_pid"]}/{$id}", 'payu_amount'=>$price, 'payu_data'=>$now);
+	                @FC_DB::insert('payu', $_payu);
+	            }
+
+	            $query["urlForm"] = "https://www.platnosci.pl/paygw/UTF/NewPayment";
+	        }
 		}
 
 		$this->smarty->view("account/rezerwacja.tpl", $query);
@@ -231,6 +280,79 @@ class Panel extends FC_Controller {
             else @FC_DB::update('przelewy24', array('p24_error_code' =>  $p24Post["p24_error_code"]), array('p24_order_id' => $p24_ver["p24_order_id"]));
         }
 
+        $this->smarty->view('account/weryfikacja.tpl', $bn);
+    }
+
+
+//Faktury Płatności - Weryfikuj PayU
+    public function payu_success(){
+		$user = $this->ion_auth->user()->row();
+        $user_id = $user->id;
+        $bn = false;
+        $get = @FC_Request::get();
+        if(isset($get)){
+            $payu = @FC_DB::getData('payment_metods', array("name"=>'payu'));
+            if($payu["param_1"] == $get["pos_id"]){
+            $bn["payments"] = true;
+                $update = @FC_DB::update('payu', array('payu_trans_id'=>$get["transId"], 'payu_pay_type'=>$get["pay_type"]), array('payu_session_id'=> $get["session_id"], 'payu_order_id'=> $get["order_id"]));
+
+	            $sygnatura = explode("-", $get["session_id"]);
+	            $sygnatura = explode("/",$sygnatura[0]);
+
+                 if($update == TRUE){
+                    $payu_records = @FC_DB::getData('payu', array('payu_session_id'=> $get["session_id"], 'payu_order_id'=> $get["order_id"]));
+                		@FC_DB::update('reservation', array('r_status'=>1, 'r_payment'=> $payu_records["payu_pid"]), array('r_id'=>$sygnatura[3]));
+                }
+                else $bn["realizacja"] = TRUE;
+            }
+        }
+        $this->smarty->view('account/weryfikacja.tpl', $bn);
+    }
+
+    public function payu_error(){
+        $get = @FC_Request::get();
+        if($get){
+            $error_messages = array(
+                "100" => "Brak lub błedna wartosc parametru pos id",
+                "101" => "Brak parametru session id",
+                "102" => "Brak parametru ts",
+                "103" => "Brak lub błędna wartość parametru sig",
+                "104" => "Brak parametru desc",
+                "105" => "Brak parametru client ip",
+                "106" => "Brak parametru first name",
+                "107" => "Brak parametru last name",
+                "108" => "Brak parametru street",
+                "109" => "Brak parametru city",
+                "110" => "Brak parametru post code",
+                "111" => "Brak parametru amount",
+                "112" => "Błedny numer konta bankowego",
+                "113" => "Brak parametru email",
+                "114" => "Brak numeru telefonu",
+                "200" => "Inny chwilowy błąd",
+                "201" => "Inny chwilowy błąd bazy danych",
+                "202" => "Pos o podanym identyfikatorze jest zablokowany",
+                "203" => "Niedozwolona wartosc pay type dla danego pos id",
+                "204" => "Podana metoda płatnosci (wartosc pay type) jest chwilowo zablokowana dla danego pos id, np. przerwa konserwacyjna bramki płatniczej",
+                "205" => "Kwota transakcji mniejsza od wartosci minimalnej",
+                "206" => "Kwota transakcji wieksza od wartosci maksymalnej",
+                "207" => "Przekroczona wartość wszystkich transakcji dla jednego klienta w ostatnim przedziale czasowym",
+                "208" => "Pos działa w wariancie ExpressPayment lecz nie nastapiła aktywacja tego wariantu współpracy (czekamy na zgode działu obsługi klienta)",
+                "209" => "Błędny numer pos id lub pos auth key",
+                "500" => "Transakcja nie istnieje",
+                "501" => "Brak autoryzacji dla danej transakcji",
+                "502" => "Transakcja rozpoczeta wczesniej",
+                "503" => "Autoryzacja do transakcji była juz przeprowadzana",
+                "504" => "Transakcja anulowana wczesniej",
+                "505" => "Transakcja przekazana do odbioru wczesniej",
+                "506" => "Transakcja juz odebrana",
+                "507" => "Bład podczas zwrotu srodków do klienta",
+                "599" => "Błedny stan transakcji, np. nie mozna uznac transakcji kilka razy lub inny, prosimy o kontakt",
+                "999" => "Inny bład krytyczny - prosimy o kontakt"
+            );
+            $bn["error"] = $error_messages[$get["error"]];
+            $update = @FC_DB::update('payu', array('payu_error'=>$get["error"], 'payu_trans_id'=>$get["transId"], 'payu_pay_type'=>$get["pay_type"]), array('payu_session_id'=> $get["session_id"], 'payu_order_id'=> $get["order_id"]));
+        }
+        $bn["payments"] = false;
         $this->smarty->view('account/weryfikacja.tpl', $bn);
     }
 

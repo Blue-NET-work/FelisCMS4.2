@@ -517,6 +517,10 @@ footer a.bottom_link{
 	overflow:hidden;
 }
 
+#accordion .panel.boxShadow:hover{
+	box-shadow: 0 0 12px rgba(0,0,0,.3);
+}
+
 
 .btn-green,
 .btn-green:active{
@@ -531,3 +535,5 @@ footer a.bottom_link{
   color:#fff;
   text-shadow: 1px 1px rgba(0,0,0,.4);
 }
+
+.panel-group .panel-heading + .panel-collapse .panel-body{border-top:none;}

@@ -39,6 +39,8 @@ $route['panel']    				= 'panel';
 //Dashboard
 $route['auth/(.*)']    			= 'auth/$1';
 $route['auth']    				= 'auth';
+$route['hauth/(.*)']    	    = 'hauth/$1';
+$route['hauth']    				= 'hauth';
 
 $route['okolicznosciowe']    	= 'dashboard/okolicznosciowe';
 $route['oferta_tygodnia']    	= 'dashboard/oferta_tygodnia';

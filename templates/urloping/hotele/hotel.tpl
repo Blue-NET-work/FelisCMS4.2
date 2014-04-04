@@ -86,11 +86,11 @@
             <div class="margin-top-40">
                 <h3>Pakiety</h3>
             {if $pakiety}
-                <table class="table">
+				<div class="panel-group" id="accordion">
                 {foreach from=$pakiety item=item name=pakiety}
 	            	{include file="assets/helpview/_PakietyLista.tpl" item=$item}
                 {/foreach}
-                </table>
+				</div>
             {else}
             	<span class="text-info">Obecnie brak pakietów dla wybranego hotelu</span>
             {/if}

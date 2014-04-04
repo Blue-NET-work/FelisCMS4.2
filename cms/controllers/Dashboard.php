@@ -6,7 +6,6 @@ class Dashboard extends FC_Controller {
     public function __construct(){
         parent::__construct();
         @FC_Request::loadModel(array("Default_model"));
-        @FC_Request::loadLibrary("Facebook_ion_auth");
 	}
 
 
@@ -37,18 +36,6 @@ class Dashboard extends FC_Controller {
 
         	$query["obiekty"][] = $obiekt;
 		}
-
-		if (isset($_GET['code'])){
-
-	     $this->facebook_ion_auth->login();
-	     if (!$this->ion_auth->logged_in())
-	     {
-	           header('Location:/zaloguj.html?alert=facebooklogin');
-	           exit();
-	     }
-
-	     header('Location:/');
-	 }
 
 		$this->smarty->view("index.tpl", $query);
 	}
@@ -114,12 +101,9 @@ class Dashboard extends FC_Controller {
 				$where["p_term"] = $term;
 			}
 
-        	$pakieciki = $this->db->get_where("pakiet", $where)->result_array();
-            foreach($pakieciki as $pakiet){
-            	$pakiety[] = $pakiet;
-            }
+        	$pakieciki = $this->db->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->get_where("pakiet", $where)->result_array();
+            $pakiety = array_merge($pakiety, $pakieciki);
 		}
-
 
 		$query["pakiety"] = $pakiety;
         $query["region"] = $region;
@@ -210,7 +194,14 @@ class Dashboard extends FC_Controller {
 
 //Facebook login
     function loginfacebook(){
-      $this->facebook_ion_auth->login();
+         $this->load->library("Facebook_ion_auth");
+	     $this->facebook_ion_auth->login();
+		if (isset($_GET["code"])){
+		     if (!$this->ion_auth->logged_in())
+			 redirect(base_url(), 'refresh');
+			else
+				redirect(base_url(), 'refresh');
+		}
 	}
 
 
@@ -340,6 +331,136 @@ class Dashboard extends FC_Controller {
 
         $this->smarty->view("account/register.tpl", $query);
 	}
+
+
+
+
+
+    public function payu_raporty(){
+
+        $server = 'www.platnosci.pl';
+        $server_script = '/paygw/ISO/Payment/get';
+        define(PLATNOSCI_POS_ID, 123);
+        define(PLATNOSCI_KEY1, "1234567890123456");
+        define(PLATNOSCI_KEY2, "9123456789012345");
+
+        function get_status($parts){
+          if ($parts[1] != PLATNOSCI_POS_ID) return array('code' => false,'message' => 'błędny numer POS');  //--- bledny numer POS
+              $sig = md5($parts[1].$parts[2].$parts[3].$parts[5].$parts[4].$parts[6].$parts[7].PLATNOSCI_KEY2);
+              if ($parts[8] != $sig) return array('code' => false,'message' => 'błędny podpis');  //--- bledny podpis
+              switch ($parts[5]) {
+                  case 1: return array('code' => $parts[5], 'message' => 'nowa'); break;
+                  case 2: return array('code' => $parts[5], 'message' => 'anulowana'); break;
+                  case 3: return array('code' => $parts[5], 'message' => 'odrzucona'); break;
+                  case 4: return array('code' => $parts[5], 'message' => 'rozpoczęta'); break;
+                  case 5: return array('code' => $parts[5], 'message' => 'oczekuje na odbiór'); break;
+                  case 6: return array('code' => $parts[5], 'message' => 'autoryzacja odmowna'); break;
+                  case 7: return array('code' => $parts[5], 'message' => 'płatność odrzucona'); break;
+                  case 99: return array('code' => $parts[5], 'message' => 'płatność odebrana - zakończona'); break;
+                  case 888: return array('code' => $parts[5], 'message' => 'błędny status'); break;
+                  default: return array('code' => false, 'message' => 'brak statusu'); break;
+          }
+        }
+
+
+        if(!isset($_POST['pos_id']) || !isset($_POST['session_id']) || !isset($_POST['ts']) || !isset($_POST['sig'])) die('ERROR: EMPTY PARAMETERS'); //-- brak wszystkich parametrow
+
+        if ($_POST['pos_id'] != PLATNOSCI_POS_ID) die('ERROR: WRONG POS ID');   //--- błędny numer POS
+
+        $sig = md5( $_POST['pos_id'] . $_POST['session_id'] . $_POST['ts'] . PLATNOSCI_KEY2);
+        if ($_POST['sig'] != $sig) die('ERROR: WRONG SIGNATURE');   //--- błędny podpis
+
+        $ts = time();
+        $sig = md5( PLATNOSCI_POS_ID . $_POST['session_id'] . $ts . PLATNOSCI_KEY1);
+        $parameters = "pos_id=" . PLATNOSCI_POS_ID . "&session_id=" . $_POST['session_id'] . "&ts=" . $ts . "&sig=" . $sig;
+
+        $fsocket = false;
+        $curl = false;
+        $result = false;
+
+        if ( (PHP_VERSION >= 4.3) && ($fp = @fsockopen('ssl://' . $server, 443, $errno, $errstr, 30)) ) {
+         $fsocket = true;
+        } elseif (function_exists('curl_exec')) {
+         $curl = true;
+        }
+
+        if ($fsocket == true) {
+         $header = 'POST ' . $server_script . ' HTTP/1.0' . "\r\n" .
+           'Host: ' . $server . "\r\n" .
+           'Content-Type: application/x-www-form-urlencoded' . "\r\n" .
+           'Content-Length: ' . strlen($parameters) . "\r\n" .
+           'Connection: close' . "\r\n\r\n";
+         @fputs($fp, $header . $parameters);
+         $platnosci_response = '';
+         while (!@feof($fp)) {
+          $res = @fgets($fp, 1024);
+          $platnosci_response .= $res;
+         }
+         @fclose($fp);
+
+        } elseif ($curl == true) {
+         $ch = curl_init();
+         curl_setopt($ch, CURLOPT_URL, "https://" . $server . $server_script);
+         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+         curl_setopt($ch, CURLOPT_HEADER, 0);
+         curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+         curl_setopt($ch, CURLOPT_POST, 1);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+         $platnosci_response = curl_exec($ch);
+         curl_close($ch);
+        } else {
+         die("ERROR: No connect method ...\n");
+        }
+
+
+        if (eregi("<trans>.*<pos_id>([0-9]*)</pos_id>.*<session_id>(.*)</session_id>.*<order_id>(.*)</order_id>.*<amount>([0-9]*)</amount>.*<status>([0-9]*)</status>.*<desc>(.*)</desc>.*<ts>([0-9]*)</ts>.*<sig>([a-z0-9]*)</sig>.*</trans>", $platnosci_response, $parts))  $result = get_status($parts);
+        if ( $result['code'] ) {  //--- rozpoznany status transakcji
+
+            $pos_id = $parts[1];
+            $session_id = $parts[2];
+            $order_id = $parts[3];
+            $amount = $parts[4];  //-- w groszach
+            $status = $parts[5];
+            $desc = $parts[6];
+            $ts = $parts[7];
+            $sig = $parts[8];
+            /* TODO: zmiana statusu transakcji w systemie Sklepu */
+
+            /*  przykladowo:
+            if ( $result['code'] == '99' ) {
+                if ( rozliczamy_zamowienie_srodki_wplynely ) {
+                    // udalo sie zapisac dane wiec odsylamy OK
+                    echo "OK";
+                    exit;
+                }
+            } else if ( $result['code'] == '2' ) {
+            // transakcja anulowana mozemy również anulować zamowienie
+            } else {
+            // inne akcje
+            }
+            */
+
+            // jezeli wszytskie operacje wykonane poprawnie wiec odsylamy ok
+            // w innym przypadku należy wygenerować błąd
+            // if ( wszystko_ok ) {
+                echo "OK";
+                exit;
+            // } else {
+            //
+            // }
+
+
+        } else {
+            /* TODO: obsługa powiadamiania o błędnych statusach transakcji*/
+            echo "ERROR: Blad danych ....\n";
+            echo "code=" . $result['code'] . " message=" . $result['message'] . "\n";
+            echo $platnosci_response;
+            // powiadomienie bedzie wysłane ponownie przez platnosci.pl
+            // ewentualnie dodajemy sobie jakis wpis do logow ...
+        }
+    }
+
 
 /*
  *

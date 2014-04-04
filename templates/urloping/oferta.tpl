@@ -51,11 +51,11 @@
               </div>
 
             {if $pakiety}
-                <table class="table boxAction">
-                {foreach from=$pakiety item=item name=pakiety}
+				<div class="panel-group" id="accordion">
+	            {foreach from=$pakiety item=item name=pakiety}
 	            	{include file="assets/helpview/_PakietyLista.tpl" item=$item}
-                {/foreach}
-                </table>
+	            {/foreach}
+				</div>
             {else}
             	<span class="text-info">Nie ma jeszcze żadnego pakietu.</span>
             {/if}
