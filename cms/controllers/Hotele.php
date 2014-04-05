@@ -8,6 +8,8 @@ class Hotele extends FC_Controller {
         @FC_Request::loadModel(array("Default_model"));
     }
 
+    private $_voit = "";
+
 	public function index(){
 		$query["hotele"] = $this->db->join('hotels_photo', 'hp_parent_id = id')->group_by('id')->get("hotels")->result_array();
 		$this->smarty->view("hotele/index.tpl", $query);
@@ -28,6 +30,21 @@ class Hotele extends FC_Controller {
 		$query["tags"] = explode(",",$query["tags"]);
 
 		$pakiety = $this->db->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->get_where("pakiet", array("p_hotels"=>$id))->result_array();
+
+        $voits = $this->db->get_where('hotels_voit', array("hv_hid"=>$id))->result_array();
+
+        $i = 0;
+
+        foreach($voits as $voit){
+			if($i != 0){
+            	$this->_voit .=", ";
+			}
+			$this->_voit .= $voit["hv_voit"];
+			$i++;
+        }
+
+        $query["voit"] = $this->srednia($this->_voit);
+
         $this->smarty->assigns("pakiety", $pakiety);
         $this->smarty->assigns("hotels_photo", $hotels_photo);
 
@@ -37,9 +54,14 @@ class Hotele extends FC_Controller {
 // Hotel ocen
 	public function ocena($id, $voit){
 		$item = array("hv_hid"=>$id, "hv_voit"=>$voit);
-    	@FC_DB::insert('pages', $item);
+    	@FC_DB::insert('hotels_voit', $item);
         $referer = @FC_Request::server("HTTP_REFERER");
         header('Location: '.$referer);
 	}
+
+	function srednia(){
+		return ceil(array_sum(func_get_args())/func_num_args());
+	}
+
 
 }

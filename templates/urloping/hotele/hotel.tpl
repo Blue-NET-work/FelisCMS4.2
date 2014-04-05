@@ -69,7 +69,7 @@
             		</div>
 
             		<div id="rating_container">
-            			<p class="center_white">Brak ocen</p>
+            			<p class="center_white">{if $voit != 0}{$voit} / 5{else}Brak ocen{/if}</p>
             			<p class="ocen_info">* oceń po zalogowaniu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             			{*<span class="rating margin-left-20">
 				          <a href="{$base_url}hotele/ocena/{$id}/1" class="fa fa-star"></a>

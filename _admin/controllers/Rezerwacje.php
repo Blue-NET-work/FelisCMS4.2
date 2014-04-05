@@ -10,6 +10,7 @@ class Rezerwacje extends FC_Controller {
 	}
 
     public function index(){
+    	$query = false;
         $query["pages"] = $this->Rezerwacje_model->pagesList();
         @FC_Request::smartyView('rezerwacje/list.tpl', $query);
     }

@@ -3,6 +3,7 @@ class Rezerwacje_model extends CI_Model{
 
 // Budowanie nazw kategorii dla listy podstron
     public function pagesList(){
+    	$pages = false;
 
         foreach($this->db->get("reservation")->result_array() as $key=>$page){
 

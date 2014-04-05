@@ -93,6 +93,8 @@ class Panel extends FC_Controller {
 
 // Rezerwacje
 	public function rezerwacje(){
+		$query["rezerwacje"] = false;
+
 		$user = $this->ion_auth->user()->row();
 		$rezerwacje = $this->db->get_where("reservation", array("r_uid"=>$user->id))->result_array();
 

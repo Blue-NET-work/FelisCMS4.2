@@ -35,7 +35,7 @@
                             <th style="min-width:30px;">ID</th>
                             <th>Użytkownik</th>
                             <th>Nazwa pakietu</th>
-                            <th>Przelewy24 ID</th>
+                            <th>PayU ID</th>
                             <th>{lang line="default_adres"}</th>
                             <th>Status realizacji</th>
                             {if $service_multilang == 'TRUE'}<th>{lang line="default_sidebar_access_lang"}</th>{/if}
@@ -43,13 +43,14 @@
                         </tr>
                       </thead>
                       <tbody>
+                      {if $pages}
                         {foreach from=$pages item=item name=pages}
                             <!-- wpis -->
                                 <tr>
                                     <td>{$item.r_id}</td>
                                     <td>{$item.u_name}</td>
                                     <td>{$item.p_name}</td>
-                                    <td>{$item.p_p24}</td>
+                                    <td>{$item.p_payu}</td>
                                     <td nowrap="nowrap"><a href="#" data-href="{$base_url}../pakiet/{$item.r_pid}.html" class="preview with-tooltip" title="{lang line="default_sidebar_access_preview"}" data-title="{$item.p_name}">pakiet/{$item.r_pid}.html</a></td>
                                     <td id="r_status{$item.r_id}">
 		                            {if $item.r_status == 2}
@@ -69,6 +70,7 @@
                                 </tr>
                             <!-- koniec wpisu -->
                         {/foreach}
+                      {/if}
                       </tbody>
                     </table>
                 </div>
