@@ -30,7 +30,7 @@ class Users extends CI_Controller {
                     $this->form_validation->set_rules('item[alias]', 'lang:default_adres', 'required');
 
                     if ($this->form_validation->run() == true){
-                        $query["update"] = @FC_DB::update('pages', $item, array("id"=>$id));
+                        $query["update"] = @FC_DB::update('users', $item, array("id"=>$id));
 
                         if($query["update"] == 1) $query["messages"] = array('head' => lang('default_success'), "info"=>lang('pages_edit_success'), "icon"=>"accept.png");
                         else $query["messages"] = array('head' => lang('default_error'), "info"=>lang('pages_edit_error'), "icon"=>"warning.png");
@@ -49,7 +49,7 @@ class Users extends CI_Controller {
     public function you(){
         $query["message"] = "message";
         if(@FC_Request::post('item')){
-            print_r(@FC_Request::post('item'));
+            //print_r(@FC_Request::post('item'));
         }
         $query["user"] = $this->ion_auth->user()->row();
         @FC_Request::smartyView("users/you.tpl", $query);

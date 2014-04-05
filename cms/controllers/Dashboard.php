@@ -8,6 +8,8 @@ class Dashboard extends FC_Controller {
         @FC_Request::loadModel(array("Default_model"));
 	}
 
+    private $_voit_sum = "";
+    private $_voit_item = 0;
 
 	public function index(){
 		$query["miasta"] = $this->db->get("city")->result_array();
@@ -80,6 +82,14 @@ class Dashboard extends FC_Controller {
 		$query["pakiety"] = $this->db->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->where("p_id != {$id}")->get_where("pakiet", array("p_hotels"=>$query["pakiet"]["p_hotels"]))->result_array();
         //printr($query["pakiety"]);
 		$query["hotel"]["tags"] = explode(",",$query["hotel"]["tags"]);
+
+		$voits = $this->db->get_where('hotels_voit', array("hv_hid"=>$query["hotel"]["id"]))->result_array();
+        foreach($voits as $voit){
+            $this->_voit_sum = $this->_voit_sum + $voit["hv_voit"];
+            $this->_voit_item++;
+        }
+
+        $query["hotel"]["voit"] = $this->_voit_sum / $this->_voit_item;
 
 		$query["pakiet_photo"] = $this->db->get_where("pakiet_photo", array("pp_parent_id"=>$id))->result_array();
 		$query["hotels_photo"] = $this->db->get_where("hotels_photo", array("hp_parent_id"=>$query["hotel"]["id"]))->result_array();

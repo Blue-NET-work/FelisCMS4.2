@@ -49,6 +49,11 @@
     {include file="assets/helpview/sidebar.tpl"}
 
 {include file="assets/helpview/footer.tpl"}
+<script src="{$base_url}../felis/modules/ckfinder/ckfinder.js"></script>
 <script src="{$base_url}../felis/modules/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+	var editor = CKEDITOR.replace( 'item[a_description]' );
+	CKFinder.setupCKEditor( editor, "{$base_url}../felis/modules/ckfinder/" );
+</script>
 </body>
 </html>

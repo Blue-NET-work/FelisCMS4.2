@@ -71,13 +71,15 @@
             		<div id="rating_container">
             			<p class="center_white">{if $voit != 0}{$voit} / 5{else}Brak ocen{/if}</p>
             			<p class="ocen_info">* oceń po zalogowaniu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-            			{*<span class="rating margin-left-20">
-				          <a href="{$base_url}hotele/ocena/{$id}/1" class="fa fa-star"></a>
-				          <a href="{$base_url}hotele/ocena/{$id}/2" class="fa fa-star"></a>
-				          <a href="{$base_url}hotele/ocena/{$id}/3" class="fa fa-star"></a>
-				          <a href="{$base_url}hotele/ocena/{$id}/4" class="fa fa-star"></a>
-				          <a href="{$base_url}hotele/ocena/{$id}/5" class="fa fa-star"></a>
-				        </span> *}
+                        {if $userLogIn}
+            			<span class="rating margin-top-25">
+				          <a href="{$base_url}hotele/ocena/{$id}/1" class="fa fa-star" title="1"></a>
+				          <a href="{$base_url}hotele/ocena/{$id}/2" class="fa fa-star" title="2"></a>
+				          <a href="{$base_url}hotele/ocena/{$id}/3" class="fa fa-star" title="3"></a>
+				          <a href="{$base_url}hotele/ocena/{$id}/4" class="fa fa-star" title="4"></a>
+				          <a href="{$base_url}hotele/ocena/{$id}/5" class="fa fa-star" title="5"></a>
+				        </span>
+				        {/if}
             		</div>
 
             	</div>

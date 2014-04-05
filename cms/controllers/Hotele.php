@@ -8,7 +8,8 @@ class Hotele extends FC_Controller {
         @FC_Request::loadModel(array("Default_model"));
     }
 
-    private $_voit = "";
+    private $_voit_sum = "";
+    private $_voit_item = 0;
 
 	public function index(){
 		$query["hotele"] = $this->db->join('hotels_photo', 'hp_parent_id = id')->group_by('id')->get("hotels")->result_array();
@@ -33,17 +34,12 @@ class Hotele extends FC_Controller {
 
         $voits = $this->db->get_where('hotels_voit', array("hv_hid"=>$id))->result_array();
 
-        $i = 0;
-
         foreach($voits as $voit){
-			if($i != 0){
-            	$this->_voit .=", ";
-			}
-			$this->_voit .= $voit["hv_voit"];
-			$i++;
+            $this->_voit_sum = $this->_voit_sum + $voit["hv_voit"];
+            $this->_voit_item++;
         }
 
-        $query["voit"] = $this->srednia($this->_voit);
+        $query["voit"] = $this->_voit_sum / $this->_voit_item;
 
         $this->smarty->assigns("pakiety", $pakiety);
         $this->smarty->assigns("hotels_photo", $hotels_photo);
@@ -57,10 +53,6 @@ class Hotele extends FC_Controller {
     	@FC_DB::insert('hotels_voit', $item);
         $referer = @FC_Request::server("HTTP_REFERER");
         header('Location: '.$referer);
-	}
-
-	function srednia(){
-		return ceil(array_sum(func_get_args())/func_num_args());
 	}
 
 
