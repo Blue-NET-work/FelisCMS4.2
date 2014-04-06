@@ -91,17 +91,17 @@ $('.actions .felisDel').data('confirm-options', {
                 if (response.status == 'ok') {
                     thisTr.fadeAndRemove(),
                     notify('{lang line="default_success"}', "{lang line='users_delete_success'}", {
-                        icon: '{$base_url}public/img/icons/coquette/48x48/accept.png'
+	                    icon: '{$TEMPLATES}assets/img/icons/woocons/glyph-check.png'
                     });
                 } else{
                     notify('{lang line="default_error"}', "{lang line='users_delete_error'}", {
-                        icon: '{$base_url}public/img/icons/coquette/48x48/warning.png'
+	            icon: '{$TEMPLATES}assets/img/icons/woocons/stop.png'
                     });
                 }
             },
           error: function(){
             notify('{lang line="default_error"}', "{lang line='users_delete_error'}", {
-                icon: '{$base_url}public/img/icons/coquette/48x48/warning.png'
+	            icon: '{$TEMPLATES}assets/img/icons/woocons/stop.png'
             });
           }
         });

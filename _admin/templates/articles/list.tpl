@@ -77,5 +77,9 @@
     {include file="assets/helpview/sidebar.tpl"}
 
 {include file="assets/helpview/footer.tpl"}
+
+    <script>
+    {include file="assets/js/scripts/felis.function.articles.js"}
+    </script>
 </body>
 </html>

@@ -77,8 +77,8 @@ class Articles extends FC_Controller {
         $response = array('status' => 'ok', 'message' => array());
         $date = $this->input->post("date");
         if($date){}else $response['status']="error";
-        $where = array('id'=>$date["id"]);
-        $query = $this->db->delete('pages', $where);
+        $where = array('a_id'=>$date["id"]);
+        $query = $this->db->delete('articles', $where);
         $response["message"]['action'] = $query;
         $response["message"]['post'] = $date;
 		return $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));
@@ -89,9 +89,9 @@ class Articles extends FC_Controller {
         $response = array('status' => 'ok', 'message' => array());
         $date = $this->input->post("date");
         if($date){}else $response['status']="error";
-        $data = array('active' => '1');
-        $where = "`id` = {$date["id"]}";
-        $query = $this->db->update_string('pages', $data, $where);
+        $data = array('a_active' => '1');
+        $where = "`a_id` = {$date["id"]}";
+        $query = $this->db->update_string('articles', $data, $where);
         $query = $this->db->query($query);
         $response["message"]['action'] = $query;
         $response["message"]['post'] = $date;
@@ -103,9 +103,9 @@ class Articles extends FC_Controller {
         $response = array('status' => 'ok', 'message' => array());
         $date = $this->input->post("date");
         if($date){}else $response['status']="error";
-        $data = array('active' => '0');
-        $where = "`id` = {$date["id"]}";
-        $query = $this->db->update_string('pages', $data, $where);
+        $data = array('a_active' => '0');
+        $where = "`a_id` = {$date["id"]}";
+        $query = $this->db->update_string('articles', $data, $where);
         $query = $this->db->query($query);
         $response["message"]['action'] = $query;
         $response["message"]['post'] = $date;
