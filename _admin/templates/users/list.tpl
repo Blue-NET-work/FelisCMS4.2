@@ -67,7 +67,7 @@
                                 {if $item->active == 0}
                                     <a  id="status_{$item->id}" title="{lang line="default_active"}" data-item="{$item->id}" href="#" class="felisAccept glyphicon glyphicon-ok-circle with-tooltip"></a>
                                 {else}
-                                    <a id="status_{$item->id}" title="{lang line="default_block"}" data-item="{$item->id}" href="#" class="felis glyphicon glyphicon-remove-circle with-tooltip"></a>
+                                    <a id="status_{$item->id}" title="{lang line="default_block"}" data-item="{$item->id}" href="#" class="felis glyphicon glyphicon-ban-circle with-tooltip"></a>
                                 {/if}
                                     <a href="#" data-item="{$item->id}" title="{lang line="default_delete"}" class="felisDel glyphicon glyphicon-trash with-tooltip confirm"></a>
                                 </td>

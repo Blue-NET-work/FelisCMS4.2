@@ -83,4 +83,16 @@ class Users extends CI_Controller {
 		return $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));
     }
 
+// Usuwanie podstrony
+    public function del(){
+        $response = array('status' => 'ok', 'message' => array());
+        $date = $this->input->post("date");
+        if($date){}else $response['status']="error";
+        $where = array('id'=>$date["id"]);
+        $query = $this->db->delete('users', $where);
+        $response["message"]['action'] = $query;
+        $response["message"]['post'] = $date;
+		return $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));
+    }
+
 }
