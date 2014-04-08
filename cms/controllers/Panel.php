@@ -385,7 +385,7 @@ class Panel extends FC_Controller {
         if($basket){
         	foreach ($basket as $product) {
                 $product_id = explode("_",$product["id"]);
-                $order_date["pp_pid"] = $order_id;
+                //$order_date["pp_pid"] = $order_id;
                 $order_date["pp_name"] = $product["name"];
                 $order_date["pp_netto"] = $product["price"] / 1.23;
                 $order_date["pp_value_netto"] = $product["subtotal"] / 1.23;
@@ -396,14 +396,9 @@ class Panel extends FC_Controller {
                 $order_date["pp_qty"] = $product["qty"];
                 $order_date["pp_brutto"] = $product["price"];
                 $order_date["pp_value_brutto"] = $product["subtotal"];
-                if($product_id[0] == "odnowienie"){
-                    $order_date["pp_period"] = $product_id[3];
-                }
-                else{
-                    $order_date["pp_period"] = $product_id[2];
-                }
+                //$order_date["pp_period"] = $product_id[2];
                 $order_date["pp_basket_id"] = $product["id"];
-                $order_data = array('pp_basket_id'=>$product["id"], 'pp_period'=>$order_date["pp_period"], 'pp_pid'=>$order_id, 'pp_name'=>$product["name"], 'pp_netto'=>$order_date["pp_netto"], 'pp_value_netto'=>$order_date["pp_value_netto"], 'pp_price_vat'=>$order_date["pp_price_vat"], 'pp_jm'=>$order_date["pp_jm"], 'pp_vat'=>$order_date["pp_vat"], 'pp_value_vat'=>$order_date["pp_value_vat"], 'pp_qty'=>$order_date["pp_qty"], 'pp_brutto'=>$order_date["pp_brutto"], 'pp_value_brutto'=>$order_date["pp_value_brutto"]);
+                //$order_data = array('pp_basket_id'=>$product["id"], 'pp_period'=>$order_date["pp_period"], 'pp_pid'=>$order_id, 'pp_name'=>$product["name"], 'pp_netto'=>$order_date["pp_netto"], 'pp_value_netto'=>$order_date["pp_value_netto"], 'pp_price_vat'=>$order_date["pp_price_vat"], 'pp_jm'=>$order_date["pp_jm"], 'pp_vat'=>$order_date["pp_vat"], 'pp_value_vat'=>$order_date["pp_value_vat"], 'pp_qty'=>$order_date["pp_qty"], 'pp_brutto'=>$order_date["pp_brutto"], 'pp_value_brutto'=>$order_date["pp_value_brutto"]);
                 //$order_product = FC_DB::insert('payment_position', $order_data);
                 //$order_date["pp_id"] = $this->db->insert_id();
             }

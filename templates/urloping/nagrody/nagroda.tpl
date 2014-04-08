@@ -47,9 +47,9 @@
 	                    <form class="margin-top-20" action="{$base_url}panel/dodaj.html" method="post">
 					        <input type="hidden" name="date[id]" value="nagroda_{$id}">
 					        <input type="hidden" name="date[name]" value="{$name}">
-					        <div>
+					        <div class="margin-bottom-20">
 					        <strong>Ilość: </strong>
-					        <input type="text" name="date[qty]" value="1">
+					        	<input type="text" class="form-control input-sm" name="date[qty]" value="1">
                             </div>
 					        <select class="form-control input-sm" name="date[price]">
 							{foreach from=$nagroda_price item=item name=nagroda_price}

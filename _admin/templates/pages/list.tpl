@@ -1,5 +1,4 @@
 {include file="assets/helpview/head.tpl" titleTag="{lang line='pages_titleTag'}"}
-
     <link rel="stylesheet" href="{$TEMPLATES}assets/js/libs/DataTables/jquery.dataTables-simple.css">
 </head>
 <body class="clearfix with-menu">

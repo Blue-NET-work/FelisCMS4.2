@@ -52,14 +52,14 @@
                 {else}
                     <form class="form-horizontal" id="logowanie" action="{$base_url}zaloguj.html" role="form" method="POST">
                       <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">Adres e-mail</label>
-                        <div class="col-sm-8">
+                        <label for="inputEmail3" class="col-sm-5 control-label">Adres e-mail</label>
+                        <div class="col-sm-7">
                           <input type="text" name="item[login]" class="form-control" id="inputEmail3" placeholder="Adres e-mail">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-4 control-label">Hasło</label>
-                        <div class="col-sm-8">
+                        <label for="inputPassword3" class="col-sm-5 control-label">Hasło</label>
+                        <div class="col-sm-7">
                           <input type="password" name="item[password]" class="form-control" id="inputPassword3" placeholder="Hasło">
                         </div>
                       </div>

@@ -1,4 +1,5 @@
 {include file="assets/helpview/head.tpl" titleTag="{lang line='pages_titleTag'}"}
+    <link rel="stylesheet" href="{$TEMPLATES}assets/js/libs/DataTables/jquery.dataTables-simple.css">
 </head>
 <body class="clearfix with-menu">
 
@@ -65,7 +66,7 @@
                                 <td class="actions">
                                     <a href="{$base_url}users/edit/{$item->id}.html" title="{lang line="default_edit"}" class="felisEdit with-tooltip glyphicon glyphicon-pencil"></a>
                                 {if $item->active == 0}
-                                    <a  id="status_{$item->id}" title="{lang line="default_active"}" data-item="{$item->id}" href="#" class="felisAccept glyphicon glyphicon-ok-circle with-tooltip"></a>
+                                    <a  id="status_{$item->id}" title="{lang line="default_active"}" data-item="{$item->id}" href="#" class="felisAccept glyphicon glyphicon-ok with-tooltip"></a>
                                 {else}
                                     <a id="status_{$item->id}" title="{lang line="default_block"}" data-item="{$item->id}" href="#" class="felis glyphicon glyphicon-ban-circle with-tooltip"></a>
                                 {/if}

@@ -27,8 +27,8 @@
                     </div>
                     <!-- ./miasta -->
                     <!-- facebook -->
-                    <h5><a title="Zobacz nasz profil na facebooku" href="https://www.facebook.com/pages/urlopingcom/411418285658498?fref=ts">Polub nas na facebooku</a></h5>
-					<div class="fb-like fb_iframe_widget" data-href="https://www.facebook.com/pages/urlopingcom/411418285658498?fref=ts" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                    <h5><a title="Zobacz nasz profil na facebooku" href="https://www.facebook.com/urlopingcom">Polub nas na facebooku</a></h5>
+					<div class="fb-like fb_iframe_widget" data-href="https://www.facebook.com/urlopingcom" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                     <!-- ./facebook -->
                 </div>
                 <div class="col-md-5 margin-top-20">
