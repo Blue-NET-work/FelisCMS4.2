@@ -25,6 +25,7 @@ class Hotele extends FC_Controller {
 
 // Hotel
 	public function hotel($id){
+		$query["voit"] = 0;
 		$query = $this->db->get_where("hotels", array("id"=>$id))->row_array();
 		$hotels_photo = $this->db->get_where("hotels_photo", array("hp_parent_id"=>$id))->result_array();
 
@@ -34,12 +35,14 @@ class Hotele extends FC_Controller {
 
         $voits = $this->db->get_where('hotels_voit', array("hv_hid"=>$id))->result_array();
 
-        foreach($voits as $voit){
-            $this->_voit_sum = $this->_voit_sum + $voit["hv_voit"];
-            $this->_voit_item++;
-        }
+        if($voits){
+	        foreach($voits as $voit){
+	            $this->_voit_sum = $this->_voit_sum + $voit["hv_voit"];
+	            $this->_voit_item++;
+	        }
 
-        $query["voit"] = $this->_voit_sum / $this->_voit_item;
+	        $query["voit"] = $this->_voit_sum / $this->_voit_item;
+		}
 
         $this->smarty->assigns("pakiety", $pakiety);
         $this->smarty->assigns("hotels_photo", $hotels_photo);
@@ -49,8 +52,10 @@ class Hotele extends FC_Controller {
 
 // Hotel ocen
 	public function ocena($id, $voit){
-		$item = array("hv_hid"=>$id, "hv_voit"=>$voit);
-    	@FC_DB::insert('hotels_voit', $item);
+		$item = array("hv_hid"=>$id, "hv_voit"=>$voit, "hv_ip"=> $this->input->ip_address());
+		if(!$this->db->get_where('hotels_voit', array("hv_hid"=>$id, "hv_ip"=> $this->input->ip_address()))->row_array()){
+    		@FC_DB::insert('hotels_voit', $item);
+		}
         $referer = @FC_Request::server("HTTP_REFERER");
         header('Location: '.$referer);
 	}

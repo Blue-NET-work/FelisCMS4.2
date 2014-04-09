@@ -155,6 +155,7 @@ class Dashboard extends FC_Controller {
 
 // Logowanie
     public function sign_in(){
+    	$messages = false;
         $this->form_validation->set_error_delimiters("","<span style='padding-right:5px;'></span>");
 
         @FC_Request::loadLang("felis_login");
@@ -164,7 +165,7 @@ class Dashboard extends FC_Controller {
             if(isset($msg['text']))$messages = $msg;
             else $messages = array('boxClass' => "alert-danger", 'text'=>"{$msg}");
         }
-        else $messages = array('boxClass' => "alert-info", 'text'=>$this->lang->line("login_require_a_login"));
+        //else $messages = array('boxClass' => "alert-info", 'text'=>$this->lang->line("login_require_a_login"));
 
         if ($this->ion_auth->logged_in())
             $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($respond["logged"] = true));
@@ -222,7 +223,7 @@ class Dashboard extends FC_Controller {
 		{
 			//redirect them to the auth page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("/zaloguj.html", 'refresh');
+			redirect("/zaloguj", 'refresh');
 		}
 		else
 		{
@@ -234,7 +235,7 @@ class Dashboard extends FC_Controller {
 
 // Rejestracja
 	public function register(){
-		$messages = false;
+		$messages = array('boxClass' => "alert-info", 'text'=>"Prosimy o wypełnienie poniższych pól autentycznymi danymi.");
 
         if($this->session->flashdata('message')){
             $msg = $this->session->flashdata('message');
@@ -280,7 +281,7 @@ class Dashboard extends FC_Controller {
 			//display the create user form
 			//set the flash data error message if there is one
             $system_messages = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-            $messages = array('boxClass' => "alert-danger", 'text'=>"{$system_messages}", 'action'=>"shake");
+            if($system_messages) $messages = array('boxClass' => "alert-danger", 'text'=>"{$system_messages}");
 
 			$this->data['first_name'] = array(
 				'name'  => 'first_name',
