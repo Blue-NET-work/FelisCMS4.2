@@ -46,8 +46,8 @@
                 {if $userLogIn}
                 <div class="padding-20 margin-top-10 margin-bottom-30 no-left-padding no-right-padding">
                     <p>{$userLogIn.first_name} <b>{$userLogIn.last_name}</b></p>
-                    <a href="{$base_url}panel.html">Moje Konto</a>
-                    <a href="{$base_url}wyloguj.html">wyloguj</a>
+                    <a href="{$base_url}panel/koszyk.html">Mój Koszyk</a>  |  <a href="{$base_url}panel.html">Moje Konto</a>
+                    <p><a href="{$base_url}wyloguj.html">Wyloguj</a></p>
                 </div>
                 {else}
                     <form class="form-horizontal" id="logowanie" action="{$base_url}zaloguj.html" role="form" method="POST">

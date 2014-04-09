@@ -28,7 +28,7 @@
 						  <ol class="carousel-indicators">
 						  {$i = 0}
 						{foreach from=$hotels_photo item=item name=hotels_photo}
-						    <li {if $smarty.foreach.pakiet_photo.first}class="active"{/if} data-slide-to="{$i++}" data-target="#article-photo-carousel">
+						    <li {if $smarty.foreach.hotels_photo.first}class="active"{/if} data-slide-to="{$i++}" data-target="#article-photo-carousel">
 						      {html_image file="{$uploads}images/hotels/thumb_70/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.hp_alt}" title="{$item.hp_title}"}
 						    </li>
 						{/foreach}
