@@ -110,7 +110,11 @@
 .fancybox-nav {
 	position: absolute;
 	top: 0;
+<<<<<<< HEAD
 	width: 5%;
+=======
+	width: 40%;
+>>>>>>> 7a1246b4feeaee0749ede34089314f36eca92c3a
 	height: 100%;
 	cursor: pointer;
 	text-decoration: none;

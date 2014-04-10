@@ -17,6 +17,7 @@
 	<link href="{$TEMPLATES}assets/css/style.css" rel="stylesheet" type="text/css">
 	<link href="{$TEMPLATES}assets/cookie/main.css" rel="stylesheet" type="text/css">
 
+<<<<<<< HEAD
 	<!-- Add fancyBox -->
 	<link rel="stylesheet" href="{$TEMPLATES}assets/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 	<link rel="stylesheet" href="{$TEMPLATES}assets/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
@@ -25,6 +26,10 @@
 {block name="head"}{/block}
 
 
+=======
+{block name="head"}{/block}
+
+>>>>>>> 7a1246b4feeaee0749ede34089314f36eca92c3a
 </head>
 <body>
 
@@ -48,6 +53,7 @@
     <script src="{$TEMPLATES}assets/js/bootstrap.js"></script>
     <script src="{$TEMPLATES}assets/cookie/support-opt-in.js"></script>
     <script src="{$TEMPLATES}assets/cookie/require-opt-in.js"></script>
+<<<<<<< HEAD
 
 	<!-- Add mousewheel plugin (this is optional) -->
 	<script type="text/javascript" src="{$TEMPLATES}assets/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
@@ -78,5 +84,17 @@
 
 {block name="jQuery"}{/block}
 
+=======
+{block name="jQuery"}{/block}
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1&appId=218952124931180";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+>>>>>>> 7a1246b4feeaee0749ede34089314f36eca92c3a
 </body>
 </html>

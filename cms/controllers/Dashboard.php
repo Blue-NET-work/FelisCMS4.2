@@ -18,8 +18,11 @@ class Dashboard extends FC_Controller {
         else{
 			if($alias == "kontakt"){
 				$this->smarty->view("pages/pages_kontakt.tpl", $query);
+<<<<<<< HEAD
 			}elseif($alias == "galeria"){
 				$this->smarty->view("pages/galeria.tpl", $query);
+=======
+>>>>>>> 7a1246b4feeaee0749ede34089314f36eca92c3a
 			}else $this->smarty->view("pages/pages.tpl", $query);
         }
 	}

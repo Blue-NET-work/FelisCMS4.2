@@ -5,7 +5,11 @@
 /* CSS Document */
 
 html{
+<<<<<<< HEAD
 	background:url(../img/bg.jpg) no-repeat right center fixed;
+=======
+	background:url(../img/bg.jpg) no-repeat right center;
+>>>>>>> 7a1246b4feeaee0749ede34089314f36eca92c3a
 	background-size:86%;
 	height:100%;
 }
@@ -13,15 +17,26 @@ html{
 body{
 	background:transparent;
 	min-height:100%;
+<<<<<<< HEAD
 	font-family: 'Roboto', sans-serif;
+=======
+>>>>>>> 7a1246b4feeaee0749ede34089314f36eca92c3a
 }
 
 .sidebar{
 	background:#120a07 url(../img/belka.jpg) no-repeat;
+<<<<<<< HEAD
 	position:fixed;
 	width:284px;
 	height:100%;
 	color:#fff;
+=======
+	position:absolute;
+	width:284px;
+	height:100%;
+	color:#fff;
+	font-family: 'Roboto', sans-serif;
+>>>>>>> 7a1246b4feeaee0749ede34089314f36eca92c3a
 	border:none;
 	box-shadow:none;
 	border-radius:0;
@@ -108,6 +123,7 @@ body{
 	height:197px;
 	top:10px;
 	left:95px;
+<<<<<<< HEAD
 }
 
 .panel.panel-black{
@@ -123,4 +139,6 @@ body{
 	color:#ffdca5;
 	font-size: 30px;
 	text-shadow: 1px 1px rgba(255,255,255,.2);
+=======
+>>>>>>> 7a1246b4feeaee0749ede34089314f36eca92c3a
 }
