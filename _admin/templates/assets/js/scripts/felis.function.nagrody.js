@@ -75,7 +75,7 @@ $('.actions .felisDel').data('confirm-options', {
     onConfirm: function()
     {
         // Remove element
-        var url = "{$base_url}hotels/del.html",
+        var url = "{$base_url}nagrody/del.html",
             idItem = $(this).attr("data-item"),
             thisTr = $(this).closest('tr');
 

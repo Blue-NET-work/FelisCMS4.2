@@ -69,6 +69,30 @@ class Nagrody extends FC_Controller {
         @FC_Request::smartyView('nagrody/edit.tpl', $query);
     }
 
+// Lista zamówionych
+	public function zamowione(){
+        $query["pages"] = @FC_DB::table("payment");
+        foreach($query["pages"] as $key => $item){
+			$user = $this->ion_auth->user($item["p_uid"])->row();
+			$query["pages"][$key]["first_name"] = $user->first_name;
+			$query["pages"][$key]["last_name"] = $user->last_name;
+        }
+
+        @FC_Request::smartyView('nagrody/list_zamowien.tpl', $query);
+	}
+
+// Zamówienie
+	public function zamowienie($id){
+        $query["payment"] = @FC_DB::getData("payment", array("p_id"=>$id));
+		$user = $this->ion_auth->user($query["payment"]["p_uid"])->row();
+		$query["payment"]["first_name"] = $user->first_name;
+		$query["payment"]["last_name"] = $user->last_name;
+
+        $query["payment_position"] = @FC_DB::getWhere("payment_position", array("pp_pid"=>$id));
+
+        @FC_Request::smartyView('nagrody/zamowienie.tpl', $query);
+	}
+
 // Usuwanie podstrony
     public function del(){
         $response = array('status' => 'ok', 'message' => array());

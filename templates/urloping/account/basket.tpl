@@ -41,7 +41,7 @@
 					                    {$item.qty}
 					                    <a href="{$base_url}panel/qty_remove/{$item.rowid}/{$item.qty}.html" class="qtyRemove"><i class="fa fa-minus-circle"></i></a>
 					                  </td>
-					                  <td class="text-center">{$item["price"]} zł</td>
+					                  <td class="text-center">{$item["price"]} zł / {$item["point"]} pkt</td>
 					                  <td class="text-right">{$item["subtotal"]} zł</td>
 					                  <td class="text-center"><a href="{$base_url}panel/remove/{$item.rowid}.html" class="coquette16-delete"><i class="fa fa-trash-o"></i></a></td>
 					                </tr>
@@ -57,7 +57,7 @@
 					            {if $basket_item}
 					            <div class="row">
 					                <div class="col-md-12">
-					                    <p class="text-right"><span class="label label-info">Razem: {$basket_total} pkt </span></p>
+					                    <p class="text-right"><span class="label label-info">Razem: {$basket_total} zł</span></p>
 					                    <p class="text-right">Łącznie: {$basket_items} szt.</p>
 					                </div>
 					            </div>

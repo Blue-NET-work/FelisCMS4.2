@@ -290,7 +290,7 @@
 			$('.pakwypmap-map ul.regionslist>li>a').fancybox({ 'autoDimensions' : true });
 		};
 
-			$('#slider1').tinycarousel();
+			$('#slider1').tinycarousel({ interval: true });
 	});
 	</script>
 {/block}

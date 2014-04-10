@@ -45,17 +45,18 @@
 	                    {$description}
 
 	                    <form class="margin-top-20" action="{$base_url}panel/dodaj.html" method="post">
-					        <input type="hidden" name="date[id]" value="nagroda_{$id}">
+					        <input type="hidden" name="date[id]" value="">
 					        <input type="hidden" name="date[name]" value="{$name}">
 					        <div class="margin-bottom-20">
 					        <strong>Ilość: </strong>
 					        	<input type="text" class="form-control input-sm" name="date[qty]" value="1">
                             </div>
-					        <select class="form-control input-sm" name="date[price]">
+					        <select class="form-control input-sm" name="date[id]" id="option">
 							{foreach from=$nagroda_price item=item name=nagroda_price}
-								<option value="{$item.npe_price}">{$item.npe_point} pkt / {$item.npe_price} zł</option>
+								<option value="nagroda_{$id}_{$item.npe_id}_{$item.npe_point}" data-date-price="{$item.npe_price}">{$item.npe_point} pkt / {$item.npe_price} zł</option>
 							{/foreach}
 							</select>
+					        <input type="hidden" name="date[price]" id="price">
 					        <button type="submit" id="loading-example-btn" class="btn btn-default btn-sm margin-top-10" data-loading-text="Loading...">wybierz</button>
 					    </form>
                     </div>
@@ -82,4 +83,14 @@
             </div>
             <!-- ./pierwszy box-->
 
+{/block}
+
+
+{block name="jQuery"}
+	<script>
+    $("#option").on("change", function(){
+        var price = $("#option option:selected").attr("data-date-price");
+        $("#price").val(price);
+    });
+	</script>
 {/block}

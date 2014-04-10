@@ -370,8 +370,14 @@ class Panel extends FC_Controller {
         $basket_items = $this->cart->format_number($this->cart->total_items());
 
         if(!empty($basket_items)){
+        	$basket_contents = $this->cart->contents();
+        	foreach($basket_contents as $key => $item){
+        		$product_id = explode("_",$item["id"]);
+            	$basket_contents[$key]["point"] = $product_id[3];
+        	}
+
             $this->smarty->assign("basket_total", $this->cart->format_number($this->cart->total()));
-            $this->smarty->assign("basket_item", $this->cart->contents());
+            $this->smarty->assign("basket_item", $basket_contents);
         }
 
         $this->smarty->assign("basket_items", $basket_items);
@@ -383,27 +389,34 @@ class Panel extends FC_Controller {
         $basket = $this->cart->contents();
 
         if($basket){
+			$user = $this->ion_auth->user()->row();
+	        $user_id = $user->id;
+
+	        date_default_timezone_set('europe/warsaw');
+	        $data = "%Y-%m-%d %H:%i:%s";
+	        $now = mdate($data, time());
+
+        	$data = array("p_uid" => $user_id, "p_date"=> $now, "p_sygnatura"=> "urlopingNagroda/{$user_id}/".time(), "p_qty" => $this->cart->total_items(), "p_brutto" => $this->cart->total(), "p_realizacja"=>0);
+        	@FC_DB::insert('payment', $data);
+            $order_id = $this->db->insert_id();
         	foreach ($basket as $product) {
-                $product_id = explode("_",$product["id"]);
-                //$order_date["pp_pid"] = $order_id;
+                $order_date["pp_pid"] = $order_id;
                 $order_date["pp_name"] = $product["name"];
-                $order_date["pp_netto"] = $product["price"] / 1.23;
-                $order_date["pp_value_netto"] = $product["subtotal"] / 1.23;
-                $order_date["pp_price_vat"] = $order_date["pp_netto"] * 0.23;
                 $order_date["pp_jm"] = "szt";
-                $order_date["pp_vat"] = "23";
-                $order_date["pp_value_vat"] = $order_date["pp_value_netto"] * 0.23;
                 $order_date["pp_qty"] = $product["qty"];
                 $order_date["pp_brutto"] = $product["price"];
                 $order_date["pp_value_brutto"] = $product["subtotal"];
-                //$order_date["pp_period"] = $product_id[2];
                 $order_date["pp_basket_id"] = $product["id"];
-                //$order_data = array('pp_basket_id'=>$product["id"], 'pp_period'=>$order_date["pp_period"], 'pp_pid'=>$order_id, 'pp_name'=>$product["name"], 'pp_netto'=>$order_date["pp_netto"], 'pp_value_netto'=>$order_date["pp_value_netto"], 'pp_price_vat'=>$order_date["pp_price_vat"], 'pp_jm'=>$order_date["pp_jm"], 'pp_vat'=>$order_date["pp_vat"], 'pp_value_vat'=>$order_date["pp_value_vat"], 'pp_qty'=>$order_date["pp_qty"], 'pp_brutto'=>$order_date["pp_brutto"], 'pp_value_brutto'=>$order_date["pp_value_brutto"]);
-                //$order_product = FC_DB::insert('payment_position', $order_data);
-                //$order_date["pp_id"] = $this->db->insert_id();
+                $product_id = explode("_",$product["id"]);
+                $order_date["pp_basket_id"] = $product["rowid"];
+                $order_date["pp_nagroda_id"] = $product_id[1];
+                $order_date["pp_nagroda_pid"] = $product_id[2];
+                $order_date["pp_nagroda_point"] = $product_id[3];
+                $order_date["pp_nagroda_point_total"] = $product_id[3] * $product["qty"];
+                @FC_DB::insert('payment_position', $order_date);
             }
 
-            //print_r($order_data);
+           $this->cart->destroy();
 
         }
 
