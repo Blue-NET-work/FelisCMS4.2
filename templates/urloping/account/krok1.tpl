@@ -18,7 +18,7 @@
 
                       	<div class="row margin-top-20">
                         	<div class="col-md-12 text-center">
-                               <p>Zamówienie dokonane.</p>
+                               <p>Zamówienie zostało dokonane. Oczekuje na akceptacje, poinformujemy Cię mailowo o statusie realizacji.</p>
                         	</div>
                       	</div>
 

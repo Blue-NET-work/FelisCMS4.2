@@ -93,6 +93,38 @@ class Nagrody extends FC_Controller {
         @FC_Request::smartyView('nagrody/zamowienie.tpl', $query);
 	}
 
+// realizacja
+	public function realizacja($id){
+		$where = array("p_id"=>$id);
+		$update = @FC_DB::update("payment", array("p_realizacja"=>1), $where);
+		$payment = @FC_DB::getData("payment", $where);
+		$user = @FC_DB::getData("users", array("id"=>$payment["p_uid"]));
+
+	    $this->email->from('automat@urloping.com', 'Automat Urloping')->to($user["email"])->bcc("info@urloping.com");
+		$this->email->subject('Realizacja zamówienia nagrody');
+		$this->email->message("<h4>Witaj, {$user["first_name"]}</h4><p>Dziękujemy za dokonanie zamówienia nagrody w naszym serwisie, Twoje zamówienie nagrody zostało zweryfikowane poprawnie i relizacja została dokonana. Jeszcze raz dziękujemy za zamówienie i życzymy miłego korzystania z naszego serwisu.");
+		$this->email->send();
+
+        header('Location: '.site_url('nagrody/zamowienie/'.$id));
+	}
+
+// zatwierdzenie nagrody
+	public function zatwierdzenie($pp_id, $p_id){
+		$where = array("pp_id"=>$pp_id, "pp_pid"=>$p_id);
+		$position = @FC_DB::getData("payment_position", $where);
+		$payment = @FC_DB::getData("payment", array("p_id"=>$p_id));
+		$user = @FC_DB::getData("users", array("id"=>$payment["p_uid"]));
+		$point = $user["point"] - $position["pp_nagroda_point_total"];
+		$update = @FC_DB::update("payment_position", array("pp_realizacja"=>1), $where);
+		$update = @FC_DB::update("users", array("point"=>$point), array("id"=>$payment["p_uid"]));
+        header('Location: '.site_url('nagrody/zamowienie/'.$p_id));
+	}
+
+// odrzucenie
+	public function odrzucenie($pp_id, $p_id){
+        header('Location: '.site_url('nagrody/zamowienie/'. $p_id));
+	}
+
 // Usuwanie podstrony
     public function del(){
         $response = array('status' => 'ok', 'message' => array());

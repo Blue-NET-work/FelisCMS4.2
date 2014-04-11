@@ -66,6 +66,12 @@
                                     <td>{$item.pp_nagroda_point_total}</td>
                                     <td class="actions">
                                         {*<a href="{$base_url}nagrody/zamowienie/{$item.p_id}.html" title="Podgląd zamówienia" class="felisEdit with-tooltip fa fa-search"></a>*}
+                                    {if $item.pp_realizacja == 0}
+                                        <a href="{$base_url}nagrody/zatwierdzenie/{$item.pp_id}/{$payment.p_id}.html" title="Zatwierdzenie nagrody" class="felisEdit with-tooltip fa fa-check"></a>
+                                        <a href="{$base_url}nagrody/odrzucenie/{$item.pp_id}/{$payment.p_id}.html" title="Odrzucenie nagrody" class="felisEdit with-tooltip fa fa-ban"></a>
+                                    {elseif $item.pp_realizacja == 1}
+                                    	<span class="label label-success">zatwierdzona</span>
+                                    {/if}
                                     </td>
                                 </tr>
                             <!-- koniec wpisu -->
@@ -74,7 +80,11 @@
                     </table>
 
                     <div class="large-margin-top text-right">
+                    {if $payment.p_realizacja == 0}
                     	<a href="{$base_url}nagrody/realizacja/{$payment.p_id}" class="btn btn-success"><i class="fa fa-check"></i> Realizuj</a>
+                    {else}
+                        <span class="label label-success">zrealizowane</span>
+                    {/if}
                     </div>
 
                 </div>
