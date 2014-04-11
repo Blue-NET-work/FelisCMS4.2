@@ -14,6 +14,8 @@
                       <div class="panel-heading"><i class="fa fa-gift"></i> {$name}</div>
                       <div class="panel-body padding-10">
 
+{include file="assets/helpview/messages.tpl" messages=$messages}
+
 
 		        <!-- items -->
 		        <div class="row">

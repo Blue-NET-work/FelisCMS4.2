@@ -15,6 +15,14 @@ class Nagrody extends FC_Controller {
 
 // Nagroda
 	public function nagroda($id){
+
+        if($this->session->flashdata('message')){
+            $msg = $this->session->flashdata('message');
+            if(isset($msg['text']))$messages = $msg;
+            else $messages = array('boxClass' => "alert-danger", 'text'=>"{$msg}");
+        	$this->smarty->assigns("messages", $messages);
+        }
+
 		$query = $this->db->get_where("nagrody", array("id"=>$id))->row_array();
 		$nagroda_photo = $this->db->get_where("nagrody_photo", array("np_parent_id"=>$id))->result_array();
 		$nagroda_price = $this->db->get_where("nagrody_price", array("npe_nid"=>$id))->result_array();

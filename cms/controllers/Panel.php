@@ -441,6 +441,7 @@ class Panel extends FC_Controller {
         else{
             $action = @FC_BASKET::insert($date);
         }
+        $this->session->set_flashdata('message', array('boxClass' => "alert-success", 'text'=>"Nagroda dodana do koszyka"));
         $referer = @FC_Request::server("HTTP_REFERER");
         header('Location: '.$referer);
     }

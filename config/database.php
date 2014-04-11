@@ -90,10 +90,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'blue-host.wroclaw.pl',
-	'username' => 'bluenet_urloping',
-	'password' => 'bC9niw9N',
-	'database' => 'bluenet_urloping',
+	'hostname' => 'localhost',
+	'username' => 'urloping_felis',
+	'password' => '6UMf0Zh8',
+	'database' => 'urloping_felis',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'felis_',
 	'pconnect' => TRUE,
