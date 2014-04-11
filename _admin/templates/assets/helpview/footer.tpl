@@ -30,6 +30,7 @@
     <script src="{$TEMPLATES}assets/js/libs/DataTables/jquery.dataTables.js"></script>
 
     <script type="text/javascript">$(".datatable").dataTable({
+    	"iDisplayLength": 50,
         "oLanguage": {
         "sProcessing":   '{lang line="dataTable_sProcessing"}',
         "sLengthMenu":   "{lang line='dataTable_sLengthMenu'}",

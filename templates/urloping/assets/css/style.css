@@ -16,6 +16,10 @@ body{
 	font-size:12px;
 }
 
+.container {
+width: 1170px;
+}
+
 a {
 	color:#4eb48f;
 	text-decoration:none;
