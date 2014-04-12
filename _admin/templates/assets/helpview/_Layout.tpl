@@ -58,6 +58,21 @@
         <section id="mainContent">
             {include file="assets/helpview/header.tpl"}
 
+            {block name="header"}{/block}
+
+        <!-- Alerts messages
+        ================================================== -->
+        {if $permissions}
+        <section id="alerts">
+            {foreach from=$permissions item=item name=permission}
+            <div class="alert alert-danger">
+              <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+              <strong>{lang line="default_warning"}!</strong> {lang line="folder_permission" vars=$item}.
+            </div>
+            {/foreach}
+        </section>
+        {/if}
+
             {block name="content"}{/block}
 
         </section>
@@ -68,6 +83,8 @@
     {include file="assets/helpview/sidebar.tpl"}
 
 {include file="assets/helpview/footer.tpl"}
+
+{block name="jQuery"}{/block}
 
 </body>
 </html>

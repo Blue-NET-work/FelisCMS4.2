@@ -3,8 +3,7 @@
 {block name="head"}
 {/block}
 
-{block name="content"}
-
+{block name="header"}
         <!-- Body Header
         ================================================== -->
         <header>
@@ -14,19 +13,10 @@
               <li class="active">{lang line="dashboard_titleTag"}</li>
             </ul>
         </header>
+{/block}
 
-        <!-- Alerts messages
-        ================================================== -->
-        {if $permissions}
-        <section id="alerts">
-            {foreach from=$permissions item=item name=permission}
-            <div class="alert alert-danger">
-              <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
-              <strong>{lang line="default_warning"}!</strong> {lang line="folder_permission" vars=$item}.
-            </div>
-            {/foreach}
-        </section>
-        {/if}
+{block name="content"}
+
 
         <div class="row margin-top">
             <div class="col-md-4">

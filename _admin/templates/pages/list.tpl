@@ -1,24 +1,28 @@
-{include file="assets/helpview/head.tpl" titleTag="{lang line='pages_titleTag'}"}
+{extends file="assets/helpview/_Layout.tpl"}
 
+<!-- Blok dla head dodatkowego -->
+{block name="head"}
     <link rel="stylesheet" href="{$TEMPLATES}assets/js/libs/DataTables/jquery.dataTables-simple.css">
-</head>
-<body class="clearfix with-menu">
+{/block}
 
-    <!-- Main content
-    ================================================== -->
-    <section role="main" id="main">
-        <section id="mainContent">
-            {include file="assets/helpview/header.tpl"}
 
-            <!-- Body Header
-            ================================================== -->
-            <header>
-                <h1 class="title"><i class="fa fa-2x fa-list"></i>  {lang line="pages_titleTag"}</h1>
-                <ul class="breadcrumb unstyled-list">
-                  <li><a href="#">{lang line="default_control_panel"}</a></li>
-                  <li class="active">{lang line="pages_titleTag"}</li>
-                </ul>
-            </header>
+<!-- Blok dla danych headera -->
+{block name="header"}
+        <!-- Body Header
+        ================================================== -->
+        <header>
+            <h1 class="title"><i class="fa fa-2x fa-tachometer"></i>  {lang line="dashboard_titleTag"}</h1>
+            <ul class="breadcrumb unstyled-list">
+              <li><a href="{$base_url}">{lang line="default_control_panel"}</a></li>
+              <li><a href="{$base_url}{$uri[1]}">{lang line="default_control_panel"}</a></li>
+              <li class="active">{lang line="dashboard_titleTag"}</li>
+            </ul>
+        </header>
+{/block}
+
+
+<!-- Blok dla zawrtości strony -->
+{block name="content"}
 
             <div class="panel panel-default panel-black" id="panel">
                 <div class="panel-heading">{lang line="pages_titleTag"}
@@ -66,14 +70,12 @@
                 </div>
             </div>
 
+{/block}
 
-          </section>
-    </section>
 
-   <!-- Sidebar
-    ================================================== -->
-    {include file="assets/helpview/sidebar.tpl"}
-
-{include file="assets/helpview/footer.tpl"}
-</body>
-</html>
+<!-- Blok dla jQuery dodatkowego -->
+{block name="jQuery"}
+	<script>
+	{include file="assets/js/scripts/felis.function.pages.js"}
+	</script>
+{/block}
