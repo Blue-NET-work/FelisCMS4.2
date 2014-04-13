@@ -30,10 +30,10 @@
                 <!-- ./left right -->
                 <div class="row margin-top-15">
                 	<div class="col-md-12 text-center">
-						<a class="bottom_link" href="{$base_url}">Obiekty</a>
-		                <a class="bottom_link" href="{$base_url}">Okolicznościowe</a>
-		                <a class="bottom_link" href="{$base_url}">Oferty tygodnia</a>
-		                <a class="bottom_link" href="{$base_url}">Nagrody</a>
+						<a class="bottom_link" href="{$base_url}hotele.html">Obiekty</a>
+		                <a class="bottom_link" href="{$base_url}okolicznosciowe.html">Okolicznościowe</a>
+		                <a class="bottom_link" href="{$base_url}oferta_tygodnia.html">Oferty tygodnia</a>
+		                <a class="bottom_link" href="{$base_url}nagrody.html">Nagrody</a>
 		                <a class="bottom_link" href="{$base_url}pogoda.html">Pogoda</a>
 		                <a class="bottom_link" href="{$base_url}kontakt.html">Kontakt</a>
                 	</div>

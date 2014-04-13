@@ -222,7 +222,7 @@
 	            {else}
             		<span class="text-info">Obecnie brak wpisów.</span>
 	            {/if}
-	            <div class="text-right margin-top=10"><a href="{$base_url}artykuly.html" class="btn btn-default">więcej</a></div>
+	            <div class="text-right margin-top-20"><a href="{$base_url}artykuly.html" class="btn btn-default">więcej</a></div>
               </div>
             </div>
 

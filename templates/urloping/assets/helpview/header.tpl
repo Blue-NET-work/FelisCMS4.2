@@ -12,7 +12,8 @@
                     <div class="czasUrlop margin-top-10">
                     	<div class="czasurlop">
                         <form class="form-inline" action="{$base_url}szukaj.html" role="form" method="POST">
-                          <div class="form-group">
+                        <div class="row">
+                          <div class="form-group col-md-5">
                             <select class="form-control" name="region" id="region">
                                 <option value="0" selected="selected">region</option>
                                 <option value="2">Północ</option>
@@ -22,7 +23,7 @@
                                 <option value="6">Centrum</option>
                             </select>
                           </div>
-                          <div class="form-group">
+                          <div class="form-group col-md-4">
                             <select class="form-control" name="time" id="time">
                                 <option value="0" selected="selected">czas</option>
                                 <option value="3">3 dni</option>
@@ -35,7 +36,10 @@
                                 <option value="10">10+ dni</option>
                             </select>
                           </div>
-                          <button type="submit" class="btn btn-default">ZNAJDŹ</button>
+                          <div class="col-md-3">
+                          	<button type="submit" class="btn btn-default margin-top-5 ">ZNAJDŹ</button>
+                          </div>
+                        </div>
                         </form>
                         </div>
                     </div>
