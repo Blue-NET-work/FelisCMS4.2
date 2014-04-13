@@ -54,5 +54,6 @@ $route['oferta/(.*)']     		= 'dashboard/oferta/$1';
 $route['pakiet/(.*)']    		= 'dashboard/pakiet/$1';
 $route['activate/(.*)/(.*)']    = 'dashboard/activate/$1/$2';
 $route['artykul/(.*)_(.*)']     = 'dashboard/article/$1/$2';
+$route['artykuly']     			= 'dashboard/articles';
 $route['newsletter']     		= 'dashboard/newsletter';
 $route['(.*)']                 	= 'dashboard/pages/$1';

@@ -135,6 +135,14 @@ class Dashboard extends FC_Controller {
 		$this->smarty->view("article.tpl", $query);
 	}
 
+// Artykuły
+	public function articles(){
+
+		$query["aktualnosci"] = $this->db->order_by('a_date', 'DESC')->get("articles")->result_array();
+
+		$this->smarty->view("articles.tpl", $query);
+	}
+
 
 // Newsletter add
 	public function newsletter(){
