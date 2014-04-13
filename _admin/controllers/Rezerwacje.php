@@ -25,6 +25,12 @@ class Rezerwacje extends FC_Controller {
         $where = "`r_id` = {$date["id"]}";
         $query = $this->db->update_string('reservation', $data, $where);
         $query = $this->db->query($query);
+        $reservation = $this->db->get_where("reservation", $where)->row_array();
+        $pakiet = $this->db->get_where("pakiet", array("p_id"=>$reservation["r_pid"]))->row_array();
+        $user = $this->db->get_where("users", array("id"=>$reservation["r_uid"]))->row_array();
+        $point = $user["point"] + $pakiet["p_points"];
+        $query1 = $this->db->update_string('users', array("point"=>$point), array("id"=>$reservation["r_uid"]));
+        $query1 = $this->db->query($query1);
         $response["message"]['action'] = $query;
         $response["message"]['post'] = $date;
 		return $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($response));
