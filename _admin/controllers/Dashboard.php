@@ -81,7 +81,7 @@ class Dashboard extends FC_Controller {
             @View::setJQ(base_url());
 
             $query["messages"] = $messages;
-            @FC_Request::smartyView("account/sign_in.tpl", $query);
+            $this->smarty->view("account/sign_in.tpl", $query);
         }
 
     }
