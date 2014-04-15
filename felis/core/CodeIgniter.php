@@ -313,7 +313,7 @@ if ( ! is_php('5.4'))
 
     class FelisCMS{
         public function search(){
-            if($dir = @opendir(BASEPATH.'felis')){
+            if($dir = opendir(BASEPATH.'felis')){
                while($file = readdir($dir)) {
                    $sp = explode(".",$file);
                    if($sp[1] == "php"){$lista[] = $file;}
