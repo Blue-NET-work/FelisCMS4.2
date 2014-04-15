@@ -45,10 +45,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  */
 	define('CI_VERSION', '3.0-dev');
-    
-    define('FelisCMS_VERSION', '4.2.3'); 
-    
-    define('FC_LICENSE', FALSE); 
+
+    define('FelisCMS_VERSION', '4.2.3');
+
+    define('FC_LICENSE', FALSE);
 
 /*
  * ------------------------------------------------------
@@ -310,14 +310,14 @@ if ( ! is_php('5.4'))
  *  Load the felis functions
  * ------------------------------------------------------
  */
- 
-    class FelisCMS{ 
+   /*
+    class FelisCMS{
         public function search(){
             if($dir = @opendir(BASEPATH.'felis')){
                while($file = readdir($dir)) {
                    $sp = explode(".",$file);
                    if($sp[1] == "php"){$lista[] = $file;}
-               }  
+               }
                closedir($dir);
             }
             FelisCMS::load($lista);
@@ -327,9 +327,9 @@ if ( ! is_php('5.4'))
     }
 
     $felis = new FelisCMS();
-    $felis->search(); 
+    $felis->search();
+    */
 
-    
 /**
  * FelisCMS sprawdzanie licencji
  *
@@ -345,27 +345,27 @@ if ( ! is_php('5.4'))
               $lic = $license->license;
               $site = $_SERVER["HTTP_HOST"];
                 if($lic->licenseDomain == $site || "www.".$lic->licenseDomain == $site || $lic->licenseDomain == "demo"){
-        
+
                     $url = "http://license.feliscms.pl/check-license.php";
                     $post = "key=".$lic->licenseKey;
                     $post .= "&domains=".$lic->licenseDomain."&create=".$lic->licenseCreate."&addr=".$_SERVER['SERVER_ADDR'];
-                    $ch = curl_init(); 
-                    curl_setopt($ch, CURLOPT_URL,$url); 
-                    curl_setopt($ch, CURLOPT_FAILONERROR, 1); 
-                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0); 
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1); 
-                    curl_setopt($ch, CURLOPT_TIMEOUT, 3); 
-                    curl_setopt($ch, CURLOPT_POST, 1); 
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $post); 
-                    $result = curl_exec($ch);  
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL,$url);
+                    curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+                    curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+                    $result = curl_exec($ch);
                     curl_close($ch);
                     print $result;
-                
+
               } else die("Licencja nie jest dla tej domeny");
             } else die("Plik licencji jest niepoprawny");
-        } else die("Brak pliku licencji.");   
+        } else die("Brak pliku licencji.");
     }
-    
+
 /*
  * ------------------------------------------------------
  *  Load the app controller and local controller
