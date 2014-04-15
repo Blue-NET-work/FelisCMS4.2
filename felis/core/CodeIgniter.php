@@ -310,7 +310,7 @@ if ( ! is_php('5.4'))
  *  Load the felis functions
  * ------------------------------------------------------
  */
-   /*
+
     class FelisCMS{
         public function search(){
             if($dir = @opendir(BASEPATH.'felis')){
@@ -328,7 +328,6 @@ if ( ! is_php('5.4'))
 
     $felis = new FelisCMS();
     $felis->search();
-    */
 
 /**
  * FelisCMS sprawdzanie licencji
