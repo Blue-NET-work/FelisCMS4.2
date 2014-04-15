@@ -1,6 +1,6 @@
-{include file="assets/helpview/head.tpl" titleTag="{lang line='felis_login_title'}"} 
-    <link rel="stylesheet" media="screen" href="{$TEMPLATES}assets/css/login.css"> 
-</head> 
+{include file="assets/helpview/head.tpl" titleTag="{lang line='felis_login_title'}"}
+    <link rel="stylesheet" media="screen" href="{$TEMPLATES}assets/css/login.css">
+</head>
 <body>
 
     <div id="container">
@@ -8,15 +8,14 @@
         <hgroup id="login-title" class="large-margin-bottom">
             <h1 class="login-title-image"><a href="http://blue-net.pl"><img src="{$TEMPLATES}assets/img/logo.png" alt=""></a></h1>
             <h5>{lang line='felis_login_administration'}</h5>
-        </hgroup>       
-        
+        </hgroup>
+
         <div id="form-block" class="scratch-metal">
             <form method="post" action="{$base_url}dashboard/sign_in.html" id="form-login" class="input-wrapper blue-gradient glossy" title="Login">
-                <ul class="inputs black-input large">
-                    <!-- The autocomplete="off" attributes is the only way to prevent webkit browsers from filling the inputs with yellow -->
-                    <li><span class="icon-user mid-margin-right"></span><input type="text" name="item[login]" id="login" value="" class="input-unstyled" placeholder="{lang line='felis_login_username'}" autocomplete="on"></li>
-                    <li><span class="icon-lock mid-margin-right"></span><input type="password" name="item[password]" id="pass" value="" class="input-unstyled" placeholder="{lang line='felis_login_password'}" autocomplete="off"></li>
-                </ul>
+                <ul class="inputs large">
+					<li><span class="icon-user mid-margin-right"></span><input type="text" name="item[login]" id="login" value="" class="input-unstyled" placeholder="{lang line='felis_login_username'}" autocomplete="off"></li>
+					<li><span class="icon-lock mid-margin-right"></span><input type="password" name="item[password]" id="pass" value="" class="input-unstyled" placeholder="{lang line='felis_login_password'}" autocomplete="off"></li>
+				</ul>
 
                 <p class="button-height">
                     <button type="submit" class="button glossy float-right" id="login">{lang line="felis_login_login_in"}</button>
@@ -27,20 +26,20 @@
         </div>
 
     </div>
-    
-          
-{include file="assets/helpview/footer.tpl"} 
-    
-    <script>           
 
-        $(document).ready(function(){        
-         
+
+{include file="assets/helpview/footer.tpl"}
+
+    <script>
+
+        $(document).ready(function(){
+
              var doc = $('html').addClass('js-login'),
                 container = $('#container'),
                 formBlock = $('#form-block'),
 
                 centered;
-         
+
             $('#form-login').on("submit", function(event)
             {
                 // Values
@@ -50,7 +49,7 @@
                     remind = $.trim($('#remind').val());
 
                 // Check inputs
-                if (login.length === 0){  
+                if (login.length === 0){
                     displayError('{lang line="felis_login_please_fill_username"}');
                     return false;
                 }
@@ -73,12 +72,12 @@
                     // Stop normal behavior
                     event.preventDefault();
 
-                    
+
                      // This is where you may do your AJAX call, for instance:
-                      $.ajax(url, {     
-                            type: "POST",    
-                            dataType: 'json', 
-                            data: $('#form-login').serialize(),           
+                      $.ajax(url, {
+                            type: "POST",
+                            dataType: 'json',
+                            data: $('#form-login').serialize(),
                             success: function(data){
                               if (data.logged){
                                   formBlock.clearMessages();
@@ -90,11 +89,11 @@
                                   displayError(data.messages);
                               }
                             },
-                            error: function(){                               
+                            error: function(){
                               formBlock.clearMessages();
                               displayError('{lang line="felis_login_error_contacting"}');
                             }
-                      });    
+                      });
 
                     // Simulate server-side check
                     /*
@@ -240,11 +239,11 @@
         });
 
         // What about a notification?
-        notify('{lang line="felis_login_info_access_title"}', '{$messages}', {       
+        notify('{lang line="felis_login_info_access_title"}', '{$messages}', {
             icon: '{$TEMPLATES}assets/img/demo/icon.png'
         });
 
     </script>
-                           
+
 </body>
 </html>
