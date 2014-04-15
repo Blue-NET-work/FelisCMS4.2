@@ -5,7 +5,6 @@
 <!--[if (IE 9)&!(IEMobile)]><html class="no-js ie9" lang="en"><![endif]-->
 <!--[if (gt IE 9)|(gt IEMobile 7)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-
     <title>FelisCMS 4 - {lang line='felis_login_title'}</title>
     <!-- mete dane -->
     <meta charset="utf-8">
