@@ -15,6 +15,9 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="user-scalable=0, initial-scale=1.0, target-densitydpi=115">
 
+    <!-- Style -->
+	{stylesheet style=$_CSS}
+
     <!-- favglyphicon glyphicon-->
     <link rel="shortcut icon" href="{$TEMPLATES}assets/img/favicon.png">
     <!-- Microsoft clear type rendering -->
