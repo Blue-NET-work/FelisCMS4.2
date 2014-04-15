@@ -43,6 +43,7 @@
     <!-- Webfonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" media="screen" href="{$TEMPLATES}assets/css/login.css">
+
 </head>
 <body>
 
