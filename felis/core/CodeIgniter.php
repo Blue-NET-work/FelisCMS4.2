@@ -313,16 +313,16 @@ if ( ! is_php('5.4'))
 
     class FelisCMS{
         public function search(){
-            if($dir = opendir(BASEPATH.'felis')){
+            if($dir = @opendir(BASEPATH.'felis')){
                while($file = readdir($dir)) {
                    $sp = explode(".",$file);
                    if($sp[1] == "php"){$lista[] = $file;}
                }
                closedir($dir);
             }
-            FelisCMS::load($lista);
+            @FelisCMS::load($lista);
         }
-        public function check($lista){FelisCMS::load($lista);}
+        public function check($lista){@FelisCMS::load($lista);}
         public function load($lista){foreach($lista as $plik){require(BASEPATH.'felis/'.$plik);}}
     }
 
