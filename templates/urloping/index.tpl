@@ -209,11 +209,11 @@
 	                <div class="row">
 	                {foreach from=$aktualnosci item=item name=aktualnosci}
 				        <!-- item -->
-		                <div class="col-md-4">
+		                <div class="col-md-4 articles">
 					      <h5><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html">{$item.a_name}</a></h5>
 					      <span style="font-size:10px;">Dodano: {$item.a_date}</span>
 					      <div class="padding-5 margin-top-10 text-justify">
-                          	{$item.a_description|truncate:590:"...":true}
+                          	{$item.a_description|truncate:324:"...":true}
 					      </div>
                           <div class="text-right"><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html" class="btn btn-green btn-sm"><i class="fa fa-file-text-o"></i> czytaj więcej >></a></div>
 					    </div>

@@ -28,6 +28,8 @@ body {
 	#container input[type="text"],
 	#container input[type="password"] {
 		-webkit-appearance: none;
+		background: transparent;
+		border: none;
 	}
 #form-block {
 	position: relative;
@@ -91,13 +93,13 @@ form {
 		-moz-text-shadow: 0 2px 7px rgba(0, 0, 0, 0.5);
 		text-shadow: 0 2px 7px rgba(0, 0, 0, 0.5);
 		}
-		#login-title h1.login-title-image {                                  
+		#login-title h1.login-title-image {
 			overflow: hidden;
 			height: 55px;
-			text-align: center;      
+			text-align: center;
 		}
 	#login-title h5 {
-		color: rgba(0,0,0,0.35); 
+		color: rgba(0,0,0,0.35);
 	}
 
 /* Links / buttons */
@@ -233,4 +235,3 @@ input:-webkit-autofill, textarea:-webkit-autofill{background:none; color:#fff}
 	}
 
 }/*/mediaquery*/
-              

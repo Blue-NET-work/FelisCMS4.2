@@ -71,6 +71,7 @@ class Hotels_model extends CI_Model{
             //miniaturka 6
             $image->resize(450, 300, 'outside')->resizeCanvas(450, 300, 'center', 'center', $white)->saveToFile("{$path}/thumb_450/{$filename}");
             //miniaturka 7
+            $image->resize(735, 300, 'outside')->resizeCanvas(735, 300, 'center', 'center', $white)->saveToFile("{$path}/thumb_735/{$filename}");
             $image->resize(800, 600, 'outside')->resizeCanvas(800, 600, 'center', 'center', $white)->saveToFile("{$path}/thumb_800/{$filename}");
             //miniaturka 8
             $image->resize(900, 500, 'outside')->resizeCanvas(900, 500, 'center', 'center', $white)->saveToFile("{$path}/thumb_900/{$filename}");
@@ -114,6 +115,7 @@ class Hotels_model extends CI_Model{
         //miniaturka 6
         $image->resize(450, 300, 'outside')->resizeCanvas(450, 300, 'center', 'center', $white)->saveToFile("{$path}/thumb_450/{$zdjecie}.{$ext}");
         //miniaturka 7
+        $image->resize(735, 300, 'outside')->resizeCanvas(735, 300, 'center', 'center', $white)->saveToFile("{$path}/thumb_735/{$zdjecie}.{$ext}");
         $image->resize(800, 600, 'outside')->resizeCanvas(800, 600, 'center', 'center', $white)->saveToFile("{$path}/thumb_800/{$zdjecie}.{$ext}");
         //miniaturka 8
         $image->resize(900, 500, 'outside')->resizeCanvas(900, 500, 'center', 'center', $white)->saveToFile("{$path}/thumb_900/{$zdjecie}.{$ext}");

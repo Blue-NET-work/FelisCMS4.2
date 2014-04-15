@@ -19,7 +19,7 @@
 						  <div class="carousel-inner cont-slider">
 						{foreach from=$hotels_photo item=item name=hotels_photo}
 						    <div class="item {if !$smarty.foreach.hotels_photo.first}{else}active{/if}">
-						      {html_image file="{$uploads}images/hotels/thumb_450/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" style="height:350px !important; width:100%;" alt="{$item.hp_alt}" title="{$item.hp_title}"}
+						      {html_image file="{$uploads}images/hotels/thumb_735/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" style="height:350px !important; width:100%;" alt="{$item.hp_alt}" title="{$item.hp_title}"}
 						    </div>
 						{/foreach}
 						  </div>

@@ -63,7 +63,7 @@ class Dashboard extends FC_Controller {
 	public function oferta_tygodnia(){
 		$query["pakiet"] = $this->db->get_where("pakiet", array("p_week"=>"1"))->row_array();
 		$query["hotel"] = $this->db->get_where("hotels", array("id"=>$query["pakiet"]["p_hotels"]))->row_array();
-		$query["pakiet_photo"] = $this->db->get_where("pakiet_photo", array("pp_parent_id"=>$query["pakiet"]["p_id"]))->result_array();
+		$query["pakiet_photo"] = $this->db->order_by('pp_sort', 'ASC')->get_where("pakiet_photo", array("pp_parent_id"=>$query["pakiet"]["p_id"]))->result_array();
 
 		$this->smarty->view("tygodnia.tpl", $query);
 	}

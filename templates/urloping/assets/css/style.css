@@ -549,3 +549,34 @@ footer a.bottom_link{
 }
 
 .panel-group .panel-heading + .panel-collapse .panel-body{border-top:none;}
+
+.articles img{
+	display: inline-block;
+	width: 100% !important;
+	height: 250px !important;
+	padding: 4px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	margin-right:10px;
+	margin-bottom:10px;
+}
+.article img{
+	display: inline-block;
+	max-width: 100% !important;
+	height: auto;
+	padding: 4px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	margin-right:10px;
+	margin-bottom:10px;
+}

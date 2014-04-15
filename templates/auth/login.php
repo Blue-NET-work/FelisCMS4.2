@@ -21,7 +21,7 @@
   </p>
 
 
-  <p><?php echo form_submit('submit', lang('login_submit_btn'));?></p>
+  <p><?php echo form_submit('submit', lang('login_submit_btn'));?> <a href="/auth/login_provider/Facebook">Zaloguj przez fejsa</a></p>
 
 <?php echo form_close();?>
 
