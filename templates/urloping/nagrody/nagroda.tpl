@@ -26,7 +26,7 @@
   <div class="carousel-inner cont-slider">
 {foreach from=$nagroda_photo item=item name=nagroda_photo}
     <div class="item {if !$smarty.foreach.nagroda_photo.first}{else}active{/if}">
-      {html_image file="{$uploads}images/nagrody/thumb_800/{$item.np_photo}.{$item.np_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.np_alt}" title="{$item.np_title}"}
+      {html_image file="{$uploads}images/nagrody/org/{$item.np_photo}.{$item.np_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.np_alt}" title="{$item.np_title}"}
     </div>
 {/foreach}
   </div>

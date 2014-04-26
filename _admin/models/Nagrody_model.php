@@ -59,21 +59,21 @@ class Nagrody_model extends CI_Model{
             $image = WideImage::load($options['file']);
             $white = $image->allocateColor(255, 255, 255);
             //miniaturka 1
-            $image->resize(70, 70, 'outside')->resizeCanvas(70, 70, 'center', 'center', $white)->saveToFile("{$path}/thumb_70/{$filename}");
+            $image->resize(70, 70, 'outside')->saveToFile("{$path}/thumb_70/{$filename}");
             //miniaturka 2
-            $image->resize(120, 120, 'outside')->resizeCanvas(120, 120, 'center', 'center', $white)->saveToFile("{$path}/thumb_120/{$filename}");
+            $image->resize(120, 120, 'outside')->saveToFile("{$path}/thumb_120/{$filename}");
             //miniaturka 3
-            $image->resize(200, 150, 'outside')->resizeCanvas(200, 150, 'center', 'center', $white)->saveToFile("{$path}/thumb_200/{$filename}");
+            $image->resize(200, 150, 'outside')->saveToFile("{$path}/thumb_200/{$filename}");
             //miniaturka 4
-            $image->resize(280, 200, 'outside')->resizeCanvas(280, 200, 'center', 'center', $white)->saveToFile("{$path}/thumb_280/{$filename}");
+            $image->resize(280, 200, 'outside')->saveToFile("{$path}/thumb_280/{$filename}");
             //miniaturka 5
-            $image->resize(300, 200, 'outside')->resizeCanvas(300, 200, 'center', 'center', $white)->saveToFile("{$path}/thumb_300/{$filename}");
+            $image->resize(300, 200, 'outside')->saveToFile("{$path}/thumb_300/{$filename}");
             //miniaturka 6
-            $image->resize(450, 300, 'outside')->resizeCanvas(450, 300, 'center', 'center', $white)->saveToFile("{$path}/thumb_450/{$filename}");
+            $image->resize(450, 300, 'outside')->saveToFile("{$path}/thumb_450/{$filename}");
             //miniaturka 7
-            $image->resize(800, 600, 'outside')->resizeCanvas(800, 600, 'center', 'center', $white)->saveToFile("{$path}/thumb_800/{$filename}");
+            $image->resize(800, 600, 'outside')->saveToFile("{$path}/thumb_800/{$filename}");
             //miniaturka 8
-            $image->resize(900, 500, 'outside')->resizeCanvas(900, 500, 'center', 'center', $white)->saveToFile("{$path}/thumb_900/{$filename}");
+            $image->resize(900, 500, 'outside')->saveToFile("{$path}/thumb_900/{$filename}");
             //oryginal
             $image->saveToFile("{$path}/org/{$filename}");
 	        $data = array('np_id' => 'NULL', 'np_photo' => $zdjecie, 'np_ext'=>$ext, 'np_parent_id' => $id, 'np_sort' => $kolejnosc, 'np_alt' => $alt, 'np_title' => $title);
@@ -102,21 +102,21 @@ class Nagrody_model extends CI_Model{
         $image = WideImage::load($options['file']);
         $white = $image->allocateColor(255, 255, 255);
         //miniaturka 1
-        $image->resize(70, 70, 'outside')->resizeCanvas(70, 70, 'center', 'center', $white)->saveToFile("{$path}/thumb_70/{$zdjecie}.{$ext}");
+        $image->resize(70, 70, 'outside')->saveToFile("{$path}/thumb_70/{$zdjecie}.{$ext}");
         //miniaturka 2
-        $image->resize(120, 120, 'outside')->resizeCanvas(120, 120, 'center', 'center', $white)->saveToFile("{$path}/thumb_120/{$zdjecie}.{$ext}");
+        $image->resize(120, 120, 'outside')->saveToFile("{$path}/thumb_120/{$zdjecie}.{$ext}");
         //miniaturka 3
-        $image->resize(200, 150, 'outside')->resizeCanvas(200, 150, 'center', 'center', $white)->saveToFile("{$path}/thumb_200/{$zdjecie}.{$ext}");
+        $image->resize(200, 150, 'outside')->saveToFile("{$path}/thumb_200/{$zdjecie}.{$ext}");
         //miniaturka 4
-        $image->resize(280, 200, 'outside')->resizeCanvas(280, 200, 'center', 'center', $white)->saveToFile("{$path}/thumb_280/{$zdjecie}.{$ext}");
+        $image->resize(280, 200, 'outside')->saveToFile("{$path}/thumb_280/{$zdjecie}.{$ext}");
         //miniaturka 5
-        $image->resize(300, 200, 'outside')->resizeCanvas(300, 200, 'center', 'center', $white)->saveToFile("{$path}/thumb_300/{$zdjecie}.{$ext}");
+        $image->resize(300, 200, 'outside')->saveToFile("{$path}/thumb_300/{$zdjecie}.{$ext}");
         //miniaturka 6
-        $image->resize(450, 300, 'outside')->resizeCanvas(450, 300, 'center', 'center', $white)->saveToFile("{$path}/thumb_450/{$zdjecie}.{$ext}");
+        $image->resize(450, 300, 'outside')->saveToFile("{$path}/thumb_450/{$zdjecie}.{$ext}");
         //miniaturka 7
-        $image->resize(800, 600, 'outside')->resizeCanvas(800, 600, 'center', 'center', $white)->saveToFile("{$path}/thumb_800/{$zdjecie}.{$ext}");
+        $image->resize(800, 600, 'outside')->saveToFile("{$path}/thumb_800/{$zdjecie}.{$ext}");
         //miniaturka 8
-        $image->resize(900, 500, 'outside')->resizeCanvas(900, 500, 'center', 'center', $white)->saveToFile("{$path}/thumb_900/{$zdjecie}.{$ext}");
+        $image->resize(900, 500, 'outside')->saveToFile("{$path}/thumb_900/{$zdjecie}.{$ext}");
         //oryginal
         $image->saveToFile("{$path}/org/{$zdjecie}.{$ext}");
         // Dodanie wpisu do DB

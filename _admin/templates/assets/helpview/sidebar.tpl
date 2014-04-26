@@ -81,8 +81,8 @@
                     <label for="auto-refresh">{lang line="felis_sidebar_auto_refresh"}</label>
                 </p>
             </div>
-            <div class="footer black white">&copy; 2009 - {$smarty.now|date_format:"%Y"} F2CMS</div>
-            <div class="footer white">{lang line="felis_software"}: F2CMS ver.{$ver}</div>
+            <div class="footer black white">&copy; 2009 - {$smarty.now|date_format:"%Y"} FelisCMS</div>
+            <div class="footer white">{lang line="felis_software"}: FelisCMS ver.{$ver}</div>
         </footer>
 
     </section>
