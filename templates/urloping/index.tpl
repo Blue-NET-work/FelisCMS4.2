@@ -121,9 +121,9 @@
 								<div id="region2" class="pakwypmap regioncities">
 									<h4>Północ</h4>
 									{if $mapa[2]}
-									<ul class="pakwypmap citylist">
+									<ul class="list-unstyled pakwypmap citylist">
 						                {foreach from=$mapa[2] item=item name=miasta}
-										<li><a class="cityOnMap" style="top:280px;left:450px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
+										<li><a class="cityOnMap" style="top: {$item.top}px; left: {$item.left}px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
 						                {/foreach}
 									</ul>
 									{else}
@@ -133,9 +133,9 @@
 								<div id="region3" class="pakwypmap regioncities">
 									<h4>Południe</h4>
 									{if $mapa[3]}
-									<ul class="pakwypmap citylist">
+									<ul class="list-unstyled pakwypmap citylist">
 						                {foreach from=$mapa[3] item=item name=miasta}
-										<li><a class="cityOnMap" style="top:280px;left:450px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
+										<li><a class="cityOnMap" style="top: {$item.top}px; left: {$item.left}px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
 						                {/foreach}
 									</ul>
 									{else}
@@ -145,9 +145,9 @@
 								<div id="region4" class="pakwypmap regioncities">
 									<h4>Wschód</h4>
 									{if $mapa[4]}
-									<ul class="pakwypmap citylist">
+									<ul class="list-unstyled pakwypmap citylist">
 						                {foreach from=$mapa[4] item=item name=miasta}
-										<li><a class="cityOnMap" style="top:280px;left:450px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
+										<li><a class="cityOnMap" style="top: {$item.top}px; left: {$item.left}px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
 						                {/foreach}
 									</ul>
 									{else}
@@ -157,9 +157,9 @@
 								<div id="region5" class="pakwypmap regioncities">
 									<h4>Zachód</h4>
 									{if $mapa[5]}
-									<ul class="pakwypmap citylist">
+									<ul class="list-unstyled pakwypmap citylist">
 						                {foreach from=$mapa[5] item=item name=miasta}
-										<li><a class="cityOnMap" style="top:280px;left:450px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
+										<li><a class="cityOnMap" style="top: {$item.top}px; left: {$item.left}px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
 						                {/foreach}
 									</ul>
 									{else}
@@ -169,9 +169,9 @@
 								<div id="region6" class="pakwypmap regioncities">
 									<h4>Centrum</h4>
 									{if $mapa[6]}
-									<ul class="pakwypmap citylist">
+									<ul class="list-unstyled pakwypmap citylist">
 						                {foreach from=$mapa[6] item=item name=miasta}
-										<li><a class="cityOnMap" style="top:280px;left:450px;" href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
+										<li><a class="cityOnMap" style='top: {$item.top}px; left: {$item.left}px;' href="{$base_url}hotele/miasto/{$item.alias}.html" title="{$item.name}">{$item.name}</a></li>
 						                {/foreach}
 									</ul>
 									{else}

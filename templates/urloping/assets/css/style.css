@@ -580,3 +580,66 @@ footer a.bottom_link{
 	margin-right:10px;
 	margin-bottom:10px;
 }
+
+
+
+/* Mapa */
+
+.regioncities ul{
+	padding:0;
+	width:600px;
+	height:460px;
+	position:relative;
+	display:block;
+	overflow:visible;
+	background-position: top left;
+	background-repeat:no-repeat;
+}
+
+#region2.regioncities ul.citylist{
+	background-image: url('../img/region2.png');
+}
+#region3.regioncities ul.citylist{
+	background-image: url('../img/region3.png');
+}
+#region4.regioncities ul.citylist{
+	background-image: url('../img/region4.png');
+}
+#region5.regioncities ul.citylist{
+	background-image: url('../img/region5.png');
+}
+#region6.regioncities ul.citylist{
+	background-image: url('../img/region6.png');
+	margin: -60px 0 0 -54px;
+}
+
+a.cityOnMap{
+	display:block;
+	overflow:hidden;
+	text-align:center;
+	min-width:15px;
+	width:auto;
+	padding:2px 20px;
+	margin:0 0 0 -40px;
+	position:absolute;
+	color:#fff;
+	background-color: #55be9c;
+	border:1px solid #999;
+	border-color: #29447e #29447e #1a356e;
+	font:bold 12px 'lucida grande',tahoma,verdana,arial,sans-serif;
+	-webkit-box-shadow:0 1px 0 rgba(0, 0, 0, .1);
+	box-shadow:0 1px 0 rgba(0, 0, 0, .1);
+}
+
+a.cityOnMap:before{
+	display:block;
+	overflow:hidden;
+	content:" ";
+	background:url('../img/mapmarker.png') top center no-repeat;
+	width:33px;
+	height:27px;
+	position:absolute;
+	top:0;
+	left:50%;
+	margin:-30px 0 0 -13px;
+}
