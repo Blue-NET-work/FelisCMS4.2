@@ -90,7 +90,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'blue-net.pl',
 	'username' => 'urloping_felis',
 	'password' => '6UMf0Zh8',
 	'database' => 'urloping_felis',
