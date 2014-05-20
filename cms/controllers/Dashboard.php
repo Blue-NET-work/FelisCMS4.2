@@ -17,11 +17,11 @@ class Dashboard extends FC_Controller {
 		$query["nagrody"] = $this->db->join('nagrody_photo', 'np_parent_id = id', "left")->join('nagrody_price', 'npe_nid = id', "left")->group_by('id')->get_where("nagrody", array("active" => 1))->result_array();
 		$query["aktualnosci"] = $this->db->order_by('a_date', 'DESC')->limit(3)->get("articles")->result_array();
 
-		$query["mapa"][2] = $this->db->select("city.name, city.alias")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>2))->result_array();
-		$query["mapa"][3] = $this->db->select("city.name, city.alias")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>3))->result_array();
-		$query["mapa"][4] = $this->db->select("city.name, city.alias")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>4))->result_array();
-		$query["mapa"][5] = $this->db->select("city.name, city.alias")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>5))->result_array();
-		$query["mapa"][6] = $this->db->select("city.name, city.alias")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>6))->result_array();
+		$query["mapa"][2] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>2))->result_array();
+		$query["mapa"][3] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>3))->result_array();
+		$query["mapa"][4] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>4))->result_array();
+		$query["mapa"][5] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>5))->result_array();
+		$query["mapa"][6] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>6))->result_array();
 
 		$obiekty = $this->db->order_by('hp_sort', 'DESC')->join('hotels_photo', 'hp_parent_id = id', "left")->group_by('id')->get_where("hotels", array('recommended' => 1, "hp_sort"=>1))->result_array();
 

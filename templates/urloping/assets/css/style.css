@@ -587,8 +587,8 @@ footer a.bottom_link{
 
 .regioncities ul{
 	padding:0;
-	width:600px;
-	height:460px;
+	width:700px;
+	height:480px;
 	position:relative;
 	display:block;
 	overflow:visible;
@@ -605,6 +605,8 @@ footer a.bottom_link{
 #region4.regioncities ul.citylist{
 	background-image: url('../img/region4.png');
 }
+
+
 #region5.regioncities ul.citylist{
 	background-image: url('../img/region5.png');
 }
