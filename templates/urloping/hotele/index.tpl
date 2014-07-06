@@ -18,7 +18,7 @@
 			              <div class="panel-body padding-10">
 				              <div class="row">
                               	<div class="col-md-6">
-                              		{html_image file="{$uploads}images/hotels/thumb_70/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.hp_alt}" title="{$item.hp_title}"}
+                              		{html_image file="{$uploads}images/hotels/thumb_120/{$item.hp_photo}.{$item.hp_ext}" class="img-thumbnail margin-top-10" width="100%" height="100%" alt="{$item.hp_alt}" title="{$item.hp_title}"}
 	                    		</div>
                               	<div class="col-md-6">
 	                        		<h3 class="no-top-space no-bottom-space"><a href="{$base_url}hotele/hotel/{$item.id}">{$item.name}</a></h3>

@@ -1,0 +1,516 @@
+@charset "utf-8";
+/*
+Theme Name: urloping2
+Theme URI: http://Blue-NET.pl
+Theme Version: 2.31.1
+Author: Blue-NET Mateusz Serwinowski
+Author URI: http://Blue-NET.pl
+Description: jatax theme by Blue-NET
+License: Custom
+License URI: URI: http://themeforest.net/licenses
+*/
+
+@import url("../plugins/bootstrap/css/bootstrap.css");
+@import url("../plugins/bootstrap/css/bootstrap-theme.css");
+@import url("../plugins/font-awesome/css/font-awesome.css");
+@import url("../plugins/fancybox/source/jquery.fancybox.css");
+@import url("../plugins/fancybox/source/helpers/jquery.fancybox-buttons.css");
+@import url("../plugins/fancybox/source/helpers/jquery.fancybox-thumbs.css");
+@import url("../plugins/bxslider/jquery.bxslider.css");
+
+
+body{
+	font-family: 'Roboto', sans-serif;
+	border-top:10px solid #fff;
+	background:#f5f5f5 url(../img/bg.jpg) no-repeat center 10px;
+	color:#283a39;
+}
+
+a:hover{text-decoration:none;}
+
+
+.m-t-0{margin-top:0px;}
+.m-t-10{margin-top:10px;}
+.m-t-15{margin-top:15px;}
+.m-t-20{margin-top:20px;}
+.m-t-25{margin-top:25px;}
+.m-t-30{margin-top:30px;}
+.m-t-35{margin-top:35px;}
+.m-t-40{margin-top:40px;}
+.m-t-45{margin-top:45px;}
+.m-t-50{margin-top:50px;}
+.m-t-55{margin-top:55px;}
+
+.m-b-10{margin-bottom:10px;}
+.m-b-20{margin-bottom:20px;}
+.m-b-25{margin-bottom:25px;}
+.m-b-30{margin-bottom:30px;}
+.m-b-35{margin-bottom:35px;}
+.m-b-40{margin-bottom:40px;}
+.m-b-45{margin-bottom:45px;}
+.m-b-50{margin-bottom:50px;}
+.m-b-55{margin-bottom:55px;}
+
+
+/**************************************************************
+============	Header
+**************************************************************/
+header{
+}
+
+header nav{
+	position:relative;
+	top:-6px;
+	margin-bottom:-6px;
+}
+
+header nav .nav{
+}
+
+header nav .nav li{
+	margin-left:1px;
+}
+
+header nav .nav li a{
+	background:#fff;
+	color:#08496a;
+	font-size:12px;
+	border-radius:4px 4px 0px 0px;
+	padding:13px 23px;
+	text-transform:uppercase;
+}
+
+header nav .nav li.active a,
+header nav .nav li a:hover{
+	background: #ff3c00; /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  #ff3c00 0%, #ff8a00 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ff3c00), color-stop(100%,#ff8a00)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg,  #ff3c00 0%,#ff8a00 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg,  #ff3c00 0%,#ff8a00 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg,  #ff3c00 0%,#ff8a00 100%); /* IE10+ */
+	background: linear-gradient(135deg,  #ff3c00 0%,#ff8a00 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3c00', endColorstr='#ff8a00',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	color:#fff;
+}
+
+/**************************************************************
+============	Top
+**************************************************************/
+#top{
+	position:relative;
+	height:315px;
+}
+
+#top .bgTop{
+	position:absolute;
+	background: #004876; /* Old browsers */
+	background: -moz-linear-gradient(45deg,  #004876 0%, #004163 86%, #003645 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#004876), color-stop(86%,#004163), color-stop(100%,#003645)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(45deg,  #004876 0%,#004163 86%,#003645 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(45deg,  #004876 0%,#004163 86%,#003645 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(45deg,  #004876 0%,#004163 86%,#003645 100%); /* IE10+ */
+	background: linear-gradient(45deg,  #004876 0%,#004163 86%,#003645 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004876', endColorstr='#003645',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	width:55%;
+	height:100%;
+}
+
+#top .urlopingInfo{
+	background:url(../img/urlopingInfo.png) no-repeat;
+	width:326px;
+	height:78px;
+	margin-top:40px;
+}
+
+#top .maps{
+	position:absolute;
+	background:url(../img/bgMapka.png) no-repeat;
+	width:343px;
+	height:360px;
+	left:50%;
+	margin-left:-215px;
+	top:10px;
+}
+
+#top .sliderBox{
+	margin-left:-46px;
+}
+
+#top .sliderBox .bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager{
+	width:90%;
+	text-align:right;
+	font-size:0px;
+	line-height: 19px;
+}
+
+/**************************************************************
+============	Najchetniej wybierane
+**************************************************************/
+#najchetniej-wybierane{
+	padding:50px 0;
+}
+
+#najchetniej-wybierane h4{
+	font-size:24px;
+	color:#004773;
+	text-transform:uppercase;
+	font-weight:300;
+}
+
+#najchetniej-wybierane h4 span{
+	color:#05cf94;
+}
+
+/**************************************************************
+============	Articles
+**************************************************************/
+#articles{
+	position:relative;
+	background:#fff;
+	padding:30px 0;
+	font-size:10px;
+	color:#5b6266;
+}
+
+#articles .articlesIcon{
+	background:url(../img/iconArt.png) no-repeat;
+	position:absolute;
+	top:-25px;
+	left:50%;
+	margin-left:-25px;
+	width:51px;
+	height:46px;
+}
+
+#articles h4{
+	text-transform:uppercase;
+	font-size:24px;
+	color:#05cf94;
+	font-weight:300;
+	margin-bottom:20px;
+}
+
+#articles h5{
+	text-transform:uppercase;
+	font-size:14px;
+	color:#004671;
+	font-weight:300;
+}
+
+#articles .more{
+	color:#ff6812;
+}
+
+/**************************************************************
+============	Polecane-pakiety
+**************************************************************/
+#polecane-pakiety{
+	padding:50px 0;
+}
+
+#polecane-pakiety h4{
+	font-size:24px;
+	color:#004773;
+	text-transform:uppercase;
+	font-weight:300;
+}
+
+#polecane-pakiety h4 span{
+	color:#05cf94;
+}
+
+/**************************************************************
+============	Nagroda
+**************************************************************/
+section#nagroda .container{
+	background:url(../img/bgNagroda.png) no-repeat center;
+	background-size:cover;
+	height:434px;
+}
+
+/**************************************************************
+============	Newsletter
+**************************************************************/
+section#newsletter{
+	background: #004876;
+	height: 65px;
+	margin: 30px 0 0 0%;
+	color: #fff;
+}
+
+section#newsletter .row div{
+	position:relative;
+}
+
+section#newsletter .newsletterInfo{
+	position:absolute;
+	background:url(../img/newsletterinfo.png) no-repeat;
+	width:159px;
+	height:140px;
+	top:-40px;
+	margin-left:-10px;
+}
+
+
+/**************************************************************
+============	Footer
+**************************************************************/
+footer{
+}
+
+#footer{
+	background:#fff;
+	padding:70px 0 30px;
+	color:3333b40;
+	font-size:11px;
+}
+
+#footer .sidebar-footer{
+	border-right:1px solid #d8d8d8;
+}
+
+#footer .sidebar-footer-phone{
+	color:#20c6bb;
+	font-size:18px;
+}
+
+#footer .sidebar-footer-phone span{
+	color:#004876;
+}
+
+#footer h4,
+#footer h4 a{
+	font-family: 'Roboto', sans-serif;
+    margin: 3px 0 20px;
+    padding-right: 50px;
+	color:#004876;
+	text-transform:uppercase;
+	font-size:18px;
+}
+
+#footer ul li{
+	padding:5px 0;
+	border-top:1px solid #ededed;
+}
+
+#footer ul li:first-child{
+	border-top:none;
+}
+
+#footer ul li a{
+	display:block;
+	padding:5px 15px;
+	color:#081f31;
+	border-radius:10px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+
+#footer ul li a:hover{
+	background: #28c3c8; /* Old browsers */
+	background: -moz-linear-gradient(left,  #28c3c8 0%, #05cf94 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#28c3c8), color-stop(100%,#05cf94)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #28c3c8 0%,#05cf94 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #28c3c8 0%,#05cf94 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #28c3c8 0%,#05cf94 100%); /* IE10+ */
+	background: linear-gradient(to right,  #28c3c8 0%,#05cf94 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28c3c8', endColorstr='#05cf94',GradientType=1 ); /* IE6-9 */
+	color:#fff;
+}
+
+
+/**************************************************************
+============	Copyright
+**************************************************************/
+#copyright{
+	background:#f5f5f5 url(../img/copyright.jpg) no-repeat center top;
+	font-size:11px;
+	padding:40px 0;
+}
+
+#copyright .copyright{
+	text-transform:uppercase;
+}
+
+#copyright .author, #copyright .author a{
+	color:#009368;
+}
+
+#copyright a.social{
+	display:inline-block;
+	background:#004876;
+	border-radius:30px;
+	text-align:center;
+	width:20px;
+	height:20px;
+	vertical-align:middle;
+	color:#fff;
+	padding:3px;
+}
+
+#copyright a.social:hover{
+	background:#40bfb3;
+}
+
+
+/**************************************************************
+============	Hotele
+**************************************************************/
+#hotele{
+	padding:50px 0;
+}
+
+#hotele h4{
+	font-size:24px;
+	color:#004773;
+	text-transform:uppercase;
+	font-weight:300;
+}
+
+#hotele h4 span{
+	color:#05cf94;
+}
+
+
+/**************************************************************
+============	Hotel
+**************************************************************/
+#hotel{
+	color:#002b42;
+	font-size:12px;
+    font-weight: 300;
+}
+
+#hotel h2{
+	font-size:24px;
+	color:#004773;
+	font-weight: 300;
+}
+
+#hotel h3{
+	color:#28c3c8;
+	font-size:18px;
+}
+
+#hotel .naTerenie{
+	background: #28c3c8;
+	padding:5px 15px;
+	color:#fff;
+	margin-bottom:15px;
+}
+
+#hotel .naTerenie h3{
+	font-size:12px;
+	font-weight:300;
+}
+
+#hotel .naTerenie h3 span{
+	font-size:18px;
+	display: block;
+	padding-top:4px;
+	font-weight: 600;
+}
+
+#hotel #rating_container{
+    background: rgb(255,77,0); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmY0ZDAwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmNjYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(-45deg,  rgba(255,77,0,1) 0%, rgba(255,102,0,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255,77,0,1)), color-stop(100%,rgba(255,102,0,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg,  rgba(255,77,0,1) 0%,rgba(255,102,0,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg,  rgba(255,77,0,1) 0%,rgba(255,102,0,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg,  rgba(255,77,0,1) 0%,rgba(255,102,0,1) 100%); /* IE10+ */
+	background: linear-gradient(135deg,  rgba(255,77,0,1) 0%,rgba(255,102,0,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff4d00', endColorstr='#ff6600',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+    padding:5px 15px;
+    color:#fff;
+}
+
+#hotel .naTerenie h3,
+#hotel #rating_container h3{
+	color:#fff;
+}
+
+
+/**************************************************************
+============	zaloguj się  / zarejestruj się
+**************************************************************/
+#login{
+	padding:50px 0;
+}
+
+#login h4{
+	font-size:24px;
+	color:#004773;
+	text-transform:uppercase;
+	font-weight:300;
+}
+
+
+
+/**************************************************************
+============	oferta-tygodnia
+**************************************************************/
+#oferta-tygodnia{
+	padding:50px 0;
+}
+
+#oferta-tygodnia h4{
+	font-size:24px;
+	color:#004773;
+	text-transform:uppercase;
+	font-weight:300;
+}
+
+
+
+
+
+/**************************************************************
+============	Slider option
+**************************************************************/
+.bx-wrapper .bx-viewport {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border: none;
+	left: -5px;
+	background: none;
+	-webkit-transform: translatez(0);
+	-moz-transform: translatez(0);
+	-ms-transform: translatez(0);
+	-o-transform: translatez(0);
+	transform: translatez(0);
+}
+
+.bx-wrapper .bxslider {
+	margin-left:0;
+	margin-right: 0;
+}
+
+.bx-wrapper .bx-controls-direction a{
+	top:50%;
+}
+
+.bx-wrapper .bx-prev{
+	background:url(../img/slider/bx-prev.png) no-repeat top center;
+	width:30px;
+	height:30px;
+	left:-45px;
+}
+
+.bx-wrapper .bx-next{
+	background:url(../img/slider/bx-next.png) no-repeat top center;
+	left:auto;
+	width:30px;
+	height:30px;
+	right:-45px;
+}
+
+.bx-wrapper .bx-prev:hover,
+.bx-wrapper .bx-next:hover
+{background-position:bottom center;}
+
+#top .bx-wrapper .bx-controls-direction a{
+	display:none;
+}

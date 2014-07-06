@@ -13,7 +13,7 @@
 	                {foreach from=$aktualnosci item=item name=aktualnosci}
 	                <div class="row">
 				        <!-- item -->
-		                <div class="col-md-12 article">
+		                <div class="col-md-12 articleski">
 					      <h5><a href="{$base_url}artykul/{$item.a_alias}_{$item.a_id}.html">{$item.a_name}</a></h5>
 					      <span style="font-size:10px;">Dodano: {$item.a_date}</span>
 					      <div class="padding-5 margin-top-10 text-justify">

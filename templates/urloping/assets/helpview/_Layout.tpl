@@ -7,12 +7,13 @@
 <head>
     <!-- mete dane -->
     <meta charset="utf-8">
-    {*<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="author" content="Mateusz Serwinowski (serwin) - Blue-NET.pl"> *}
+    {*
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="user-scalable=0, initial-scale=1.0, target-densitydpi=115">
-
+    *}
+    <meta name="author" content="Mateusz Serwinowski (serwin) - Blue-NET.pl">
     <!-- styles -->
 	<link href="{$TEMPLATES}assets/css/style.css" rel="stylesheet" type="text/css">
 	<link href="{$TEMPLATES}assets/cookie/main.css" rel="stylesheet" type="text/css">

@@ -7,7 +7,16 @@
 {block name="content"}
 
         <div class="panel panel-default panel-green margin-top-20">
-          <div class="panel-heading"><i class="fa fa-gift"></i> {$name}</div>
+
+          <div class="panel-heading">
+          	<div class="row">
+          		<div class="col-md-8"><i class="fa fa-gift"></i> {$name}</div>
+          		<div class="col-md-4 text-right">
+          			<div class="fb-share-button" data-href="{$base_url}hotele/hotel/{$id}.html" data-type="button_count"></div>
+				</div>
+		    </div>
+		  </div>
+
           <div class="panel-body padding-10">
           	<div class="row">
             	<div class="col-md-8">
@@ -69,10 +78,10 @@
             		</div>
 
             		<div id="rating_container">
-            			<p class="center_white">{if $voit != 0}{$voit} / 5{else}Brak ocen{/if}</p>
-            			<p class="ocen_info">* oceń po zalogowaniu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            			<p class="center_white" style="font-size:17px;">{if $voit != 0}{$voit} / 5{else}Brak ocen{/if}</p>
+            			<p class="ocen_info" style="padding-top:15px;">* oceń po zalogowaniu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                         {if $userLogIn}
-            			<span class="rating margin-top-25">
+            			<span class="rating margin-top-10">
 				          <a href="{$base_url}hotele/ocena/{$id}/1" class="fa fa-star" title="1"></a>
 				          <a href="{$base_url}hotele/ocena/{$id}/2" class="fa fa-star" title="2"></a>
 				          <a href="{$base_url}hotele/ocena/{$id}/3" class="fa fa-star" title="3"></a>

@@ -7,7 +7,16 @@
 {block name="content"}
 
         	<div class="panel panel-default panel-green margin-top-20">
-              <div class="panel-heading"><i class="fa fa-bell-o"></i> Oferta tygodnia</div>
+
+          <div class="panel-heading">
+          	<div class="row">
+          		<div class="col-md-8"><i class="fa fa-bell-o"></i> Oferta tygodnia</div>
+          		<div class="col-md-4 text-right">
+          			<div class="fb-share-button" data-href="{$base_url}oferta_tygodnia.html" data-type="button_count"></div>
+				</div>
+		    </div>
+		  </div>
+
           <div class="panel-body padding-10">
             <h3 class="margin-top-10 margin-bottom-25">{$pakiet.p_name}</h3>
 
