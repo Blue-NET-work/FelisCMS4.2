@@ -5,5 +5,5 @@ $config['smarty_debugging'] = TRUE;
 $config['smarty_cache'] = TRUE;
 $config['smarty_cache_lifetime'] = 120;
 
-$config['smarty_templates'] = 'urloping';
+$config['smarty_templates'] = 'urloping2';
 $config['smarty_templates_c'] = "templates";

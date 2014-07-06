@@ -12,16 +12,16 @@ class Dashboard extends FC_Controller {
     private $_voit_item = 0;
 
 	public function index(){
-		$query["miasta"] = $this->db->get("city")->result_array();
-		$query["pakiety"] = $this->db->limit(4)->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->get("pakiet")->result_array();
+		$query["pakiety"] = $this->db->limit(8)->join('pakiet_photo', 'pp_parent_id = p_id')->group_by('p_id')->get("pakiet")->result_array();
 		$query["nagrody"] = $this->db->join('nagrody_photo', 'np_parent_id = id', "left")->join('nagrody_price', 'npe_nid = id', "left")->group_by('id')->get_where("nagrody", array("active" => 1))->result_array();
 		$query["aktualnosci"] = $this->db->order_by('a_date', 'DESC')->limit(3)->get("articles")->result_array();
 
-		$query["mapa"][2] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>2))->result_array();
-		$query["mapa"][3] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>3))->result_array();
-		$query["mapa"][4] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>4))->result_array();
-		$query["mapa"][5] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>5))->result_array();
-		$query["mapa"][6] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>6))->result_array();
+		//$query["miasta"] = $this->db->get("city")->result_array();
+		//$query["mapa"][2] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>2))->result_array();
+		//$query["mapa"][3] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>3))->result_array();
+		//$query["mapa"][4] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>4))->result_array();
+		//$query["mapa"][5] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>5))->result_array();
+		//$query["mapa"][6] = $this->db->select("city.name, city.alias, city.top, city.left")->order_by('city.name', 'ASC')->join('city', 'city.id = hotels.id')->group_by('city.id')->get_where("hotels", array("region"=>6))->result_array();
 
 		$obiekty = $this->db->order_by('hp_sort', 'DESC')->join('hotels_photo', 'hp_parent_id = id', "left")->group_by('id')->get_where("hotels", array('recommended' => 1, "hp_sort"=>1))->result_array();
 
@@ -39,7 +39,7 @@ class Dashboard extends FC_Controller {
         	$query["obiekty"][] = $obiekt;
 		}
 
-		$this->smarty->view("index.tpl", $query);
+		$this->smarty->view("home/index.tpl", $query);
 	}
 
 // Podstrony
@@ -65,14 +65,14 @@ class Dashboard extends FC_Controller {
 		$query["hotel"] = $this->db->get_where("hotels", array("id"=>$query["pakiet"]["p_hotels"]))->row_array();
 		$query["pakiet_photo"] = $this->db->order_by('pp_sort', 'ASC')->get_where("pakiet_photo", array("pp_parent_id"=>$query["pakiet"]["p_id"]))->result_array();
 
-		$this->smarty->view("tygodnia.tpl", $query);
+		$this->smarty->view("pages/tygodnia.tpl", $query);
 	}
 
 // Okolicznościowe
 	public function okolicznosciowe(){
 		$query["pakiety"] = $this->db->join('pakiet_photo', 'pp_parent_id = p_id', 'right')->group_by('p_id')->get_where("pakiet", array("p_occasional"=>"1"))->result_array();
 
-		$this->smarty->view("okolicznosciowe.tpl", $query);
+		$this->smarty->view("pages/okolicznosciowe.tpl", $query);
 	}
 
 // Okolicznościowe
@@ -123,7 +123,7 @@ class Dashboard extends FC_Controller {
         $query["region"] = $region;
         $query["term"] = $term;
         $query["p_occasional"] = $p_occasional;
-		$this->smarty->view("oferta.tpl", $query);
+		$this->smarty->view("pages/oferta.tpl", $query);
 	}
 
 // Artykuł
@@ -132,7 +132,7 @@ class Dashboard extends FC_Controller {
 		$where = array("a_alias" => $alias, "a_id"=> $id);
 		$query = $this->db->get_where("articles", $where)->row_array();
 
-		$this->smarty->view("article.tpl", $query);
+		$this->smarty->view("pages/article.tpl", $query);
 	}
 
 // Artykuły
@@ -140,7 +140,7 @@ class Dashboard extends FC_Controller {
 
 		$query["aktualnosci"] = $this->db->order_by('a_date', 'DESC')->get("articles")->result_array();
 
-		$this->smarty->view("articles.tpl", $query);
+		$this->smarty->view("pages/articles.tpl", $query);
 	}
 
 
@@ -148,7 +148,7 @@ class Dashboard extends FC_Controller {
 	public function newsletter(){
 		$query["messages"] = false;
 
-		$this->smarty->view("newsletter.tpl", $query);
+		$this->smarty->view("pages/newsletter.tpl", $query);
 	}
 
 
